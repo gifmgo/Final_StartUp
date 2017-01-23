@@ -6,13 +6,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="firstM/M_header_Final4_0123.css">
+<link rel="stylesheet" type="text/css" href="firstM/M_header_Final4_0119.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="sweet/sweetalert.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="sweet/sweetalert.min.js"></script>
-<script src="firstM/index_final_modify_20170123.js"></script>
+<script src="firstM/index_final_modify_20170120.js"></script>
 <title>생활정치</title>
 </head>
 <body>
