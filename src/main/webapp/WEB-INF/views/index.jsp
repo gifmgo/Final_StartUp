@@ -19,6 +19,7 @@
 	<input type="hidden" id="check_Id_value">
 	<input type="hidden" id="hidden_nick">
 	<aside id="login_bg">
+    	
     </aside>
 	 <div id="loginForm">
     	<div id="login">
@@ -30,16 +31,16 @@
 	        <p>아이디 또는 비밀번호 찾기</p>
 		</div>
     
-     <div id="register">
+     	<div id="register">
             <h1>회원가입</h1>
             <label>이메일 입력</label>
-            <input type="email" id="member_Id" placeholder="이메일을 입력하세요"/>
+            <input type="email" id="member_Id" placeholder="이메일 입력"/>
             <button class="short_btn" id="id_check_btn" onclick="check_Id();">중복확인</button>
             <label>비밀번호 입력</label>
-            <input type="password" id="member_Pw" placeholder="비밀번호를 입력하세요"/>
-            <input type="password" id="member_Repw" placeholder="비밀번호를 한번 더 입력하세요"/>
+            <input type="password" id="member_Pw" placeholder="비밀번호 입력"/>
+            <input type="password" id="member_Repw" placeholder="한 번 더 입력"/>
             <label>닉네임 입력</label>
-            <input type="text" class="nick" id="member_nickName" placeholder="닉네임을 입력하세요"/>
+            <input type="text" class="nick" id="member_nickName" placeholder="닉네임 입력"/>
             <button class="short_btn" onclick="check_Nick();">중복확인</button>
             <label>생년월일 입력</label>
             <input type="text" placeholder="년도입력 ex)xxxx" id="member_Birth"/>
@@ -56,9 +57,18 @@
                 <li id="sport">스포츠</li>
             </ul>
             <button class="long_btn">가입하기</button>
-            </div>
+        </div>
+        
+        <div id="find_password">
+        	<h1>비밀번호 찾기</h1>
+            <input type="email" placeholder="이메일을 입력하세요"/>
+            <input type="text" placeholder="이름을 입력하세요"/>		
+            <button class="long_btn">비밀번호 찾기</button>
+        </div>
     	<span>×</span>
         </div>
+        
+        
 
 	<nav id="nav">
     	<div><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -94,15 +104,10 @@
 		</c:choose>
         
         <aside id="menu_bg"></aside>
-        <ul id="m_menu">
-        	<li><a href="#">의안</a></li>
-            <li><a href="#">의원</a></li>
-            <li><a href="#">게시판</a></li>
-            <li><a href="#">채팅</a></li>
-        </ul>
+        
 	</nav>
 
-<section id="banner">
+	<section id="banner">
     	<div>
             <h2>대한민국 헌법 1조 1항</h2>
             <p>대한민국은 민주공화국이다.</p>
@@ -140,7 +145,14 @@
         </p>
     </footer>
     
-	
-	
+	<aside id="side_menu">
+		<span>×</span>
+		<ul id="m_menu">
+	    	<li><a href="#">소개</a></li>
+	        <li><a href="#">의안</a></li>
+	        <li><a href="#">의원</a></li>
+	        <li><a href="#">커뮤니티</a></li>
+	    </ul>
+    </aside>
 </body>
 </html>
