@@ -86,8 +86,24 @@ public class Schedule {
 				assemHomep = element.select("assemHomep").text();
 				assemTel = element.select("assemTel").text();
 			}
-
-			System.out.println("뽑아온 정보 polyNm : " + polyNm + " /  shrtNm : " + shrtNm);
+			
+			if(shrtNm == null){
+				shrtNm = "없음";
+			}
+			
+			if(assemEmail == null){
+				assemEmail = "없음";
+			}
+			
+			if(assemHomep == null){
+				assemHomep = "없음";
+			}
+			
+			if(assemTel == null){
+				assemTel = "없음";
+			}
+			
+			System.out.println("Scheduler Controller !!! " + polyNm + " /  shrtNm : " + shrtNm);
 			data.get(i).setPolyNm(polyNm);
 			data.get(i).setShrtNm(shrtNm);
 			data.get(i).setMemTitle(memTitle);
