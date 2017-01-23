@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.com.schedule.SchedulerDao">
+	<update id="update" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		update TBL_PALIAMENT
+		set deptCd = #{deptCd}, empNm = #{empNm}, jpgLink = #{jpgLink}, num2 = #{num2}, origNm=#{origNm}, reeleGbnNm=#{reeleGbnNm},
+		    assemEmail = #{assemEmail}, assemHomep=#{assemHomep}, assemTel=#{assemTel}, electionNum=#{electionNum}, polyNm=#{polyNm},
+		    shrtNm = #{shrtNm}
+		where deptCd = #{deptCd}    			  
+	</update>
+	
+	<select id="paliament_Select" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select * from TBL_PALIAMENT
+	</select>
+	
+</mapper>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.or.com.Parliament.PaliamentTalk_DAO">
+   
+   <!-- 국회의원 리스트 가져오는 부분 -->
+   <select id="selectPaliamentList_DTO" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+      select deptCd, empNm, num2, jpgLink,polyNm,origNm,reeleGbnNm from TBL_PALIAMENT
+   </select>
+   
+   
+   <!--국회의원 정보 스케쥴러 이용해서 저장하는 부분-->
+   <insert id="paliament_DB" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+      insert into tbl_paliament(deptCd, num2, jpgLink, empNm, origNm, reeleGbnNm, polyNm, shrtNm) values(#{deptCd}, #{num2}, #{jpgLink}, #{empNm}, #{origNm}, #{reeleGbnNm}, #{polyNm}, #{shrtNm})
+   </insert>
+   
+   <!--기본 리스트 뿌려주는 부분-->                              
+   <select id="talkMember" resultType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO"> 
+      SELECT paliament_talk_seq, title, writer, TO_CHAR(writeDate, 'YYYY-MM-DD') as writeDate, catego, num FROM paliament_talk 
+      where num = #{num}
+   </select>
+
+   <insert id="talk_Write" parameterType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
+      insert into paliament_talk values(paliament_talk_seq.nextval, #{title}, #{writer}, sysdate, #{catego}, #{num}, #{content}, #{filename})
+   </insert>
+
+   <select id="talk_detailSelect" resultType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
+      SELECT paliament_talk_seq, title, writer, TO_CHAR(writeDate, 'YYYY-MM-DD') as writeDate, catego, num, content, filename FROM paliament_talk 
+      where paliament_talk_seq = #{seq}
+   </select>
+   
+   <select id="talk_modify" parameterType="String" resultType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
+      SELECT paliament_talk_seq, title, content from paliament_talk
+      where paliament_talk_seq = #{param1} and writer=#{param2}
+   </select>
+   
+   <!--국회의원 말말말, 수정하기 부분 db 에서 읽어온 데이터 수정 하는 것.-->
+   <update id="talk_modify_Post" parameterType="String">
+      update paliament_talk
+      set title = #{param2}, content = #{param3},writeDate = sysdate
+      where paliament_talk_seq = #{param1} 
+   </update>
+   
+
+</mapper>
