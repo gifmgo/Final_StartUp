@@ -360,15 +360,12 @@ $(document).ready(function(e) {
 	//모바일 용 메뉴
 	var mSts = 0;
 	$("#nav>div").eq(0).click(function() {
+		$("#side_menu").stop().animate({left:"0"},700);
+	});
+	
+	$("#side_menu").find("span").click(function() {
 		
-		if(mSts == 0) {
-			$("#m_menu").animate({height:"200px"});
-			mSts = 1;
-		} else if(mSts == 1) {
-			
-			$("#m_menu").animate({height:"0"});	
-			mSts = 0;
-		}
+		$("#side_menu").stop().animate({left:"-80%"},700);	
 	});
 	
 	//의안 상세보기 클릭시
