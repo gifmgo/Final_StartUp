@@ -1,12 +1,13 @@
 @charset "utf-8";
 /* CSS Document */
+@import url(core.css);
 
 #basicInfo {
 	position:relative;
 	top:50px;
 	width:100%;
 	max-width:1300px;
-	height:900px;
+	height:auto;
 	margin:0 auto;	
 }
 

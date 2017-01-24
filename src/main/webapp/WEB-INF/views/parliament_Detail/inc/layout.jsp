@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">	
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/final_header3_0119.css">
-<link rel="stylesheet" type="text/css" href="paliament/final_sub3.css">
+<link rel="stylesheet" type="text/css" href="paliament/final_sub4.css">
 <link rel="stylesheet" href="css/WriteForm.css">
 <link rel="stylesheet" type="text/css" href="css/sub02.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
@@ -163,8 +163,9 @@
 					
 					if(data.detail.body.item.memTitle != null || data.detail.body.item.memTitle !== undefined){
 						var array = data.detail.body.item.memTitle.replace(/\r-/gi,"<br/>");
+						console.log("학력:"+ array);
 						$('#memTitleTd').append(array);
-					}
+					}	
 					
 					//전화번호
 					$('#phoneTd').text(data.detail.body.item.assemTel);
@@ -193,7 +194,7 @@
 		var resultDasu = splitDasu[splitDasu.length - 1].substring(0,2);
 
 		//상임위원회 
-		var array = ["국회운영위원회","법제사법위원회","정무위원회","기획재정위원회","미래창조과학방송통신위원회","교육문화체육관광위원회","외교통일위원회","국방위원회","안전행정위원회","농림축산식품해양수산위원회","산업통상자원위원회","보건복지위원회","환경노동위원회","국토교통위원회","정보위원회","여성가족위원회"];
+		var array = ["국회운영위원회","법제사법위원회","정무위원회","기획재정위원회","미래창x조과학방송통신위원회","교육문화체육관광위원회","외교통일위원회","국방위원회","안전행정위원회","농림축산식품해양수산위원회","산업통상자원위원회","보건복지위원회","환경노동위원회","국토교통위원회","정보위원회","여성가족위원회"];
 		//선택한 국회의원 위원회
 		var weOnH = obj.split(",");
 		//속해있는 상임위원회 뽑은 것 담기 위한 배열
