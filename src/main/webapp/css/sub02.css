@@ -233,3 +233,60 @@
 #comm>ul>li ul>li:hover {
    text-decoration:underline;   
 }
+
+@media only screen and (max-width:768px) {
+	
+	#title>h2 {
+		top:10px;
+		height:60px;
+		line-height:70px;
+		padding-left:20px;	
+		line-height:30px;	
+	}
+	
+	#title>p {
+		position:relative;
+		top:10px;
+		height:30px;
+		transform:none !important;	
+		width:100%;
+		text-align:left;
+		left:20px;
+	}
+	
+	#comm>ul>li h4 {
+		height:30px;
+		line-height:30px;	
+	}
+	#comm>ul>li p {
+		width:90%;
+		height:auto;
+		line-height:25px;	
+	}
+	
+	#comm>ul>li span {
+		position:relative;
+		top:0;
+		left:20px;
+	}
+	
+	#comm>ul>li ul {
+		bottom:0;
+		height:20px !important;
+	}
+	
+	#comm>ul>li ul li {
+		height:20px;
+		line-height:20px;	
+		text-align:left;
+		right:50px;
+	}
+	
+	#btArray {
+		text-align:center;	
+	}
+	
+	#btArray button {
+		width:80px;	
+	}
+}

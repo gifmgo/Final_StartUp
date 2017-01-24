@@ -31,12 +31,6 @@
             <button class="short_btn" onclick="check_Nick();">중복확인</button>
             <label>생년월일 입력</label>
             <input type="text" placeholder="년도입력 ex)xxxx" id="member_Birth"/>
-            <select>
-            	<option>월</option>
-            </select>
-            <select>
-            	<option>일</option>
-            </select>
             <label>성별</label>
             <ul id="gender">
             	<li id="m">남자</li>

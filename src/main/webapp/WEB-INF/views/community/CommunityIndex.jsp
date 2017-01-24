@@ -109,14 +109,14 @@
 	       <article>
 	       	    <div>
 	            	<div class="main_news">
-	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(창업)" width="130"/>
+	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(창업)" width="15%"/>
 	                    <h2 id="GoverMenthGoyoung"></h2>
 	                </div>
 	                <ul class="dashList" id="goUl"></ul>
 	            </div>
 	            <div>
 	            	<div class="main_news">
-	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(취업)" width="130"/>
+	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(취업)" width="15%"/>
 	                    <h2 id="educationHtag"></h2>
 	                </div>
 	                <ul class="dashList" id="eduli"></ul>

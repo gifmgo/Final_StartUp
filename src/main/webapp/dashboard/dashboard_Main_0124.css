@@ -3,6 +3,12 @@
 @import url(dashcore.css);
 
 /*대시보드*/
+
+.testtest {
+	
+	
+}
+
 #dashboard {
 	position:relative;
 	width:100%;
@@ -116,6 +122,8 @@
 	cursor:pointer;
 }
 
+
+
 .dashList li>span {
 	position:absolute;
 	right:0;
@@ -223,7 +231,7 @@
 }
 
 .main_news span {
-	font:normal 16px Nanum;	
+	font:bold 16px Nanum;	
 }
 
 /*뉴스*/
@@ -324,9 +332,21 @@
 }
 
 #news .dashList li {
+	position:relative;
 	font-weight:bold;
 	line-height:30px;	
 }
+
+ #news .dashList li>a {
+ 	position:absolute;
+	display:block;
+	top:0;
+	left:0;
+	width:75%;
+	height:100%;
+	overflow: hidden;
+
+} 
 
 #news .dashList li span {
 	font-weight:normal;	
