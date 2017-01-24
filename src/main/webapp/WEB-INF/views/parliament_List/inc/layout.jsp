@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="paliament/paliament_final_header5.css">
+<link rel="stylesheet" href="paliament/paliament_final_header6.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,7 +98,7 @@
          searchDiv += '<span>정당 : '+obj.jungDang+'</span><br/>';
          searchDiv += '<span>지역구 : '+obj.orignm+'</span><br/>';
          searchDiv += '<span>당선 회수 : '+obj.reelegbnnm+'</span><br/><br/>';
-         searchDiv += '<input type="button" class="btn" style="color:white; background-color:'+searchColor+'" onclick="detailPaliament(this)" value=상세보기>';
+         searchDiv += '<input type="button" class="btn detail_btn" style="color:white; background-color:'+searchColor+'" onclick="detailPaliament(this)" value=상세보기>';
          searchDiv += '</div>';
          searchDiv += '</div>';
          return searchDiv;

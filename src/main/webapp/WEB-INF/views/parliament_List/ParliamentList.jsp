@@ -55,13 +55,9 @@
 	    		</div>	
  			 </div>
  			 
- 			 <div class="form-group">
- 			 	<div class="col-sm-offset-3 col-sm-2">
-    				<input type="button" id="searchBtn" class="btn btn-primary" value="검색">
-    			</div>
-    			<div class="col-sm-4">
-    				<input type="button" class="btn btn-danger" value="검색 초기화">
-    			</div>
+ 			 <div class="form-group text-center">
+   				<input type="button" id="searchBtn" class="btn btn-primary" value="검색">
+   				<input type="button" class="btn btn-danger" value="검색 초기화">
  			 </div>
 		</form>
 		
