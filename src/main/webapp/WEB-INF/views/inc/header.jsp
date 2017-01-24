@@ -89,10 +89,15 @@
 		</c:choose>
         
         <aside id="menu_bg"></aside>
-        <ul id="m_menu">
-        	<li><a href="#">의안</a></li>
-            <li><a href="#">의원</a></li>
-            <li><a href="#">게시판</a></li>
-            <li><a href="#">채팅</a></li>
-        </ul>
+     
 	</nav>
+	
+	<aside id="side_menu">
+		<span>×</span>
+		<ul id="m_menu">
+	    	<li><a href="#">소개</a></li>
+	        <li><a href="#">의안</a></li>
+	        <li><a href="#">의원</a></li>
+	        <li><a href="#">커뮤니티</a></li>
+	    </ul>
+    </aside>

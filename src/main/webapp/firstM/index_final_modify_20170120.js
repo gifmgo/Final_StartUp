@@ -6,14 +6,14 @@ function emailcheck(strValue)
 	//입력을 안했으면
 	if(strValue.lenght == 0 || strValue == '')
 	{
-		swal("이메일을 입력해주세요 !");
+		alert("이메일을 입력해주세요 !");
 		$('#loginIdInput').focus();
 		return false;
 	}
 	//이메일 형식에 맞지않으면
 	if (!strValue.match(regExp))
 	{
-		swal("이메일 형식이 아닙니다!");
+		alert("이메일 형식이 아닙니다!");
 		$('#loginIdInput').focus();
 		return false;
 	}
@@ -29,7 +29,7 @@ function loginFunc(id, pw){
 		return false;
 	}
 	if(pw == ''){
-		swal("비밀번호를 입력해주세요 !! ");
+		alert("비밀번호를 입력해주세요 !! ");
 		$('#loginPwInput').focus();
 		return false;
 	}
@@ -47,8 +47,6 @@ var inter3 = 0;
 // JavaScript Document
 $(document).ready(function(e) {
 	
-
-	//로고 클릭시 !!
 	$('#logo').click(function(){
 		location.href="index.do";
 	});
@@ -68,6 +66,7 @@ $(document).ready(function(e) {
 		 var result = loginFunc(id, pw);
 		 
 		 if(result == true){
+			alert("if 탐 !!");
 			$.ajax({
 				url:"Login.do",
 				type:"post",
@@ -77,13 +76,13 @@ $(document).ready(function(e) {
 				},		
 				success : function(data){
 					if(data.result == "성공"){
-						swal("로그인 성공!");
+						alert("로그인 성공!");
 						location.reload();
 					}else{
-						swal("실패하였습니다!");
+						alert("실패하였습니다!");
 					}
 				},error : function(){
-					swal("죄송합니다. 잠시후 다시 이용해 주세요!!", "error");
+					alert("죄송합니다. 잠시후 다시 이용해 주세요!!");
 				}
 			});
 			
@@ -137,26 +136,27 @@ $(document).ready(function(e) {
 			//아이디 중복검사한 결과 >> 1 넘겨줌
 			var hidden_id = $('#check_Id_value').val();
 			checkMember = check_addMember(hidden_id , 1);
+			
 			if(checkMember == false){
-				swal("아이디 중복검사를 해주세요 !");
+				alert("이메일 중복검사를 해주세요 !");
 				return false;
 			}
 			
 			//닉네임 중복검사한 결과  >> 2 넘겨줌
 			var hidden_nick = $('#hidden_nick').val();
 			checkMember = check_addMember(hidden_nick , 2);
+			
 			if(checkMember == false){
-				swal("닉네임 중복 검사를 해주세요!");
+				alert("닉네임 중복 검사를 해주세요!");
 				return false;
 			}
-		
 			
 			//생년월일 중복 검사를 시작해볼까 
 			var birthC = $('#member_Birth').val();
 			checkMember = check_birth(birthC);
-			
+		
 			if(checkMember == true){
-				swal("회원가입 성공!", "로그인 해주세요!");
+					alert("회원가입에 성공 하셨습니다.");
 					
 					var nickName = $('#member_nickName').val();
 					var email = $('#member_Id').val();
@@ -295,8 +295,10 @@ $(document).ready(function(e) {
 		didsub = 1;	
 	}
 	
+	
+	
 	if(didsub == 1) {
-		$("#nav").css({position:"relative"});
+		$("#nav").css({position:"relative", opacity:"1"});
 	}
 	
 	
@@ -357,16 +359,13 @@ $(document).ready(function(e) {
 	
 	//모바일 용 메뉴
 	var mSts = 0;
-	$("#nav>div").eq(3).click(function() {
+	$("#nav>div").eq(0).click(function() {
+		$("#side_menu").stop().animate({left:"0"},700);
+	});
+	
+	$("#side_menu").find("span").click(function() {
 		
-		if(mSts == 0) {
-			$("#m_menu").animate({height:"200px"});
-			mSts = 1;
-		} else if(mSts == 1) {
-			
-			$("#m_menu").animate({height:"0"});	
-			mSts = 0;
-		}
+		$("#side_menu").stop().animate({left:"-80%"},700);	
 	});
 	
 	//의안 상세보기 클릭시
@@ -435,7 +434,7 @@ function loginDisplay() {
 function check_Id(){
 	var id = $("#member_Id").val();
 	if(id == ''){
-		swal("아이디를 입력해주세요 !!");
+		alert("이메일을 입력해주세요 !!");
 		$('#member_Id').focus();
 	}else{
 		$.ajax({
@@ -446,10 +445,10 @@ function check_Id(){
 			success : function(data){
 				//중복검사 통과 했을때 !!
 				if(data.use == 1){
-					swal(data.msg);
+					alert(data.msg);
 					$('#check_Id_value').val(data.hidden_id);
 				}else{
-					swal(data.msg);
+					alert(data.msg);
 					$('#member_Id').val('');
 					$('#member_Id').focus();
 				}
@@ -462,7 +461,7 @@ function check_Id(){
 function check_Nick(){
 	var nick = $('#member_nickName').val();
 	if(nick == ''){
-		swal("닉네임을 입력해주세요 !!");
+		alert("닉네임을 입력해주세요 !!");
 		$('#member_nickName').focus();
 		return false;
 	}else{
@@ -474,10 +473,10 @@ function check_Nick(){
 			success : function(data){
 				//중복검사 통과 했을때 !!
 				if(data.use == 1){
-					swal(data.msg);
+					alert(data.msg);
 					$('#hidden_nick').val(data.hidden_nick);
 				}else{
-					swal(data.msg);
+					alert(data.msg);
 					$('#member_nickName').val('');
 					$('#member_nickName').focus();
 				}
@@ -499,7 +498,7 @@ function AddMemberCheckFun(gender){
 	
 	var nickName = $('#member_nickName').val();
 	if(nickName == ''){
-		swal("닉네임을 입력해주세요!");
+		alert("닉네임을 입력해주세요!");
 		$('#member_nickName').focus();
 		result = false;
 		return result;
@@ -507,21 +506,21 @@ function AddMemberCheckFun(gender){
 	
 	var pw = $('#member_Pw').val();
 	if(pw == ''){
-		swal("비밀번호를 입력해주세요 !!");
+		alert("비밀번호를 입력해주세요 !!");
 		$('#member_Pw').focus();
 		result = false;
 		return result;
 	}
 	var rePw = $('#member_Repw').val();
 	if(rePw == ''){
-		swal("비밀번호를 입력해주세요 !!");
+		alert("비밀번호를 입력해주세요 !!");
 		$('#member_Repw').focus();
 		result = false;
 		return result;
 	}
 	
 	if(pw != rePw){
-		swal("비밀번호가 다릅니다. 비밀번호를 확인해주세요 !!");
+		alert("비밀번호가 다릅니다. 비밀번호를 확인해주세요 !!");
 		$('#member_Pw').val();
 		$('#member_Repw').val();
 		$('#member_Pw').focus();
@@ -531,7 +530,7 @@ function AddMemberCheckFun(gender){
 	
 	var birth = $('#member_Birth').val();
 	if(birth == ''){
-		swal("생년월일을 입력해주세요!");
+		alert("생년월일을 입력해주세요!");
 		$('#birth').focus();
 		result = false;
 		return result;
@@ -539,7 +538,7 @@ function AddMemberCheckFun(gender){
 	
 	//성별 유효성
 	if(gender == '' || gender == null){
-		swal("성별을 선택해주세요 !!");
+		alert("성별을 선택해주세요 !!");
 		result = false;
 		return result;
 	}
@@ -557,6 +556,7 @@ function check_addMember(obj , choose){
 		}
 		return result;
 	}
+	
 	//닉네임 검사
 	if(choose == 2){
 		var result = false;
@@ -566,6 +566,7 @@ function check_addMember(obj , choose){
 		}
 		return result;
 	}
+	
 }
 
 //생년월일 관련된 유효성 검사
@@ -574,7 +575,7 @@ function check_birth(birth){
 	//숫자 입력한건지 확인함
 	regNumber = /^[0-9]*$/;
 	if(!regNumber.test(birth)) {
-		swal('숫자만 입력해주세요.');
+	    alert('숫자만 입력해주세요.');
 	    $('#member_Birth').focus();
 	    result = false;
 	    return result;
@@ -582,7 +583,7 @@ function check_birth(birth){
 	//날짜형식 YYYY-MM-DD 형식인지 체크함
 	var format = /[12][0-9]{3}[01][0-9][0-3][0-9]/; //YYYY-MM-DD 검사표현식
     if(birth.search(format) == -1){
-    	swal("날짜 형식을 지켜주세요 !! ex - 19990101");
+    	alert("날짜 형식을 지켜주세요 !! ex - 19990101");
     	$('#member_Birth').focus();
     	result = false;
 	    return result;

@@ -20,9 +20,12 @@ public class ScheduleService{
 		int result = 0;
 		try{
 			SchedulerDao dao = sqlSession.getMapper(SchedulerDao.class);
-		 	for(int i = 0; i < data.size(); i++){
-		 		dao.update(data.get(i));	
+		 	
+			for(int i = 0; i < data.size(); i++){
+				System.out.println("scheduler Service : "+data.get(i));
+				dao.update(data.get(i));	
 		 	}
+		 	
 		}catch(Exception e){
 			e.printStackTrace();
 		}

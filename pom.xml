@@ -139,11 +139,18 @@
   <artifactId>spring-jdbc</artifactId> 
   <version>4.3.2.RELEASE</version> 
   </dependency>
- <dependency>
+ <!-- <dependency>
   <groupId>com.oracle</groupId> 
   <artifactId>ojdbc</artifactId> 
   <version>11</version> 
-  </dependency>
+  </dependency> -->
+  
+  <dependency>
+    <groupId>com.oracle</groupId>
+    <artifactId>ojdbc6</artifactId>
+    <version>11.1.0.7.0</version>
+</dependency>
+  
  <!-- mybatis 관련--> 
  <dependency>
   <groupId>org.mybatis</groupId> 
@@ -245,8 +252,17 @@
          <artifactId>spring-security-taglibs</artifactId>
          <version>4.0.1.RELEASE</version>
    </dependency>		
-
+	
  </dependencies>
+ 
+ <repositories>
+  <repository>
+    <id>oracle</id>
+    <name>ORACLE JDBC Repository</name>
+    <url>http://maven.jahia.org/maven2</url>
+</repository>
+  </repositories>
+ 
  <build>
  <plugins>
  <plugin>
