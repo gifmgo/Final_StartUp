@@ -10,9 +10,13 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.mail.internet.ParameterList;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -77,57 +81,40 @@ public class PaliamentController {
    }
    
    
-   //말말말 !! >> View 데이터 입력 db 작업 실행하는 부분
+   //말말말 !! >> View 데이터 입력 db 작업 실행하는 부분 (쓰기)
    @RequestMapping(value="/paliament_talk_Write.do", method=RequestMethod.POST)
-   public String paliament_talk_Write_Post(@RequestParam("uploadfile") MultipartFile file, HttpServletRequest request, String dto, String num, String dept_cd, String img, String cate_name, Model model){
+   public String paliament_talk_Write_Post(/*@RequestParam("uploadfile") MultipartFile file,*/ HttpServletRequest request, PaliamentTalk_DTO dto, String logId, String dept_cd, String img, String cate_name, Model model){
       
-     JSONObject json = (JSONObject) JSONSerializer.toJSON(dto);
-     //파일 업로드 
-       System.out.println("file====================== : "+file);
-       String path = request.getRealPath("/upload");
-      File cFile = new File(path, file.getOriginalFilename());
-      try {
-         file.transferTo(cFile);
-      
-      } catch (IllegalStateException e1) {
-         e1.printStackTrace();
-      } catch (IOException e1) {
-         e1.printStackTrace();
-      }
-      
-    
-      String title = (String) json.get("title");
-      String content = (String) json.get("content");
-      String writer = (String)json.get("writer");
-      String catego = (String)json.get("catego");
+     /*//파일 업로드 
+	  try {
+		  String path = request.getRealPath("/upload");
+		  File cFile = new File(path, file.getOriginalFilename());
+		  file.transferTo(cFile);
+	  } catch (IllegalStateException e1) {
+	     e1.printStackTrace();
+	  } catch (IOException e1) {
+	     e1.printStackTrace();
+	  }*/
 
-      List<String> splitList = new ArrayList<String>();
-      String[] array = num.split(",");
-         splitList.add(array[0]);
-         array = new String[4];
-           array = dept_cd.split(",");
-           splitList.add(array[0]);   
-           array = new String[4];
-           array = img.split(",");
-           splitList.add(array[0]);
-           splitList.add(cate_name);
-
+	  dto.setId(logId);
+	  dto.setCatego(cate_name);
+	  dto.setContent(request.getParameter("ckeditor"));
+      int result = service.talk_Write(dto);
       
-      PaliamentTalk_DTO talk_dto = new PaliamentTalk_DTO(title,content,writer,catego, splitList.get(0), file.getOriginalFilename());
-      System.out.println(" 파일업로드????????????????"+dto.toString());
-      int result = service.talk_Write(talk_dto);
+      model.addAttribute("num",dto.getNum());
+      model.addAttribute("dept_cd",dept_cd);
+      model.addAttribute("img",img);
+      model.addAttribute("name",cate_name);
       
       if(result > 0){
          model.addAttribute("result","성공");
-         model.addAttribute("num",splitList.get(0));
-         model.addAttribute("dept_cd",splitList.get(1));
-         model.addAttribute("img",splitList.get(2));
-         model.addAttribute("name",splitList.get(3));
          return "parliament_Detail.Parliament_WriteResult";
       }
       
       return "redirect:paliament_talk_Write.do";
    }
+   
+   //
    
    //파일 다운로드
    //파일 다운

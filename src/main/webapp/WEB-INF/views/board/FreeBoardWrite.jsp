@@ -21,7 +21,7 @@
 	      	<textarea id="ckeditor" name="ckeditor" required></textarea>
 	    </div>
 	    <div id="btArray">
-	    	<button onclick="writeContent()">작성완료</button>
+	    	<button type="button" onclick="writeContent()">작성완료</button>
 	    	<button onclick="location.href='board.do?category=${category}&currentpage=${currentpage}'">취소</button>
 	    </div>
     </form>
