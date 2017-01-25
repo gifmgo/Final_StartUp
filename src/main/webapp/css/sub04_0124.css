@@ -7,7 +7,7 @@
 	position:relative;
 	width:100%;
 	max-width:1500px;
-	height:auto;
+	height:700px;
 	/*background-color:#9FC;	*/
 	margin:0 auto;
 }
@@ -35,7 +35,7 @@
 	position:relative;
 	width:100%;
 	max-width:1300px;
-	height:auto;
+	height:100%;
 	/*background-color:#96F;	*/
 	margin:50px auto;
 }
@@ -54,6 +54,8 @@
 
 #board_table>tbody th:nth-child(2), #board_table>tbody td:nth-child(2) {
 	width:70%;	
+	padding-left:10px;
+	box-sizing:border-box;
 }
 
 #board_table>tbody td:nth-child(2) {
@@ -82,6 +84,19 @@
 		
 }
 
+#board_table>tfoot button {
+	position:absolute;
+	width:100px;
+	height:40px;
+	background-color:transparent;
+	border:1px solid #ccc;
+	cursor:pointer;
+	font:16px Nanum;
+	right:0;
+	top:50%;
+	transform:translateY(-50%);	
+}
+
 
 #board_table>tfoot ul {
 	position:absolute;
@@ -90,31 +105,28 @@
 	transform:translate(-50%,-50%);
 	width:200px;
 	height:30px;
-	/* border:1px solid #ccc; */
+	border:1px solid #ccc;
 	box-sizing:border-box;	
 }
 
 #board_table>tfoot ul li {
-	width:30px;
+	width:14.2857%;
 	height:100%;
 	text-align:center;
 	line-height:30px;	
-		
+	border-right:1px solid #ccc;
+	box-sizing:border-box;	
 	cursor:pointer;
-	margin:0;
-	padding:0;
-}
-
-.pgNum {
-	border-left:1px solid #ccc;
-	box-sizing:border-box;
 }
 
 #board_table>tfoot ul li:nth-child(2) {
-	border-left:0;	
+	background-color:#333;
+	color:#fff;	
 }
 
-
+#board_table>tfoot ul li:last-child {
+	border:0;	
+}
 
 
 #board>div:first-of-type {
@@ -137,23 +149,38 @@
 	text-align:right;
 }
 
-table {
-	border-spacing:0;	
+
+@media only screen and (max-width:768px) {
+	#board>div:first-of-type select {
+		width:100%;	
+	}
+	
+	#board_table>tbody tr>th:first-child, #board_table>tbody tr>td:first-child  {
+		display:none;	
+	}
+	
+	#board_table>tbody tr>th:last-child, #board_table>tbody tr>td:last-child {
+		display:none;	
+	}
+	
+	#board_table>tbody th, #board_table>tbody td {
+		width:20%;	
+	}
+	
+	#board_table>tfoot tr td {
+		height:140px;	
+	}
+	
+	#board_table>tfoot button {
+		width:200px;	
+		top:60%;
+		right:50%;
+		transform:translate(50%,-50%);
+	}
+	
+	#board_table>tfoot ul {
+		top:25%;	
+	}
 }
 
-table td {
-	padding:0;	
-}
 
-#board_table>tfoot button {
-   position:absolute;
-   width:100px;
-   height:40px;
-   background-color:transparent;
-   border:1px solid #ccc;
-   cursor:pointer;
-   font:16px Nanum;
-   right:0;
-   top:50%;
-   transform:translateY(-50%);   
-}
