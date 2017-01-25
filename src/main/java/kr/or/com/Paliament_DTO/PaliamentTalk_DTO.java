@@ -1,7 +1,5 @@
 package kr.or.com.Paliament_DTO;
 
-import org.springframework.web.multipart.MultipartFile;
-
 /*
  * 작성자 : 박성준
  * 작성일 : 2017-01-11
@@ -9,55 +7,46 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 public class PaliamentTalk_DTO {
+   //국회의원 번호
+   private String num;
+   //국회의원 이름
+   private String catego;
+   
    private int paliament_talk_seq;
    private String title;
    private String content;
    private String writer;
-   private String catego;
+   private String id;
    private String writeDate;
-   private String num;
-   private MultipartFile uploadfile;
    private String filename;
+   private String filepath;
+   private int good;
+   private int viewcnt;
    
-   
-   
-   public String getFilename() {
-      return filename;
-   }
-
-   public void setFilename(String filename) {
-      this.filename = filename;
-   }
-
-   public MultipartFile getUploadfile() {
-      return uploadfile;
-   }
-
-   public void setUploadfile(MultipartFile uploadfile) {
-      this.uploadfile = uploadfile;
-   }
 
    public PaliamentTalk_DTO() {
       super();
    }
+   
+   public PaliamentTalk_DTO(String num, String catego, String title, String content, String writer, String id,
+		String filename, String filepath) {
+		super();
+		this.num = num;
+		this.catego = catego;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.id = id;
+		this.filename = filename;
+		this.filepath = filepath;
+	}
 
-   public PaliamentTalk_DTO(String title, String content, String writer, String catego, String num, String filename) {
-      this.title = title;
-      this.content = content;
-      this.writer = writer;
-      this.catego = catego;
-      this.num = num;
-      this.filename=filename;
+   public String getFilename() {
+	   return filename;
    }
-
-   public PaliamentTalk_DTO(String title, String content, String writer, String catego, String writeDate, String num, String filename) {
-      this.title = title;
-      this.content = content;
-      this.writer = writer;
-      this.catego = catego;
-      this.writeDate = writeDate;
-      this.num = num;
-      this.filename=filename;
+   
+   public void setFilename(String filename) {
+	   this.filename = filename;
    }
 
    public int getPaliament_talk_seq() {
@@ -111,10 +100,44 @@ public class PaliamentTalk_DTO {
       this.writeDate = writeDate;
    }
 
-   @Override
-   public String toString() {
-      return "PaliamentTalk_DTO [paliament_talk_seq=" + paliament_talk_seq + ", title=" + title + ", content="
-            + content + ", writer=" + writer + ", catego=" + catego + ", writeDate=" + writeDate + ", num=" + num
-            + ", uploadfile=" + uploadfile + ", filename=" + filename + "]";
-   }  
+	public String getFilepath() {
+		return filepath;
+	}
+	
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+	
+	public int getGood() {
+		return good;
+	}
+	
+	public void setGood(int good) {
+		this.good = good;
+	}
+	
+	public int getViewcnt() {
+		return viewcnt;
+	}
+	
+	public void setViewcnt(int viewcnt) {
+		this.viewcnt = viewcnt;
+	}
+
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "PaliamentTalk_DTO [num=" + num + ", catego=" + catego + ", paliament_talk_seq=" + paliament_talk_seq
+				+ ", title=" + title + ", content=" + content + ", writer=" + writer + ", writeDate=" + writeDate
+				+ ", filename=" + filename + ", filepath=" + filepath + ", good=" + good + ", viewcnt=" + viewcnt + "]";
+	}
+
+
 }

@@ -10,6 +10,9 @@ public interface PaliamentTalk_DAO {
    //국회의원별 말,말,말
    public List<PaliamentTalk_DTO> talkMember(String name);
    
+   //말말말 댓글
+   public List<PaliamentTalk_DTO> talktalkList(String num, String start, String end);
+   
    //국회의원 말, 말, 말 , 게시판 글쓰기
    public int talk_Write(PaliamentTalk_DTO dto);
    

@@ -29,7 +29,7 @@ function CheckUser(){
    //제목
    var title = $('#talk_title').val();
    //내용
-   var content = CKEDITOR.instances.content.getData();
+   var content = CKEDITOR.instances.ckeditor.getData();
    //누구에게 쓰는지
    var catego = $('#catego').val();
    //작성자
@@ -70,8 +70,6 @@ function CheckUser(){
 
 
 $(function(){
-   
-   
 
    //말말말 글쓰기 버튼 클릭시
    $('#writeButton').click(function(){
@@ -79,10 +77,10 @@ $(function(){
       if(checkLogin == false){
          return false;
       }else{
-         var parseData = JSON.stringify(obj);
+         /*var parseData = JSON.stringify(obj);
          //유효성 검사 통과한 객체 를 json 형식의 문자열 변환하여 쏘아보냄 submit!!
          $('#obj').val(parseData);
-         alert("엘스 탔어요!!!!! "+parseData);
+         alert("엘스 탔어요!!!!! "+parseData);*/
          $('#writeForm').submit();
       }
    });

@@ -240,7 +240,7 @@ public class FreeBoardController {
 	}
 
 	//이미지 업로드
-	@RequestMapping(value="/writeBoard/imageUpload.do", method=RequestMethod.POST)
+	@RequestMapping(value="/imageUpload.do", method=RequestMethod.POST)
 	public String imageUpload(HttpServletRequest request, FileUploadDTO dto, Model model){
 		
 		HttpSession session = request.getSession();
