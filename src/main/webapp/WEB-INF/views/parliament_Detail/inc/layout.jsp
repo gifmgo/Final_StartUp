@@ -17,10 +17,9 @@
 <link rel="stylesheet" href="css/final_header3_0119.css">
 <link rel="stylesheet" type="text/css" href="paliament/final_sub4.css">
 <link rel="stylesheet" href="css/WriteForm.css">
-<<<<<<< HEAD
-=======
+
 <link rel="stylesheet" type="text/css" href="css/sub02_0125.css">
->>>>>>> ae771cb8eda96dbd0400f035cb37d8aecd69e8ac
+
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <script src="js/jquery-3.1.1.min.js"></script>
