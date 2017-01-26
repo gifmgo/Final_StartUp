@@ -10,6 +10,7 @@ import org.jdom.input.SAXBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.com.FreeBoard.CommentDTO;
 import kr.or.com.Member.MemberDAO;
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
@@ -128,8 +129,8 @@ public class PaliamentService {
       
       PaliamentTalk_DTO dto  = null;
       try{
-         
          PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+         dao.updateCnt(seq);
          dto = dao.talk_detailSelect(seq);
       }catch(Exception e){
          e.printStackTrace();
@@ -153,6 +154,13 @@ public class PaliamentService {
       
       return dto;      
    }
+   
+   public int removeTalk(String seq) {
+		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+		int result =  dao.removeTalk(seq);	
+		return result;
+	}
+   
 
    // 말, 말, 말 글 수정하기  POST >> DB 작업 진행해야함
    public int modifyTalk_WriteService(List<String> splitList) {
@@ -196,5 +204,55 @@ public class PaliamentService {
          e.printStackTrace();
       }
    }
+   
+   
+   //댓글 부분
+   //대댓글 list
+ 	public List<CommentDTO> commentList(String no) {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+        List<CommentDTO> list = dao.commentList(no);
+        return list;
+ 	}
+ 	
+ 	
+ 	//댓글 list 뽑기
+ 	public List<CommentDTO> commSelect(String no) {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		List<CommentDTO> list = dao.selectComment(no);
+ 		
+ 		return list;
+ 	}
+ 	//쓰기
+ 	public int writeComment(CommentDTO cdto) {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		int result = 0;
+ 		MemberDAO mdao = sqlSession.getMapper(MemberDAO.class);
+ 		MemberDTO member = mdao.selectMyInfo(cdto.getId());
+ 		cdto.setWriter(member.getNickName());
+ 		if(cdto.getDepth()==0){
+ 			result = dao.writeComment(cdto);//댓글
+ 		}else if(cdto.getDepth()==1){
+ 			result = dao.writeCommentn(cdto);//대댓글
+ 		}
+ 		return result;
+ 	}
+ 	//제거
+ 	public int removeComment(int co_no,int depth) {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		int result = 0;
+ 		if(depth==0){
+ 			result = dao.deleteAllComment(co_no);			
+ 		}else if(depth==1){
+ 			result = dao.deleteComment(co_no);						
+ 		}
+ 		return result;
+ 	}
+ 	//수정
+ 	public int modifyComment(CommentDTO dto) {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		int result = 0;
+ 		result = dao.updateComment(dto);
+ 		return result;
+ 	}
    
 }

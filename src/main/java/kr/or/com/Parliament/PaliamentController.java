@@ -3,7 +3,6 @@ package kr.or.com.Parliament;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -11,7 +10,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.mail.internet.ParameterList;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,10 +26,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.FreeBoard.CommentDTO;
 import kr.or.com.Paliament_DTO.AllConInfo_DTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 import kr.or.com.Paliament_DTO.PaliamentStatue_DTO;
@@ -74,6 +71,11 @@ public class PaliamentController {
    public String Paliament_Talk_Detail(String seq, String num, String dept_cd, String img, String name, Model model){
       
       PaliamentTalk_DTO dto = service.talk_Detail(seq);
+      List<CommentDTO> list = service.commentList(seq);
+      List<CommentDTO> comment = service.commSelect(seq);
+      
+      model.addAttribute("list", list);
+      model.addAttribute("comment", comment);
       model.addAttribute("dept_cd", dept_cd);
       model.addAttribute("img", img);
       model.addAttribute("detail", dto);
@@ -122,7 +124,8 @@ public class PaliamentController {
       public void download(String name, HttpServletResponse response, HttpServletRequest request)
             throws Exception {
          //파일 업로드 
-         String path = request.getRealPath("/upload");
+         @SuppressWarnings("deprecation")
+		String path = request.getRealPath("/upload");
          File f = new File(path + "/"+name);
          String fname = new String(name.getBytes("utf-8"), "8859_1");
 
@@ -215,6 +218,82 @@ public class PaliamentController {
            
       return null;
    }
+   
+   
+   //말말말 삭제
+  	@RequestMapping("paliamenTalk_Remove.do")
+  	public View paliamenTalk_Remove(String seq, Model model, HttpServletRequest request){
+  		
+  		int result = service.removeTalk(seq);
+  		
+ 	    model.addAttribute("result", result);
+  		return jsonView;
+  	}
+   
+   
+   	//코멘트 쓰기
+ 	@RequestMapping("paliamentCommentWrite.do")
+ 	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		HttpSession session = request.getSession();
+ 		String logId = (String)session.getAttribute("id");
+ 		cdto.setId(logId);
+ 		
+ 		if(logId == null || logId.equals("")){
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		} //임시
+ 		
+ 		if(cdto.getDepth()==1){
+ 			cdto.setGrpno(Integer.parseInt(coNo));
+ 		}else if(cdto.getDepth()==0){ //return을 안 하기 위해
+ 		}else{
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		}
+ 		
+ 		int result = service.writeComment(cdto);
+ 		
+ 		model.addAttribute("seq", cdto.getNo());
+	    model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 삭제
+ 	@RequestMapping("paliamentRemoveComment.do")
+ 	public View paliamentRemoveComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		int result = service.removeComment(dto.getCo_no(), dto.getDepth());
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+	    model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 수정
+ 	@RequestMapping("paliamentmodifyComment.do")
+ 	public View paliamentmodifyComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		int result = service.modifyComment(dto);
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+   
+   
+   
    
    //국회의원 리스트 뿌려주는 부분
    @RequestMapping("/ListPaliament.do")
