@@ -7,8 +7,6 @@
     <input type="hidden" id="detailHiden_dept_cd" value="${dept_cd}">
     <input type="hidden" id="tid" value="${tid}">
  <!----------------------------------------------------------------------------------->
- <br/><br/><br/><br/>
- 
 	<section id="basicInfo">
     	<h1 class="infoTitle">1. 기본정보</h1>
     	<img src="http://placehold.it/300x400" alt="의원사진" id="paliamentDetail_img"/>

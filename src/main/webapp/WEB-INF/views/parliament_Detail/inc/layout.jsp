@@ -17,6 +17,10 @@
 <link rel="stylesheet" href="css/final_header3_0119.css">
 <link rel="stylesheet" type="text/css" href="paliament/final_sub4.css">
 <link rel="stylesheet" href="css/WriteForm.css">
+<<<<<<< HEAD
+=======
+<link rel="stylesheet" type="text/css" href="css/sub02_0125.css">
+>>>>>>> ae771cb8eda96dbd0400f035cb37d8aecd69e8ac
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <script src="js/jquery-3.1.1.min.js"></script>
@@ -68,8 +72,14 @@
 				table+="</table>";
 				
 				$('#statusDiv').html(table);
-				var tb_height = $("#info").height();
-				$("#basicInfo").css({height:600 + tb_height});
+				
+				var tb_height = $("#info").height() + $(".infoTitle").height();
+				$("#basicInfo").css({height:400 + tb_height});
+				
+				$(window).resize(function() {
+					var tb_height = $("#info").height() + $(".infoTitle").height();
+					$("#basicInfo").css({height:400 + tb_height});
+				});
 				
 			}
 		});
@@ -87,11 +97,10 @@
 		});
 		
 		//국회의원 법안 더보기 버튼 클릭시 !!
+		var billSts = 0;
 		$('#statusDivMore').click(function(){
 			var tr_length = $("#bill_table").find("tr").length;
-			
-			
-			var billSts = 0;
+
 			if(billSts == 0) {	
 				$("#bill").animate({height:500+(50*(tr_length-5))},400);
 				$("#bill").find("div").animate({height:(50*(tr_length))},400);
