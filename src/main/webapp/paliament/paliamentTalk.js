@@ -1,8 +1,4 @@
-/**
- * 작성자 : 박성준
- * 작성일 : 2017-01-11
- * 목 적 : 국회의원에게 한마디 하려고 ....
- */
+
 //스크립트 객체 생성 > 유효성 끝나고 정상적인 데이터면 객체 생성 해줌.
 var obj ={
    title : '',
@@ -115,7 +111,6 @@ $(function(){
 //말,말,말 상세 글보기 부분 > 수정
 function modifyTalk(seq){
    $('#session_id').val();
-   alert("수정 버튼 클릭!");
    $.ajax({
       url:"paliamentTalk_modifyDetail.do",
       data : {
@@ -140,4 +135,33 @@ function modifyTalk(seq){
       }
    });
    
+}
+
+
+//말,말,말 상세 글보기 부분 > 삭제
+function deleteTalk(seq){
+   if($('#session_id').val()== null||$('#session_id').val()== ''){
+	   alert("로그인 해주세요.");
+	   return false;
+   }
+   
+   if(confirm('삭제하시겠습니까?')){
+	   $.ajax({
+	      url:"paliamenTalk_Remove.do",
+	      data : {
+	         seq : seq
+	      },    
+	      success : function(data){
+	         if(data.result >= 1){             
+	            var dept_cd = $("#dept_cd").val();
+	            var img = $("#img").val();
+	            var name = $("#name").val();
+	            var num = $("#num").val();
+	            location.href="PaliamentDetail.do?num="+num+"&dept_cd="+dept_cd+"&img="+img+"&name="+name;
+	         }else{
+	            alert("죄송합니다. 올바르지 못한 접근 입니다.");
+	         }
+	      }
+	   });
+   }
 }

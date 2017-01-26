@@ -18,15 +18,13 @@
 <link rel="stylesheet" type="text/css" href="paliament/final_sub4.css">
 <link rel="stylesheet" href="css/WriteForm.css">
 
-<link rel="stylesheet" type="text/css" href="css/sub02_0125.css">
-
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <!--ck 에디터 -->
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="css/main_header_modify0120.js"></script>
-<script src="paliament/paliament_Talk3.js"></script>
+<script src="paliament/paliamentTalk.js"></script>
 <title>의원 상세 정보</title>
 </head>
 <body>

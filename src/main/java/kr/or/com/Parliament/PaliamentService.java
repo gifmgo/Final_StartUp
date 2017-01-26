@@ -129,8 +129,8 @@ public class PaliamentService {
       
       PaliamentTalk_DTO dto  = null;
       try{
-         
          PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+         dao.updateCnt(seq);
          dto = dao.talk_detailSelect(seq);
       }catch(Exception e){
          e.printStackTrace();
@@ -154,6 +154,13 @@ public class PaliamentService {
       
       return dto;      
    }
+   
+   public int removeTalk(String seq) {
+		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+		int result =  dao.removeTalk(seq);	
+		return result;
+	}
+   
 
    // 말, 말, 말 글 수정하기  POST >> DB 작업 진행해야함
    public int modifyTalk_WriteService(List<String> splitList) {

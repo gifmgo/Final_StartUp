@@ -220,7 +220,18 @@ public class PaliamentController {
    }
    
    
- //코멘트 쓰기
+   //말말말 삭제
+  	@RequestMapping("paliamenTalk_Remove.do")
+  	public View paliamenTalk_Remove(String seq, Model model, HttpServletRequest request){
+  		
+  		int result = service.removeTalk(seq);
+  		
+ 	    model.addAttribute("result", result);
+  		return jsonView;
+  	}
+   
+   
+   	//코멘트 쓰기
  	@RequestMapping("paliamentCommentWrite.do")
  	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
  		

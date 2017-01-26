@@ -22,6 +22,12 @@ public interface PaliamentTalk_DAO {
    
    //국회의원 말, 말, 말 수정하기
    public PaliamentTalk_DTO talk_modify(String seq, String id);
+   
+   //말말말 삭제하기
+   public int removeTalk(String seq);
+   
+   //조회수
+   public int updateCnt(String seq);
 
    //국회의원 말, 말, 말 수정하기 >> POST 고고씽 >> DB 데이터 변경 합시다.
    public int talk_modify_Post(String seq, String title, String content);
