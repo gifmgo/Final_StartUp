@@ -196,9 +196,18 @@
 }
 
 #attendance_table>tbody th, #attendance_table>tbody td {
-	width:25%;
 	height:50px;
 	text-align:center;	
+}
+
+#attendance_table>tbody th {
+	
+	width:20%;
+}
+
+#attendance_table>tbody td {
+	
+	width:30%;
 }
 
 #attendance_table>tbody tr:first-child th {
@@ -223,14 +232,14 @@
 	top:50%;
 	left:50%;
 	transform:translate(-50%,-50%);
-	width:150px;
+	width:auto;
 	height:30px;
 	border:1px solid #ccc;
 	box-sizing:border-box;	
 }
 
 #attendance_table>tfoot ul li {
-	width:20%;
+	width:30px;
 	height:100%;
 	text-align:center;
 	line-height:30px;	
@@ -239,7 +248,7 @@
 	cursor:pointer;
 }
 
-#attendance_table>tfoot ul li:first-child {
+#attendance_table>tfoot ul li:nth-child(2) {
 	background-color:#333;
 	color:#fff;	
 }

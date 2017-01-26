@@ -51,7 +51,7 @@
 				</tbody>
 				<tfoot>
                 	<tr>
-                        <td colspan="6" id="ulTd">
+                        <td colspan="4" id="ulTd">
                             
                         </td>
                     <tr>
