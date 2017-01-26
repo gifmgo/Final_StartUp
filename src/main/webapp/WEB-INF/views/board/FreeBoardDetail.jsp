@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
- <link rel="stylesheet" type="text/css" href="css/sub02.css"> 
+<link rel="stylesheet" type="text/css" href="css/sub02_0125.css"> 
 
 <div id="wrap">
    	<h1 id="category">${dto.category }</h1>
@@ -10,7 +10,7 @@
     	<input type="hidden" value="${dto.no}" id="contentNo">
     	<input type="hidden" value="${currentpage}" id="currentpage">
     <div id="title">
-    	<h2>${dto.title}&nbsp;&nbsp;&nbsp;<span class="nick">${dto.writer}</span></h2>
+    	<h2>${dto.title}&nbsp;&nbsp;&nbsp;<span class="board_nick">${dto.writer}</span></h2>
         <p>${dto.regdate}<br/> 조회수  :  ${dto.viewcnt}</p>
     </div>
     <c:if test="${id != null}">
