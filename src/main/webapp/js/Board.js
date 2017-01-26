@@ -152,12 +152,12 @@ function writeContent(){
          alert("제목을 입력해주세요 !");
          $('#title > input').focus();
          return false;
-   }else if($('#content > textarea') == ''){
+   }else if(CKEDITOR.instances.ckeditor.getData() == ''){
          alert("내용을 입력해주세요!");
-         $('#content > textarea').focus();
+         CKEDITOR.instances.ckeditor.focus();
          return false;
    }
-      
+   
    $('#writeForm').submit();
    
 }
@@ -199,17 +199,11 @@ function contentMod(){
 		alert("제목을 입력해주세요 !");
 		$('#title > input').focus();
 		return false;
-	}else if($('#content > textarea').val() == ''){
+	}else if(CKEDITOR.instances.ckeditor.getData() == ''){
 		alert("내용을 입력해주세요!");
-		$('#content > textarea').focus();
+		CKEDITOR.instances.ckeditor.focus();
 		return false;
 	}
 
 	$('#writeForm').submit();
 }
-
-
-function captureReturnKey(e) { 
-  if(e.keyCode==13 && e.srcElement.type != 'textarea') 
-  return false; 
-} 

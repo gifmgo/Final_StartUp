@@ -10,6 +10,8 @@ import org.jdom.input.SAXBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.com.Member.MemberDAO;
+import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 import kr.or.com.Paliament_DTO.PaliamentTalk_DTO;
 
@@ -104,13 +106,16 @@ public class PaliamentService {
 
    //말, 말, 말 에서 글쓰기 submit 담당 서비스 메서드
    public int talk_Write(PaliamentTalk_DTO talk_dto) {
-      int result = 0;      
+      int result = 0;
       try{
-         
-         PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
-         
-         result = dao.talk_Write(talk_dto); 
-         
+    	  MemberDAO mdao = sqlSession.getMapper(MemberDAO.class);
+    	  MemberDTO dto = new MemberDTO();
+    	  dto.setId(talk_dto.getId());
+    	  dto = mdao.selectMyInfo(dto.getId());
+    	  talk_dto.setWriter(dto.getNickName());
+    	  
+    	  PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+          result = dao.talk_Write(talk_dto); 
       }catch(Exception e){
          e.printStackTrace();
       }

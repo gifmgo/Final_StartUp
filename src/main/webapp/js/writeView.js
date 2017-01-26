@@ -1,6 +1,6 @@
 $(document).ready(function(e) {
 	CKEDITOR.replace( 'ckeditor', {//해당 이름으로 된 textarea에 에디터를 적용
-        filebrowserImageUploadUrl: 'writeBoard/imageUpload.do', //여기 경로로 파일을 전달하여 업로드 시킨다.
+        filebrowserImageUploadUrl: 'imageUpload.do', //여기 경로로 파일을 전달하여 업로드 시킨다.
     });
      
      
@@ -16,4 +16,11 @@ $(document).ready(function(e) {
                 break;
         }
     });
+    
+    
 });
+
+function captureReturnKey(e) { 
+	if(e.keyCode==13 && e.srcElement.type != 'textarea') 
+	return false; 
+}
