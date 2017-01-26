@@ -2,6 +2,7 @@ package kr.or.com.Parliament;
 
 import java.util.List;
 
+import kr.or.com.FreeBoard.CommentDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 import kr.or.com.Paliament_DTO.PaliamentTalk_DTO;
 
@@ -30,5 +31,24 @@ public interface PaliamentTalk_DAO {
    
    //API >  디비에 있는 데이터 뽑아옴
    public List<PaliamentList_DTO> selectPaliamentList_DTO();
+   
+   
+   //댓글
+   //댓글 쓰기
+ 	public int writeComment(CommentDTO dto);
+ 	
+ 	//대댓글 쓰기
+ 	public int writeCommentn(CommentDTO dto);
+ 	
+ 	//댓글 뽑기
+ 	public List<CommentDTO> selectComment(String no);
+
+ 	//대댓글 리스트
+ 	public List<CommentDTO> commentList(String no);
+ 	
+ 	public int deleteComment(int co_no);
+ 	public int deleteAllComment(int co_no);
+ 	
+ 	public int updateComment(CommentDTO dto);
    
 }
