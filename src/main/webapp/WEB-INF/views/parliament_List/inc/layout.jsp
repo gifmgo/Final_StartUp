@@ -69,6 +69,7 @@
      doub = 0,
      muso = 0,
      jung = 0;
+     ba = 0;
    // 당별 카운트 새기 위한 것
    
    //국회의원 객체를 만들어야 할듯  >> db 가 없으니까 객체 배열을 만들어서 정보를 담아둬야 할듯  리스트 뿌릴때 담아두면 만들어둔 배열에서 뽑으면 될듯.
@@ -389,9 +390,13 @@
                        guck += 1;
                        break;   
            case '더불어민주당': 
-                      wellColor = '#5fbce5';
+                       wellColor = '#1870b9';
                        doub += 1;
                        break;
+           case '바른정당':
+        	    	   wellColor = '#01B1EC';
+        	    	   ba += 1;
+        	    	   break;
            case '새누리당': 
                       wellColor = '#dc5356';
                        sae += 1;
@@ -421,14 +426,17 @@
                      wellColor = '#79b394';
                      break;   
          case '더불어민주당': 
-                     wellColor = '#5fbce5';
+                     wellColor = '#1870b9';
                      break;
+         case '바른정당':
+         			 wellColor = '#01B1EC';
+         			 break;
          case '새누리당': 
                      wellColor = '#dc5356';
                      break;
          case '정의당': 
                      wellColor = '#f2c755';
-                     break;      
+                     break;
          case '무소속': 
                      wellColor = '#a6a6a6';
                      break;
@@ -439,7 +447,7 @@
    $(function(){
       //국회의원 리스트 뽑아줌
       $.ajax({
-         url:"ListPaliament.do",
+         url:"ListPaliament.do", 
          success : function(data){   
             var PaliamentDiv = '';
             //var resultJung = jungDang2(data.xml);
@@ -516,7 +524,12 @@
                  $('#resultDiv').empty();
                  noNameJustPolyNm(polyNm);
                  break;   
-            
+                 
+            case '바른정당':
+            	 $('#resultDiv').empty();
+            	 noNameJustPolyNm(polyNm);
+                 break;
+                 
             case '무소속':
                  $('#resultDiv').empty();
                  noNameJustPolyNm(polyNm);
@@ -590,6 +603,7 @@
         ['Task', 'Hours per Day'],
         ['국민의당',     guck],
         ['더불어 민주당',      doub],
+        ['바른 정당',      ba],
         ['새누리당',  sae],
         ['정의당', jung],
         ['무소속',    muso]
@@ -600,10 +614,11 @@
         is3D: true,
           slices: {
            0: { color: '#79b394' },
-           1: { color: '#5fbce5' },
-           2: { color: '#dc5356' },
-           3: { color: '#f2c755' },
-           4: { color: '#a6a6a6' }
+           1: { color: '#1870b9' },
+           2: { color: '#01B1EC' },
+           3: { color: '#dc5356' },
+           4: { color: '#f2c755' },
+           5: { color: '#a6a6a6' }
          }
       };
 

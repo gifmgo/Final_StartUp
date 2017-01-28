@@ -21,9 +21,10 @@
    
    <mvc:annotation-driven />
 
-   <context:component-scan base-package="kr.or.com.schedule"/>
+   <!-- 스케쥴러는 별루.. 
+   	  <context:component-scan base-package="kr.or.com.schedule"/>
       <task:scheduler id="Schedule" pool-size="10" />
-      <task:annotation-driven scheduler="Schedule" />
+      <task:annotation-driven scheduler="Schedule" /> -->
 	
    <bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
