@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" type="text/css" href="css/sub05.css">
 	<div id="wrap">
     	<h1>${name} 님에게 한마디 (수정)</h1>
         <hr/>

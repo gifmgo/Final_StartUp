@@ -15,16 +15,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">	
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/final_header3_0119.css">
-<link rel="stylesheet" type="text/css" href="paliament/final_sub4.css">
+<link rel="stylesheet" type="text/css" href="paliament/final_sub4_0125.css">
 <link rel="stylesheet" href="css/WriteForm.css">
-<link rel="stylesheet" type="text/css" href="css/sub02_0125.css">
+
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <!--ck 에디터 -->
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="css/main_header_modify0120.js"></script>
-<script src="paliament/paliament_Talk3.js"></script>
+<script src="paliament/paliamentTalk.js"></script>
 <title>의원 상세 정보</title>
 </head>
 <body>
@@ -83,6 +83,9 @@
 	}
 	
 	$(function(){
+		
+		
+		
 		
 		//말, 말, 말  > 글쓰기
 		$('#wirteTalk').click(function(){
@@ -255,6 +258,8 @@ function sangImConfference(sockArray, resultDasu, name){
 			$('#resultTbody').html(makeTable);
 			//페이지 넘버링
 			$('#ulTd').html(litag);
+			
+			
 		},beforeSend:function(){
 			$('#loading_form').css("display","block");
 			$('#attendance').css("display","none");			
@@ -263,6 +268,8 @@ function sangImConfference(sockArray, resultDasu, name){
 			$('#attendance').css("display","block");
 		},timeout : 100000
 	});
+	
+	
 }	
 
 var modelData = '';	
@@ -282,14 +289,18 @@ function pageNumFunc(data){
 	
 	console.log("넘버링 확인 : "+data.attend_list.length + " / 넘버링 할것 : "+pageNumber);
 	
+	
+	
 	var litag = '<ul>';
 		litag +="<li><a href='#'></a><<</li>";
 	for(var i = 0; i < pageNumber; i++){
-		litag +='<li onclick=pagingAjax_li('+(i+1)+')>'+(i+1)+'</a></li>';
+		litag +='<li onclick=pagingAjax_li('+(i+1)+') class="pgNum">'+(i+1)+'</a></li>';
 	}
-		litag +="<li><a href='#'></a>>></li>";
-		litag += "</ul>";
-		return litag;
+	litag +="<li><a href='#'></a>>></li>";
+	litag += "</ul>";
+		
+	$("#ulTd").find("ul").css({width:30*(pageNumber+2)});
+	return litag;
 	
 }	
 			
@@ -340,6 +351,9 @@ function pagingAjax_li(pagingValue){
 			//페이징 처리 결과 다시 뿌려주기
 			$('#resultTbody').html(makeTable);
 	}
+		
+	$("#ulTd").find("li").eq(pagingValue).css({backgroundColor:"#333",color:"#fff"})
+	.siblings().css({backgroundColor:"#fff",color:"#333"});
 }	
 	
 

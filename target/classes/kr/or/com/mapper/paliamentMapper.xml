@@ -57,5 +57,63 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where paliament_talk_seq = #{param1} 
    </update>
    
+   <!-- 댓글 삭제 -->
+	 <delete id="removeTalk" parameterType="int">
+	 	delete from paliament_talk where paliament_talk_seq = #{param1}
+	 </delete>
+   
+   <!--국회의원 말말말, 수정하기 부분 db 에서 읽어온 데이터 수정 하는 것.-->
+   <update id="updateCnt" parameterType="String">
+      update paliament_talk
+      set viewcnt = NVL(viewcnt, 0) + 1
+      where paliament_talk_seq = #{param1} 
+   </update>
+   
+   <!-- 대댓글 list 뽑기 -->
+	<select id="commentList" resultType="kr.or.com.FreeBoard.CommentDTO">
+		select no, co_no, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, good, bed, grpno, depth, grporder
+        from paliament_talk_comment
+        where no = #{param1}
+        and depth = 1
+        order by grpno, co_no asc
+	</select>
+	
+	<!-- 댓글 뽑기 -->
+	<select id="selectComment" resultType="kr.or.com.FreeBoard.CommentDTO">
+		select no, co_no, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, good, bed, grpno, depth, grporder
+        from paliament_talk_comment
+        where no = #{param1}
+        and depth = 0
+        order by grpno, co_no asc
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	 <insert id="writeComment" parameterType="kr.or.com.FreeBoard.CommentDTO">
+		insert into paliament_talk_comment(no, co_no, content, writer, id, regdate, good, bed, grpno, depth, grporder) 
+		values(#{no}, paliament_talk_comment_seq.nextval, #{content}, #{writer}, #{id}, sysdate, 0, 0, paliament_talk_comment_seq.currval, #{depth}, 0)
+	 </insert>
+	 
+	<!-- 대댓글 쓰기 -->
+	 <insert id="writeCommentn" parameterType="kr.or.com.FreeBoard.CommentDTO">
+		insert into paliament_talk_comment(no, co_no, content, writer, id, regdate, good, bed, grpno, depth, grporder) 
+		values(#{no}, paliament_talk_comment_seq.nextval, #{content}, #{writer}, #{id}, sysdate, 0, 0, #{grpno}, #{depth}, 0)
+	 </insert>
+	 
+	  <!-- 댓글 삭제 -->
+	 <delete id="deleteComment" parameterType="int">
+	 	delete from paliament_talk_comment where co_no = #{param1}
+	 </delete>
+	 
+	  <!-- 댓글 삭제 -->
+	 <delete id="deleteAllComment" parameterType="int">
+	 	delete from paliament_talk_comment where grpno = #{param1}
+	 </delete>
+	 
+	 <!--댓글 수정-->
+	<update id="updateComment" parameterType="kr.or.com.FreeBoard.CommentDTO">
+	    update paliament_talk_comment set content = #{content} 
+	    where co_no = #{co_no}
+	</update>
+   
 
 </mapper>
