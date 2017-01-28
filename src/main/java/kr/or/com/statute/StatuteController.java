@@ -87,12 +87,16 @@ public class StatuteController {
         for(int i=0;i<items.size(); i++){
             Element person_E=items.get(i);
             String committeeName=null;
-            if(person_E.getChild("committeeName")==null){
+            if(person_E.getChild("proposerKind")==null){
             	committeeName= " ";
             }else{
-            	committeeName=person_E.getChild("committeeName").getValue();
+            	committeeName=person_E.getChild("proposerKind").getValue();
             }
-            statuteDTO dto = new statuteDTO(person_E.getChild("proposeDt").getValue(), person_E.getChild("billName").getValue(), committeeName, person_E.getChild("billId").getValue());
+            statuteDTO dto = new statuteDTO();
+            dto.setProposeDt(person_E.getChild("proposeDt").getValue()); 
+            dto.setBillName(person_E.getChild("billName").getValue());
+            dto.setCommitteeName(person_E.getChild("proposerKind").getValue());
+            dto.setBillId(person_E.getChild("billId").getValue());
             dto_list.add(dto);
         }
          
@@ -169,7 +173,7 @@ List<statuteDTO> dto_list = new ArrayList<statuteDTO>();
   	 String committeeName="";
   	
        if(person_E.getChild("committeeName")==null){
-       	committeeName= " ";
+       	committeeName= "";
        }else{
        	committeeName=person_E.getChild("committeeName").getValue();
        }
