@@ -97,7 +97,11 @@
          searchDiv += '<span><img style="width:100px; height:100px;" src='+obj.img+'></span><br/><br/>';
          searchDiv += '<span>이름 : '+obj.empnm+'</span><br/>';
          searchDiv += '<span>정당 : '+obj.jungDang+'</span><br/>';
-         searchDiv += '<span>지역구 : '+obj.orignm+'</span><br/>';
+         if(obj.orignm != '비례대표'){
+        	 searchDiv += '<span>지역구 : '+obj.orignm.substring(0,6)+'</span><br/>';	 
+         }else{
+        	 searchDiv += '<span>지역구 : '+obj.orignm+'</span><br/>';
+         }
          searchDiv += '<span>당선 회수 : '+obj.reelegbnnm+'</span><br/><br/>';
          searchDiv += '<input type="button" class="btn detail_btn" style="color:white; background-color:'+searchColor+'" onclick="detailPaliament(this)" value=상세보기>';
          searchDiv += '</div>';
@@ -274,7 +278,7 @@
     function noNamePolyNm_orignm_two(polyNm, orignm){
     
        if(orignm == '비례대표'){
-          var searchDiv = '';
+         var searchDiv = '';
          var result = 0;
          $.each(PaliamentArray, function(index, obj){
               if(obj.orignm == '비례대표' && polyNm == obj.polyNm){
@@ -462,7 +466,12 @@
                PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+'></span><br/><br/>';
                PaliamentDiv += '<span>이름 : '+obj.empNm+'</span><br/>';
                PaliamentDiv += '<span>정당 : '+obj.polyNm+'</span><br/>';
-               PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
+               if(obj.origNm != '비례대표'){
+            	   var origNm = obj.origNm.substring(0,6);
+            	   PaliamentDiv += '<span>지역구 : '+origNm+'</span><br/>';   
+               }else{
+            	   PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
+               }
                PaliamentDiv += '<span>당선 회수 : '+obj.reeleGbnNm+'</span><br/><br/>';
                PaliamentDiv += '<input type="button" class="btn" style="color:white; background-color:'+wellColor+'" onclick="detailPaliament(this)" value=상세보기>';
                PaliamentDiv+= '</div>';
