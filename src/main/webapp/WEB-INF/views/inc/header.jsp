@@ -89,9 +89,9 @@
 	<aside id="side_menu">
 		<span>×</span>
 		<ul id="m_menu">
-	    	<li><a href="#">소개</a></li>
-	        <li><a href="#">의안</a></li>
-	        <li><a href="#">의원</a></li>
-	        <li><a href="#">커뮤니티</a></li>
+	    	<li><a href="explanation.do">소개</a></li>
+	        <li><a href="statute.do">의안</a></li>
+	        <li><a href="Member_Parliament.do">의원</a></li>
+	        <li><a href="CommunityIndex.do">커뮤니티</a></li>
 	    </ul>
     </aside>

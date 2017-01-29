@@ -12,7 +12,7 @@
 	position:relative;
 	width:100%;
 	max-width:1000px;
-	height:100%;
+	height:1000px;
 	margin:0 auto;	
 	/*background-color:#993;*/
 }
@@ -42,6 +42,7 @@
 }
 
 #explanation>ul {
+	position:relative;
 	width:100%;
 	height:200px;
 		
