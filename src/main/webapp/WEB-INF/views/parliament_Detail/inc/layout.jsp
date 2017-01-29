@@ -83,10 +83,7 @@
 	}
 	
 	$(function(){
-		
-		
-		
-		
+
 		//말, 말, 말  > 글쓰기
 		$('#wirteTalk').click(function(){
 			var name = $('#nameTd').text();
