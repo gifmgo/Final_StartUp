@@ -6,6 +6,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="정치,생활,커뮤니티,진보,보수,중립"/>
+<meta name="description" content="생활정치,커뮤니티"/>
 <link rel="stylesheet" type="text/css" href="firstM/M_header_Final4_0119.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="sweet/sweetalert.css">

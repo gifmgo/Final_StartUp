@@ -101,7 +101,41 @@
        <!-- <div id="more"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>-->
 	</section>
     
-    
+	
+	<section id="MyTalk">
+		<h1>나의 한마디</h1>
+        <p>여러분들의 의견을 소신껏 말해주세요 !</p>
+				<div id="textAreaDiv">
+					<c:if test="${id != null}">
+			       	    	<form>
+			       	    		<div class="form-group">
+				       	    		<input type="radio">진보
+				       	    		<input type="radio">보수
+			       	    		</div>
+			       	    		<br/>
+			       	    		<textarea id="myTalkTextArea"></textarea>
+			       	    		<input type="button" class="btn" value="글쓰기">
+			       	    	</form>
+	       	    	</c:if>
+	       	    </div>
+		<article>
+	       	    <div id="jinboDiv">
+	       	   		<h4>나는 진보다.</h4>
+					<div class="main_news">
+							
+					</div>
+				</div>
+				
+				<div id="bosuDiv">
+					<h4>나는 보수다.</h4>
+					<div class="main_news">
+					
+					</div>
+				</div>
+		</article>
+		
+	</section>
+	
     
      <section id="recent">
     	<h1>최신소식</h1>
