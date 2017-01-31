@@ -230,8 +230,70 @@ public class PaliamentController {
   		return jsonView;
   	}
    
-   
-   	//코멘트 쓰기
+   //게시판 코멘트 부분
+   	/*//코멘트 쓰기
+ 	@RequestMapping("paliamentCommentWrite.do")
+ 	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		HttpSession session = request.getSession();
+ 		String logId = (String)session.getAttribute("id");
+ 		cdto.setId(logId);
+ 		
+ 		if(logId == null || logId.equals("")){
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		} //임시
+ 		
+ 		if(cdto.getDepth()==1){
+ 			cdto.setGrpno(Integer.parseInt(coNo));
+ 		}else if(cdto.getDepth()==0){ //return을 안 하기 위해
+ 		}else{
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		}
+ 		
+ 		int result = service.writeComment(cdto);
+ 		
+ 		model.addAttribute("seq", cdto.getNo());
+	    model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 삭제
+ 	@RequestMapping("paliamentRemoveComment.do")
+ 	public View paliamentRemoveComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		int result = service.removeComment(dto.getCo_no(), dto.getDepth());
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+	    model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 수정
+ 	@RequestMapping("paliamentmodifyComment.do")
+ 	public View paliamentmodifyComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		int result = service.modifyComment(dto);
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}*/
+ 	
+ 	//의원 댓글로 바꾸기
+ 	//코멘트 쓰기
  	@RequestMapping("paliamentCommentWrite.do")
  	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
  		
