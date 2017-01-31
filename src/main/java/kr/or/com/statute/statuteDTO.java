@@ -9,7 +9,14 @@ public class statuteDTO {
   private String committeeName;
   private String generalResult;
   private String billId;
- 
+  private String proposerKind;
+  
+  
+  
+public statuteDTO() {
+	
+}
+
 public statuteDTO(String proposeDt, String billName, String committeeName, String generalResult, String billId) {
 	
 	this.proposeDt = proposeDt;
@@ -26,6 +33,20 @@ public statuteDTO(String proposeDt, String billName, String committeeName, Strin
 	this.committeeName = committeeName;
 	this.billId = billId;
 }
+
+
+
+
+
+
+public String getProposerKind() {
+	return proposerKind;
+}
+
+public void setProposerKind(String proposerKind) {
+	this.proposerKind = proposerKind;
+}
+
 public String getBillId() {
 	return billId;
 }

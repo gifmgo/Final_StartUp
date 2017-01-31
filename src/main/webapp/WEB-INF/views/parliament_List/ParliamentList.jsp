@@ -22,6 +22,7 @@
 	      				<option>국민의당</option>
 	      				<option>더불어민주당</option>
 	      				<option>무소속</option>
+	      				<option>바른정당</option>
 	      				<option>새누리당</option>
 	      				<option>정의당</option>
 	      			</select>

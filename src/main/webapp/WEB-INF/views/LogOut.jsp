@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 
 <script>
-	location.href="/com/${url}";
+	location.href="/${url}";
 </script>

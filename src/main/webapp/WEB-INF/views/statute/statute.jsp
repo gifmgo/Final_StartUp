@@ -20,8 +20,8 @@
 	<div id="wrap">	
 	
 		<ul id="tabMenu">
-		    <li>최근 통과의안</li>
-			<li>최근 접수의안</li>
+		    <li>최근 통과안</li>
+			<li>최근 접수안</li>
 			<li>처리의안</li>
 			<li>계류의안</li>
 		</ul>	

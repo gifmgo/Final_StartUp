@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="paliament/paliament_final_header6.css">
+<link rel="stylesheet" href="paliament/paliament_final_header0130.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -69,6 +69,7 @@
      doub = 0,
      muso = 0,
      jung = 0;
+     ba = 0;
    // 당별 카운트 새기 위한 것
    
    //국회의원 객체를 만들어야 할듯  >> db 가 없으니까 객체 배열을 만들어서 정보를 담아둬야 할듯  리스트 뿌릴때 담아두면 만들어둔 배열에서 뽑으면 될듯.
@@ -96,7 +97,11 @@
          searchDiv += '<span><img style="width:100px; height:100px;" src='+obj.img+'></span><br/><br/>';
          searchDiv += '<span>이름 : '+obj.empnm+'</span><br/>';
          searchDiv += '<span>정당 : '+obj.jungDang+'</span><br/>';
-         searchDiv += '<span>지역구 : '+obj.orignm+'</span><br/>';
+         if(obj.orignm != '비례대표'){
+        	 searchDiv += '<span>지역구 : '+obj.orignm.substring(0,6)+'</span><br/>';	 
+         }else{
+        	 searchDiv += '<span>지역구 : '+obj.orignm+'</span><br/>';
+         }
          searchDiv += '<span>당선 회수 : '+obj.reelegbnnm+'</span><br/><br/>';
          searchDiv += '<input type="button" class="btn detail_btn" style="color:white; background-color:'+searchColor+'" onclick="detailPaliament(this)" value=상세보기>';
          searchDiv += '</div>';
@@ -273,7 +278,7 @@
     function noNamePolyNm_orignm_two(polyNm, orignm){
     
        if(orignm == '비례대표'){
-          var searchDiv = '';
+         var searchDiv = '';
          var result = 0;
          $.each(PaliamentArray, function(index, obj){
               if(obj.orignm == '비례대표' && polyNm == obj.polyNm){
@@ -389,9 +394,13 @@
                        guck += 1;
                        break;   
            case '더불어민주당': 
-                      wellColor = '#5fbce5';
+                       wellColor = '#1870b9';
                        doub += 1;
                        break;
+           case '바른정당':
+        	    	   wellColor = '#01B1EC';
+        	    	   ba += 1;
+        	    	   break;
            case '새누리당': 
                       wellColor = '#dc5356';
                        sae += 1;
@@ -421,14 +430,17 @@
                      wellColor = '#79b394';
                      break;   
          case '더불어민주당': 
-                     wellColor = '#5fbce5';
+                     wellColor = '#1870b9';
                      break;
+         case '바른정당':
+         			 wellColor = '#01B1EC';
+         			 break;
          case '새누리당': 
                      wellColor = '#dc5356';
                      break;
          case '정의당': 
                      wellColor = '#f2c755';
-                     break;      
+                     break;
          case '무소속': 
                      wellColor = '#a6a6a6';
                      break;
@@ -439,7 +451,7 @@
    $(function(){
       //국회의원 리스트 뽑아줌
       $.ajax({
-         url:"ListPaliament.do",
+         url:"ListPaliament.do", 
          success : function(data){   
             var PaliamentDiv = '';
             //var resultJung = jungDang2(data.xml);
@@ -454,7 +466,12 @@
                PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+'></span><br/><br/>';
                PaliamentDiv += '<span>이름 : '+obj.empNm+'</span><br/>';
                PaliamentDiv += '<span>정당 : '+obj.polyNm+'</span><br/>';
-               PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
+               if(obj.origNm != '비례대표'){
+            	   var origNm = obj.origNm.substring(0,6);
+            	   PaliamentDiv += '<span>지역구 : '+origNm+'</span><br/>';   
+               }else{
+            	   PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
+               }
                PaliamentDiv += '<span>당선 회수 : '+obj.reeleGbnNm+'</span><br/><br/>';
                PaliamentDiv += '<input type="button" class="btn" style="color:white; background-color:'+wellColor+'" onclick="detailPaliament(this)" value=상세보기>';
                PaliamentDiv+= '</div>';
@@ -516,7 +533,12 @@
                  $('#resultDiv').empty();
                  noNameJustPolyNm(polyNm);
                  break;   
-            
+                 
+            case '바른정당':
+            	 $('#resultDiv').empty();
+            	 noNameJustPolyNm(polyNm);
+                 break;
+                 
             case '무소속':
                  $('#resultDiv').empty();
                  noNameJustPolyNm(polyNm);
@@ -590,6 +612,7 @@
         ['Task', 'Hours per Day'],
         ['국민의당',     guck],
         ['더불어 민주당',      doub],
+        ['바른 정당',      ba],
         ['새누리당',  sae],
         ['정의당', jung],
         ['무소속',    muso]
@@ -600,10 +623,11 @@
         is3D: true,
           slices: {
            0: { color: '#79b394' },
-           1: { color: '#5fbce5' },
-           2: { color: '#dc5356' },
-           3: { color: '#f2c755' },
-           4: { color: '#a6a6a6' }
+           1: { color: '#1870b9' },
+           2: { color: '#01B1EC' },
+           3: { color: '#dc5356' },
+           4: { color: '#f2c755' },
+           5: { color: '#a6a6a6' }
          }
       };
 

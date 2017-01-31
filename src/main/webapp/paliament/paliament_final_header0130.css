@@ -623,10 +623,7 @@
 		font-size:25px;
 	}
 	
-	.btn {
-		right:50%;
-		transform:translateX(50%);
-	}
+
 	
 	#nav>img {
 		left:50%;
