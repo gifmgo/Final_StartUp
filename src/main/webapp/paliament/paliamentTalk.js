@@ -1,4 +1,3 @@
-
 //스크립트 객체 생성 > 유효성 끝나고 정상적인 데이터면 객체 생성 해줌.
 var obj ={
    title : '',
@@ -66,6 +65,27 @@ function CheckUser(){
 
 
 $(function(){
+	
+	$("#bill").hide();
+	$("#attendance").hide();
+	$('#pDetail li').click(function(){
+		if($(this).attr("data-num")==1){
+			$("#basicInfo").show();
+			$("#bill").hide();
+			$("#attendance").hide();
+		}else if($(this).attr("data-num")==2){
+			$("#basicInfo").hide();
+			$("#bill").show();
+			$("#attendance").hide();
+		}else if($(this).attr("data-num")==3){
+			$("#basicInfo").hide();
+			$("#bill").hide();
+			$("#attendance").show();
+		}
+		
+		$(this).css({backgroundColor:"#fff",height:"51px"})
+		.siblings().css({backgroundColor:"#ddd",height:"100%"});
+	});
 
    //말말말 글쓰기 버튼 클릭시
    $('#writeButton').click(function(){
