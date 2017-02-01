@@ -104,6 +104,7 @@
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
+		<p  style="color:red;">'최순실'</p>
         <p>여러분들의 의견을 소신껏 말해주세요 !</p>
 				<div id="textAreaDiv">
 					<c:if test="${id != null}">
@@ -138,8 +139,8 @@
 	
     
      <section id="recent">
-    	<h1>최신소식</h1>
-        <p>설명 설명 설명</p>
+    	<h1>정부소식</h1>
+        <p>대한민국 정부에서 제공하는 데이터 입니다. 창업 및 취업 관련 정보를 제공합니다.</p>
 	       <article>
 	       	    <div>
 	            	<div class="main_news">
