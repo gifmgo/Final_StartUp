@@ -36,39 +36,10 @@
         </table>
     </section>
     <section id="bill">
-        	<div id="statusDiv"></div>
+        <div id="statusDiv"></div>
         <button id="statusDivMore">더보기</button>
     </section>
-    <div>
-<<<<<<< HEAD
-	    <section id="attendance">
-	        <h2 id="detailSangim_Name"></h2>
-	        <article>
-	        	<h3 id="chulsuck_Sang"></h3>
-	        	<div id="progress"><div></div></div>
-			</article>
-	        <div>
-	            <table id="attendance_table">
-					<tbody id="resultTbody">
-					
-					</tbody>
-					<tfoot>
-	                	<tr>
-	                        <td colspan="6" id="ulTd">
-	                            
-	                        </td>
-	                    <tr>
-	                </tfoot>
-	            </table>
-	        </div>
-	    </section>
-=======
-	    <div id="loading_form">
-	        <div id="loading"></div>
-	        <p>Loading...</p>  
-	    </div> 
     <section id="attendance">
-    	<h1 class="infoTitle">3. 상임의원회 활동</h1>
         <h2 id="detailSangim_Name"></h2>
         <article>
         	<h3 id="chulsuck_Sang"></h3>
@@ -81,7 +52,7 @@
 				</tbody>
 				<tfoot>
                 	<tr>
-                        <td colspan="4" id="ulTd">
+                        <td colspan="6" id="ulTd">
                             
                         </td>
                     <tr>
@@ -89,8 +60,6 @@
             </table>
         </div>
     </section>
->>>>>>> 16c58ae1500880f0ca6a1f1cffe196d76819b092
-    </div>
     <section id="activity">
         <h2>바라는점을 써주세요!</h2>
 		<div>
@@ -118,26 +87,7 @@
 		        		</c:if>
 		               	</ul>
 					</li>
-					<c:forEach var="list" items="${list}">
-					<c:if test="${comment.co_no == list.grpno}">
-					<li class="double_comm comm${comment.grpno }">
-		            	<h4>${list.writer}</h4>
-		            	<p class="content">${list.content}</p>
-		            	<span>${list.regdate}</span>
-						<ul>
-		               	<c:if test="${list.id == id}">                	
-		                	<li class="commmod" data-depth="1" data-cono="${list.co_no}">수정</li>
-		   	            	<li class="commdel" data-depth="1" data-cono="${list.co_no}">삭제</li>
-		        		</c:if>
-		               	</ul>
-					</li>
-					</c:if>
 					</c:forEach>
-					<li class="double_comm comm${comment.grpno }">
-						<textarea style="resize:none;" placeholder="답글을 적어주세요" maxlength="500"></textarea>
-						<button class="commButton" data-depth="1" data-cono="${comment.co_no }">등록</button>
-					</li>
-				</c:forEach>
 		        </ul>
 		    </div>
 			    
