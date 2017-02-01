@@ -7,18 +7,8 @@
     <input type="hidden" id="detailHiden_dept_cd" value="${dept_cd}">
     <input type="hidden" id="tid" value="${tid}">
  <!----------------------------------------------------------------------------------->
-	<div id="pDetail">
-		<ul>
-			 <li data-num="1"> 기본정보  </li>
-			 <li data-num="2"> 법안발의  </li>
-			 <li data-num="3"> 상임의원회 활동  </li>
-		</ul>
-	</div>
-	<div id="loading_form">
-        <div id="loading"></div>
-        <p>Loading...</p>  
-    </div> 
 	<section id="basicInfo">
+    	<h1 class="infoTitle">1. 기본정보</h1>
     	<img src="http://placehold.it/300x400" alt="의원사진" id="paliamentDetail_img"/>
         <table id="info">
         	<tr>
@@ -35,11 +25,20 @@
             </tr>
         </table>
     </section>
+    
     <section id="bill">
-        <div id="statusDiv"></div>
+    	<h1 class="infoTitle">2. 법안발의</h1>
+        	<div id="statusDiv"></div>
         <button id="statusDivMore">더보기</button>
     </section>
+    
+    <div>
+	    <div id="loading_form">
+	        <div id="loading"></div>
+	        <p>Loading...</p>  
+	    </div> 
     <section id="attendance">
+    	<h1 class="infoTitle">3. 상임의원회 활동</h1>
         <h2 id="detailSangim_Name"></h2>
         <article>
         	<h3 id="chulsuck_Sang"></h3>
@@ -60,38 +59,13 @@
             </table>
         </div>
     </section>
+    </div>
+    
     <section id="activity">
+    	<h1 class="infoTitle">4. 우리의 말, 말, 말</h1>
         <h2>바라는점을 써주세요!</h2>
 		<div>
-			<div id="comm">
-		    	<div>
-		    		<span id="commButton" data-id="${sessionScope.id }" style="cursor: pointer;">댓글 쓰기</span>
-		    		<div>
-		    		<c:if test="${sessionScope.id != null}">
-				        <textarea name="content" style="resize:none;" placeholder="댓글을 적어주세요" maxlength="500"></textarea>
-				        <button class="commButton" data-depth="0" data-cono="0">등록</button>
-		    		</c:if>
-		    		</div>
-		        </div>
-		    	<ul id="commList">
-		        <c:forEach var="comment" items="${comment}">
-		           	<li class="comment">
-		            	<h4>${comment.writer}</h4>
-		               	<p class="content">${comment.content}</p>
-		                <span>${comment.regdate}</span>
-						<ul>
-		               		<li class="cocobutton" value="0" data-no="${comment.co_no }" data-grpno="${comment.grpno}">답글</li>
-		               	<c:if test="${comment.id == sessionScope.id}">                	
-		                	<li class="commmod" data-depth="0" data-cono="${comment.co_no}" data-writer="${comment.writer }">수정</li>
-		   	            	<li class="commdel" data-depth="0" data-cono="${comment.co_no}">삭제</li>
-		        		</c:if>
-		               	</ul>
-					</li>
-					</c:forEach>
-		        </ul>
-		    </div>
-			    
-            <%-- <table id="attendance_table">
+            <table id="attendance_table">
             	<tbody>
                     <tr>
                        <th>제목</th><th>글쓴이</th><th>날짜</th>
@@ -143,7 +117,16 @@
             			<span>로그인하시면 글을 쓰실 수 있습니다!</span>
             		
             	</c:otherwise>
-			</c:choose> --%>        	
+			</c:choose>        	
         </div>
     </section>
+    
+   
+    
+    
+    
+    
+    
+    
+    
     

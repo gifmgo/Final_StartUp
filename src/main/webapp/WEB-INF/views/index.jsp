@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="정치,생활,커뮤니티,진보,보수,중립"/>
+<meta name="description" content="생활정치,커뮤니티"/>
 <link rel="stylesheet" type="text/css" href="firstM/M_header_Final4_0119.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="sweet/sweetalert.css">
@@ -14,13 +16,174 @@
 <script src="sweet/sweetalert.min.js"></script>
 <script src="firstM/index_final_modify_20170120.js"></script>
 <title>생활정치</title>
+<style>
+	.fb-login-button{
+		position:relative;
+		margin-top:10px;
+		left:40%;
+		width:124px;
+		height:60px;
+	}
+</style>
 </head>
 <body>
+<script>
+ 
+
+/* function startFace(){
+	FB.getLoginStatus(function(response) { 
+    	statusChangeCallback(response); });
+}
+ */
+// 이 함수는 누군가가 로그인 버튼에 대한 처리가 끝났을 때 호출된다. 
+// onlogin 핸들러를 아래와 같이 첨부하면 된다. 
+/* function checkLoginState(){
+	alert("checkLoginState 호출 ?!!");
+	FB.getLoginStatus(function(response) { 
+		statusChangeCallback(response); }); 
+	} 
+ */	
+//로그인이 성공한 다음에는 간단한 그래프API를 호출한다. 
+// 이 호출은 statusChangeCallback()에서 이루어진다. 
+/* function testAPI() { 
+	alert("성공하고 난다음 !! ");
+	console.log('Welcome! Fetching your information.... '); 
+	FB.api('/me', function(response) { 
+		console.log('Successful login for: ' + response.id);
+		document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!'; }); 
+}	 
+ /* 	  $.ajax({
+	 url : "faceBook.do",
+	 data : {
+		 img : 'http://graph.facebook.com/' + user.id + '/picture',
+		 name : user.name,
+		 id : user.id
+	 },
+	 success : function(data){
+		 
+		 if(data.result == 1){
+		alert("로그인 성공했을떄");
+			swal(data.msg);
+			document.location.reload();
+		 }else{
+			 alert("로그인 실패했을떄");
+			 swal(data.msg);
+		 }
+	 }
+}); */
+ 
+var result = "0"; 
+window.fbAsyncInit = function() { 
+	FB.init({ 
+		appId : '1329013773826112', 
+        status : true,          // 로그인 상태를 확인
+		cookie : true, 
+		// 쿠키가 세션을 참조할 수 있도록 허용 
+		xfbml : true, 
+		// 소셜 플러그인이 있으면 처리 
+		version : 'v2.8' // 버전 2.1 사용 
+	});		
+		// 자바스크립트 SDK를 초기화 했으니, FB.getLoginStatus()를 호출한다. 
+	    //.이 함수는 이 페이지의 사용자가 현재 로그인 되어있는 상태 3가지 중 하나를 콜백에 리턴한다. 
+	    // 그 3가지 상태는 아래와 같다. 
+	    // 1. 앱과 페이스북에 로그인 되어있다. ('connected') 
+	    // 2. 페이스북에 로그인되어있으나, 앱에는 로그인이 되어있지 않다. ('not_authorized') 
+	    // 3. 페이스북에 로그인이 되어있지 않아서 앱에 로그인이 되었는지 불확실하다. // 
+	    // 위에서 구현한 콜백 함수는 이 3가지를 다루도록 되어있다. 
+ 	  
+	    //로그인 상태 	체크 하는 부분
+	    FB.getLoginStatus(function(response) {
+          //로그인 했다면 ....
+ 		  if (response.status === 'connected') {
+        	  result = "1";
+        	  console.log("window.쪽 if 내부 탐 : "+result);
+        	  FB.api('/me', function(user) {
+        		 
+        		  user.name 
+        	  });
+        	  //checkLoginState(result);
+          } else if (response.status === 'not_authorized') {
+
+          } else {
+        	  
+        	  result = "0";
+        	  console.log("window.쪽 else  탐 : "+result);
+        	  //checkLoginState(result);
+          }
+      });
+
+       FB.Event.subscribe('auth.login', function(response) {
+    	   
+			alert("로그인 호출 !");
+    	   
+    	   if(result == "0"){
+    		   alert("로그인 호출 후 ");
+    		   FB.api('/me', function(user) {
+	    	   $.ajax({
+	    			 url : "faceBook.do",
+	    			 data : {
+	    				 img : 'http://graph.facebook.com/' + user.id + '/picture',
+	    				 name : user.name,
+	    				 id : user.id
+	    			 },
+	    			 success : function(data){
+	    				 alert("success 호출합니다");
+	    				 if(data.result == 1){
+	    				alert("로그인 성공했을떄");
+	    					swal(data.msg);
+	    					document.location.reload();
+	    				 }else{
+	    					 alert("로그인 실패했을떄");
+	    					 swal(data.msg);
+	    				 }
+	    			 }
+	    	   	  });
+    		   });
+    	   }else{
+    		   swal("현재 로그인한 상태입니다!");
+    	   }
+    	  document.location.reload();
+      }); 
+      
+      FB.Event.subscribe('auth.logout', function(response) {
+    	  result = "0";
+    	  alert("로그아웃 이벤트 발생");
+    	  document.location.reload();
+      });
+      
+	}; // SDK를 비동기적으로 호출 
+	
+/* 
+(function(d, s, id) { 
+	var js, fjs = d.getElementsByTagName(s)[0]; 
+	if (d.getElementById(id)) return; 
+	js = d.createElement(s); 
+	js.id = id; 
+	js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=1329013773826112"; 
+	fjs.parentNode.insertBefore(js, fjs); 
+	}(document, 'script', 'facebook-jssdk')); 
+	 */
+(function(d){
+    var js, id = 'facebook-jssdk', 
+    ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); 
+    js.id = id; 
+    js.async = true;
+    js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+	 
+</script>
+
+	
+	
 	<input type="hidden" id="check_Id_value">
 	<input type="hidden" id="hidden_nick">
 	<aside id="login_bg">
     	
     </aside>
+	
 	 <div id="loginForm">
     	<div id="login">
 	    	<h1>로그인</h1>
@@ -28,6 +191,9 @@
 	        <input type="password" id="loginPwInput" placeholder="비밀번호 입력"/>
 	        <button class="long_btn" id="loginBtn">로그인</button>
 	        <button class="long_btn" id="addMemberBtn">회원가입</button>
+	        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false"  data-auto-logout-link="true"></div> 
+	        <!-- <fb:login-button scope="public_profile,email" > </fb:login-button> -->
+	        <div id="status"></div>
 	        <p>아이디 또는 비밀번호 찾기</p>
 		</div>
     
@@ -106,7 +272,8 @@
         <aside id="menu_bg"></aside>
         
 	</nav>
-
+	
+	
 	<section id="banner">
     	<div>
             <h2>대한민국 헌법 1조 1항</h2>
@@ -148,10 +315,10 @@
 	<aside id="side_menu">
 		<span>×</span>
 		<ul id="m_menu">
-	    	<li><a href="#">소개</a></li>
-	        <li><a href="#">의안</a></li>
-	        <li><a href="#">의원</a></li>
-	        <li><a href="#">커뮤니티</a></li>
+	    	<li><a href="explanation.do">소개</a></li>
+	        <li><a href="statute.do">의안</a></li>
+	        <li><a href="Member_Parliament.do">의원</a></li>
+	        <li><a href="CommunityIndex.do">커뮤니티</a></li>
 	    </ul>
     </aside>
 </body>

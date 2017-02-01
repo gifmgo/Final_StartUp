@@ -3,16 +3,18 @@ package kr.or.com.Parliament;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -24,10 +26,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.FreeBoard.CommentDTO;
 import kr.or.com.Paliament_DTO.AllConInfo_DTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 import kr.or.com.Paliament_DTO.PaliamentStatue_DTO;
@@ -70,6 +71,11 @@ public class PaliamentController {
    public String Paliament_Talk_Detail(String seq, String num, String dept_cd, String img, String name, Model model){
       
       PaliamentTalk_DTO dto = service.talk_Detail(seq);
+      List<CommentDTO> list = service.commentList(seq);
+      List<CommentDTO> comment = service.commSelect(seq);
+      
+      model.addAttribute("list", list);
+      model.addAttribute("comment", comment);
       model.addAttribute("dept_cd", dept_cd);
       model.addAttribute("img", img);
       model.addAttribute("detail", dto);
@@ -77,57 +83,40 @@ public class PaliamentController {
    }
    
    
-   //말말말 !! >> View 데이터 입력 db 작업 실행하는 부분
+   //말말말 !! >> View 데이터 입력 db 작업 실행하는 부분 (쓰기)
    @RequestMapping(value="/paliament_talk_Write.do", method=RequestMethod.POST)
-   public String paliament_talk_Write_Post(@RequestParam("uploadfile") MultipartFile file, HttpServletRequest request, String dto, String num, String dept_cd, String img, String cate_name, Model model){
+   public String paliament_talk_Write_Post(/*@RequestParam("uploadfile") MultipartFile file,*/ HttpServletRequest request, PaliamentTalk_DTO dto, String logId, String dept_cd, String img, String cate_name, Model model){
       
-     JSONObject json = (JSONObject) JSONSerializer.toJSON(dto);
-     //파일 업로드 
-       System.out.println("file====================== : "+file);
-       String path = request.getRealPath("/upload");
-      File cFile = new File(path, file.getOriginalFilename());
-      try {
-         file.transferTo(cFile);
-      
-      } catch (IllegalStateException e1) {
-         e1.printStackTrace();
-      } catch (IOException e1) {
-         e1.printStackTrace();
-      }
-      
-    
-      String title = (String) json.get("title");
-      String content = (String) json.get("content");
-      String writer = (String)json.get("writer");
-      String catego = (String)json.get("catego");
+     /*//파일 업로드 
+	  try {
+		  String path = request.getRealPath("/upload");
+		  File cFile = new File(path, file.getOriginalFilename());
+		  file.transferTo(cFile);
+	  } catch (IllegalStateException e1) {
+	     e1.printStackTrace();
+	  } catch (IOException e1) {
+	     e1.printStackTrace();
+	  }*/
 
-      List<String> splitList = new ArrayList<String>();
-      String[] array = num.split(",");
-         splitList.add(array[0]);
-         array = new String[4];
-           array = dept_cd.split(",");
-           splitList.add(array[0]);   
-           array = new String[4];
-           array = img.split(",");
-           splitList.add(array[0]);
-           splitList.add(cate_name);
-
+	  dto.setId(logId);
+	  dto.setCatego(cate_name);
+	  dto.setContent(request.getParameter("ckeditor"));
+      int result = service.talk_Write(dto);
       
-      PaliamentTalk_DTO talk_dto = new PaliamentTalk_DTO(title,content,writer,catego, splitList.get(0), file.getOriginalFilename());
-      System.out.println(" 파일업로드????????????????"+dto.toString());
-      int result = service.talk_Write(talk_dto);
+      model.addAttribute("num",dto.getNum());
+      model.addAttribute("dept_cd",dept_cd);
+      model.addAttribute("img",img);
+      model.addAttribute("name",cate_name);
       
       if(result > 0){
          model.addAttribute("result","성공");
-         model.addAttribute("num",splitList.get(0));
-         model.addAttribute("dept_cd",splitList.get(1));
-         model.addAttribute("img",splitList.get(2));
-         model.addAttribute("name",splitList.get(3));
          return "parliament_Detail.Parliament_WriteResult";
       }
       
       return "redirect:paliament_talk_Write.do";
    }
+   
+   //
    
    //파일 다운로드
    //파일 다운
@@ -135,7 +124,8 @@ public class PaliamentController {
       public void download(String name, HttpServletResponse response, HttpServletRequest request)
             throws Exception {
          //파일 업로드 
-         String path = request.getRealPath("/upload");
+         @SuppressWarnings("deprecation")
+		String path = request.getRealPath("/upload");
          File f = new File(path + "/"+name);
          String fname = new String(name.getBytes("utf-8"), "8859_1");
 
@@ -228,6 +218,144 @@ public class PaliamentController {
            
       return null;
    }
+   
+   
+   //말말말 삭제
+  	@RequestMapping("paliamenTalk_Remove.do")
+  	public View paliamenTalk_Remove(String seq, Model model, HttpServletRequest request){
+  		
+  		int result = service.removeTalk(seq);
+  		
+ 	    model.addAttribute("result", result);
+  		return jsonView;
+  	}
+   
+   //게시판 코멘트 부분
+   	/*//코멘트 쓰기
+ 	@RequestMapping("paliamentCommentWrite.do")
+ 	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		HttpSession session = request.getSession();
+ 		String logId = (String)session.getAttribute("id");
+ 		cdto.setId(logId);
+ 		
+ 		if(logId == null || logId.equals("")){
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		} //임시
+ 		
+ 		if(cdto.getDepth()==1){
+ 			cdto.setGrpno(Integer.parseInt(coNo));
+ 		}else if(cdto.getDepth()==0){ //return을 안 하기 위해
+ 		}else{
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		}
+ 		
+ 		int result = service.writeComment(cdto);
+ 		
+ 		model.addAttribute("seq", cdto.getNo());
+	    model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 삭제
+ 	@RequestMapping("paliamentRemoveComment.do")
+ 	public View paliamentRemoveComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		int result = service.removeComment(dto.getCo_no(), dto.getDepth());
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+	    model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 수정
+ 	@RequestMapping("paliamentmodifyComment.do")
+ 	public View paliamentmodifyComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		int result = service.modifyComment(dto);
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}*/
+ 	
+ 	//의원 댓글로 바꾸기
+ 	//코멘트 쓰기
+ 	@RequestMapping("paliamentCommentWrite.do")
+ 	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		HttpSession session = request.getSession();
+ 		String logId = (String)session.getAttribute("id");
+ 		cdto.setId(logId);
+ 		
+ 		if(logId == null || logId.equals("")){
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		} //임시
+ 		
+ 		if(cdto.getDepth()==1){
+ 			cdto.setGrpno(Integer.parseInt(coNo));
+ 		}else if(cdto.getDepth()==0){ //return을 안 하기 위해
+ 		}else{
+ 			model.addAttribute("result", 0);
+ 			return jsonView;
+ 		}
+ 		
+ 		int result = service.writeComment(cdto);
+ 		
+ 		model.addAttribute("seq", cdto.getNo());
+	    model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 삭제
+ 	@RequestMapping("paliamentRemoveComment.do")
+ 	public View paliamentRemoveComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		
+ 		int result = service.removeComment(dto.getCo_no(), dto.getDepth());
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+	    model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+ 	
+ 	//코멘트 수정
+ 	@RequestMapping("paliamentmodifyComment.do")
+ 	public View paliamentmodifyComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
+ 		int result = service.modifyComment(dto);
+ 		
+ 		model.addAttribute("seq", dto.getNo());
+ 		model.addAttribute("dept_cd", dept_cd);
+	    model.addAttribute("name", name);
+	    model.addAttribute("num", num);
+	    model.addAttribute("img", img);
+ 		model.addAttribute("result", result);
+ 		return jsonView;
+ 	}
+   
+   
+   
    
    //국회의원 리스트 뿌려주는 부분
    @RequestMapping("/ListPaliament.do")
@@ -323,22 +451,15 @@ public class PaliamentController {
    public String detail(String num, String dept_cd, String img, String name, Model model){
       
       System.out.println("%%%%%%%%%%%%%%%%%%%%%%5$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
-      
       List<PaliamentTalk_DTO> list;
 
-      
       if(num.contains(",")){
          System.out.println("상세보기 if 탑니다.");
          String[] array = num.split(",");
          num = array[0];
          
          System.out.println("%%%%%%%%% 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
-         list = service.talkToMe(num);
-         if(list.size() == 0){
-            list = null;
-         }
-         
-        
+
           List<String> splitList = new ArrayList<String>();
           String[] array2 = num.split(",");
          splitList.add(array2[0]);
@@ -348,8 +469,17 @@ public class PaliamentController {
            array2 = new String[4];
            array2 = img.split(",");
            splitList.add(array2[0]);
-       
-         model.addAttribute("list", list);
+              
+         List<CommentDTO> comment = service.commSelect(splitList.get(0));
+         model.addAttribute("comment", comment);
+        
+         /* 글 리스트 뿌려주기
+          * list = service.talkToMe(num); 
+         if(list.size() == 0){
+            list = null;
+         }
+         model.addAttribute("list", list);*/
+         
          model.addAttribute("num", splitList.get(0));
          model.addAttribute("dept_cd", splitList.get(1));
          model.addAttribute("img", splitList.get(2));
@@ -357,17 +487,20 @@ public class PaliamentController {
          
          
       }else{
-            list=service.talkToMe(num);
-            
-            if(list.size() == 0){
-            list = null;
-         }
-            
-            model.addAttribute("list", list);
-         model.addAttribute("num", num);
-         model.addAttribute("dept_cd", dept_cd);
-         model.addAttribute("img", img);
-         model.addAttribute("tid", "1");
+    	  
+    	  System.out.println("else num: "+ num);
+    	  List<CommentDTO> comment = service.commSelect(num);
+          model.addAttribute("comment", comment);
+    	  /*list=service.talkToMe(num);
+          if(list.size() == 0){
+	          list = null;
+	      }
+          model.addAttribute("list", list);*/
+          
+          model.addAttribute("num", num);
+          model.addAttribute("dept_cd", dept_cd);
+          model.addAttribute("img", img);
+          model.addAttribute("tid", "1");
       }
       return "parliament_Detail.ParliamentDetail";
    }

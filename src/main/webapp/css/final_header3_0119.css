@@ -454,7 +454,7 @@
 	height:100%;
 	margin:0 auto;
 	display:none;
-	overflow:scroll;
+	
 }
 
 #register h1 {
@@ -653,6 +653,7 @@
 	
 	#register {
 		width:80%;
+		overflow-y:scroll;
 	}
 	
 	#find_password {

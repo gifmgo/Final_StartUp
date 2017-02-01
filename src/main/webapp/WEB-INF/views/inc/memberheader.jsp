@@ -29,12 +29,6 @@
             <input type="password" placeholder="비밀번호를 한번 더 입력하세요" id="member_Repw"/>
             <label>생년월일 입력</label>
             <input type="text" placeholder="년도입력 ex)xxxx" id="member_Birth"/>
-            <select>
-            	<option>월</option>
-            </select>
-            <select>
-            	<option>일</option>
-            </select>
             <label>성별</label>
             <ul id="gender">
             	<li id="m">남자</li>
@@ -84,10 +78,14 @@
         
         
         <aside id="menu_bg"></aside>
-        <ul id="m_menu">
-        	<li><a href="#">의안</a></li>
-            <li><a href="#">의원</a></li>
-            <li><a href="#">게시판</a></li>
-            <li><a href="#">채팅</a></li>
-        </ul>
 	</nav>
+	
+	<aside id="side_menu">
+		<span>×</span>
+		<ul id="m_menu">
+	    	<li><a href="#">소개</a></li>
+	        <li><a href="#">의안</a></li>
+	        <li><a href="#">의원</a></li>
+	        <li><a href="#">커뮤니티</a></li>
+	    </ul>
+    </aside>

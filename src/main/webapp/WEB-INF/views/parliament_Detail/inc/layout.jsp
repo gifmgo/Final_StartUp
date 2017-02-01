@@ -15,16 +15,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">	
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/final_header3_0119.css">
-<link rel="stylesheet" type="text/css" href="paliament/final_sub3.css">
+<link rel="stylesheet" type="text/css" href="paliament/final_sub4_0125.css">
 <link rel="stylesheet" href="css/WriteForm.css">
-<link rel="stylesheet" type="text/css" href="css/sub02.css">
+
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <!--ck 에디터 -->
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="css/main_header_modify0120.js"></script>
-<script src="paliament/paliament_Talk3.js"></script>
+<script src="paliament/paliamentTalk.js"></script>
 <title>의원 상세 정보</title>
 </head>
 <body>
@@ -69,15 +69,22 @@
 				table+="</table>";
 				
 				$('#statusDiv').html(table);
-				var tb_height = $("#info").height();
-				$("#basicInfo").css({height:600 + tb_height});
+				
+				var tb_height = $("#info").height() + $(".infoTitle").height();
+				$("#basicInfo").css({height:400 + tb_height});
+				
+				$(window).resize(function() {
+					var tb_height = $("#info").height() + $(".infoTitle").height();
+					$("#basicInfo").css({height:400 + tb_height});
+				});
+				$("#attendance").hide();
 				
 			}
 		});
 	}
 	
 	$(function(){
-		
+
 		//말, 말, 말  > 글쓰기
 		$('#wirteTalk').click(function(){
 			var name = $('#nameTd').text();
@@ -88,11 +95,10 @@
 		});
 		
 		//국회의원 법안 더보기 버튼 클릭시 !!
+		var billSts = 0;
 		$('#statusDivMore').click(function(){
 			var tr_length = $("#bill_table").find("tr").length;
-			
-			
-			var billSts = 0;
+
 			if(billSts == 0) {	
 				$("#bill").animate({height:500+(50*(tr_length-5))},400);
 				$("#bill").find("div").animate({height:(50*(tr_length))},400);
@@ -163,8 +169,9 @@
 					
 					if(data.detail.body.item.memTitle != null || data.detail.body.item.memTitle !== undefined){
 						var array = data.detail.body.item.memTitle.replace(/\r-/gi,"<br/>");
+						console.log("학력:"+ array);
 						$('#memTitleTd').append(array);
-					}
+					}	
 					
 					//전화번호
 					$('#phoneTd').text(data.detail.body.item.assemTel);
@@ -193,7 +200,7 @@
 		var resultDasu = splitDasu[splitDasu.length - 1].substring(0,2);
 
 		//상임위원회 
-		var array = ["국회운영위원회","법제사법위원회","정무위원회","기획재정위원회","미래창조과학방송통신위원회","교육문화체육관광위원회","외교통일위원회","국방위원회","안전행정위원회","농림축산식품해양수산위원회","산업통상자원위원회","보건복지위원회","환경노동위원회","국토교통위원회","정보위원회","여성가족위원회"];
+		var array = ["국회운영위원회","법제사법위원회","정무위원회","기획재정위원회","미래창x조과학방송통신위원회","교육문화체육관광위원회","외교통일위원회","국방위원회","안전행정위원회","농림축산식품해양수산위원회","산업통상자원위원회","보건복지위원회","환경노동위원회","국토교통위원회","정보위원회","여성가족위원회"];
 		//선택한 국회의원 위원회
 		var weOnH = obj.split(",");
 		//속해있는 상임위원회 뽑은 것 담기 위한 배열
@@ -249,6 +256,8 @@ function sangImConfference(sockArray, resultDasu, name){
 			$('#resultTbody').html(makeTable);
 			//페이지 넘버링
 			$('#ulTd').html(litag);
+			
+			
 		},beforeSend:function(){
 			$('#loading_form').css("display","block");
 			$('#attendance').css("display","none");			
@@ -257,6 +266,8 @@ function sangImConfference(sockArray, resultDasu, name){
 			$('#attendance').css("display","block");
 		},timeout : 100000
 	});
+	
+	
 }	
 
 var modelData = '';	
@@ -276,14 +287,18 @@ function pageNumFunc(data){
 	
 	console.log("넘버링 확인 : "+data.attend_list.length + " / 넘버링 할것 : "+pageNumber);
 	
+	
+	
 	var litag = '<ul>';
 		litag +="<li><a href='#'></a><<</li>";
 	for(var i = 0; i < pageNumber; i++){
-		litag +='<li onclick=pagingAjax_li('+(i+1)+')>'+(i+1)+'</a></li>';
+		litag +='<li onclick=pagingAjax_li('+(i+1)+') class="pgNum">'+(i+1)+'</a></li>';
 	}
-		litag +="<li><a href='#'></a>>></li>";
-		litag += "</ul>";
-		return litag;
+	litag +="<li><a href='#'></a>>></li>";
+	litag += "</ul>";
+		
+	$("#ulTd").find("ul").css({width:30*(pageNumber+2)});
+	return litag;
 	
 }	
 			
@@ -334,6 +349,9 @@ function pagingAjax_li(pagingValue){
 			//페이징 처리 결과 다시 뿌려주기
 			$('#resultTbody').html(makeTable);
 	}
+		
+	$("#ulTd").find("li").eq(pagingValue).css({backgroundColor:"#333",color:"#fff"})
+	.siblings().css({backgroundColor:"#fff",color:"#333"});
 }	
 	
 

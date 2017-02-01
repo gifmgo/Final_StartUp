@@ -19,6 +19,7 @@
 	font-size:30px;
 	font-weight:bold;
 	line-height:150px;
+	margin-left:10px;
 	/*background-color:#C63;*/
 }
 
@@ -26,7 +27,8 @@
 	position:absolute;
 	width:50px;
 	border:3px solid #000;
-	left:0;
+	left:10px;
+	
 }
 
 #download {
@@ -64,7 +66,7 @@
 	font-weight:bold;	
 }
 
-.nick {
+.board_nick {
 	font-size:15px;
 	font-weight:normal;
 }
@@ -126,6 +128,7 @@
 	height:auto;
 	line-height:30px;
 	left:20px;
+	margin-bottom:10px;
 }
 
 #comm>ul>li span {
@@ -134,6 +137,8 @@
 	height:auto;	
 	right:20px;
 	top:20px;
+	color:#666;
+	
 }
 
 #comm>div {
@@ -220,6 +225,7 @@
    bottom:20px;
    width:100px;
    height:30px !important;
+   color:#666;
 }
 
 #comm>ul>li ul>li {
@@ -232,4 +238,61 @@
 
 #comm>ul>li ul>li:hover {
    text-decoration:underline;   
+}
+
+@media only screen and (max-width:768px) {
+	
+	#title>h2 {
+		top:10px;
+		height:60px;
+		line-height:70px;
+		padding-left:20px;	
+		line-height:30px;	
+	}
+	
+	#title>p {
+		position:relative;
+		top:10px;
+		height:30px;
+		transform:none !important;	
+		width:100%;
+		text-align:left;
+		left:20px;
+	}
+	
+	#comm>ul>li h4 {
+		height:30px;
+		line-height:30px;	
+	}
+	#comm>ul>li p {
+		width:90%;
+		height:auto;
+		line-height:25px;	
+	}
+	
+	#comm>ul>li span {
+		position:relative;
+		top:0;
+		left:20px;
+	}
+	
+	#comm>ul>li ul {
+		bottom:0;
+		height:20px !important;
+	}
+	
+	#comm>ul>li ul li {
+		height:20px;
+		line-height:20px;	
+		text-align:left;
+		right:50px;
+	}
+	
+	#btArray {
+		text-align:center;	
+	}
+	
+	#btArray button {
+		width:80px;	
+	}
 }

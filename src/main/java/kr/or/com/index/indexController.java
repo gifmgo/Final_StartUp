@@ -1,5 +1,8 @@
 package kr.or.com.index;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +14,27 @@ public class indexController {
 
 	@Autowired
 	private View jsonview;
-
+	
+	@RequestMapping("/faceBook.do")
+	public View fIndex(HttpServletRequest request, String img, String name, String id, Model model){
+		HttpSession session = request.getSession();
+		String dbid = (String)session.getAttribute("id");
+		String message = "";
+		String result = "0";
+		if(dbid == null){
+			session.setAttribute("id", id);
+			session.setAttribute("name", name);
+			session.setAttribute("img", img);
+			message = "로그인 성공!!";
+			result = "1";
+		}else{
+			message = "올바르지 못한 방법입니다!";
+		}
+		model.addAttribute("message",message);
+		model.addAttribute("result",result);
+		return jsonview;
+	}
+	
 	//메인에서 코멘트 보내는 부분
 	@RequestMapping("/indexComment.do")
 	public View Comment(String title, String comment, String admin, Model model){

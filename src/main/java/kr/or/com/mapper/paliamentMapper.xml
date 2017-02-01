@@ -22,27 +22,98 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       SELECT paliament_talk_seq, title, writer, TO_CHAR(writeDate, 'YYYY-MM-DD') as writeDate, catego, num FROM paliament_talk 
       where num = #{num}
    </select>
+   
+   <!--기본 리스트 뿌려주는 부분-->                              
+   <select id="talktalkMember" resultType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
+      select paliament_talk_seq, title, writer, TO_CHAR(writeDate, 'YYYY-MM-DD') as writeDate, catego, num, viewcnt, good
+		from (select rownum rn, paliament_talk_seq, title, writer, writeDate, catego, num, viewcnt, good
+   			from (select paliament_talk_seq, title, writer, writeDate, catego, num, viewcnt, good
+          		  from paliament_talk
+          		  where num = '${param1}'
+          		  order by paliament_talk_seq desc)
+            order by rn)
+        where rn between #{param2} and #{param3}
+   </select>
 
    <insert id="talk_Write" parameterType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
-      insert into paliament_talk values(paliament_talk_seq.nextval, #{title}, #{writer}, sysdate, #{catego}, #{num}, #{content}, #{filename})
+      insert into paliament_talk(PALIAMENT_TALK_SEQ, TITLE, WRITER, ID, WRITEDATE, CATEGO, NUM, CONTENT, GOOD, VIEWCNT)
+      values(paliament_talk_seq.nextval, #{title}, #{writer}, #{id}, sysdate, #{catego}, #{num}, #{content}, 0, 0)
    </insert>
 
    <select id="talk_detailSelect" resultType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
-      SELECT paliament_talk_seq, title, writer, TO_CHAR(writeDate, 'YYYY-MM-DD') as writeDate, catego, num, content, filename FROM paliament_talk 
+      SELECT paliament_talk_seq, title, writer, id, TO_CHAR(writeDate, 'YYYY-MM-DD') as writeDate, catego, num, content, filename, good, viewcnt FROM paliament_talk 
       where paliament_talk_seq = #{seq}
    </select>
    
    <select id="talk_modify" parameterType="String" resultType="kr.or.com.Paliament_DTO.PaliamentTalk_DTO">
       SELECT paliament_talk_seq, title, content from paliament_talk
-      where paliament_talk_seq = #{param1} and writer=#{param2}
+      where paliament_talk_seq = #{param1} and id=#{param2}
    </select>
    
    <!--국회의원 말말말, 수정하기 부분 db 에서 읽어온 데이터 수정 하는 것.-->
    <update id="talk_modify_Post" parameterType="String">
       update paliament_talk
-      set title = #{param2}, content = #{param3},writeDate = sysdate
+      set title = #{param2}, content = #{param3}, writeDate = sysdate
       where paliament_talk_seq = #{param1} 
    </update>
+   
+   <!-- 댓글 삭제 -->
+	 <delete id="removeTalk" parameterType="int">
+	 	delete from paliament_talk where paliament_talk_seq = #{param1}
+	 </delete>
+   
+   <!--국회의원 말말말, 수정하기 부분 db 에서 읽어온 데이터 수정 하는 것.-->
+   <update id="updateCnt" parameterType="String">
+      update paliament_talk
+      set viewcnt = NVL(viewcnt, 0) + 1
+      where paliament_talk_seq = #{param1} 
+   </update>
+   
+   <!-- 대댓글 list 뽑기 -->
+	<select id="commentList" resultType="kr.or.com.FreeBoard.CommentDTO">
+		select no, co_no, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, good, bed, grpno, depth, grporder
+        from paliament_talk_comment
+        where no = #{param1}
+        and depth = 1
+        order by grpno, co_no asc
+	</select>
+	
+	<!-- 댓글 뽑기 -->
+	<select id="selectComment" resultType="kr.or.com.FreeBoard.CommentDTO">
+		select no, co_no, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, good, bed, grpno, depth, grporder
+        from paliament_talk_comment
+        where no = #{param1}
+        and depth = 0
+        order by grpno, co_no asc
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	 <insert id="writeComment" parameterType="kr.or.com.FreeBoard.CommentDTO">
+		insert into paliament_talk_comment(no, co_no, content, writer, id, regdate, good, bed, grpno, depth, grporder) 
+		values(#{no}, paliament_talk_comment_seq.nextval, #{content}, #{writer}, #{id}, sysdate, 0, 0, paliament_talk_comment_seq.currval, #{depth}, 0)
+	 </insert>
+	 
+	<!-- 대댓글 쓰기 -->
+	 <insert id="writeCommentn" parameterType="kr.or.com.FreeBoard.CommentDTO">
+		insert into paliament_talk_comment(no, co_no, content, writer, id, regdate, good, bed, grpno, depth, grporder) 
+		values(#{no}, paliament_talk_comment_seq.nextval, #{content}, #{writer}, #{id}, sysdate, 0, 0, #{grpno}, #{depth}, 0)
+	 </insert>
+	 
+	  <!-- 댓글 삭제 -->
+	 <delete id="deleteComment" parameterType="int">
+	 	delete from paliament_talk_comment where co_no = #{param1}
+	 </delete>
+	 
+	  <!-- 댓글 삭제 -->
+	 <delete id="deleteAllComment" parameterType="int">
+	 	delete from paliament_talk_comment where grpno = #{param1}
+	 </delete>
+	 
+	 <!--댓글 수정-->
+	<update id="updateComment" parameterType="kr.or.com.FreeBoard.CommentDTO">
+	    update paliament_talk_comment set content = #{content} 
+	    where co_no = #{co_no}
+	</update>
    
 
 </mapper>

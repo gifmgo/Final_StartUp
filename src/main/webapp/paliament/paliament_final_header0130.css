@@ -130,31 +130,46 @@
 	height:0px;	
 	background-color:#000;
 	z-index:-1;
-	
+}
+
+#side_menu {
+	position:absolute;
+	top:0;
+	left:-80%;
+	width:80%;
+	height:100%;
+	background-color:#222;	
+	z-index:999999999;
+}
+
+#side_menu>span {
+	position:absolute;
+	top:1%;
+	right:5%;
+	font:bold 80px Nanum;
+	color:#fff;
+	cursor:pointer;
 }
 
 #m_menu {
-	position:absolute;
-	top:100px;
-	left:0;
+	position:relative;
+	top:50%;
+	transform:translateY(-50%);
 	width:100%;
-	height:0;
-	background-color:#222;	
-	overflow:hidden;
+	height:auto;
 }
 
-#m_menu li {
+ #m_menu li {
 	width:100%;
-	height:50px;
-	border-bottom:1px dotted #666;
+	height:80px;
 	box-sizing:border-box;
 	text-align:center;
-	line-height:50px;
+	line-height:80px;
 	cursor:pointer;	
-}
-
-#m_menu li:hover {
-	background-color:#000;	
+} 
+ 
+#m_menu li a:hover {
+	color:#999;	
 }
 
 #m_menu li a {
@@ -162,9 +177,9 @@
 	width:100%;
 	height:100%;
 	color:#fff;
-	
-}
-
+	font-size:30px;
+	font-weight:bold;
+} 
 /*배너*/
 
 #banner {
@@ -427,6 +442,7 @@
 	height:100%;
 	margin:0 auto;
 	display:none;
+	overflow-y:scroll;
 }
 
 #register h1 {
@@ -578,6 +594,12 @@
    font:14px/30px Nanum;   
 }
 
+.detail_btn {
+	position:relative !important;
+	left:50% !important;
+	trnasform:translate(-50%) !important;
+	
+}
 
 
 @media only screen and (max-width:1024px) {
@@ -601,10 +623,7 @@
 		font-size:25px;
 	}
 	
-	.btn {
-		right:50%;
-		transform:translateX(50%);
-	}
+
 	
 	#nav>img {
 		left:50%;
@@ -613,6 +632,25 @@
 	
 	#nav>div:first-of-type {
 		display:block;
+	}
+	
+	#loginForm {
+		width:100%;
+		height:100%;
+		border-radius:0;
+	}
+	
+	#login {
+		width:80%;
+	}
+	
+	#register {
+		width:80%;
+		overflow-y:scroll;
+	}
+	
+	#find_password {
+		width:80%;
 	}
 }
 
@@ -644,7 +682,10 @@
 		bottom:-150px;
 	}
 	
-	
+	#nav>div:last-of-type {
+		font-size:20px;
+	}
+		
 /*	
 	#loginForm input {
 		margin-top:20px;
@@ -652,7 +693,7 @@
 	}
 		
 		
-	#loginForm button {
+	#loginForm button {	
 		height:50px;
 
 	}

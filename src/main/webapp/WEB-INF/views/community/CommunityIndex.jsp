@@ -101,22 +101,57 @@
        <!-- <div id="more"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>-->
 	</section>
     
-    
+	
+	<section id="MyTalk">
+		<h1>나의 한마디</h1>
+		<p  style="color:red;">'최순실'</p>
+        <p>여러분들의 의견을 소신껏 말해주세요 !</p>
+				<div id="textAreaDiv">
+					<c:if test="${id != null}">
+			       	    	<form>
+			       	    		<div class="form-group">
+				       	    		<input type="radio">진보
+				       	    		<input type="radio">보수
+			       	    		</div>
+			       	    		<br/>
+			       	    		<textarea id="myTalkTextArea"></textarea>
+			       	    		<input type="button" class="btn" value="글쓰기">
+			       	    	</form>
+	       	    	</c:if>
+	       	    </div>
+		<article>
+	       	    <div id="jinboDiv">
+	       	   		<h4>나는 진보다.</h4>
+					<div class="main_news">
+							
+					</div>
+				</div>
+				
+				<div id="bosuDiv">
+					<h4>나는 보수다.</h4>
+					<div class="main_news">
+					
+					</div>
+				</div>
+		</article>
+		
+	</section>
+	
     
      <section id="recent">
-    	<h1>최신소식</h1>
-        <p>설명 설명 설명</p>
+    	<h1>정부소식</h1>
+        <p>대한민국 정부에서 제공하는 데이터 입니다. 창업 및 취업 관련 정보를 제공합니다.</p>
 	       <article>
 	       	    <div>
 	            	<div class="main_news">
-	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(창업)" width="130"/>
+	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(창업)" width="15%"/>
 	                    <h2 id="GoverMenthGoyoung"></h2>
 	                </div>
 	                <ul class="dashList" id="goUl"></ul>
 	            </div>
 	            <div>
 	            	<div class="main_news">
-	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(취업)" width="130"/>
+	                	<img src="img/dashimg/goverment.jpg" alt="대한민국정부(취업)" width="15%"/>
 	                    <h2 id="educationHtag"></h2>
 	                </div>
 	                <ul class="dashList" id="eduli"></ul>
