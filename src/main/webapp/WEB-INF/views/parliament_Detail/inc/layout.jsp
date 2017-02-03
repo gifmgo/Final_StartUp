@@ -77,6 +77,7 @@
 					var tb_height = $("#info").height() + $(".infoTitle").height();
 					$("#basicInfo").css({height:400 + tb_height});
 				});
+				$("#attendance").hide();
 				
 			}
 		});

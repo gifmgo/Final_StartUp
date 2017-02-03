@@ -451,22 +451,15 @@ public class PaliamentController {
    public String detail(String num, String dept_cd, String img, String name, Model model){
       
       System.out.println("%%%%%%%%%%%%%%%%%%%%%%5$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
-      
       List<PaliamentTalk_DTO> list;
 
-      
       if(num.contains(",")){
          System.out.println("상세보기 if 탑니다.");
          String[] array = num.split(",");
          num = array[0];
          
          System.out.println("%%%%%%%%% 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
-         list = service.talkToMe(num);
-         if(list.size() == 0){
-            list = null;
-         }
-         
-        
+
           List<String> splitList = new ArrayList<String>();
           String[] array2 = num.split(",");
          splitList.add(array2[0]);
@@ -476,8 +469,17 @@ public class PaliamentController {
            array2 = new String[4];
            array2 = img.split(",");
            splitList.add(array2[0]);
-       
-         model.addAttribute("list", list);
+              
+         List<CommentDTO> comment = service.commSelect(splitList.get(0));
+         model.addAttribute("comment", comment);
+        
+         /* 글 리스트 뿌려주기
+          * list = service.talkToMe(num); 
+         if(list.size() == 0){
+            list = null;
+         }
+         model.addAttribute("list", list);*/
+         
          model.addAttribute("num", splitList.get(0));
          model.addAttribute("dept_cd", splitList.get(1));
          model.addAttribute("img", splitList.get(2));
@@ -485,17 +487,20 @@ public class PaliamentController {
          
          
       }else{
-            list=service.talkToMe(num);
-            
-            if(list.size() == 0){
-            list = null;
-         }
-            
-            model.addAttribute("list", list);
-         model.addAttribute("num", num);
-         model.addAttribute("dept_cd", dept_cd);
-         model.addAttribute("img", img);
-         model.addAttribute("tid", "1");
+    	  
+    	  System.out.println("else num: "+ num);
+    	  List<CommentDTO> comment = service.commSelect(num);
+          model.addAttribute("comment", comment);
+    	  /*list=service.talkToMe(num);
+          if(list.size() == 0){
+	          list = null;
+	      }
+          model.addAttribute("list", list);*/
+          
+          model.addAttribute("num", num);
+          model.addAttribute("dept_cd", dept_cd);
+          model.addAttribute("img", img);
+          model.addAttribute("tid", "1");
       }
       return "parliament_Detail.ParliamentDetail";
    }
