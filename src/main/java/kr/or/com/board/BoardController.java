@@ -1,6 +1,7 @@
 package kr.or.com.board;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +68,7 @@ public class BoardController {
 
 		return "community.CommunityIndex";
 	}
-
+	
 	// 고용 노동부
 	@RequestMapping("/CommunityNews_1.do")
 	public View News1(Model model) {

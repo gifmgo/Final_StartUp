@@ -40,7 +40,6 @@
         <button id="statusDivMore">더보기</button>
     </section>
     <div>
-<<<<<<< HEAD
 	    <section id="attendance">
 	        <h2 id="detailSangim_Name"></h2>
 	        <article>
@@ -62,7 +61,6 @@
 	            </table>
 	        </div>
 	    </section>
-=======
 	    <div id="loading_form">
 	        <div id="loading"></div>
 	        <p>Loading...</p>  
@@ -89,7 +87,6 @@
             </table>
         </div>
     </section>
->>>>>>> 16c58ae1500880f0ca6a1f1cffe196d76819b092
     </div>
     <section id="activity">
         <h2>바라는점을 써주세요!</h2>

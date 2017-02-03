@@ -1,9 +1,7 @@
 package kr.or.com.Member;
 
-import java.util.List;
-
 public class MemberDTO {
-
+	
 	private String id;
 	private String pw;
 	private String nickName;

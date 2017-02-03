@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.or.com.debate.debateDAO">
+	
+	<select id="selectKeyWord" resultType="String">
+		select debateWord from tbl_debate
+	</select>
+		
+	<insert id="debateWrite" parameterType="kr.or.com.debate.debateDTO">
+		insert into tbl_debate(debateNo,debateWord,choose,nickName,content,viewCount,writeDate) values(debateNo.nextval, #{debateWord}, #{choose}, #{nickName}, #{content},0, sysdate)
+	</insert>
+	
+</mapper>

@@ -3,12 +3,6 @@
 @import url(dashcore.css);
 
 /*대시보드*/
-
-.testtest {
-	
-	
-}
-
 #dashboard {
 	position:relative;
 	width:100%;
@@ -136,12 +130,10 @@
 
 /* 나는 진보다, 나는 보수다 */
 #MyTalk{
-	
 	position:relative;
 	width:100%;
 	height:600px;
 	background-color:#eee;
-	
 }
 
 #MyTalk>h1 {
@@ -154,11 +146,14 @@
 	font-size:40px;
 }
 
+
+
 #MyTalk>p {
 	position:relative;
 	width:100%;
 	text-align:center;
-	margin-bottom:30px;
+	margin-bottom:5px; 
+	
 }
 
 #MyTalk>article {
@@ -170,15 +165,34 @@
 	/*background-color:#F99;*/	
 }
 
+/* 글쓰는 부분 */
 #textAreaDiv{
 	position: absolute;
-	/* 중앙정렬 */
-	/* left: 50%;
-	transform :translateX(-50%); */
 	bottom: 30px;
 	width: 100%;
 	height: 25%;
+	z-index : 999;
 }
+
+.form-group{
+	position: absolute;
+	top:20px;
+}
+
+/* 글쓰기 버튼  */
+#myTalkBtn{
+	position:absolute;
+	left:85%;
+	z-index : 999;
+	transform :translateX(-85%); 
+	width:10%;
+	height:53%;
+	border-radius:5px 5px 0 0;
+	background-color: white;
+	color: black;
+	top:60px;	
+}
+
 
 .form-group{
 	z-index:999;
@@ -186,14 +200,35 @@
 	left: 50%;
 	transform :translateX(-50%); 
 }
-
+/* TextArea  */
 #myTalkTextArea{
 	  position:absolute;
 	  border-radius:5px;
 	  width:50%;
-	  height: 80%;	
+	  height: 50%;	
 	  left: 50%;
 	  transform :translateX(-50%);
+	  top:60px;
+}
+
+/* 더보기 버튼 있는 div */
+#talkmoreDiv{
+	  position:absolute;
+	  width:100%;
+	  height:30%;
+	  left: 50%;
+	  transform :translateX(-50%);
+}
+
+#talkmoreDiv>button{
+	  position:absolute;
+	  left: 50%;
+	  transform :translateX(-50%);
+	  width:20%;
+	  height:50%;  	
+	  top:30px;
+	  border-radius:5px;
+	  background-color: white;
 }
 
 #jinboDiv{
@@ -206,6 +241,25 @@
 	margin-right: 5%;
 }
 
+.jinbo_sub{
+	position:relative;
+	width:100%;
+	height:90%;
+	background-color: white;
+	border-radius:5px;
+	text-align: left;
+}
+
+.titleSpan{
+	position:absolute;
+	margin: 20px;
+}
+.dateSpan{
+	position:absolute;
+	margin-left:80%;
+	top:25px;
+}
+
 #bosuDiv{
 	position:absolute !important;
 	text-align:center;
@@ -216,8 +270,16 @@
 	position: relative;
 }
 
-/*최신소식*/
+.bosu_sub{
+	position:relative;
+	width:100%;
+	height:90%;
+	background-color: white;
+	border-radius:5px;
+	text-align: left;
+}
 
+/*최신소식*/
 #recent {
 	position:relative;
 	width:100%;
@@ -514,4 +576,24 @@
 	#news {
 		height:1300px;	
 	}
+	
+	#myTalkBtn{
+		margin-left:5%;
+		width:20%;
+	}
+	
+	#myTalkTextArea{
+		
+		left: 43%;
+	  	transform :translateX(-43%);
+	}
+	
+	.dateSpan{
+		position:absolute;
+		margin-left:60%;
+		top:25px;
+		font-size:10px;
+	}
+}	
+	
 }
