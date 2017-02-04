@@ -2,10 +2,12 @@ package kr.or.com.debate;
 
 public class debateDTO {
 	
+	
 	private String debateNo;
 	private String debateWord;
 	private String choose;
 	private String nickName;
+	private String title;
 	private String content;
 	private String viewCount;
 	private String writeDate;
@@ -21,15 +23,29 @@ public class debateDTO {
 		this.viewCount = viewCount;
 	}
 
-	public debateDTO(String debateNo, String debateWord, String choose, String nickName, String content,
+	
+
+	public debateDTO(String debateNo, String debateWord, String choose, String nickName, String title, String content,
 			String viewCount, String writeDate) {
+		
 		this.debateNo = debateNo;
 		this.debateWord = debateWord;
 		this.choose = choose;
 		this.nickName = nickName;
+		this.title = title;
 		this.content = content;
 		this.viewCount = viewCount;
 		this.writeDate = writeDate;
+	}
+
+	
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDebateNo() {
@@ -91,7 +107,8 @@ public class debateDTO {
 	@Override
 	public String toString() {
 		return "debateDTO [debateNo=" + debateNo + ", debateWord=" + debateWord + ", choose=" + choose + ", nickName="
-				+ nickName + ", content=" + content + ", viewCount=" + viewCount + ", writeDate=" + writeDate + "]";
+				+ nickName + ", title=" + title + ", content=" + content + ", viewCount=" + viewCount + ", writeDate="
+				+ writeDate + "]";
 	}
 
 	

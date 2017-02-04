@@ -9,15 +9,37 @@
 	<article>
 		<div>
 			<h1 class="dashH">진보</h1>
-			<ul class="dashList">
-				<li>안녕<span>2017-02-01</span></li>
+			<ul class="dashList" id="jinboUl">
+				<c:choose>
+					<c:when test="${list != null}">
+					<c:forEach var="dto" items="${list}">
+						<c:if test="${dto.choose eq '진보'}">
+							<li onclick="detailDebate(${dto.debateNo}, $(this));">${dto.title}<span>${dto.nickName} / ${dto.writeDate}</span></li>
+						</c:if>
+					</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li>의견을 남겨주세요 !</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 		
 		<div>
 			<h1 class="dashH">보수</h1>
-			<ul class="dashList">
-					<li>안녕<span>2017-02-01</span></li>
+			<ul class="dashList" id="bosuUl">
+				<c:choose>
+					<c:when test="${list != null}">
+						<c:forEach var="dto" items="${list}">
+							<c:if test="${dto.choose eq '보수'}">
+								<li onclick="detailDebate(${dto.debateNo});">${dto.title}<span>${dto.nickName} / ${dto.writeDate}</span></li>
+							</c:if>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li>의견을 남겨주세요 !</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 		
@@ -27,6 +49,7 @@
 				<input type="hidden" id="loginNickName" value="${memberDTO.nickName}">
 				<input type="radio" name="choose" value="Bo">보수
 				<input type="radio" name="choose" value="Jin">진보
+				<input type="text" id="title">
 				<textarea id="debateTextArea"></textarea>
 				<input type="button" id="debateWriteBtn" value="글쓰기">
 				</c:when>

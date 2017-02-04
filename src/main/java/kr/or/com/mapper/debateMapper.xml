@@ -6,12 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="kr.or.com.debate.debateDAO">
 	
+	<!-- 리스트 가져오는 것 -->
+	<select id="listdebateDTO" resultType="kr.or.com.debate.debateDTO">
+		select debateNo, debateWord, choose, nickName, title, content, viewcount, writeDate 
+		from debate d
+		join adminDebate ad
+		on ad.admin_deabte_debateWord = d.debateWord
+	</select>
+	
+	<!-- 키워드 가져옴 -->
 	<select id="selectKeyWord" resultType="String">
-		select debateWord from tbl_debate
+		select admin_deabte_debateWord from adminDebate
 	</select>
 		
 	<insert id="debateWrite" parameterType="kr.or.com.debate.debateDTO">
-		insert into tbl_debate(debateNo,debateWord,choose,nickName,content,viewCount,writeDate) values(debateNo.nextval, #{debateWord}, #{choose}, #{nickName}, #{content},0, sysdate)
+		insert into debate(debateNo,debateWord,choose,nickName,title,content,viewCount,writeDate) values(debateNo.nextval, #{debateWord}, #{choose},#{nickName},#{title},#{content},0, sysdate)
 	</insert>
+	
+	<select id="selectDetail" parameterType="Integer" resultType="kr.or.com.debate.debateDTO">
+		select * from debate where debateNo = #{no}
+	</select>
 	
 </mapper>
