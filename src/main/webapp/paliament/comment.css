@@ -1,0 +1,162 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url(core.css);
+#commButton{
+	margin:70px;	
+}
+
+#comm {
+	position:relative;
+	width:100%;
+}
+
+#comm>ul {
+	position:relative;
+	width:95%;
+	margin:30px auto;
+	background-color: #ddd;
+}
+
+#comm>ul>li {
+	position:relative;
+	width:100%;
+	min-height:100px;
+	box-sizing:border-box;
+	border-top:1px dotted #ccc;	
+}
+
+#comm>ul>li h4 {
+	position:relative;
+	width:80%;
+	height:50px;
+	line-height:70px;
+	font-weight:bold;
+	font-size:20px;
+	left:20px;	
+}
+
+
+#comm>ul>li p {
+	position:relative;
+	width:80%;
+	height:auto;
+	line-height:30px;
+	left:20px;
+	margin-bottom:10px;
+}
+
+#comm>ul>li span {
+	position:absolute;
+	width:auto;
+	height:auto;	
+	right:20px;
+	top:20px;
+	color:#666;
+	
+}
+
+#comm>div {
+	position:relative;
+	width:95%;
+	height:80px;
+	/*background-color:#9FF;*/
+	margin:0 auto 5px;	
+}
+	
+#comm textarea {
+	position:relative;
+	top:0;
+	left:0;
+	width:98%;
+	height:80px;	
+	border:1px solid #eee;
+	box-sizing:border-box;
+	padding:10px 100px 10px 10px;
+	font-family:Nanum;
+	margin:0 1%;
+}
+
+#comm button {
+	position:absolute;
+	top:50%;
+	right:10px;
+	width:10%;
+	height:50px;
+	border-radius:5px;
+	background-color:transparent;
+	border:0;
+	font:bold 20px Nanum;
+	color:#666;
+	transform:translateY(-50%);
+	cursor:pointer;
+}
+
+#comm button:hover {
+	color:#333;	
+}
+
+.double_comm {
+	padding-left:20px;
+	box-sizing:border-box;
+}
+
+#commList textarea {
+	position:relative;
+	top:10px;
+	
+}
+
+
+#comm>ul>li ul {
+   position:absolute;
+   right:20px;
+   bottom:20px;
+   width:100px;
+   height:30px !important;
+   color:#666;
+}
+
+#comm>ul>li ul>li {
+   width:33.3333%;
+   height:100%;
+   text-align:right;
+   font:14px/30px Nanum;
+   cursor:pointer;   
+}
+
+#comm>ul>li ul>li:hover {
+   text-decoration:underline;   
+}
+
+@media only screen and (max-width:768px) {
+	
+	#comm>ul>li h4 {
+		height:30px;
+		line-height:30px;	
+	}
+	#comm>ul>li p {
+		width:90%;
+		height:auto;
+		line-height:25px;	
+	}
+	
+	#comm>ul>li span {
+		position:relative;
+		top:0;
+		left:20px;
+	}
+	
+	#comm>ul>li ul {
+		bottom:0;
+		height:20px !important;
+	}
+	
+	#comm>ul>li ul li {
+		height:20px;
+		line-height:20px;	
+		text-align:left;
+		right:50px;
+	}
+	
+}
