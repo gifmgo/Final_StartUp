@@ -72,11 +72,12 @@ public class MemberController {
 		dto.setId(id);
 		dto.setPw(pw);
 		
-		String result = service.Login(dto);
+		MemberDTO result = service.Login(dto);
 		
 		System.out.println("로그인 결과 : "+result);
-		if(result.equals("성공")){
+		if(result != null){
 			HttpSession session = request.getSession();
+			session.setAttribute("memberDTO", result);
 			session.setAttribute("id", dto.getId());
 			model.addAttribute("result","성공");
 			return jsonview;	

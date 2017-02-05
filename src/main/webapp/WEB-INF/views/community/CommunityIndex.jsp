@@ -104,9 +104,9 @@
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
-		<p  style="color:red;">'최순실'</p>
-        <p>여러분들의 의견을 소신껏 말해주세요 !</p>
-				<div id="textAreaDiv">
+		<p style="color:red; margin-top:-30px;">'최순실'</p>
+        <p>여러분들의 의견을 소신껏 말해주세요 !</p><br/><br/>
+				<%-- <div id="textAreaDiv">
 					<c:if test="${id != null}">
 			       	    	<form>
 			       	    		<div class="form-group">
@@ -115,24 +115,32 @@
 			       	    		</div>
 			       	    		<br/>
 			       	    		<textarea id="myTalkTextArea"></textarea>
-			       	    		<input type="button" class="btn" value="글쓰기">
+			       	    		<button id="myTalkBtn">글쓰기</button>
 			       	    	</form>
 	       	    	</c:if>
-	       	    </div>
+	       	    </div> --%>
 		<article>
 	       	    <div id="jinboDiv">
 	       	   		<h4>나는 진보다.</h4>
-					<div class="main_news">
-							
+	       	   		<br/>
+					<div class="jinbo_sub">
+						<span class="titleSpan"><a href="#">안녕하세요..</a></span><span class="dateSpan">2017-02-01</span>		
 					</div>
 				</div>
 				
 				<div id="bosuDiv">
 					<h4>나는 보수다.</h4>
-					<div class="main_news">
-					
+					<br/>
+					<div class="bosu_sub">
+						<span class="titleSpan"><a href="#">저는 보수청년입니다.</a></span><span class="dateSpan">2017-02-01</span>
 					</div>
 				</div>
+		</article>
+		
+		<article>
+			<div id="talkmoreDiv">
+				<button type="button" id="talkMoreBtn">보러가기</button>
+			</div>
 		</article>
 		
 	</section>
