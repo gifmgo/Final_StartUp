@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/final_header3_0119.css">
+<link rel="stylesheet" type="text/css" href="debate/final_header3_0119.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <!-- <link rel="stylesheet" type="text/css" href="debate/debate_0203.css"> -->
 <link rel="stylesheet" type="text/css" href="loading/loading.css">

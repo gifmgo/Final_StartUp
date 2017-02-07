@@ -51,7 +51,7 @@
 	z-index : 999;		
 }
 
-#debateSection>button{
+ #debateSection>button{
 	position:absolute;
 	left:50%;
 	transform :translateX(-50%); 
@@ -62,7 +62,7 @@
 	color: black;
 	bottom: 130px;
 	font-size: 15px;
-}
+} 
 
 #debateSection>h1 {
 	position:relative;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<section style="width:100%; height:100%;">
 <div class="container-fluid">
 	<h1 class="text-center">${keyWord}에 대하여</h1>
 	<br/>
@@ -44,7 +44,6 @@
 		</div>
 		<div class="col-md-1"></div>
 	</div>
-	<br/>
 	<hr/>
 	
 	<div class="col-md-12">
@@ -57,13 +56,12 @@
 			<label>
 				<input type="radio" name="choose" value="Bo">보수
 			</label>
-		</div>
-		
-		<div class="radio col-md-offset-2">
+			
 			<label>
 				<input type="radio" name="choose" value="Jin">진보
 			</label>
 		</div>
+		
 		<form class="form-horizontal">	
 			<div class="form-group">
 				<label class="control-label col-md-2">제목 </label>
@@ -78,9 +76,9 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-md-offset-2 col-md-4">
-					<input type="button" id="debateWriteBtn" value="글쓰기">
-				</div>
+				<label class="control-label col-md-offset-1 col-md-2">
+					<input type="button" class="btn btn-success" id="debateWriteBtn" value="글쓰기">
+				</label>
 			</div>
 		</form>	
 			</c:when>
@@ -89,4 +87,6 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+	<br/><br/>
 </div>
+</section>
