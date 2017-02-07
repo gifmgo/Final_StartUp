@@ -1,13 +1,12 @@
 $(document).ready(function(e) {
-	
 	//댓글 쓰기 관련
-	$("#comm>div").find("div").hide();
+	$("#talkWrite").hide();
 	$(".double_comm").hide();
-	$("#comm>div").find("span").click(function() {
+	$("#commButton").click(function() {
 		if($(this).attr("data-id")==null){
 			//로그인 연결
 		}else{
-			$(this).next().show();
+			$("#talkWrite").show();
 		}	
 	});
 	
@@ -40,11 +39,11 @@ $(document).ready(function(e) {
 	
 	//답글 수정 뷰
 	$("#commList").on("click",".commmodButton",function(){
-		var no = $("#seq").val();
-		var dept_cd = $("dept_cd").val();
-		var img = $("img").val();
-		var name = $("name").val();
-		var num = $("num").val();
+		var dept_cd = $("#detailHiden_dept_cd").val();
+		var img = $("#detail_img").val();
+		var num = $("#detailHiden_num").val();
+		var name = $("#detailName").val();
+		var no = $("#detailHiden_num").val();
 		
 		var co_no = $(this).attr("data-cono");
 		var content =$(this).prev().val();
@@ -70,7 +69,7 @@ $(document).ready(function(e) {
 				$(data).each(function(index,item){
 					with(item){
 						if(result==1){
-							location.href='Paliament_Talk_Detail.do?num='+num+'&dept_cd=$'+dept_cd+'&img='+img+'&name='+name+'&seq='+seq;
+							location.href='PaliamentDetail.do?num='+num+'&dept_cd='+dept_cd+'&img='+img+'&name='+name;
 						}else{
 							alert("다시 시도해주세요");
 						}
@@ -85,11 +84,12 @@ $(document).ready(function(e) {
 	
 	//답글,댓글 쓰기
 	$(".commButton").click(function(){
-		var no = $("#seq").val();
-		var dept_cd = $("dept_cd").val();
-		var img = $("img").val();
-		var name = $("name").val();
-		var num = $("num").val();
+		var dept_cd = $("#detailHiden_dept_cd").val();
+		var img = $("#detail_img").val();
+		var num = $("#detailHiden_num").val();
+		var name = $("#detailName").val();
+
+		var no = $("#detailHiden_num").val();
 		var depth = $(this).attr("data-depth");
 		var cono = $(this).attr("data-cono");
 		var content = $(this).prev().val();
@@ -116,7 +116,7 @@ $(document).ready(function(e) {
 				$(data).each(function(index,item){
 					with(item){
 						if(result==1){
-							location.href='Paliament_Talk_Detail.do?num='+num+'&dept_cd=$'+dept_cd+'&img='+img+'&name='+name+'&seq='+seq;
+							location.href='PaliamentDetail.do?num='+num+'&dept_cd='+dept_cd+'&img='+img+'&name='+name;
 						}else{
 							alert("로그인 해줘");
 						}
@@ -131,11 +131,11 @@ $(document).ready(function(e) {
 	
 	//답글,댓글 삭제
 	$(".commdel").click(function(){
-		var no = $("#seq").val();
-		var dept_cd = $("dept_cd").val();
-		var img = $("img").val();
-		var name = $("name").val();
-		var num = $("num").val();
+		var dept_cd = $("#detailHiden_dept_cd").val();
+		var img = $("#detail_img").val();
+		var num = $("#detailHiden_num").val();
+		var name = $("#detailName").val();
+		var no = $("#detailHiden_num").val();
 		
 		var depth = $(this).attr("data-depth");
 		var cono = $(this).attr("data-cono");
@@ -160,7 +160,7 @@ $(document).ready(function(e) {
 					$(data).each(function(index,item){
 						with(item){
 							if(result>=1){
-								location.href='Paliament_Talk_Detail.do?num='+num+'&dept_cd=$'+dept_cd+'&img='+img+'&name='+name+'&seq='+seq;
+								location.href='PaliamentDetail.do?num='+num+'&dept_cd='+dept_cd+'&img='+img+'&name='+name;
 							}else{
 								alert("다시 시도해주세요.");
 							}
