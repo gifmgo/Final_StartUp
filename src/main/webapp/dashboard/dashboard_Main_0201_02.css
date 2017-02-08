@@ -6,9 +6,9 @@
 #dashboard {
 	position:relative;
 	width:100%;
-	height:1000px;
 	background-color:#fff;
-	overflow:hidden;	
+	overflow:hidden;
+	margin-bottom:2%;
 }
 
 #dashboard>h1 {
@@ -63,7 +63,7 @@
 
 #dashboard>article>div {
 	position:relative;
-	width:300px;
+	width:23%;
 	height:300px;
 	float:left;	
 	background-color:#fff;
@@ -95,9 +95,9 @@
 	color:#333;	
 }
 
-#dashboard hr {
+#dashboard .titleHr {
 	width:90%;
-	margin:0 auto;
+	margin:0 auto 5px auto;
 	border:1px solid #333;	
 }
 
@@ -111,17 +111,13 @@
 .dashList li {
 	position:relative;
 	width:100%;
-	height:20%;	
-	line-height:50px;
+	padding: 13px 0 0 0;
 	cursor:pointer;
 }
 
-
-
-.dashList li>span {
-	position:absolute;
-	right:0;
-	font-size:12px;	
+.dashList li .listHr {
+	border: 1px dashed #ddd; 
+	width:100%;
 }
 
 .dashList li:hover {
@@ -509,18 +505,6 @@
 		margin-right:2% !important;	
 	}
 	
-	#dashboard>article>div:nth-child(3n) {
-		margin-right:0;	
-	}
-	
-	#dashboard {
-		height:1200px;	
-	}
-	
-	#dashboard>article {
-		width:960px;
-	}
-	
 	#recent>article>div {
 		position:relative;
 		left:50%;
@@ -539,6 +523,11 @@
 }
 
 @media only screen and (max-width:960px) {
+	
+	#dashboard>article>div {
+		width:48%;
+	}
+	
 	#dashboard>article>div:nth-child(3n) {
 		margin-right:2% !important;	
 	}
@@ -547,19 +536,13 @@
 		margin-right:0;	
 	}
 	
-	#dashboard {
-		height:1500px;	
-	}
-	
 	#dashboard>article {
 		width:625px;	
 	}
 }
 
 @media only screen and (max-width:640px) {
-	#dashboard {
-		height:2800px;	
-	}
+	
 	
 	#dashboard>article {
 		width:90%;	
