@@ -2,8 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" type="text/css" href="paliament/final_sub4_0125.css">
 <link rel="stylesheet" type="text/css" href="loading/loadingDiv.css">
 <link rel="stylesheet" type="text/css" href="paliament/comment.css">
+<link rel="stylesheet" href="css/WriteForm.css">
 <script src="paliament/paliament_api.js"></script>
 <script src="js/comment.js"></script>
 
@@ -16,7 +18,7 @@
 
  <!----------------------------------------------------------------------------------->
 	<div id="pDetail">
-		<ul>
+		<ul data-select="1">
 			 <li data-num="1"> 기본정보  </li>
 			 <li data-num="2"> 법안발의  </li>
 			 <li data-num="3"> 상임의원회 활동  </li>
@@ -70,7 +72,7 @@
     <section id="activity">
     	<hr/>
         <h2>바라는점을 써주세요!</h2>
-		<span id="commButton" data-id="${sessionScope.id }" style="cursor: pointer;">댓글 쓰기</span>
+		<span id="commButton" data-id="${sessionScope.id }" style="cursor: pointer;">글 쓰기</span>
 		<div>
 			<div id="comm">
 		    	<div id="talkWrite">

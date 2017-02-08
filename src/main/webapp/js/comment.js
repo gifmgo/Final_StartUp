@@ -3,8 +3,9 @@ $(document).ready(function(e) {
 	$("#talkWrite").hide();
 	$(".double_comm").hide();
 	$("#commButton").click(function() {
-		if($(this).attr("data-id")==null){
+		if($(this).attr("data-id")==null || $(this).attr("data-id")==""){
 			//로그인 연결
+			$("#s_loginDiv").click();
 		}else{
 			$("#talkWrite").show();
 		}	

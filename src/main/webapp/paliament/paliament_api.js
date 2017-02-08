@@ -85,12 +85,22 @@ $(function(){
 				}else{
 					$('#emailTd').text("없음");
 				}
+				
+				if($("#pDetail>ul").attr("data-select")==1){
+					$('#loading_form').hide();					
+				}
+				$('#loading_form').attr("data-setData",1);
 
 				//상세보기 하고자 하는 국회의원이 발의한 법안
 				memberStatute(data);
 				//출석률 확인 함수 > 상임 위원회 , 본회의
 				memberAttend(data.detail.body.item.shrtNm, data.detail.body.item.electionNum, data.detail.body.item.empNm);
 				
+			},
+			error: function(){
+				$("#parliamentInfo").empty();
+				var div = "<h2> 다시 시도해주세요 </h2>";
+				$("#parliamentInfo").html(div);
 			}
 		});
 	}
@@ -150,6 +160,10 @@ function memberStatute(data){
 			table+="</table>";
 			
 			$('#statusDiv').html(table);
+			if($("#pDetail>ul").attr("data-select")==2){
+				$('#loading_form').hide();					
+			} 
+			$('#loading_form').attr("data-setData",2);
 			
 			/*var tb_height = $("#info").height() + $(".infoTitle").height();
 			$("#basicInfo").css({height:400 + tb_height});
@@ -201,8 +215,10 @@ function sangImConfference(sockArray, resultDasu, name){
 			//페이지 넘버링
 			$('#ulTd').html(litag);
 			
-			$('#loading_form').hide();
-			$('#loading_form').attr("data-setData",1);
+			if($("#pDetail>ul").attr("data-select")==3){
+				$('#loading_form').hide();					
+			}
+			$('#loading_form').attr("data-setData",3);
 		},timeout : 100000
 	});
 }	
