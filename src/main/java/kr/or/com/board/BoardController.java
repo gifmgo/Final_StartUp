@@ -72,10 +72,6 @@ public class BoardController {
 		List<FreeBoardDTO> free = free_Service.selectBestBoard("자유게시판", 5);
 		List<FreeBoardDTO> issue = free_Service.selectBestBoard("오늘의 이슈", 5);
 		List<FreeBoardDTO> politics = free_Service.selectBestBoard("정치게시판", 5);
-		List<FreeBoardDTO> gif = free_Service.selectBestBoard("이미지 갤러리", 5);
-		List<FreeBoardDTO> chat = free_Service.selectBestBoard("토론방", 5);
-		List<FreeBoardDTO> entertainment = free_Service.selectBestBoard("연예게시판", 5);
-		List<FreeBoardDTO> society = free_Service.selectBestBoard("사회게시판", 5);
 		List<FreeBoardDTO> qa = free_Service.selectBestBoard("공지사항/QnA", 5);
 
 		String favorit = "";
@@ -99,10 +95,6 @@ public class BoardController {
 		model.addAttribute("free", free);
 		model.addAttribute("issue", issue);
 		model.addAttribute("politics", politics);
-		model.addAttribute("gif", gif);
-		model.addAttribute("chat", chat);
-		model.addAttribute("entertainment", entertainment);
-		model.addAttribute("society", society);
 		model.addAttribute("qa", qa);
 
 		return "community.CommunityIndex";

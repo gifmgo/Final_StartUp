@@ -71,21 +71,31 @@ $(function(){
 	$("#loading_form").hide();
 	$('#pDetail li').click(function(){
 		if($(this).attr("data-num")==1){
+			$('#pDetail>ul').attr("data-select",1);
+			$('#loading_form').hide();
+			if($("#loading_form").attr("data-setData")<1){
+				$("#loading_form").show();				
+			}
 			$("#parliamentInfo").show();
 			$("#bill").hide();
 			$("#attendance").hide();
-			$('#loading_form').hide();
 		}else if($(this).attr("data-num")==2){
+			$('#pDetail>ul').attr("data-select",2);
 			$('#loading_form').hide();
+			if($("#loading_form").attr("data-setData")<2){
+				$("#loading_form").show();				
+			}
 			$("#parliamentInfo").hide();
 			$("#bill").show();
 			$("#attendance").hide();
 		}else if($(this).attr("data-num")==3){
-			$("#parliamentInfo").hide();
-			$("#bill").hide();
-			if($("#loading_form").attr("data-setData")==0){
+			$('#pDetail>ul').attr("data-select",3);
+			$('#loading_form').hide();
+			if($("#loading_form").attr("data-setData")<3){
 				$("#loading_form").show();				
 			}
+			$("#parliamentInfo").hide();
+			$("#bill").hide();
 			$("#attendance").show();
 		}
 		

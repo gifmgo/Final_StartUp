@@ -3,7 +3,8 @@
 
 @import url(core.css);
 #commButton{
-	margin:70px;	
+	margin:70px;
+	font-size:large;
 }
 
 #comm {
@@ -24,6 +25,7 @@
 	min-height:100px;
 	box-sizing:border-box;
 	border-top:1px dotted #ccc;	
+	padding-bottom:10px;
 }
 
 #comm>ul>li h4 {
@@ -44,6 +46,8 @@
 	line-height:30px;
 	left:20px;
 	margin-bottom:10px;
+	word-break:break-all;
+	word-wrap:break-word;
 }
 
 #comm>ul>li span {
@@ -53,7 +57,6 @@
 	right:20px;
 	top:20px;
 	color:#666;
-	
 }
 
 #comm>div {
@@ -138,7 +141,7 @@
 	#comm>ul>li p {
 		width:90%;
 		height:auto;
-		line-height:25px;	
+		line-height:25px;
 	}
 	
 	#comm>ul>li span {
@@ -148,7 +151,7 @@
 	}
 	
 	#comm>ul>li ul {
-		bottom:0;
+		bottom:13px;
 		height:20px !important;
 	}
 	
@@ -157,6 +160,18 @@
 		line-height:20px;	
 		text-align:left;
 		right:50px;
+	}
+	
+	#commButton{
+		margin: 30px;
+	}
+	
+	#comm textarea{
+		padding : 10px 80px 10px 10px;
+	}
+	
+	#comm button{
+		width: 20%;
 	}
 	
 }
