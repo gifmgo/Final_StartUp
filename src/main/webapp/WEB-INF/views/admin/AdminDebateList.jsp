@@ -14,30 +14,49 @@
 	          </blockquote>
       		</div>
 		</div>
-		<div class="form-group col-md-offset-5 col-md-7">
+	</div>
+</div>
+<div class="container" style="height: 30%;">
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4">
+			<div class="well">
+				<form>
+					<label>첫번째 주소  </label><input type="text" class="form-control">
+					<label>두번째 주소  </label><input type="text" class="form-control">
+				</form>
+			</div>
+		</div>
+	</div>		
+</div>
+<hr/>
+<div class="container-fluid" style="background-color: #ecf0f1; min-height: 500px;">
+	<div class="container" style="margin-top:5%;">
+	
+	<div class="row">
+		<div class="col-md-4">
+			<select data-toggle="select" class="form-control select select-success mrs mbm" id="chooseNoticeSelect">
+				<option value="0" disabled>키워드 선택</option>
+				<option>선택</option>
+				<option>최순실</option>
+			</select>
+		</div>
+		<div class="col-md-4">
+			<select data-toggle="select" class="form-control select select-success mrs mbm" id="chooseNoticeSelect">
+		        <option value="0" disabled>개수 선택</option>
+		        <option>선택</option>
+		        <option value="1">10개</option>
+		        <option value="2">30개</option>
+		        <option value="3">50개</option>
+		        <option value="4">100개</option>
+		    </select>
+		    <input type="submit" value="검색" class="btn btn-warning">
+		</div>
+		<div class="col-md-4">
 			<button type="button" class="btn btn-info" onclick="NoticeWrite()">글쓰기</button>
 			<button type="button" class="btn btn-danger" onclick="NoticeDelete()">글삭제</button>		
 		</div>
 	</div>
-</div>
-<hr/>
-<div class="container">
-	<select data-toggle="select" class="form-control select select-success mrs mbm" id="chooseNoticeSelect">
-		<option value="0" disabled>키워드 선택</option>
-		<option>선택</option>
-		<option>최순실</option>
-	</select>
-	<select data-toggle="select" class="form-control select select-success mrs mbm" id="chooseNoticeSelect">
-        <option value="0" disabled>개수 선택</option>
-        <option>선택</option>
-        <option value="1">10개</option>
-        <option value="2">30개</option>
-        <option value="3">50개</option>
-        <option value="4">100개</option>
-    </select>
-    <input type="submit" value="검색" class="btn btn-warning">
-</div>
-<div class="container">
+	<br>
 	<div class="table-responsive">
 		<table class="table table-hover">
 		    <thead>
@@ -74,7 +93,8 @@
 	              NEWER
 	              <i class="fui-arrow-right"></i>
 	            </a>
-          </div>
+          		</div>
+			</div>
 		</div>
 	</div>
 </div>    

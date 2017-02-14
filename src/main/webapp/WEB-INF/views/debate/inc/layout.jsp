@@ -20,13 +20,13 @@
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="css/main_header_modify0213.js"></script>
 <script src="debate/debate_0207.js"></script>
+<script src="js/jquery.tubular.1.0.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <title>진보,보수 토론</title>
 <script>
-$(function(){
-	$('#loading_form').css("display","none");	
+$("document").ready(function(){
+	$('#loading_form').css("display","none");
 });
 </script>
 </head>
