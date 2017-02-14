@@ -33,7 +33,7 @@
 	                <span class="fui-user" style="font-size: 60px;"></span>
 	                <h3 class="tile-title">유저보기</h3>
 	                <p></p>
-	                <button class="btn btn-primary btn-large btn-block">메뉴보기</button>
+	                <button class="btn btn-primary btn-large btn-block" onclick="banUser()">메뉴보기</button>
 	              </div>
 	            </div>
 	             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">

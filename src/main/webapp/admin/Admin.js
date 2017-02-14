@@ -18,6 +18,35 @@ function debateAdmin(){
 }
 
 //관리자 - 토크별 리스트 보기
-function AdminDebateList(){
+function banUser(){
 	location.href="AdminDeabteList.do";
 }
+
+//관리자-유저관리
+function banUser(){
+	location.href="AdminBanUserList.do";
+}
+
+//사용자 차단하기
+function ban(){
+	var banId = '';
+	$("input[type=checkbox]:checked").each(function(){
+		 banId += ($(this).attr('id') + ",");
+	});
+	
+	location.href="banUser.do?banId="+banId;
+}
+
+$(function(){
+	
+ $('#banallCheck').click(function(){
+	 var check =$(this).is(":checked");
+	 if(check){
+		 $('.b_checkbox').prop('checked', true);
+	 }else{
+		 $('.b_checkbox').prop('checked', false);
+	 }
+ });
+	
+
+});
