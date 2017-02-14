@@ -316,7 +316,6 @@ public class PaliamentController {
  		
  		int result = service.writeComment(cdto);
  		
- 		model.addAttribute("seq", cdto.getNo());
 	    model.addAttribute("dept_cd", dept_cd);
 	    model.addAttribute("name", name);
 	    model.addAttribute("num", num);
@@ -452,7 +451,9 @@ public class PaliamentController {
       
       System.out.println("%%%%%%%%%%%%%%%%%%%%%%5$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
       List<PaliamentTalk_DTO> list;
-
+      
+      System.out.println(num);
+      
       if(num.contains(",")){
          System.out.println("상세보기 if 탑니다.");
          String[] array = num.split(",");
@@ -483,6 +484,7 @@ public class PaliamentController {
          model.addAttribute("num", splitList.get(0));
          model.addAttribute("dept_cd", splitList.get(1));
          model.addAttribute("img", splitList.get(2));
+         model.addAttribute("name",name);
          model.addAttribute("tid", "1");   
          
          
@@ -500,6 +502,7 @@ public class PaliamentController {
           model.addAttribute("num", num);
           model.addAttribute("dept_cd", dept_cd);
           model.addAttribute("img", img);
+          model.addAttribute("name",name);
           model.addAttribute("tid", "1");
       }
       return "parliament_Detail.ParliamentDetail";
@@ -535,14 +538,14 @@ public class PaliamentController {
       List<PaliamentStatue_DTO> dto_list = new ArrayList<PaliamentStatue_DTO>();
       try{
          
-         SAXBuilder builder = new SAXBuilder();
-         Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getMotionLawList?start_ord="+dasu+"&end_ord="+dasu+"&mem_name="+URLEncoder.encode(name, "UTF-8")+"&mem_name_check=G01&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
-         Element root= jdomdoc.getRootElement();
-           //System.out.println("처음 : "+root.getName());
-           Element second =root.getChild("body");
-           //System.out.println("두번째 : "+second.getName());
-           Element third = second.getChild("items");
-           List<Element> items = third.getChildren("item");
+	       SAXBuilder builder = new SAXBuilder();
+	       Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getMotionLawList?start_ord="+dasu+"&end_ord="+dasu+"&mem_name="+URLEncoder.encode(name, "UTF-8")+"&mem_name_check=G01&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
+	       Element root= jdomdoc.getRootElement();
+	       //System.out.println("처음 : "+root.getName());
+	       Element second =root.getChild("body");
+	       //System.out.println("두번째 : "+second.getName());
+	       Element third = second.getChild("items");
+	       List<Element> items = third.getChildren("item");
          
           for(int i=0;i<items.size(); i++){
              Element person_E=items.get(i);
@@ -584,7 +587,6 @@ public class PaliamentController {
            //System.out.println("두번째 : "+second.getName());
            Element third = second.getChild("items");
            List<Element> items = third.getChildren("item");
-         
            
            
            //여기서 해야 할 것은 ?? 

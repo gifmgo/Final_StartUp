@@ -15,25 +15,25 @@ public class MemberService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	//로그인 시 사용
-	public String Login(MemberDTO dto){
+	public MemberDTO Login(MemberDTO dto){
 		String resultDB = "";
 		MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
-		
+		MemberDTO dbdto = null;
 		try{
 			
-			MemberDTO result = dao.login(dto);
-																//넘겨받은 비번 ,      디비에 있는 비번
-			boolean checkPw = this.bCryptPasswordEncoder.matches(dto.getPw(), result.getPw());
+			dbdto = dao.login(dto);
+																//넘겨받은 비번 ,  디비에 있는 비번
+			boolean checkPw = this.bCryptPasswordEncoder.matches(dto.getPw(), dbdto.getPw());
 			
-			if(result.getId() == null || result.getId().equals("") || checkPw == false){
-				resultDB = "실패";
+			if(dbdto .getId() == null || dbdto.getId().equals("") || checkPw == false){
+				dbdto = null;
 			}else{
-				resultDB = "성공";
-			}	
+				dbdto.setPw("");
+			}
 		}catch(Exception e){
-			resultDB = "실패";
+			dbdto = null;
 		}finally{
-			return resultDB;
+			return dbdto;
 		}
 	}
 	

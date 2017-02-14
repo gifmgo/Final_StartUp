@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-@import url(core.css);
+@import url(dedatecore.css);
 
 #nav {
 	position:fixed;
@@ -11,20 +11,11 @@
 	z-index:999;
 }
 
-#nav>h1 {
+#nav>img {
 	position:absolute;
-	top:0;
+	top:50%;
 	left:50px;
-	width:auto;
-	height:100%;
-	color:#fff;
-	line-height:100px;
-	font-size:50px;	
-}
-
-
-#tit{
-	color:#fff;
+	transform:translateY(-50%);	
 }
 
 #logDiv>a{
@@ -137,31 +128,46 @@
 	height:0px;	
 	background-color:#000;
 	z-index:-1;
-	
+}
+
+#side_menu {
+	position:absolute;
+	top:0;
+	left:-80%;
+	width:80%;
+	height:100%;
+	background-color:#222;	
+	z-index:999999999;
+}
+
+#side_menu>span {
+	position:absolute;
+	top:1%;
+	right:5%;
+	font:bold 80px Nanum;
+	color:#fff;
+	cursor:pointer;
 }
 
 #m_menu {
-	position:absolute;
-	top:100px;
-	left:0;
+	position:relative;
+	top:50%;
+	transform:translateY(-50%);
 	width:100%;
-	height:0;
-	background-color:#222;	
-	overflow:hidden;
+	height:auto;
 }
 
-#m_menu li {
+ #m_menu li {
 	width:100%;
-	height:50px;
-	border-bottom:1px dotted #666;
+	height:80px;
 	box-sizing:border-box;
 	text-align:center;
-	line-height:50px;
+	line-height:80px;
 	cursor:pointer;	
-}
-
-#m_menu li:hover {
-	background-color:#000;	
+} 
+ 
+#m_menu li a:hover {
+	color:#999;	
 }
 
 #m_menu li a {
@@ -169,8 +175,9 @@
 	width:100%;
 	height:100%;
 	color:#fff;
-	
-}
+	font-size:30px;
+	font-weight:bold;
+} 
 
 /*배너*/
 
@@ -261,7 +268,6 @@
 
 }
 
-
 #banner ul {
 	position:relative;
 	width:100%;
@@ -334,7 +340,6 @@
 	background-color:#fff;
 	z-index:100000;	
 	border-radius:10px;
-	overflow:hidden;
 	display:none;
 }
 
@@ -469,7 +474,7 @@
 }
 
 #register input[type=text] {
-	width:30%;
+	width:100%;
 	height:35px;	
 	border:0;
 	border-bottom:2px solid #ccc;
@@ -562,7 +567,6 @@
 	height:35px;
 	border:0;
 	border-bottom:2px solid #ccc;
-	
 	margin-bottom:30px;
 	box-sizing:border-box;
 	padding:10px;

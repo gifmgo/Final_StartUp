@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+@import url(dedatecore.css);
+
+/* 리스트 부분 css  */
+.dashH {
+	position:relative;
+	width:100%;
+	height:50px;
+	font-size:20px;
+	font-weight:bold;	
+	padding:15px;
+	box-sizing:border-box;
+}
+
+.dashList {
+	position:relative;
+	width:85%;
+	height:80%;
+	margin:0 auto;
+}
+
+.dashList li {
+	position:relative;
+	width:100%;
+	height:20%;	
+	line-height:50px;
+	cursor:pointer;
+}
+
+
+
+.dashList li>span {
+	position:absolute;
+	right:0;
+	font-size:12px;	
+}
+
+.dashList li:hover {
+	text-decoration:underline;	
+}
+
+/*  */
+
+
+#debateSection {
+	position:relative;
+	width:100%;
+	height:80%;
+	background-color:#fff;
+	overflow:hidden;
+	z-index : 999;		
+}
+
+ #debateSection>button{
+	position:absolute;
+	left:50%;
+	transform :translateX(-50%); 
+	width:15%;
+	height:8%;
+	border-radius:5px 5px 0 0;
+	background-color: white;
+	color: black;
+	bottom: 130px;
+	font-size: 15px;
+} 
+
+#debateSection>h1 {
+	position:relative;
+	width:100%;
+	height:100px;
+	text-align:center;
+	font-weight:bold;
+	line-height:150px;
+	font-size:40px;
+}
+
+#debateSection>article {
+	position:relative;
+	margin:0 auto;
+	width:100%;
+	max-width:1300px;
+	height:100%;
+	z-index:9999;
+}
+
+ #debateSection>article::after {
+	content:"";
+	display:block;
+	clear:both;	
+} 
+
+#debateSection>article>div {
+	position:relative;
+	width:600px;
+	height:50%;
+	float:left;	
+	background-color:#fff;
+	margin-right:2%;
+	box-shadow:1px 1px 5px #999;
+	margin-bottom:2%;
+}
+
+#debateSection>article>div:nth-child(4n) {
+	margin-right:0;	
+}
+
+#textDiv{
+	position: relative;
+	width:50%;
+	height: 300px;
+	left:50%;
+	transform :translateX(-50%);
+	
+}

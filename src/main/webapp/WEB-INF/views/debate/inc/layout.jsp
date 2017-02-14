@@ -12,22 +12,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/final_header3_0119.css">
-<!-- <link rel="stylesheet" type="text/css" href="dashboard/dash_M1.css"> -->
-<link rel="stylesheet" type="text/css" href="dashboard/dashboard_Main_0201_02.css">
+<link rel="stylesheet" type="text/css" href="debate/final_header3_0119.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
+<!-- <link rel="stylesheet" type="text/css" href="debate/debate_0203.css"> -->
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="css/main_header_modify0120.js"></script>
-<script src="dashboard/dashboard_Tab_0123.js"></script>
-<title>커뮤니티</title>
+<script src="debate/debate_0207.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>진보,보수 토론</title>
 <script>
 $(function(){
 	$('#loading_form').css("display","none");	
-	$('#talkMoreBtn').click(function(){
-		location.href="moreCommunityTalk.do";
-	});
 });
 </script>
 </head>

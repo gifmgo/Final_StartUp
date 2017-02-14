@@ -608,7 +608,6 @@
 
 @media only screen and (max-width:1024px) {
 	
-	
 	#mainMenu {
 		display:none;	
 	}
@@ -696,13 +695,10 @@
 /*	
 	#loginForm input {
 		margin-top:20px;
-		
 	}
-		
 		
 	#loginForm button {	
 		height:50px;
-
 	}
 	
 	#loginForm>h1 {

@@ -47,6 +47,18 @@ var inter3 = 0;
 // JavaScript Document
 $(document).ready(function(e) {
 	
+	$("#loginIdInput").keypress(function(e){
+		if(e.which==13){
+			$("#loginPwInput").focus();
+		}
+	});
+	
+	$("#loginPwInput").keypress(function(e){
+		if(e.which==13){
+			$("#loginBtn").click();
+		}
+	});
+	
 	$('#logo').click(function(){
 		location.href="index.do";
 	});
@@ -66,7 +78,6 @@ $(document).ready(function(e) {
 		 var result = loginFunc(id, pw);
 		 
 		 if(result == true){
-			alert("if 탐 !!");
 			$.ajax({
 				url:"Login.do",
 				type:"post",
@@ -76,10 +87,9 @@ $(document).ready(function(e) {
 				},		
 				success : function(data){
 					if(data.result == "성공"){
-						alert("로그인 성공!");
 						location.reload();
 					}else{
-						alert("실패하였습니다!");
+						alert("아이디 또는 패스워드가 틀립니다.");
 					}
 				},error : function(){
 					alert("죄송합니다. 잠시후 다시 이용해 주세요!!");

@@ -2,8 +2,6 @@
 /* CSS Document */
 @import url(core.css);
 
-
-
 #pDetail {
 	position:relative;
 	top:20px;
@@ -11,7 +9,7 @@
 	max-width:1300px;
 	height:50px;
 	margin:0 auto;
-	z-index:1000;
+	z-index:500;
 }
 
 #pDetail>ul {
@@ -43,39 +41,35 @@
 	border-left:1px solid #999;
 }
 
-#basicInfo {
+#parliamentInfo {
 	position:relative;
 	width:100%;
 	max-width:1300px;
 	height:auto;
-	margin:0 auto;	
+	margin: 50px auto;
+	text-align: center;
+	padding : 0;
 }
 
-.infoTitle {
-	position:relative;
-	width:100%;
-	height:100px;
-	line-height:150px;
-	font-weight:bold;	
-	border-bottom:1px solid #333;
-	box-sizing:border-box;
+#parliamentInfo>.parliamentImg{
+	position: relative;
+	display: inline-block;
+	width : 150px;
+	height: auto;
+	margin: 0 70px;
 }
 
-#basicInfo>img {
-	position:relative;
-	display:inline-block;
-	top:25px;
-	left:50%;
-	transform:translateX(-50%);
+#parliamentInfo > .parliamentImg > img{
+	width : 150px;
+	height: 200px;
 }
 
 #info {
-	position:relative;
-	top:50px;
-	left:0;
-	width:100%;
-	height:auto;
-	display:inline-block;	
+	position: relative;
+	display: inline-block;
+	max-width : 550px;
+	height: auto;
+	margin: 0 70px;
 }
 
 #info th {
@@ -104,8 +98,7 @@
 	position:relative;
 	width:100%;
 	max-width:1300px;
-	height:500px;
-	margin:0 auto;	
+	margin: 50px auto;
 	/*background-color:#9C9;*/
 }
 
@@ -172,8 +165,7 @@
 	position:relative;
 	width:100%;
 	max-width:1300px;
-	height:700px;
-	margin:0 auto;
+	margin: 50px auto;
 	/*background-color:#99F;*/
 }
 
@@ -223,7 +215,6 @@
 #attendance>div {
 	position:relative;
 	width:95%;
-	height:500px;
 	top:0;
 	left:0;	
 	margin:50px auto;
@@ -303,9 +294,8 @@
 	position:relative;
 	width:100%;
 	max-width:1300px;
-	height:700px;
 	/*background-color:#996;*/
-	margin:0 auto;	
+	margin:50px auto;	
 }
 
 #activity>h2 {
@@ -341,11 +331,7 @@
 #activity>div:last-of-type {
 	position:relative;
 	width:95%;
-	height:500px;
-	top:0;
-	left:0;	
-	margin:50px auto;
-	overflow:hidden;
+	margin:20px auto;
 }
 
 /*선거정보*/  
@@ -449,4 +435,77 @@
 	height:50px;
 	line-height:50px;
 	text-align:center;	
+}
+
+@media only screen and (max-width:768px) {
+	
+	#pDetail {
+		position:relative;
+		top:20px;
+		width:100%;
+		max-width:1300px;
+		height:50px;
+		margin:0 auto;
+		z-index:500;
+	}
+	
+	#pDetail>ul {
+		width:auto;
+		height:100%;
+		border-bottom:1px solid #999;
+		box-sizing:border-box;
+	}
+	
+	#pDetail li{
+		width:30%;
+		font-size:smaller;
+	}
+	#pDetail li:last-child{
+		width:36%;
+	}
+	 
+	#info {
+		display:block;
+		margin: 0 auto;
+	}
+	
+	#attendance_table>tfoot ul{
+		width:100%;
+	}
+	
+	#attendance_table>tfoot ul li{
+		width:14%;
+	}
+	
+}
+
+@media only screen and (max-width:414px) {
+	
+	#info th {
+		background-color:#333;
+		border-top:1px dotted #999;
+		box-sizing:border-box;
+		width:15%;
+		height:50px;
+		color:#fff;
+	}
+	
+	#info td {
+		width:35%;
+		height:50px;
+		border-top:1px dotted #999;
+		box-sizing:border-box;
+		padding-left:4px;
+	}
+	
+	#info tr>td:last-child {
+		width:35%;
+		word-break:break-all;
+		word-wrap:break-word;
+	}
+	
+	#info tr:last-child>td {
+		border-bottom:1px dotted #999;
+	}
+	
 }
