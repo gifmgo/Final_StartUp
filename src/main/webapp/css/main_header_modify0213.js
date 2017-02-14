@@ -86,10 +86,12 @@ $(document).ready(function(e) {
 					pw : pw
 				},		
 				success : function(data){
-					if(data.result == "성공"){
+					if(data.result == "관리자"){
+						location.href="adminIndex.do";
+					}else if(data.result == "성공"){
 						location.reload();
 					}else{
-						alert("아이디 또는 패스워드가 틀립니다.");
+						alert("로그인에 실패하였습니다!");
 					}
 				},error : function(){
 					alert("죄송합니다. 잠시후 다시 이용해 주세요!!");

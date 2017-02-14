@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="explanation/explanation2.css">
 <script src="js/jquery-3.1.1.min.js"></script>
-<script src="css/main_header_modify0120.js"></script>
+<script src="css/main_header_modify0213.js"></script>
 <script src="explanation/sub01.js"></script>
 <title>사이트 소개</title>
 </head>

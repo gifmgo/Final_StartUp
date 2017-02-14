@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="sweet/sweetalert.min.js"></script>
-<script src="firstM/index_final_modify_20170120.js"></script>
+<script src="firstM/index_final_modify_20170213.js"></script>
 <title>생활정치</title>
 </head>
 <body>

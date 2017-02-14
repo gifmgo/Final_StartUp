@@ -14,7 +14,7 @@
 
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-<script src="css/main_header_modify0120.js"></script>
+<script src="css/main_header_modify0213.js"></script>
 <script src="paliament/paliamentTalk.js"></script>
 <title>의원 상세 정보</title>
 </head>

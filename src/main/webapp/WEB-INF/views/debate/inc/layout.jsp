@@ -18,7 +18,7 @@
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jquery-3.1.1.min.js"></script>
-<script src="css/main_header_modify0120.js"></script>
+<script src="css/main_header_modify0213.js"></script>
 <script src="debate/debate_0207.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
