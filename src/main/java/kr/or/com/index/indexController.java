@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.View;
 
 @Controller
@@ -14,6 +17,21 @@ public class indexController {
 
 	@Autowired
 	private View jsonview;
+	
+	//접속자 확인
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public void checkIp(){
+		System.out.println(" 접속자확인==================");
+		/*String ip = request.getRemoteAddr();*/
+		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+        String ip = req.getHeader("X-FORWARDED-FOR");
+        if (ip == null){
+        	ip = req.getRemoteAddr();
+        }
+            
+		System.out.println(" ip----------------------"+ip);
+	}
+	
 	
 	@RequestMapping("/faceBook.do")
 	public View fIndex(HttpServletRequest request, String img, String name, String id, Model model){
@@ -47,9 +65,11 @@ public class indexController {
 	@RequestMapping("/index.do")
 	public String index(){
 		System.out.println("인덱스 . do ");
+		
 		return "index";
 	}
 	
+
 	//페이지 소개
 	@RequestMapping("/explanation.do")
 	public String explanation(){

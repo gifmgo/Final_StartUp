@@ -45,5 +45,8 @@
       <location>/error_500.do</location>
    </error-page>
   
+  <listener>
+    <listener-class>kr.or.com.visit.VisitSessionListener</listener-class>
+  </listener>
   
 </web-app>
