@@ -16,7 +16,7 @@
          <ul class="dropdown-menu">
            <li><a href="AdminNotice.do">공지사항</a></li>
            <li><a href="AdminDebate.do">토론주제</a></li>
-           <li><a href="#">유저관리</a></li>
+           <li><a href="AdminBanUserList.do">유저관리</a></li>
            <li><a href="#">게시판</a></li>
          </ul>
        </li>
