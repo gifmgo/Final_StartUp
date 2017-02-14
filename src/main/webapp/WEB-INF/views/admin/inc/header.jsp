@@ -5,7 +5,7 @@
      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
        <span class="sr-only">Toggle navigation</span>
      </button>
-     <a class="navbar-brand" href="#">생활정치</a>
+     <a class="navbar-brand" href="adminIndex.do">생활정치</a>
    </div>
    <div class="collapse navbar-collapse" id="navbar-collapse-01">
      <ul class="nav navbar-nav navbar-left">
@@ -14,8 +14,8 @@
          <a href="#" class="dropdown-toggle" data-toggle="dropdown">메뉴보기 <b class="caret"></b></a>
          <span class="dropdown-arrow"></span>
          <ul class="dropdown-menu">
-           <li><a href="#">공지사항</a></li>
-           <li><a href="#">토론주제</a></li>
+           <li><a href="AdminNotice.do">공지사항</a></li>
+           <li><a href="AdminDebate.do">토론주제</a></li>
            <li><a href="#">유저관리</a></li>
            <li><a href="#">게시판</a></li>
          </ul>
