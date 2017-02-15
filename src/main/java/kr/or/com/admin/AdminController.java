@@ -54,6 +54,7 @@ public class AdminController {
 	@RequestMapping("/banUser.do")
 	public String banUser(String banId){
 		System.out.println("==============test: "+banId);
+		
 		return null;
 	}
 	
