@@ -15,6 +15,13 @@
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="sweet/sweetalert.min.js"></script>
 <script src="firstM/index_final_modify_20170213.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6344194409071079",
+    enable_page_level_ads: true
+  });
+</script>
 <title>생활정치</title>
 </head>
 <body>

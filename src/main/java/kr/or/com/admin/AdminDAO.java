@@ -16,4 +16,7 @@ public interface AdminDAO {
 	
 	//차단유저 해제하기
 	public int deletebanId(String string);
+
+	//토론 주제 등록하기
+	public int insertSubject(String admin_debate_debateword);
 }

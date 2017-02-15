@@ -69,5 +69,19 @@ public class debateService {
 		}
 		return dto;
 	}
+   
+	//비디오 링크 가져오기
+	public admin_DebateDTO videosrc() {
+		debateDAO dao = sqlSession.getMapper(debateDAO.class);
+		admin_DebateDTO dto=null;
+	  try{
+		  dto =  dao.videosrc();
+		  System.out.println(" 서비스=========="+dto.toString());
+	  }catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+		return dto;
+	}
 	
 }

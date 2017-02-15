@@ -17,11 +17,14 @@
 <!-- <link rel="stylesheet" type="text/css" href="debate/debate_0203.css"> -->
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="flatUi/dist/css/flat-ui.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="flatUi/dist/img/favicon.ico">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="css/main_header_modify0213.js"></script>
 <script src="js/jquery.tubular.1.0.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>개발자 포럼</title>
 <script>
 $("document").ready(function(){
@@ -41,6 +44,11 @@ $("document").ready(function(){
 	<tiles:insertAttribute name="content" />
 	<!--풋터-->
 	<tiles:insertAttribute name="footer" />
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="flatUi/dist/js/flat-ui.min.js"></script>
+    <script src="flatUi/assets/js/application.js"></script>
 
 </body>
 </html>

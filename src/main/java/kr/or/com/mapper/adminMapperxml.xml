@@ -23,5 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	delete BanUser where banUserId = #{banUserId}
  </delete>
  
- 
+ <!-- 토론 주제 등록하기 -->
+ <insert id="insertSubject" parameterType="String">
+   insert into admindebate(admin_debate_debateword, no) values(#{admin_debate_debateword}, ADMINDEABTE_SEQ.nextval)
+ </insert>
 </mapper>
