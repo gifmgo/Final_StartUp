@@ -18,7 +18,7 @@ function debateAdmin(){
 }
 
 //관리자 - 토크별 리스트 보기
-function banUser(){
+function AdminDebateList(){
 	location.href="AdminDeabteList.do";
 }
 
