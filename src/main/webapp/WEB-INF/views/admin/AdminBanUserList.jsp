@@ -11,7 +11,7 @@
 </div>
   <div class="container">
    		<div class="form-group col-md-offset-5 col-md-7">
-			<button type="button" class="btn btn-info" onclick="">차단해제하기</button>
+			<button type="button" class="btn btn-info" onclick="deleteBan()">차단해제하기</button>
 			<button type="button" class="btn btn-danger" onclick="ban()">차단하기</button>		
 		</div>
   </div>
@@ -34,7 +34,7 @@
 	         <td>${list.id}</td>
 	         <td>${list.nickname}</td>
 	         <c:choose>
-	          <c:when test="${list.ban !=null}">
+	          <c:when test="${list.banUserId !=null}">
 	             	<td style="text-align: center;"><span class="glyphicon glyphicon-remove" style="font-size: 32px; color: red"></span></td>
 	          </c:when>
 	          <c:otherwise>

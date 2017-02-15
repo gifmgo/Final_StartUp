@@ -5,6 +5,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="kr.or.com.admin.AdminDAO">
  <select id="userList" resultType="kr.or.com.admin.BanUserDTO">
-    select id, nickname,(select banUserId from BanUser b where m.id=b.BANUSERID)as ban from member m
+    select id, nickname,(select banUserId from BanUser b where m.id=b.BANUSERID)as banUserId from member m
  </select>
+ 
+ <!-- 차단 전 아이디 확인 -->
+ <select id="checkId" resultType="kr.or.com.admin.BanUserDTO">
+ select banUserId from BanUser
+ </select>
+ 
+ <!-- 차단하기 -->
+ <insert id="insertbanId" parameterType="kr.or.com.admin.BanUserDTO">
+   insert into BanUser 
+   (banuserid) values (#{banUserId})
+ </insert>
+ 
+ <delete id="deletebanId" parameterType="kr.or.com.admin.BanUserDTO">
+ 	delete BanUser where banUserId = #{banUserId}
+ </delete>
+ 
+ 
 </mapper>
