@@ -10,93 +10,49 @@
        <h1>커뮤니티</h1>
        <p>설명 설명 설명</p>
        <article>
+       	   <div>
+           		<h1 class="dashH">공지사항<span onclick="location.href='board.do?category=공지사항'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <hr class="titleHr"/>
+               <ul class="dashList">
+                   <c:forEach var="list" items="${qa}">
+					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						<span>${list.title}</span><hr class="listHr"/>
+					</li>
+					</c:forEach>
+               </ul>
+           </div>
            <div>
                <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=자유게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
+               <hr class="titleHr"/>
                <ul class="dashList">
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
+						<span>${list.title}</span><hr class="listHr"/>
 					</li>
 					</c:forEach>
                </ul>
            </div>
            <div>
            	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=오늘의 이슈'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
+          	   <hr class="titleHr"/>
                <ul class="dashList">
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
+						<span>${list.title}</span><hr class="listHr"/>
 					</li>
 					</c:forEach>
 				</ul>
            </div>
            <div>
 	           	<h1 class="dashH">정치게시판<span onclick="location.href='board.do?category=정치게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-	               <hr/>
+	               <hr class="titleHr"/>
 	               <ul class="dashList">
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
+							<span>${list.title}</span><hr class="listHr"/>
 						</li>
 				   </c:forEach>
 	               </ul>
-           </div>
-           <div>
-           		<h1 class="dashH">이미지 갤러리<span onclick="location.href='board.do?category=이미지 갤러리'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
-               <ul class="dashList">
-                   <c:forEach var="list" items="${gif}">
-					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
-					</li>
-					</c:forEach>
-               </ul>
-           </div>
-           <div>
-           		<h1 class="dashH">토론방<span onclick="location.href='board.do?category=토론방'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
-               <ul class="dashList">
-                   <c:forEach var="list" items="${chat}">
-					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
-					</li>
-					</c:forEach>
-               </ul>
-           </div>
-           <div>
-           		<h1 class="dashH">연예게시판<span onclick="location.href='board.do?category=연예게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
-               <ul class="dashList">
-                   <c:forEach var="list" items="${entertainment}">
-					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
-					</li>
-					</c:forEach>
-               </ul>
-           </div>
-           <div>
-           		<h1 class="dashH">사회게시판<span onclick="location.href='board.do?category=사회게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
-               <ul class="dashList">
-                   <c:forEach var="list" items="${society}">
-					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
-					</li>
-					</c:forEach>
-               </ul>
-           </div>
-           <div>
-           		<h1 class="dashH">공지사항/QnA<span onclick="location.href='board.do?category=공지사항/QnA'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr/>
-               <ul class="dashList">
-                   <c:forEach var="list" items="${qa}">
-					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						${list.title}<span>${list.regdate}</span>
-					</li>
-					</c:forEach>
-               </ul>
            </div>
         </article>
        <!-- <div id="more"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>-->
