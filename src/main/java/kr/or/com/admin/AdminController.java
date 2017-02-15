@@ -35,6 +35,31 @@ public class AdminController {
 		return "admin.AdminDebate";
 	}
 	
+	//관리자 토론 주제 등록
+	@RequestMapping("/insertSubject.do")
+	public String insertSubject(String subject, Model model){
+		System.out.println("====주제=========="+subject);
+		int result =0;
+		String msg, link="";
+		try{
+			result=adminservice.insertSubject(subject);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(" result???????????"+result);
+		if(result>0){
+			msg="등록 성공";
+			link="AdminDebate.do";
+		}else{
+			msg="등록 실패";
+			link="AdminDebate.do";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("link", link);
+		return "admin.AdminRedirect";
+	}
+	
 	//관리자 토론 리스트
 	@RequestMapping("/AdminDeabteList.do")
 	public String adminDeabteList(){

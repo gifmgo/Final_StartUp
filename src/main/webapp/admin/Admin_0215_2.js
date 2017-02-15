@@ -124,6 +124,10 @@ $(function(){
 	 }
  });
 	
-  
+  $('#insertSubjectBtn').click(function(){
+	  var subject=$('#subject').val();
+	 location.href="insertSubject.do?subject="+subject;
+	
+  });
  
 });
