@@ -37,20 +37,18 @@
 /******************** 변경이 있는 부분   **************/
 
 #mainMenu {
-	position:absolute;
-	width:auto;
+	position:relative;
+	width: 63%;
 	height:25px;
-	bottom:25px;
-	left:50%;
-	transform:translateX(-50%);
+	top:45px;
+	margin:0 auto;
 }
 
 #mainMenu>li {
-	margin-right:100px;
+	margin-left:10%;
 	height:100%;
 	box-sizing:border-box;
 }
-
 
 
 #mainMenu>li:hover>a {
@@ -66,15 +64,6 @@
 	
 }
 
-#mainMenu>li:last-child {
-	margin:0;	
-}
-
-
-#mainMenu>li:last-child:hover #b_menu {
-	height:50px;	
-}
-
 #nav>div:last-of-type {
 	position:absolute;
 	top:0;
@@ -88,8 +77,8 @@
 #b_menu {
 	position:absolute;
 	top:50px;
-	left:250px;
-	width:440px;
+	left:35%;
+	width:500px;
 	height:0;
 	transition:height 0.4s ease-out;
 	overflow:hidden;
@@ -604,7 +593,18 @@
    color:#ccc;
    font:14px/30px Nanum;   
 }
+/* 
+@media only screen and (max-width:1230px) {
+	#mainMenu>li {
+		margin-right:60px;
+	}
+}
 
+@media only screen and (max-width:1133px) {
+	#mainMenu>li {
+		margin-right:45px;
+	}
+} */
 
 @media only screen and (max-width:1024px) {
 	
