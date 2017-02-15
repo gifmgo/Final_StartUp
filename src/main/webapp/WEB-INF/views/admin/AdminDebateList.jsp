@@ -1,37 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<div class="container">
-	<div class="demo-row typography-row">
-		<div class="demo-title">
-			<h3 class="demo-panel-title">토론하기</h3>
-		</div>
-		<div class="demo-content text-center">
-			<div class="demo-type-example">
-	      		<span class="demo-text-note"></span>
-	          <blockquote>
-	          	<p style="margin-top:5%;">현재 키워드는 <span style="color: red;">최순실</span>입니다.</p>
-	          </blockquote>
-      		</div>
-		</div>
-	</div>
-</div>
-<div class="container" style="height: 30%;">
-	<div class="row">
-		<div class="col-md-offset-4 col-md-4">
-			<div class="well">
-				<form>
-					<label>첫번째 주소  </label><input type="text" class="form-control">
-					<label>두번째 주소  </label><input type="text" class="form-control">
-				</form>
+<section style="width:100%; min-height:300px;">
+	<div class="container">
+		<div class="demo-row typography-row">
+			<div class="demo-title">
+				<h3 class="demo-panel-title">토론하기</h3>
+			</div>
+			<div class="demo-content text-center">
+				<div class="demo-type-example">
+		      		<span class="demo-text-note"></span>
+		          <blockquote>
+		          	<p style="margin-top:5%;">현재 키워드는 <span style="color: red;">최순실</span>입니다.</p>
+		          </blockquote>
+	      		</div>
 			</div>
 		</div>
-	</div>		
-</div>
+	</div>
+	<div class="container" style="min-height: 30%;">
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4">
+				<div class="well">
+					<form>
+						<label>첫번째 주소  </label><input type="text" class="form-control">
+						<label>두번째 주소  </label><input type="text" class="form-control">
+					</form>
+				</div>
+			</div>
+		</div>		
+	</div>
+</section>
 <hr/>
-<div class="container-fluid" style="background-color: #ecf0f1; min-height: 500px;">
-	<div class="container" style="margin-top:5%;">
-	
+<div class="container-fluid" style="background-color: #ecf0f1; height:100%;">
+  <div class="container" style="margin-top:5%;">
 	<div class="row">
 		<div class="col-md-4">
 			<select data-toggle="select" class="form-control select select-success mrs mbm" id="chooseNoticeSelect">
