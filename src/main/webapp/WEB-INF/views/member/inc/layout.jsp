@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="member_f/personal_info.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jquery-3.1.1.min.js"></script>
-<script src="css/main_header_modify0120.js"></script>
+<script src="css/main_header_modify0213.js"></script>
 <script src="member_f/member_modify.js"></script>
 <title>커뮤니티</title>
 </head>

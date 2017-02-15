@@ -3,8 +3,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <section style="width:100%; height:100%;"> -->
 <div class="container-fluid">
-	<h1 class="text-center">${keyWord}에 대하여</h1>
-	<br/>
+	<div class="jumbotron" style="width:100%; margin-top:1%; background-color: #ecf0f1">
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4" style="margin-top:-2%;">
+				<div class="panel panel-default text-center"> 
+					<div class="panel-body" style="background-color: #1abc9c;"><span style="color:#fff">이달의 키워드</span><br/><span class="text-right" style="color:#fff">'${keyWord}'</span></div> 
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-5 text-center">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/jVJlwY4pGQA" frameborder="0" allowfullscreen></iframe>
+				</div><br/>
+				<span>JTBC 뉴스</span>
+			</div>
+			
+			<div class="col-md-5 text-center">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Hy5Sse4gkPM" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<br/>
+				<span>Chosun 뉴스</span>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+<br/>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-5">
@@ -26,7 +53,7 @@
 				</ul>
 		</div>
 		
-		<div class="col-md-5" style="left:2%;">
+		<div class="col-md-5">
 			<h4>보수</h4>
 			<hr/>
 			<ul class="list-group" style="float:none;">
@@ -87,7 +114,7 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<h4>로그인 하시면 글을 쓸 수 있습니다.</h4>
+				<h4 class="text-center">로그인 하시면 글을 쓸 수 있습니다.</h4>
 			</c:otherwise>
 		</c:choose>
 		</div>

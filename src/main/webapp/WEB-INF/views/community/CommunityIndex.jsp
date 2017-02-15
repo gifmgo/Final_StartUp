@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>​
     
     <input type="hidden" id="hidden_id" value="${id}">
     <input type="hidden" id="hidden_favorit" value='${favorit}'>
@@ -11,44 +12,88 @@
        <article>
            <div>
                <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=자유게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr class="titleHr"/>
+               <hr/>
                <ul class="dashList">
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						${list.title}<span>${list.regdate}</span>
 					</li>
 					</c:forEach>
                </ul>
            </div>
            <div>
            	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=오늘의 이슈'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-          	   <hr class="titleHr"/>
+               <hr/>
                <ul class="dashList">
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						${list.title}<span>${list.regdate}</span>
 					</li>
 					</c:forEach>
 				</ul>
            </div>
            <div>
 	           	<h1 class="dashH">정치게시판<span onclick="location.href='board.do?category=정치게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-	               <hr class="titleHr"/>
+	               <hr/>
 	               <ul class="dashList">
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-							<span>${list.title}</span><hr class="listHr"/>
+						${list.title}<span>${list.regdate}</span>
 						</li>
 				   </c:forEach>
 	               </ul>
            </div>
            <div>
+           		<h1 class="dashH">이미지 갤러리<span onclick="location.href='board.do?category=이미지 갤러리'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <hr/>
+               <ul class="dashList">
+                   <c:forEach var="list" items="${gif}">
+					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						${list.title}<span>${list.regdate}</span>
+					</li>
+					</c:forEach>
+               </ul>
+           </div>
+           <div>
+           		<h1 class="dashH">토론방<span onclick="location.href='board.do?category=토론방'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <hr/>
+               <ul class="dashList">
+                   <c:forEach var="list" items="${chat}">
+					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						${list.title}<span>${list.regdate}</span>
+					</li>
+					</c:forEach>
+               </ul>
+           </div>
+           <div>
+           		<h1 class="dashH">연예게시판<span onclick="location.href='board.do?category=연예게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <hr/>
+               <ul class="dashList">
+                   <c:forEach var="list" items="${entertainment}">
+					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						${list.title}<span>${list.regdate}</span>
+					</li>
+					</c:forEach>
+               </ul>
+           </div>
+           <div>
+           		<h1 class="dashH">사회게시판<span onclick="location.href='board.do?category=사회게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <hr/>
+               <ul class="dashList">
+                   <c:forEach var="list" items="${society}">
+					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						${list.title}<span>${list.regdate}</span>
+					</li>
+					</c:forEach>
+               </ul>
+           </div>
+           <div>
            		<h1 class="dashH">공지사항/QnA<span onclick="location.href='board.do?category=공지사항/QnA'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
-               <hr class="titleHr"/>
+               <hr/>
                <ul class="dashList">
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						${list.title}<span>${list.regdate}</span>
 					</li>
 					</c:forEach>
                </ul>
@@ -60,27 +105,29 @@
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
-		<p style="color:red; margin-top:-30px;">'최순실'</p>
+		<p style="color:red; margin-top:-30px;">'${keyWord}'</p>
         <p>여러분들의 의견을 소신껏 말해주세요 !</p><br/><br/>
-				<%-- <div id="textAreaDiv">
-					<c:if test="${id != null}">
-			       	    	<form>
-			       	    		<div class="form-group">
-				       	    		<input type="radio">진보
-				       	    		<input type="radio">보수
-			       	    		</div>
-			       	    		<br/>
-			       	    		<textarea id="myTalkTextArea"></textarea>
-			       	    		<button id="myTalkBtn">글쓰기</button>
-			       	    	</form>
-	       	    	</c:if>
-	       	    </div> --%>
 		<article>
 	       	    <div id="jinboDiv">
 	       	   		<h4>나는 진보다.</h4>
 	       	   		<br/>
 					<div class="jinbo_sub">
-						<span class="titleSpan"><a href="#">안녕하세요..</a></span><span class="dateSpan">2017-02-01</span>		
+						<c:choose>
+							<c:when test="${debate != null}">
+							<c:forEach var="dto" items="${debate}">
+								<c:if test="${dto.choose eq '진보'}">
+									<span class="titleSpan"><a href="#">${dto.title}</a></span>
+									<span class="dateSpan">
+										${dto.writeDate}
+									</span>
+									<br/>
+								</c:if>
+							</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<span>의견을 남겨주세요 !</span>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				
@@ -89,6 +136,7 @@
 					<br/>
 					<div class="bosu_sub">
 						<span class="titleSpan"><a href="#">저는 보수청년입니다.</a></span><span class="dateSpan">2017-02-01</span>
+						<span class="titleSpan"><a href="#">저는 보수청년입니다2.</a></span><span class="dateSpan">2017-02-01</span>
 					</div>
 				</div>
 		</article>

@@ -74,12 +74,17 @@ public class MemberController {
 		
 		MemberDTO result = service.Login(dto);
 		
+		
 		System.out.println("로그인 결과 : "+result);
 		if(result != null){
-			HttpSession session = request.getSession();
-			session.setAttribute("memberDTO", result);
-			session.setAttribute("id", dto.getId());
-			model.addAttribute("result","성공");
+			if(dto.getId().equals("stpark89@naver.com")){
+				model.addAttribute("result","관리자");
+			}else{
+				HttpSession session = request.getSession();
+				session.setAttribute("memberDTO", result);
+				session.setAttribute("id", dto.getId());
+				model.addAttribute("result","성공");
+			}
 			return jsonview;	
 		}else{
 			model.addAttribute("result","실패");

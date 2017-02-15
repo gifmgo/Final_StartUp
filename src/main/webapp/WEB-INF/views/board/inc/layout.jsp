@@ -15,7 +15,7 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 <script type="text/javascript" src="js/Board.js"></script>
-<script src="css/main_header_modify0120.js"></script>
+<script src="css/main_header_modify0213.js"></script>
 <title>게시판</title>
 </head>
 <body>

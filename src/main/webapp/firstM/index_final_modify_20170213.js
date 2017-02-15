@@ -85,7 +85,10 @@ $(document).ready(function(e) {
 					pw : pw
 				},		
 				success : function(data){
-					if(data.result == "성공"){
+					
+					if(data.result == "관리자"){
+						location.href="adminIndex.do";
+					}else if(data.result == "성공"){
 						location.reload();
 					}else{
 						alert("로그인에 실패하였습니다!");
