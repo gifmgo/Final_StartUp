@@ -95,7 +95,8 @@
                     <li><a href="board.do?category=사회게시판">사회게시판</a></li>
                     <li><a href="board.do?category=공지사항/QnA">공지사항/QnA</a></li>
                 </ul>
-          </li>
+          	</li>
+          	<li><a href="Programmer.do" class="fdMenu">개발자 포럼</a></li>
    		</ul>
         
        	<c:choose>
@@ -160,6 +161,7 @@
 	        <li><a href="statute.do">의안</a></li>
 	        <li><a href="Member_Parliament.do">의원</a></li>
 	        <li><a href="CommunityIndex.do">커뮤니티</a></li>
+	        <li><a href="Programmer.do">개발자 포럼</a></li>
 	    </ul>
     </aside>
 </body>

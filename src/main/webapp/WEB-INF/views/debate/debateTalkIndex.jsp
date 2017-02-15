@@ -11,7 +11,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-5 text-center">
@@ -31,11 +30,18 @@
 			<div class="col-md-1"></div>
 		</div>
 	</div>
-<br/>
+<br/><br/>
+	<div class="row">
+			<div class="col-md-offset-4 col-md-4" style="margin-top:-2%;">
+				<div class="panel panel-default text-center"> 
+					<div class="panel-body" style="background-color: #1abc9c;"><span style="color:#fff">여러분의 한마디</span></div> 
+				</div>
+			</div>
+	</div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-5">
-			<h4>진보</h4>
+			<h4 class="text-center">진보</h4>
 			<hr/>
 				<ul class="list-group" style="float:none;">
 				<c:choose>
@@ -54,7 +60,7 @@
 		</div>
 		
 		<div class="col-md-5">
-			<h4>보수</h4>
+			<h4 class="text-center">보수</h4>
 			<hr/>
 			<ul class="list-group" style="float:none;">
 				<c:choose>
