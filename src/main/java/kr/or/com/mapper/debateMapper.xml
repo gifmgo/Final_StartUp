@@ -11,12 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select debateNo, debateWord, choose, nickName, title, content, viewcount, writeDate 
 		from debate d
 		join adminDebate ad
-		on ad.admin_deabte_debateWord = d.debateWord
+		on ad.admin_debate_debateword = d.debateWord
 	</select>
 	
 	<!-- 키워드 가져옴 -->
 	<select id="selectKeyWord" resultType="String">
-		select admin_deabte_debateWord from adminDebate
+		select admin_debate_debateword from adminDebate a where a.no=(select max(no) from adminDebate b) 
 	</select>
 		
 	<insert id="debateWrite" parameterType="kr.or.com.debate.debateDTO">
@@ -27,4 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from debate where debateNo = #{no}
 	</select>
 	
+	<!-- 비디오 링크 -->
+	<select id="videosrc" resultType="kr.or.com.debate.admin_DebateDTO">
+	  select firstvideo, secondvideo, admin_debate_debateword from admindebate a where a.no=(select max(no) from admindebate b)
+	</select>
 </mapper>

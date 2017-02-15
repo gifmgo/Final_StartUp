@@ -40,16 +40,17 @@ public class DebateController {
 	@RequestMapping("/moreCommunityTalk.do")
 	public String debate(Model model){
 		List<debateDTO> list = null;
-		String keyWord = "";
+		admin_DebateDTO link=null;
 		try{	
 			 //리스트 담아둠
 			 list = service.list();
-			 //키워드 담아둠
-			 keyWord = service.debateKeyWord();
+			 //키워드, 링크 담아둠
+			 link = service.videosrc();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		model.addAttribute("keyWord", keyWord);
+		
+		model.addAttribute("keyWord", link);
 		model.addAttribute("list", list);
 		return "debate.debateTalkIndex";
 	}

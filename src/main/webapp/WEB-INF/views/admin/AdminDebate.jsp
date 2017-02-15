@@ -22,7 +22,7 @@
 	               <div class="input-group">
               		<input type="text" class="form-control">
               			<span class="input-group-btn">
-                			<button class="btn btn-success" type="button">등록</button>
+                			<button class="btn btn-success" id="insertSubjectBtn" type="button">등록</button>
               			</span>
             	</div>  
 	          </div>
