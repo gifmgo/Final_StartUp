@@ -396,7 +396,7 @@ $(document).ready(function(e) {
 	});
 	
 	$('#noticeIndexBtn').click(function(){
-		location.href="NoticeIndex.do";
+		location.href="Programmer.do";
 	});
 	
 });
