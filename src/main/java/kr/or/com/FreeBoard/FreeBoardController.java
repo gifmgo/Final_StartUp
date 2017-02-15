@@ -45,7 +45,7 @@ public class FreeBoardController {
         	if(category.equals("자유게시판")){
         	}else if(category.equals("오늘의 이슈")){
         	}else if(category.equals("정치게시판")){
-        	}else if(category.equals("공지사항/QnA")){
+        	}else if(category.equals("공지사항")){
         	}else{
         		category="자유게시판";
         		return null;

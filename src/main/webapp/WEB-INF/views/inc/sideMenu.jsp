@@ -3,7 +3,7 @@
 <div class="col-sm-3 sidenav">
       <h4>카테고리</h4>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#section1">법률안</a></li>
+        <li><a href="#section1">의안</a></li>
         <li><a href="#section2">국회의원</a></li>
         <li><a href="FreeBoard.do">자유게시판</a></li>
       </ul><br>

@@ -72,7 +72,7 @@ public class BoardController {
 		List<FreeBoardDTO> free = free_Service.selectBestBoard("자유게시판", 5);
 		List<FreeBoardDTO> issue = free_Service.selectBestBoard("오늘의 이슈", 5);
 		List<FreeBoardDTO> politics = free_Service.selectBestBoard("정치게시판", 5);
-		List<FreeBoardDTO> qa = free_Service.selectBestBoard("공지사항/QnA", 5);
+		List<FreeBoardDTO> qa = free_Service.selectBestBoard("공지사항", 5);
 
 		String favorit = "";
 		if (id != null) {

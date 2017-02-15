@@ -363,7 +363,7 @@ $(document).ready(function(e) {
 	
 	$("#mainMenu").find("li").eq(3).hover(function(){
 		
-		$("#menu_bg").stop().animate({height:"80px"},300);
+		$("#menu_bg").stop().animate({height:"40px"},300);
 	}, function(){
 		
 		$("#menu_bg").stop().animate({height:"0px"},300);
