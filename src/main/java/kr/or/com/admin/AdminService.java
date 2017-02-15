@@ -49,6 +49,12 @@ public class AdminService {
 		return checkresult;
 	}
 
+	public int insertSubject(String subject) {
+		AdminDAO dao= sqlsession.getMapper(AdminDAO.class);
+		int result = dao.insertSubject(subject);
+		return result;
+	}
+
 	
 	
 

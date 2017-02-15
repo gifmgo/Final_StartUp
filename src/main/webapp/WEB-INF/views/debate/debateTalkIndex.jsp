@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-offset-4 col-md-4" style="margin-top:-2%;">
 				<div class="panel panel-default text-center"> 
-					<div class="panel-body" style="background-color: #1abc9c;"><span style="color:#fff">이달의 키워드</span><br/><span class="text-right" style="color:#fff">'${keyWord}'</span></div> 
+					<div class="panel-body" style="background-color: #1abc9c;"><span style="color:#fff">이달의 키워드</span><br/><span class="text-right" style="color:#fff">'${keyWord.admin_debate_debateword}'</span></div> 
 				</div>
 			</div>
 		</div>
@@ -15,14 +15,14 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-5 text-center">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/jVJlwY4pGQA" frameborder="0" allowfullscreen></iframe>
+					<iframe class="embed-responsive-item" src="${keyWord.firstvideo}" frameborder="0" allowfullscreen></iframe>
 				</div><br/>
 				<span>JTBC 뉴스</span>
 			</div>
 			
 			<div class="col-md-5 text-center">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Hy5Sse4gkPM" frameborder="0" allowfullscreen></iframe>
+					<iframe class="embed-responsive-item" src="${keyWord.secondvideo}" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<br/>
 				<span>Chosun 뉴스</span>

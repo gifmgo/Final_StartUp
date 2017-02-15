@@ -11,5 +11,7 @@ public interface debateDAO {
 	public List<debateDTO> listdebateDTO();
 
 	public debateDTO selectDetail(int no);
+
+	public admin_DebateDTO videosrc();
 	
 }
