@@ -105,11 +105,15 @@ public class FreeBoardController {
 	
 	//게시판 상세보기
 	@RequestMapping("/boardDetail.do")
-	public String BoardDetail(String no, String currentpage, Model model){
+	public String BoardDetail(HttpServletRequest request, String no, String currentpage, Model model){
 		
-		FreeBoardDTO dto=free_Service.selectDetail(no);				 
-		List<CommentDTO> list = free_Service.commentList(no);		
+		HttpSession session = request.getSession();
+		
+		FreeBoardDTO dto=free_Service.selectDetail(no, session.getAttribute("lastPage").toString());
+		List<CommentDTO> list = free_Service.commentList(no);
 		List<CommentDTO> comment = free_Service.commSelect(no);
+		
+		session.setAttribute("lastPage", no);
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("currentpage", currentpage);
@@ -225,9 +229,10 @@ public class FreeBoardController {
 	
 	//글 수정 view
 	@RequestMapping("boardModifyView.do")
-	public String boardModifyView(String no, String currentpage, Model model){
+	public String boardModifyView(HttpServletRequest requset,String no, String currentpage, Model model){
 		
-		FreeBoardDTO dto=free_Service.selectDetail(no);
+		HttpSession session = requset.getSession();
+		FreeBoardDTO dto=free_Service.selectDetail(no, session.getAttribute("lastPage").toString());
 
 		model.addAttribute("dto", dto);
 		model.addAttribute("currentpage", currentpage);

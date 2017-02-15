@@ -38,7 +38,7 @@ public class FreeBoardService {
 	}
 	
 	//자유게시판 상세 글보기
-	public FreeBoardDTO selectDetail(String no){
+	public FreeBoardDTO selectDetail(String no, String lastPage){
 		
 		FreeBoardDTO dto = null;
 		FreeBoardDAO dao = sqlSession.getMapper(FreeBoardDAO.class);
