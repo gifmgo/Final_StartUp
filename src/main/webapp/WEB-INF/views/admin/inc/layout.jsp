@@ -26,6 +26,6 @@
     <script src="flatUi/dist/js/vendor/video.js"></script>
     <script src="flatUi/dist/js/flat-ui.min.js"></script>
     <script src="flatUi/assets/js/application.js"></script>
-	<script src="admin/Admin.js"></script>
+	<script src="admin/Admin_0215.js"></script>
 </body>
 </html>
