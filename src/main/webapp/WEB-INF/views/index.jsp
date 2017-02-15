@@ -86,14 +86,11 @@
             <li><a href="Member_Parliament.do" class="fdMenu">의원</a></li>
             <li><a href="CommunityIndex.do">커뮤니티</a>
             	<ul id="b_menu">
+                    <li><a href="board.do?category=공지사항">공지사항</a></li>
                 	<li><a href="board.do?category=오늘의 이슈">오늘의 이슈</a></li>
                 	<li><a href="board.do?category=자유게시판">자유게시판</a></li>
                     <li><a href="board.do?category=정치게시판">정치게시판</a></li>
-                    <li><a href="board.do?category=이미지 갤러리">이미지 갤러리</a></li>
-                    <li><a href="board.do?category=토론방">토론방</a></li>
-                	<li><a href="board.do?category=연예게시판">연예게시판</a></li>
-                    <li><a href="board.do?category=사회게시판">사회게시판</a></li>
-                    <li><a href="board.do?category=공지사항/QnA">공지사항/QnA</a></li>
+                    <li><a href="moreCommunityTalk.do">토론방</a></li>
                 </ul>
           </li>
    		</ul>
