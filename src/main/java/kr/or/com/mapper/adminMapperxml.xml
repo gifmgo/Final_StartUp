@@ -24,7 +24,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  </delete>
  
  <!-- 토론 주제 등록하기 -->
- <insert id="insertSubject" parameterType="String">
-   insert into admindebate(admin_debate_debateword, no) values(#{admin_debate_debateword}, ADMINDEABTE_SEQ.nextval)
+ <insert id="insertSubject" parameterType="kr.or.com.debate.admin_DebateDTO">
+   insert into admindebate(admin_debate_debateword,firstvideo,secondvideo,no) values(#{admin_debate_debateword},#{firstvideo},#{secondvideo},ADMINDEABTE_SEQ.nextval)
  </insert>
+ 
+ <select id="selectAdmin_debateDTO_List" resultType="kr.or.com.debate.admin_DebateDTO">
+ 	select * from admindebate order by no desc
+ </select>
+ 
+ <select id="selectDebateList" resultType="kr.or.com.debate.debateDTO">
+ 	    select debateNo, debateWord, choose, nickName, title, content, viewcount, writeDate 
+		from debate d
+		join adminDebate ad
+		on ad.admin_debate_debateword = d.debateWord
+		where d.debateWord = #{keyword}
+		order by d.debateNo desc
+ </select>
 </mapper>
