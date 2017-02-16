@@ -13,13 +13,13 @@ public class sessionIntercepter extends HandlerInterceptorAdapter {
 	public boolean preHandler(HttpServletRequest request, Object handler) throws Exception{
 		HttpSession session = request.getSession(false);
 		
-		if(session == null){
+		/*if(session == null){
 			session= request.getSession();
 			Date now = new Date();
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 			System.out.println(format.format(now));
 			session.setAttribute("connectId", format.format(now));
-		}
+		}*/
 		
 		return true;
 	}

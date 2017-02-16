@@ -362,10 +362,10 @@ $(document).ready(function(e) {
 	
 	
 	$("#mainMenu").find("li").eq(3).hover(function(){
-		
-		$("#menu_bg").stop().animate({height:"80px"},300);
+		$("#b_menu").css({height:"40px"});
+		$("#menu_bg").stop().animate({height:"40px"},300);
 	}, function(){
-		
+		$("#b_menu").css({height:"0"});
 		$("#menu_bg").stop().animate({height:"0px"},300);
 	});
 	
@@ -396,7 +396,7 @@ $(document).ready(function(e) {
 	});
 	
 	$('#noticeIndexBtn').click(function(){
-		location.href="NoticeIndex.do";
+		location.href="Programmer.do";
 	});
 	
 });

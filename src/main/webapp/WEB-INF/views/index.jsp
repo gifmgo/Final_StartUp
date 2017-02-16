@@ -90,7 +90,7 @@
         <ul id="mainMenu">
         	<li><a href="explanation.do">소개</a></li>
             <li><a href="statute.do" class="fdMenu">의안</a></li>
-            <li><a href="Member_Parliament.do" class="fdMenu">의원</a></li>
+            <li><a href="Member_Parliament.do" class="fdMenu">국회의원</a></li>
             <li><a href="CommunityIndex.do">커뮤니티</a>
             	<ul id="b_menu">
                     <li><a href="board.do?category=공지사항">공지사항</a></li>
@@ -128,25 +128,25 @@
         <div>
         	<div id="bott_menu"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>
             <ul>
-                <li>
+                <li id="statuteBtn">
                     <img src="img/category00.png" alt="의안" width="40%" />
                     <h2 class="hTitle">의안</h2>
-                    <button class="btn" id="statuteBtn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
+                    <button class="btn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
                 </li>
-                <li>
+                <li id="ParliamentBtn">
                     <img src="img/category01.png" alt="의원" width="40%" />
                     <h2 class="hTitle">의원</h2>
-                    <button class="btn" id="ParliamentBtn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
+                    <button class="btn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
                 </li>
-                <li>
+                <li id="boardIndexBtn">
                     <img src="img/category02.png" alt="의안" width="40%" />
                     <h2 class="hTitle">커뮤니티</h2>
-                    <button class="btn" id="boardIndexBtn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
+                    <button class="btn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
                 </li>
-                <li>
+                <li id="noticeIndexBtn">
                     <img src="img/category03.png" alt="의안" width="40%" />
-                    <h2 class="hTitle">공지사항/<br/>Q&A</h2>
-                    <button class="btn" id="noticeIndexBtn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
+                    <h2 class="hTitle">개발자<br/>포럼</h2>
+                    <button class="btn"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> 자세히보기</button>
                 </li>
             </ul>
         </div>

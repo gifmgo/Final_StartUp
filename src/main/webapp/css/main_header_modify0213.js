@@ -362,10 +362,10 @@ $(document).ready(function(e) {
 	
 	
 	$("#mainMenu").find("li").eq(3).hover(function(){
-		
+		$("#b_menu").css({height:"40px"});
 		$("#menu_bg").stop().animate({height:"40px"},300);
 	}, function(){
-		
+		$("#b_menu").css({height:"0"});
 		$("#menu_bg").stop().animate({height:"0px"},300);
 	});
 	
@@ -375,7 +375,6 @@ $(document).ready(function(e) {
 	});
 	
 	$("#side_menu").find("span").click(function() {
-		
 		$("#side_menu").stop().animate({left:"-80%"},700);	
 	});
 	
@@ -394,6 +393,7 @@ $(document).ready(function(e) {
 		location.href="CommunityIndex.do";
 	});
 	
+	//개발자 포럼
 	$('#noticeIndexBtn').click(function(){
 		location.href="NoticeIndex.do";
 	});

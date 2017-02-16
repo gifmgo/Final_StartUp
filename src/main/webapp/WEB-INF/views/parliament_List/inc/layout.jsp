@@ -1,8 +1,3 @@
-<!--  
-   작성자 : 박성준
-   작성일 : 2016-12-19
-   목  적 : 국회의원 정보 보는 페이지
--->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>  
@@ -127,7 +122,6 @@
       var num = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
       var deptCd = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
       var name = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
-      alert("상세보기 클릭시 : "+img + " / num : "+num + " // deptCd : "+deptCd+ " / 이름 : name");
       location.href="PaliamentDetail.do?num="+num+"&dept_cd="+deptCd+"&img="+img+"&name="+name;
    }
 

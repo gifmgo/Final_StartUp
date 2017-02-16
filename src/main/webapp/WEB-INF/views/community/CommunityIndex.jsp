@@ -8,7 +8,7 @@
     
     <section id="dashboard">
        <h1>커뮤니티</h1>
-       <p>설명 설명 설명</p>
+       <!-- <p>이 주 </p> -->
        <article>
        	   <div>
            		<h1 class="dashH">공지사항<span onclick="location.href='board.do?category=공지사항'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
@@ -16,7 +16,7 @@
                <ul class="dashList">
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						<span>${list.title}<img src=""></span><hr class="listHr"/>
 					</li>
 					</c:forEach>
                </ul>
