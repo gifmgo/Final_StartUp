@@ -2,8 +2,11 @@ package kr.or.com.board;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -89,9 +92,15 @@ public class BoardController {
 			model.addAttribute("keyWord",keyWord);
 		}
 		
+		Calendar calendar = new GregorianCalendar(Locale.KOREA);
+		calendar.add(Calendar.DAY_OF_YEAR, 1); // 하루를 더한다.
+
+		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+	    String strDate = fm.format(new Date());
+	    System.out.println(strDate);
 		
 		model.addAttribute("id", id);
-
+		model.addAttribute("now", strDate);
 		model.addAttribute("free", free);
 		model.addAttribute("issue", issue);
 		model.addAttribute("politics", politics);

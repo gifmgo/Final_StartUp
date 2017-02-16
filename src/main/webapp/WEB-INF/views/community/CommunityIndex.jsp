@@ -16,7 +16,13 @@
                <ul class="dashList">
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}<img src=""></span><hr class="listHr"/>
+						<div>
+							<c:if test="${list.regdate > now }">
+								<span class="new">N</span>
+							</c:if>
+							${list.title}
+						</div>
+						<hr class="listHr"/>
 					</li>
 					</c:forEach>
                </ul>
@@ -27,7 +33,18 @@
                <ul class="dashList">
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						<div>
+							<c:choose>
+							<c:when test="${list.regdate > now }">
+								<span class="new">N</span>
+							</c:when>
+							<c:otherwise>
+								비교가 되나요????
+							</c:otherwise>
+							</c:choose>
+							${list.title}
+						</div>
+						<hr class="listHr"/>
 					</li>
 					</c:forEach>
                </ul>
@@ -38,7 +55,13 @@
                <ul class="dashList">
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						<div>
+							<c:if test="${list.regdate > now }">
+								<span class="new">N</span>
+							</c:if>
+							${list.title}
+						</div>
+						<hr class="listHr"/>
 					</li>
 					</c:forEach>
 				</ul>
@@ -49,7 +72,13 @@
 	               <ul class="dashList">
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-							<span>${list.title}</span><hr class="listHr"/>
+							<div>
+							<c:if test="${list.regdate > now }">
+								<span class="new">N</span>
+							</c:if>
+							${list.title}
+						</div>
+						<hr class="listHr"/>
 						</li>
 				   </c:forEach>
 	               </ul>
