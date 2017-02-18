@@ -19,13 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where rn between #{param4} and #{param5}
 	</select>
 	
-	<!-- 베스트 리스트 뽑기 -->
+	<!-- 최신글에서  -> 나중에 베스트 리스트 뽑기 -->
 	<select id="selectBestBoard" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
-		select no, category, title, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, filename, good, viewcnt
+		select no, category, title, content, writer, id, to_char(regdate+1,'YYYYMMDDHH24MI') as regdate, filename, good, viewcnt
 		from (select rownum rn, no, category, title, content, writer, id, regdate, filename, good, viewcnt
 		      from tbl_board
 		      where category = '${param1}'
-		      order by viewcnt desc)
+		      order by no desc)
 		where rownum &lt;= ${param2}
 	</select>
 	
