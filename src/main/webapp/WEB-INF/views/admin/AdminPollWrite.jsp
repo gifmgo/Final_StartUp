@@ -1,3 +1,8 @@
+<!-- 
+	작성일 : 2017-02-18
+	목  적 : 설문지 작성하는 페이지.
+	작성자 : 박성준 
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="container-fluid">
@@ -10,28 +15,29 @@
 		</div>
 		<form class="form-horizontal">
 		<div class="col-md-offset-1 col-md-8" id="pollListDiv">
-			<div class="well pollWell">
-				<div class="dropdown">
-				  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">메뉴
-				  <span class="caret"></span></button>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">단답형</a></li>
-				    <li><a href="#">체크박스</a></li>
-				    <li><a href="#">객관식</a></li>
-				  </ul>
-				</div>
+			<div class="well pollWell" id="firstWell">			
 				<div class="pollStatusDiv">
-				   <div class="form-group">
-				   		<div class="col-md-12">
-				   			<input type="text" class="form-control" placeholder="질문">
-				   		</div>
-				   </div>
-			      <div class="radio">
-				      <label>
-				      		<input type="radio" name="optradio">
-				      		<input type="text" class="form-control answerInput" placeholder="옵션">
-				      </label>
-				  </div>
+				   	   	<div class="form-group col-md-2 customSelectDiv">
+							  <select class="form-control customSelect" id="sel1"  onchange="selectChange(this.options[this.selectedIndex].value, $(this));">
+							    <option value="1">단답형</option>
+							    <option value="2">체크박스</option>
+							    <option value="3">객관식</option>
+							  </select>
+						</div>	
+					   <div class="form-group">
+					   		<div class="col-md-12">
+					   			<input type="text" class="form-control" placeholder="질문">
+					   		</div>
+					   </div>
+				      <div class="form-group">
+				      	<div class="col-md-12">
+				      		<div class="input-group">
+				      				<span class="input-group-addon chooseDiv"></span>
+			      		    		<input type="text" class="form-control answerInput" placeholder="옵션">
+						    		<span class="input-group-addon" onclick="plusSpan($(this));"><i class="glyphicon glyphicon-plus"></i></span>
+						    </div>
+						</div>
+				     </div>
 				</div>
 			</div>
 		</div>
