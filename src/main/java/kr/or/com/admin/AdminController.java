@@ -136,4 +136,10 @@ public class AdminController {
 		return "admin.AdminRedirect";
 	}
 	
+	//관리자 설문지 쓰는 페이지 
+	@RequestMapping("/adminPollWrite.do")
+	public String pollWrite(){
+		return "admin.AdminPollWrite";
+	}
+	
 }
