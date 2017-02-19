@@ -63,7 +63,10 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
+<<<<<<< HEAD
 							
+=======
+>>>>>>> 8af23f3d6d858245a79f36df360907c2b64cf0a5
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">

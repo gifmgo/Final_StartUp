@@ -28,6 +28,14 @@
 	text-align:center;
 }
 
+#dashboard .dashtitle{
+	display: inline-block;
+	max-width:87%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
 #more {
 	position:absolute;
 	width:200px;
@@ -114,6 +122,7 @@
 .dashList li {
 	position:relative;
 	width:100%;
+<<<<<<< HEAD
 	cursor:pointer;
 	border-bottom: 1px dashed #ddd;
 	padding:10px 0; 
@@ -123,6 +132,17 @@
 							white-space:nowrap;text-overflow:ellipsis;vertical-align:middle;}
 
 	
+=======
+	margin-top:9px;
+	cursor: pointer;
+}
+
+.dashList li .listHr {
+	border: 1px dashed #ddd; 
+	width:100%;
+}
+
+>>>>>>> 8af23f3d6d858245a79f36df360907c2b64cf0a5
 /* 나는 진보다, 나는 보수다 */
 #MyTalk{
 	width:100%;
