@@ -36,19 +36,21 @@
 /******************** 변경이 있는 부분   **************/
 
 #mainMenu {
-	position:relative;
-	width: 63%;
+	position:absolute;
+	width: auto;
 	height:25px;
 	top:45px;
-	margin:0 auto;
+	display:inline-block;
+	left:50%;
+	transform:translateX(-50%);
 }
 
 #mainMenu>li {
-	margin-left:10%;
+	margin-right:70px;
 	height:100%;
 	box-sizing:border-box;
 }
-
+#mainMenu>li:last-of-type {margin-right:0;}
 
 
 #mainMenu>li:hover>a {
@@ -580,7 +582,7 @@
 }
 
 
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width:1210px) {
 	
 	
 	#mainMenu {

@@ -37,18 +37,21 @@
 
 /******************** 변경이 있는 부분   **************/
 #mainMenu {
-	position:relative;
-	width: 63%;
+	position:absolute;
+	width: auto;
 	height:25px;
 	top:45px;
-	margin:0 auto;
+	display:inline-block;
+	left:50%;
+	transform:translateX(-50%);
 }
 
 #mainMenu>li {
-	margin-left:10%;
+	margin-right:70px;
 	height:100%;
 	box-sizing:border-box;
 }
+#mainMenu>li:last-of-type {margin-right:0;}
 
 
 #mainMenu>li:hover>a {
@@ -581,7 +584,15 @@
    font:14px/30px Nanum;   
 }
 
-@media only screen and (max-width:1024px) {
+.detail_btn {
+	position:relative !important;
+	left:50% !important;
+	trnasform:translate(-50%) !important;
+	
+}
+
+
+@media only screen and (max-width:1210px) {
 	
 	
 	#mainMenu {
@@ -639,10 +650,6 @@
 		font-size:12px;	
 	}
 	
-	#piechart{
-		position: relative;
-	}
-	
 	.hTitle {
 		padding:30px 0 0 0;
 		font-size:20px;
@@ -668,5 +675,21 @@
 	#nav>div:last-of-type {
 		font-size:20px;
 	}
-
+		
+/*	
+	#loginForm input {
+		margin-top:20px;
+		
+	}
+		
+		
+	#loginForm button {	
+		height:50px;
+	}
+	
+	#loginForm>h1 {
+		height:100px;
+		line-height:150px;	
+	}
+}*/
 }

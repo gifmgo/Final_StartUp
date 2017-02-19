@@ -14,9 +14,13 @@
 	line-height:16px;
 	font-weight: bolder;
 	font-size: 40%;
+<<<<<<< HEAD
+=======
 	margin-right:2%;
+	vertical-align:text-top;
+>>>>>>> 8af23f3d6d858245a79f36df360907c2b64cf0a5
 	background-color:red;
-	
+	vertical-align:middle;
 	-webkit-animation-name: bgc-ani;
 	-webkit-animation-duration: 2.3s;
 	-webkit-animation-iteration-count: infinite;
