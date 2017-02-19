@@ -21,6 +21,11 @@
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
 						</div>
 						<hr class="listHr"/>
 					</li>
@@ -38,12 +43,11 @@
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
-							<c:set var="str1" value="${list.content }"/>
+							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
-							${ fn:contains(str1, str2) }
  							<c:if test="${ fn:contains(str1, str2) }">
-								<span class="new">N</span>
-							</c:if>
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
 						</div>
 						<hr class="listHr"/>
 					</li>
@@ -61,6 +65,11 @@
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
 						</div>
 						<hr class="listHr"/>
 					</li>
@@ -78,10 +87,12 @@
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
-							<c:if test="${fn:contains(list.content, '<img alt src=') }">
-								<span class="new">N</span>
-							</c:if>
-						</div>
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
+							</div>
 						<hr class="listHr"/>
 						</li>
 				   </c:forEach>
