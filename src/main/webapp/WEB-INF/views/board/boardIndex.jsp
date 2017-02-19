@@ -57,7 +57,12 @@
 				<c:forEach var="list" items="${list}">
 				<tr>
 					<td>${list.no}</td>
-					<td><a href="boardDetail.do?no=${list.no}&category=${title }&currentpage=${cpage}">${list.title}</a></td>
+					<td>
+						<a href="boardDetail.do?no=${list.no}&category=${title }&currentpage=${cpage}">${list.title}</a>
+						<c:if test="${list.regdatePO > now }">
+							<span class="new">N</span>
+						</c:if>
+					</td>
 					<td>${list.writer}</td>
 					<td>${list.viewcnt}</td>
 				</tr>
@@ -96,7 +101,7 @@
                     	</ul>
                     	<c:if test="${id != null}">
                     		<c:choose>
-                    		<c:when test='${title == "공지사항/QnA" }'>
+                    		<c:when test='${title == "공지사항" }'>
                     			<c:if test='${id == "admin@admin.com"}'> <!-- 운영자일때 -->
 	                        		<button onclick="writeContentView()">글쓰기</button>
 	                        	</c:if>

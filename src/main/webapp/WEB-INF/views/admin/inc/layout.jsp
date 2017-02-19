@@ -9,7 +9,7 @@
 <link href="flatUi/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Loading Flat UI -->
 <link href="flatUi/dist/css/flat-ui.min.css" rel="stylesheet">
-<link href="css/poll/Poll_0218.css" rel="stylesheet">
+<link href="css/poll/Poll_0218_02.css" rel="stylesheet">
 <link rel="shortcut icon" href="flatUi/dist/img/favicon.ico">
 <title>Insert title here</title>
 </head>
@@ -28,6 +28,6 @@
     <script src="flatUi/dist/js/flat-ui.min.js"></script>
     <script src="flatUi/assets/js/application.js"></script>
 	<script src="admin/Admin_0216.js"></script>
-	<script src="admin/Admin_Poll_Notice_0218.js"></script>
+	<script src="admin/Admin_Poll_Notice_0219.js"></script>
 </body>
 </html>

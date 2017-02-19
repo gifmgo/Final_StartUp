@@ -9,6 +9,7 @@ public class FreeBoardDTO {
 	private String writer;
 	private String id;
 	private String regdate;
+	private String regdatePO; //regdate보다 1일+
 	private String filename;
 	private String filepath;
 	private int good;
@@ -89,6 +90,12 @@ public class FreeBoardDTO {
 		return "FreeBoardDTO [no=" + no + ", category=" + category + ", title=" + title + ", content=" + content
 				+ ", writer=" + writer + ", id=" + id + ", regdate=" + regdate + ", filename=" + filename
 				+ ", filepath=" + filepath + ", good=" + good + ", viewcnt=" + viewcnt + "]";
+	}
+	public String getRegdatePO() {
+		return regdatePO;
+	}
+	public void setRegdatePO(String regdatePO) {
+		this.regdatePO = regdatePO;
 	}
 	
 }

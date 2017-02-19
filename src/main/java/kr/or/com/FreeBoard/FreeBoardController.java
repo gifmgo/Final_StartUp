@@ -3,6 +3,8 @@ package kr.or.com.FreeBoard;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -91,6 +93,11 @@ public class FreeBoardController {
 		}catch(Exception e){
 			e.getMessage();
 		}finally{
+			
+			SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+		    String strDate = fm.format(new Date());
+		    model.addAttribute("now", strDate);
+			
 			model.addAttribute("title", category);
 			model.addAttribute("list", list);
 			model.addAttribute("cpage", cpage);
@@ -108,13 +115,24 @@ public class FreeBoardController {
 	public String BoardDetail(HttpServletRequest request, String no, String currentpage, Model model){
 		
 		HttpSession session = request.getSession();
+		String lastPage = "";
+		if(session.getAttribute("lastPage")==null||session.getAttribute("lastPage").toString().equals("")){
+			lastPage = "";
+		}else{
+			lastPage=session.getAttribute("lastPage").toString();
+		}
 		
-		FreeBoardDTO dto=free_Service.selectDetail(no, session.getAttribute("lastPage").toString());
+		FreeBoardDTO dto=free_Service.selectDetail(no, lastPage);
 		List<CommentDTO> list = free_Service.commentList(no);
 		List<CommentDTO> comment = free_Service.commSelect(no);
 		
 		session.setAttribute("lastPage", no);
 		
+		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+	    String strDate = fm.format(new Date());
+	    System.out.println(strDate);
+		
+	    model.addAttribute("now", strDate);
 		model.addAttribute("dto", dto);
 		model.addAttribute("currentpage", currentpage);
 		model.addAttribute("comment", comment);
@@ -133,7 +151,7 @@ public class FreeBoardController {
 	
 	//글쓰기 submit 할때
 	@RequestMapping(value="/writeBoard.do", method=RequestMethod.POST)
-	public String FreeBoardWriteResult(@RequestParam("uploadfile") MultipartFile file ,FreeBoardDTO dto, Model model, HttpServletRequest request){
+	public String FreeBoardWriteResult(@RequestParam("uploadfile") MultipartFile file ,FreeBoardDTO dto, String img, Model model, HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		String logId = (String)session.getAttribute("id");
