@@ -68,7 +68,8 @@
 	float:left;	
 	background-color:#fff;
 	margin-right:2%;
-	box-shadow:1px 1px 5px #999;
+	border:1px solid #ccc;
+	box-sizing:border-box;
 	margin-bottom:2%;
 
 }
@@ -111,7 +112,7 @@
 .dashList li {
 	position:relative;
 	width:100%;
-	padding: 13px 0 0 0;
+	margin-top:12px;
 	cursor:pointer;
 }
 
@@ -224,18 +225,23 @@
 	  height:50%;  	
 	  top:30px;
 	  border-radius:5px;
-	  background-color: white;
+	  background-color: #333;
+	  color:#fff;
+	  font-size:18px;
+	  font-weight:bold;
+	  border:0;
+	  corsor:pointer;
 }
 
-#jinboDiv{
-	position:absolute;
+.talkDiv {
+	position:relative;
 	text-align:center;
-	top:0;
-	left:0;
+	float:left;
 	width:47.5%;
 	height:100%;
-	margin-right: 5%;
 }
+
+.talkDiv:first-of-type {margin-right:65px;}
 
 .jinbo_sub{
 	position:relative;
@@ -244,7 +250,20 @@
 	background-color: white;
 	border-radius:5px;
 	text-align: left;
+	border:1px solid #ccc;
+	padding:40px 30px;
+	box-sizing:border-box;
 }
+
+.talkDiv h4 {font-size:24px;font-weight:bold;color:#333;}
+
+.jinbo_sub .jinboList {width:100%;height:auto;display:inline-block;}
+.jinbo_sub .jinboList li {width:100%; margin-bottom:20px;}
+.jinbo_sub .jinboList p {display:inline-block;}
+.jinbo_sub .jinboList .jinboText {width:calc(100% - 90px);overflow:hidden;white-space:nowrap;
+								text-overflow:ellipsis;cursor:pointer;}
+.jinbo_sub .jinboList .jinboText:hover  {text-decoration:underline;}
+.jinbo_sub .jinboList .jinboDate {width:auto;float:right;color:#999;}
 
 .titleSpan{
 	position:absolute;
@@ -317,11 +336,12 @@
 }
 
 #recent>article>div {
-	width:49%;
+	width:48%;
 	height:100%;
 	float:left;	
 	background-color:#fff;
-	box-shadow:1px 1px 5px #333;
+	border:1px solid #ccc;
+	box-sizing:border-box;
 }
 
 #recent>article>div:first-child {
@@ -332,13 +352,19 @@
 	border-top:1px solid #999;
 	box-sizing:border-box;	
 	width:90%;
-	height:50%;
+	height:auto;
+	
 }
 
 #recent .dashList li {
-	height:25%;
-	line-height:40px;	
+	width:100%;
+	height:auto;	
+	margin-bottom:5
 }
+
+#recent .dashList li span {float:right;color:#999;}
+#recent .dashList li a {display:inline-block;width:calc(100% - 85px);overflow:hidden;
+						white-space:nowrap;text-overflow:ellipsis;}
 
 .main_news {
 	position:relative;
@@ -474,22 +500,23 @@
 #news .dashList li {
 	position:relative;
 	font-weight:bold;
-	line-height:30px;	
+	width:100%;
+	height:auto;
 }
 
  #news .dashList li>a {
- 	position:absolute;
-	display:block;
-	top:0;
-	left:0;
-	width:75%;
-	height:100%;
+	width:calc(100% - 85px);
+	height:auto;
 	overflow: hidden;
-
+	white-space:nowrap;
+	text-overflow:ellipsis;
 } 
 
 #news .dashList li span {
+	display:inline-block;
 	font-weight:normal;	
+	float:right;
+	color:#666;
 }
 
 #news hr {

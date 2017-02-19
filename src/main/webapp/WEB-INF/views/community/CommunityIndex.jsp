@@ -95,39 +95,97 @@
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
 		<p style="color:red; margin-top:-30px;">'${keyWord}'</p>
-        <p>여러분들의 의견을 소신껏 말해주세요 !</p><br/><br/>
+        <p>여러분들의 의견을 소신껏 말해주세요 !</p><br/>
 		<article>
-	       	    <div id="jinboDiv">
-	       	   		<h4>나는 진보다.</h4>
-	       	   		<br/>
-					<div class="jinbo_sub">
-						<c:choose>
-							<c:when test="${debate != null}">
-							<c:forEach var="dto" items="${debate}">
-								<c:if test="${dto.choose eq '진보'}">
-									<span class="titleSpan"><a href="#">${dto.title}</a></span>
-									<span class="dateSpan">
-										${dto.writeDate}
-									</span>
-									<br/>
-								</c:if>
-							</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<span>의견을 남겨주세요 !</span>
-							</c:otherwise>
-						</c:choose>
-					</div>
+       	    <div class="talkDiv">
+       	   		<h4>나는 <span style="color:#a00">진보</span>다</h4>
+       	   		<br/>
+				<div class="jinbo_sub">
+					<%-- <c:choose>
+						<c:when test="${debate != null}">
+						<c:forEach var="dto" items="${debate}">
+							<c:if test="${dto.choose eq '진보'}">
+								<span class="titleSpan"><a href="#">${dto.title}</a></span>
+								<span class="dateSpan">
+									${dto.writeDate}
+								</span>
+								<br/>
+							</c:if>
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<span>의견을 남겨주세요 !</span>
+						</c:otherwise>
+					</c:choose> --%>
+					<ul class="jinboList">
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+					</ul>
 				</div>
+			</div>
 				
-				<div id="bosuDiv">
-					<h4>나는 보수다.</h4>
-					<br/>
-					<div class="bosu_sub">
-						<span class="titleSpan"><a href="#">저는 보수청년입니다.</a></span><span class="dateSpan">2017-02-01</span>
-						<span class="titleSpan"><a href="#">저는 보수청년입니다2.</a></span><span class="dateSpan">2017-02-01</span>
-					</div>
+			<div class="talkDiv">
+       	   		<h4>나는 <span style="color:#00a">보수</span>다</h4>
+       	   		<br/>
+				<div class="jinbo_sub">
+					<%-- <c:choose>
+						<c:when test="${debate != null}">
+						<c:forEach var="dto" items="${debate}">
+							<c:if test="${dto.choose eq '진보'}">
+								<span class="titleSpan"><a href="#">${dto.title}</a></span>
+								<span class="dateSpan">
+									${dto.writeDate}
+								</span>
+								<br/>
+							</c:if>
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<span>의견을 남겨주세요 !</span>
+						</c:otherwise>
+					</c:choose> --%>
+					<ul class="jinboList">
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+					</ul>
 				</div>
+			</div>
 		</article>
 		
 		<article>
