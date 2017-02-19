@@ -74,10 +74,10 @@
                     	<ul id="board_page">
                     		<c:choose>
 	                        	<c:when test="${cpage > 1}">
-					               <li class="paging" onclick="location.href='board.do?category=${title}&currentpage=${cpage-1}&pagesize=${pgsize}'"><</li>
+					               <li class="paging" onclick="location.href='board.do?category=${title}&currentpage=${cpage-1}&pagesize=${pgsize}'"></li>
 					            </c:when>
 					            <c:otherwise>
-					            	<li><</li>
+					            	<li></li>
 					            </c:otherwise>
 				            </c:choose>
 					        <c:forEach var="i" begin="1" end="${pagecount}" step="1">
