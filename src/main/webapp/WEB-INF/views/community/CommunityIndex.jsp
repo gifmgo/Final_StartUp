@@ -17,10 +17,10 @@
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
@@ -39,10 +39,10 @@
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
@@ -61,10 +61,10 @@
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
@@ -83,10 +83,10 @@
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">

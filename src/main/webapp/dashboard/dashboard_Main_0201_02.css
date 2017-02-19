@@ -28,6 +28,14 @@
 	text-align:center;
 }
 
+#dashboard .dashtitle{
+	display: inline-block;
+	max-width:87%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
 #more {
 	position:absolute;
 	width:200px;
@@ -112,17 +120,13 @@
 .dashList li {
 	position:relative;
 	width:100%;
-	margin-top:12px;
-	cursor:pointer;
+	margin-top:9px;
+	cursor: pointer;
 }
 
 .dashList li .listHr {
 	border: 1px dashed #ddd; 
 	width:100%;
-}
-
-.dashList li:hover {
-	text-decoration:underline;	
 }
 
 /* 나는 진보다, 나는 보수다 */
