@@ -17,17 +17,16 @@
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</c:if> --%>
 						</div>
-						<hr class="listHr"/>
 					</li>
 					</c:forEach>
                </ul>
@@ -39,17 +38,16 @@
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</c:if> --%>
 						</div>
-						<hr class="listHr"/>
 					</li>
 					</c:forEach>
                </ul>
@@ -61,17 +59,17 @@
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
+							
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</c:if> --%>
 						</div>
-						<hr class="listHr"/>
 					</li>
 					</c:forEach>
 				</ul>
@@ -83,17 +81,16 @@
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<div>
+							<p class="dashtitle">${list.title}</p>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							${list.title}
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</c:if> --%>
 							</div>
-						<hr class="listHr"/>
 						</li>
 				   </c:forEach>
 	               </ul>
@@ -105,12 +102,11 @@
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
-		<p style="color:red; margin-top:-30px;">'${keyWord}'</p>
-        <p>여러분들의 의견을 소신껏 말해주세요 !</p><br/>
+		<p style="color:red;">'${keyWord}'</p>
+        <p>여러분들의 의견을 소신껏 말해주세요 !</p>
 		<article>
-       	    <div class="talkDiv">
+       	   <div class="talkDiv">
        	   		<h4>나는 <span style="color:#a00">진보</span>다</h4>
-       	   		<br/>
 				<div class="jinbo_sub">
 					<%-- <c:choose>
 						<c:when test="${debate != null}">
@@ -155,7 +151,6 @@
 				
 			<div class="talkDiv">
        	   		<h4>나는 <span style="color:#00a">보수</span>다</h4>
-       	   		<br/>
 				<div class="jinbo_sub">
 					<%-- <c:choose>
 						<c:when test="${debate != null}">
@@ -195,15 +190,15 @@
 							<p class="jinboDate">2017-02-18</p>
 						</li>
 					</ul>
-				</div>
+				</div> 
 			</div>
 		</article>
 		
-		<article>
+		<!-- <article>
 			<div id="talkmoreDiv">
 				<button type="button" id="talkMoreBtn">보러가기</button>
 			</div>
-		</article>
+		</article> -->
 		
 	</section>
 	

@@ -14,9 +14,8 @@
 	line-height:16px;
 	font-weight: bolder;
 	font-size: 40%;
-	margin-right:2%;
 	background-color:red;
-	
+	vertical-align:middle;
 	-webkit-animation-name: bgc-ani;
 	-webkit-animation-duration: 2.3s;
 	-webkit-animation-iteration-count: infinite;
