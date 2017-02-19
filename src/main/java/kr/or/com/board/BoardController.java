@@ -92,15 +92,12 @@ public class BoardController {
 			model.addAttribute("keyWord",keyWord);
 		}
 		
-		Calendar calendar = new GregorianCalendar(Locale.KOREA);
-		calendar.add(Calendar.DAY_OF_YEAR, 1); // 하루를 더한다.
-
 		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	    String strDate = fm.format(new Date());
-	    System.out.println(strDate);
 		
+	    model.addAttribute("now", strDate);
+	    model.addAttribute("imgsrc", "img alt src=");
 		model.addAttribute("id", id);
-		model.addAttribute("now", strDate);
 		model.addAttribute("free", free);
 		model.addAttribute("issue", issue);
 		model.addAttribute("politics", politics);
