@@ -29,7 +29,7 @@ function chooseSelect(select, span){
 	if(choose == 2){
 		var parent = $span.parent().parent().parent().parent();
 		makeInput = '<div class="form-group"><div class="col-md-12">';
-		makeInput += '<div class="input-group"><span class="input-group-addon chooseDiv"></span>';
+		makeInput += '<div class="input-group"><span class="input-group-addon chooseDiv"><input type="checkbox"></span>';
 		makeInput += '<input type="text" class="form-control answerInput" placeholder="옵션">';
 		makeInput += '<span class="input-group-addon" onclick="plusSpan($(this));"><i class="glyphicon glyphicon-plus"></i></span>';
 		makeInput += '</div></div>';
@@ -39,8 +39,9 @@ function chooseSelect(select, span){
 	//3 - 객관 - 라디오
 	if(choose == 3){
 		var parent = $span.parent().parent().parent().parent();
+		console.log("부모 확인좀 : "+parent);
 		makeInput = '<div class="form-group"><div class="col-md-12">';
-		makeInput += '<div class="input-group"><span class="input-group-addon chooseDiv"></span>';
+		makeInput += '<div class="input-group"><span class="input-group-addon chooseDiv"><input type="radio"></span>';
 		makeInput += '<input type="text" class="form-control answerInput" placeholder="옵션">';
 		makeInput += '<span class="input-group-addon" onclick="plusSpan($(this));"><i class="glyphicon glyphicon-plus"></i></span>';
 		makeInput += '</div></div>';
@@ -51,9 +52,13 @@ function chooseSelect(select, span){
 
 //설문지 내부 plus 버튼 클릭시
 function plusSpan(span){
-	var select = $('#sel1 option:selected').val();
+	var $parent = span.parent().parent().parent().parent().parent();
+	var id = $parent.attr("id");
+	
+	var $select = span.parent().parent().parent().parent().html();
+	console.log("4번째 위로: " +$select);
 	//어떤걸 선택했는지 확인한다.
-	chooseSelect(select, span);
+	//chooseSelect(id, span);
 }
 
 //동적으로 만든 셀렉박스가 바뀔때 well 한놈만 바뀌게 하는부분
@@ -69,7 +74,6 @@ function chooseWell(index, chooseWellId){
 			
 			if(index == 2){
 				console.log("index - 2 ");
-				
 				$('#firstWell').find(".chooseDiv").html('<input type="checkbox">');
 			}
 			
@@ -111,15 +115,6 @@ function selectChange(index, wellIndex){
 }
 
 $(function(){
-	
-	//셀렉트 박스 ...
-	/*$('#sel1').change(function(){
-		//셀렉트 박스러 선택할때 (설문지 내부)
-		var allChange = $('#sel1 option:selected').val();
-		allChangeFunc(allChange);
-	});*/
-	
-	
 	$('#pollDiv').css("display","none");
 	
 	//공지사항 탭 클릭시

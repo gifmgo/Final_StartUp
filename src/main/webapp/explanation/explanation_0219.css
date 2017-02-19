@@ -12,7 +12,6 @@
 	position:relative;
 	width:100%;
 	max-width:1000px;
-	height:1000px;
 	margin:0 auto;	
 	/*background-color:#993;*/
 }
@@ -64,4 +63,13 @@
 	left:50%;
 	transform:translateX(-50%);
 	width:150px;	
+}
+
+@MEDIA only screen and (max-width:768px) {
+		#explanation {
+		position:relative;
+		width:100%;
+		margin:0 auto;	
+		/*background-color:#993;*/
+	}
 }
