@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 페이징된 리스트 뽑기 -->
 	<select id="selectAllFreeBoard" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
-		select no, category, title, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, filename, good, viewcnt 
+		select no, category, title, content, writer, id, to_char(regdate+1,'YYYYMMDDHH24MI') as regdatePO, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, filename, good, viewcnt 
 		from (select rownum rn, no, category, title, content, writer, id, regdate, filename, good, viewcnt
    			from (select no, category, title, content, writer, id, regdate, filename, good, viewcnt
           		  from tbl_board
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 최신글에서  -> 나중에 베스트 리스트 뽑기 -->
 	<select id="selectBestBoard" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
-		select no, category, title, content, writer, id, to_char(regdate+1,'YYYYMMDDHH24MI') as regdate, filename, good, viewcnt
+		select no, category, title, content, writer, id, to_char(regdate+1,'YYYYMMDDHH24MI') as regdatePO, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, filename, good, viewcnt
 		from (select rownum rn, no, category, title, content, writer, id, regdate, filename, good, viewcnt
 		      from tbl_board
 		      where category = '${param1}'
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!--상세보기-->
 	 <select id="FreeBoardDetail" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
-	 	select no, category, title, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI:SS') as regdate, viewcnt, filename, filepath 
+	 	select no, category, title, content, writer, id, to_char(regdate+1,'YYYYMMDDHH24MI') as regdatePO, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, viewcnt, filename, filepath 
 	 	from tbl_board
 	 	where no = #{param1}
 	 </select>

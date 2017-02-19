@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>​
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>​
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
     <input type="hidden" id="hidden_id" value="${id}">
     <input type="hidden" id="hidden_favorit" value='${favorit}'>
@@ -17,7 +17,7 @@
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
-							<c:if test="${list.regdate > now }">
+							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
@@ -34,15 +34,16 @@
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
-							<c:choose>
-							<c:when test="${list.regdate > now }">
+							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
-							</c:when>
-							<c:otherwise>
-								비교가 되나요????
-							</c:otherwise>
-							</c:choose>
+							</c:if>
 							${list.title}
+							<c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+							${ fn:contains(str1, str2) }
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<span class="new">N</span>
+							</c:if>
 						</div>
 						<hr class="listHr"/>
 					</li>
@@ -56,7 +57,7 @@
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
-							<c:if test="${list.regdate > now }">
+							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
@@ -73,10 +74,13 @@
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<div>
-							<c:if test="${list.regdate > now }">
+							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
 							${list.title}
+							<c:if test="${fn:contains(list.content, '<img alt src=') }">
+								<span class="new">N</span>
+							</c:if>
 						</div>
 						<hr class="listHr"/>
 						</li>

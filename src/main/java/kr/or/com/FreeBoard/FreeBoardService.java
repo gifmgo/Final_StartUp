@@ -43,7 +43,7 @@ public class FreeBoardService {
 		FreeBoardDTO dto = null;
 		FreeBoardDAO dao = sqlSession.getMapper(FreeBoardDAO.class);
 		try{
-			if(!(lastPage==null||lastPage==""||lastPage==no)){
+			if(lastPage!=null&&!lastPage.equals("")&&!lastPage.equals(no)){
 				dao.updateCnt(no);				
 			}
 			dto = dao.FreeBoardDetail(no);
