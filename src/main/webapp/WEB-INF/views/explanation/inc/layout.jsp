@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/final_header3_0119.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
-<link rel="stylesheet" type="text/css" href="explanation/explanation2.css">
+<link rel="stylesheet" type="text/css" href="explanation/explanation_0219.css">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="css/main_header_modify0213.js"></script>
 <script src="explanation/sub01.js"></script>
