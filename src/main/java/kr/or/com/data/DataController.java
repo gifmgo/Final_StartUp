@@ -14,7 +14,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.FreeBoard.FreeBoardService;
 
-@Controller
+/*@Controller
 public class DataController {
 
 	@Autowired
@@ -40,3 +40,4 @@ public class DataController {
 	}
 	
 }
+*/

@@ -584,12 +584,6 @@
    font:14px/30px Nanum;   
 }
 
-.detail_btn {
-	position:relative !important;
-	left:50% !important;
-	trnasform:translate(-50%) !important;
-	
-}
 
 
 @media only screen and (max-width:1210px) {
@@ -645,6 +639,7 @@
 }
 
 @media only screen and (max-width:768px) {
+
 	.btn {
 		width:80px;
 		font-size:12px;	
@@ -675,21 +670,5 @@
 	#nav>div:last-of-type {
 		font-size:20px;
 	}
-		
-/*	
-	#loginForm input {
-		margin-top:20px;
-		
-	}
-		
-		
-	#loginForm button {	
-		height:50px;
-	}
-	
-	#loginForm>h1 {
-		height:100px;
-		line-height:150px;	
-	}
-}*/
+
 }

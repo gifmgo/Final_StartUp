@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-5" style="border-right: 5px solid gray;">
-					<h4 class="text-center">진보</h4>
+					<h4 class="text-center">좋아요</h4>
 					<hr/>
 						<ul class="list-group" style="float:none;">
 						<c:choose>
@@ -62,7 +62,7 @@
 				</div>
 				
 				<div class="col-md-5">
-					<h4 class="text-center">보수</h4>
+					<h4 class="text-center">싫어요</h4>
 					<hr/>
 					<ul class="list-group" style="float:none;">
 						<c:choose>
@@ -94,11 +94,11 @@
 				
 				<div class="radio col-md-offset-5" style="left:5%;">
 					<label>
-						<input type="radio" name="choose" value="Bo">보수
+						<input type="radio" name="choose" value="Bo">싫어요
 					</label>
 					
 					<label>
-						<input type="radio" name="choose" value="Jin">진보
+						<input type="radio" name="choose" value="Jin">좋아요
 					</label>
 				</div>
 			
