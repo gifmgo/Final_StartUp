@@ -122,7 +122,6 @@
 .dashList li {
 	position:relative;
 	width:100%;
-<<<<<<< HEAD
 	cursor:pointer;
 	border-bottom: 1px dashed #ddd;
 	padding:10px 0; 
@@ -131,18 +130,11 @@
 .dashList li .dashtitle {display:inline-block;width:calc(100% - 20px);overflow:hidden;
 							white-space:nowrap;text-overflow:ellipsis;vertical-align:middle;}
 
-	
-=======
-	margin-top:9px;
-	cursor: pointer;
-}
-
 .dashList li .listHr {
 	border: 1px dashed #ddd; 
 	width:100%;
 }
 
->>>>>>> 8af23f3d6d858245a79f36df360907c2b64cf0a5
 /* 나는 진보다, 나는 보수다 */
 #MyTalk{
 	width:100%;
@@ -198,7 +190,7 @@
 	z-index : 999;
 	transform :translateX(-85%); 
 	width:10%;
-	height:53%;
+	height:50%;
 	border-radius:5px 5px 0 0;
 	background-color: white;
 	color: black;
@@ -237,11 +229,11 @@
 	  left: 50%;
 	  transform :translateX(-50%);
 	  width:20%;
-	  height:50%;  	
-	  top:30px;
+	  height:30%;  	
+	  color:white;
+	  top:-30px;
 	  border-radius:5px;
 	  background-color: #333;
-	  color:#fff;
 	  font-size:18px;
 	  font-weight:bold;
 	  border:0;
@@ -609,6 +601,7 @@
 	#myTalkBtn{
 		margin-left:5%;
 		width:20%;
+		margin-top:-30px;
 	}
 	
 	#myTalkTextArea{

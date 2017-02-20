@@ -1,7 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 @import url(core.css);
-
 #nav {
 	position:fixed;
 	width:100%;
@@ -10,14 +9,12 @@
 	z-index:999;
 }
 
-
 #nav>img {
 	position:absolute;
 	top:50%;
 	left:50px;
 	transform:translateY(-50%);	
 }
-
 
 #logDiv>a{
 	color:#fff;
@@ -33,7 +30,6 @@
 	display:none;
 	cursor:pointer;
 }
-
 
 /******************** 변경이 있는 부분   **************/
 #mainMenu {
@@ -63,8 +59,7 @@
 	width:100%;
 	height:100%;
 	color:#fff;	
-	font-size:20px;
-	
+	font-size:20px;	
 }
 
 #nav>div:last-of-type {
@@ -108,7 +103,6 @@
 	height:100%;
 	line-height:30px;
 	color:#fff;	
-	
 }
 
 /**********************************************/
@@ -150,7 +144,7 @@
 	height:auto;
 }
 
- #m_menu li {
+#m_menu li {
 	width:100%;
 	height:80px;
 	box-sizing:border-box;
@@ -584,11 +578,7 @@
    font:14px/30px Nanum;   
 }
 
-
-
 @media only screen and (max-width:1210px) {
-	
-	
 	#mainMenu {
 		display:none;	
 	}
@@ -639,7 +629,6 @@
 }
 
 @media only screen and (max-width:768px) {
-
 	.btn {
 		width:80px;
 		font-size:12px;	
@@ -670,5 +659,4 @@
 	#nav>div:last-of-type {
 		font-size:20px;
 	}
-
 }
