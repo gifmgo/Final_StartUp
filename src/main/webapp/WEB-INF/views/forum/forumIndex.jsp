@@ -12,7 +12,7 @@
 			<h4 style="line-height: 50px;">이야기를 나누고자 하오니 많이 참여하셔서 올바른 정치관련 사이트를 만들어 가길 희망합니다.</h4>
 			<div class="col-md-4" id="surveyDiv">
 			<h4>
-				<a href="#" class="btn btn-primary" data-toggle="customTool" data-placement="right" title="여러분의 참여가 필요해요 !!">설문하기</a>
+				<a href="surveyList.do" class="btn btn-primary" data-toggle="customTool" data-placement="right" title="여러분의 참여가 필요해요 !!">설문하기</a>
 			</h4> 
 		</div>
 		</blockquote>
