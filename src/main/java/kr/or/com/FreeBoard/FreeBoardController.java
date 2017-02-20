@@ -130,7 +130,6 @@ public class FreeBoardController {
 		
 		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	    String strDate = fm.format(new Date());
-	    System.out.println(strDate);
 		
 	    model.addAttribute("now", strDate);
 		model.addAttribute("dto", dto);
