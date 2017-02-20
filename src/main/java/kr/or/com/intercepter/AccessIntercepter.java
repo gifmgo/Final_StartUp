@@ -26,8 +26,10 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 
 		HttpSession session = request.getSession(false);
 		if(request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")){
+			System.out.println("local");
 			return true;
 		}
+		
 		if(session == null){
 			Date now = new Date();
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -41,22 +43,15 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 	}
 	
 	public int updateTodayUser(){
-
 		int result = 0;
-		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMdd");
-		String strDate = fm.format(new Date());
-		System.out.println(strDate);
 		
 		TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
-	    TodayUserDTO dto = new TodayUserDTO();
-	    dto.setAdate(strDate);
-	    dto = dao.selectTodayUser(dto);
-		if(dto==null|| dto.getAdate().equals("")){
-			dao.updateTotalUser();
-			result = dao.insertTodayUser();
-			dao.updateTodayUser();
+	    TodayUserDTO dto = dao.selectTodayUser();
+		if(dto==null){
+			dao.updateTotalUser(dto);
 		}else{
 			dao.updateTodayUser();
+			dao.updateTotalUser(dto);
 		}
 		return result;
 	}
