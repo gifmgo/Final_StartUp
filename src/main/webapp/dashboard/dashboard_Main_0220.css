@@ -56,11 +56,11 @@
 
 #dashboard>article {
 	position:relative;
-	margin:0 auto;
-	width:100%;
-	max-width:1300px;
+	left:50%;
+	transform:translateX(-50%);
+	width:auto;
 	height:100%;
-
+	display:inline-block;
 }
 
 #dashboard>article::after {
@@ -71,14 +71,16 @@
 
 #dashboard>article>div {
 	position:relative;
-	width:23%;
+	width:300px;
 	height:300px;
 	float:left;	
 	background-color:#fff;
-	margin-right:2%;
+	margin-right:30px;
 	border:1px solid #ccc;
 	box-sizing:border-box;
 	margin-bottom:2%;
+	padding:5px 15px;
+	
 
 }
 
@@ -93,36 +95,40 @@
 	height:50px;
 	font-size:20px;
 	font-weight:bold;	
-	padding:15px;
+	padding:15px 0;
 	box-sizing:border-box;
 }
 
 .dashH>span {
 	position:absolute;
-	right:15px;
+	right:0;
 	cursor:pointer;
 	color:#333;	
 }
 
 #dashboard .titleHr {
-	width:90%;
-	margin:0 auto 5px auto;
+	width:100%;
+	margin:0 auto 5px;
 	border:1px solid #333;	
 }
 
 .dashList {
 	position:relative;
-	width:85%;
-	height:80%;
+	width:100%;
+	height:auto;
 	margin:0 auto;
 }
 
 .dashList li {
 	position:relative;
 	width:100%;
-	margin-top:9px;
-	cursor: pointer;
+	cursor:pointer;
+	border-bottom: 1px dashed #ddd;
+	padding:10px 0; 
 }
+
+.dashList li .dashtitle {display:inline-block;width:calc(100% - 20px);overflow:hidden;
+							white-space:nowrap;text-overflow:ellipsis;vertical-align:middle;}
 
 .dashList li .listHr {
 	border: 1px dashed #ddd; 
@@ -131,40 +137,37 @@
 
 /* 나는 진보다, 나는 보수다 */
 #MyTalk{
-	position:relative;
 	width:100%;
-	height:600px;
+	height:auto;
 	background-color:#eee;
 }
 
 #MyTalk>h1 {
-	position:relative;
 	width:100%;
-	height:150px;
 	text-align:center;
 	font-weight:bold;
-	line-height:150px;
 	font-size:40px;
+	padding:60px 0 30px;
 }
 
-
-
 #MyTalk>p {
-	position:relative;
 	width:100%;
+	height:auto;
 	text-align:center;
 	margin-bottom:5px; 
 	
 }
 
 #MyTalk>article {
-	position:relative;
 	width:100%;
-	height:300px;
+	height:auto;
 	max-width:1300px;
-	margin:0 auto;
+	margin:30px auto;
+	padding-bottom:50px;
 	/*background-color:#F99;*/	
 }
+
+#MyTalk>article::after {content:"";display:block;clear:both;}
 
 /* 글쓰는 부분 */
 #textAreaDiv{
@@ -173,7 +176,7 @@
 	width: 100%;
 	height: 25%;
 	z-index : 999;
-}
+}	
 
 .form-group{
 	position: absolute;
@@ -187,7 +190,7 @@
 	z-index : 999;
 	transform :translateX(-85%); 
 	width:10%;
-	height:53%;
+	height:50%;
 	border-radius:5px 5px 0 0;
 	background-color: white;
 	color: black;
@@ -226,11 +229,11 @@
 	  left: 50%;
 	  transform :translateX(-50%);
 	  width:20%;
-	  height:50%;  	
-	  top:30px;
+	  height:30%;  	
+	  color:white;
+	  top:-30px;
 	  border-radius:5px;
 	  background-color: #333;
-	  color:#fff;
 	  font-size:18px;
 	  font-weight:bold;
 	  border:0;
@@ -242,7 +245,7 @@
 	text-align:center;
 	float:left;
 	width:47.5%;
-	height:100%;
+	height:auto;
 }
 
 .talkDiv:first-of-type {margin-right:65px;}
@@ -250,16 +253,16 @@
 .jinbo_sub{
 	position:relative;
 	width:100%;
-	height:90%;
+	height:250px;
 	background-color: white;
 	border-radius:5px;
 	text-align: left;
 	border:1px solid #ccc;
-	padding:40px 30px;
+	padding:30px 20px;
 	box-sizing:border-box;
 }
 
-.talkDiv h4 {font-size:24px;font-weight:bold;color:#333;}
+.talkDiv h4 {font-size:24px;font-weight:bold;color:#333;margin-bottom:20px;}
 
 .jinbo_sub .jinboList {width:100%;height:auto;display:inline-block;}
 .jinbo_sub .jinboList li {width:100%; margin-bottom:20px;}
@@ -532,9 +535,9 @@
 
 @media only screen and (max-width:1300px) { 
 	
-	#dashboard>article>div:nth-child(4n) {
-		margin-right:2% !important;	
-	}
+	#dashboard>article>div {width:49%;}
+	#dashboard>article>div {margin-right:0;}
+	#dashboard>article>div:nth-child(2n) {float:right;}
 	
 	#recent>article>div {
 		position:relative;
@@ -551,6 +554,10 @@
 	#recent {
 		height:900px;	
 	}
+	
+	.talkDiv {width:100%;margin-bottom:30px;}
+	
+	#MyTalk>article {padding:0 20px;box-sizing:border-box;}
 }
 
 @media only screen and (max-width:960px) {
@@ -594,6 +601,7 @@
 	#myTalkBtn{
 		margin-left:5%;
 		width:20%;
+		margin-top:-30px;
 	}
 	
 	#myTalkTextArea{

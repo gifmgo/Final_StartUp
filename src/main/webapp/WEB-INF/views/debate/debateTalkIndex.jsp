@@ -43,7 +43,7 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-5" style="border-right: 5px solid gray;">
-					<h4 class="text-center">진보</h4>
+					<h4 class="text-center">좋아요</h4>
 					<hr/>
 						<ul class="list-group" style="float:none;">
 						<c:choose>
@@ -62,7 +62,7 @@
 				</div>
 				
 				<div class="col-md-5">
-					<h4 class="text-center">보수</h4>
+					<h4 class="text-center">싫어요</h4>
 					<hr/>
 					<ul class="list-group" style="float:none;">
 						<c:choose>
@@ -94,30 +94,30 @@
 				
 				<div class="radio col-md-offset-5" style="left:5%;">
 					<label>
-						<input type="radio" name="choose" value="Bo">보수
+						<input type="radio" name="choose" value="Bo">싫어요
 					</label>
 					
 					<label>
-						<input type="radio" name="choose" value="Jin">진보
+						<input type="radio" name="choose" value="Jin">좋아요
 					</label>
 				</div>
 			
-				<div class="col-md-offset-4 col-md-8">
+				<div class="col-md-offset-2 col-md-8">
 					<form class="form-horizontal">	
 						<div class="form-group">
 							<label class="control-label col-md-2">제목 </label>
-							<div class="col-md-4">
+							<div class="col-md-10">
 								<input type="text" id="title" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">내용 </label>
-							<div class="col-md-4">
-								<textarea id="debateTextArea" class="form-control"></textarea>
+							<div class="col-md-10">
+								<textarea id="debateTextArea" class="form-control" rows="15"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-2">
+							<label class="control-label col-md-offset-1 col-md-2">
 								<input type="button" class="btn btn-success" id="debateWriteBtn" value="글쓰기">
 							</label>
 						</div>

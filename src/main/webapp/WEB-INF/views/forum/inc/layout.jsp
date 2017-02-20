@@ -24,11 +24,14 @@
 <script src="css/main_header_modify0213.js"></script>
 <script src="js/jquery.tubular.1.0.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet" type="text/css" href="forum/forum_0220.css">
 <title>개발자 포럼</title>
 <script>
 $("document").ready(function(){
 	$('#loading_form').css("display","none");
+	
+	$('[data-toggle="customTool"]').tooltip();	
+
 });
 </script>
 </head>

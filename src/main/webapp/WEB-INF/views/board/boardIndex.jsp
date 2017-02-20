@@ -48,6 +48,12 @@
         
     	<table id="board_table">
     		<tbody id="board_list">
+    			<colgroup>
+    				<col width="10%">
+    				<col width="70%">
+    				<col width="10%">
+    				<col width="10%">
+    			</colgroup>
     			<tr>
 					<th>No</th>
 					<th>제목</th>
@@ -77,7 +83,7 @@
 					               <li class="paging" onclick="location.href='board.do?category=${title}&currentpage=${cpage-1}&pagesize=${pgsize}'"></li>
 					            </c:when>
 					            <c:otherwise>
-					            	<li></li>
+					            
 					            </c:otherwise>
 				            </c:choose>
 					        <c:forEach var="i" begin="1" end="${pagecount}" step="1">
@@ -95,7 +101,7 @@
 					              	<li onclick="location.href='board.do?category=${title}&currentpage=${cpage+1}&pagesize=${pgsize}'">></li>
 					           	</c:when>
 					            <c:otherwise>
-					            	<li>><li>
+					            
 					            </c:otherwise>
 				            </c:choose>					        
                     	</ul>
@@ -108,9 +114,10 @@
 	                        </c:when>
 	                        <c:otherwise>
 	                        	<button onclick="writeContentView()">글쓰기</button>
-	                        </c:otherwise>
+	                        </c:otherwise>		
 	                        </c:choose>
                     	</c:if>
+                    	
                     </td>
                 <tr>
             </tfoot>
