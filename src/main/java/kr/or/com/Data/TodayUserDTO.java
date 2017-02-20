@@ -1,15 +1,24 @@
-package kr.or.com.data;
+package kr.or.com.Data;
 
 public class TodayUserDTO {
-	private String ADate;
+	
+	private int no;
+	private String adate;
 	private int todayTotalUser;
 	private int totalUser;
 	
-	public String getADate() {
-		return ADate;
+	public int getNo() {
+		return no;
 	}
-	public void setADate(String aDate) {
-		ADate = aDate;
+	public void setNo(int no) {
+		this.no = no;
+	}
+	
+	public String getAdate() {
+		return adate;
+	}
+	public void setAdate(String adate) {
+		this.adate = adate;
 	}
 	public int getTodayTotalUser() {
 		return todayTotalUser;
@@ -23,10 +32,10 @@ public class TodayUserDTO {
 	public void setTotalUser(int totalUser) {
 		this.totalUser = totalUser;
 	}
-	
 	@Override
 	public String toString() {
-		return "AccessUserDTO [ADate=" + ADate + ", todayTotalUser=" + todayTotalUser + ", totalUser=" + totalUser
-				+ "]";
+		return "TodayUserDTO [no=" + no + ", adate=" + adate + ", todayTotalUser=" + todayTotalUser + ", totalUser="
+				+ totalUser + "]";
 	}
+	
 }

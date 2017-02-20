@@ -3,5 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="dataView">
-	user count : ${ accessCount }
+	<c:forEach var="list" items="${list}">
+		<div>${list.no } // ${list.adate} // ${list.todayTotalUser} // ${list.totalUser} </div>
+	</c:forEach>
 </div>
