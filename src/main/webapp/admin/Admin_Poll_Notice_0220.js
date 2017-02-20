@@ -8,7 +8,7 @@ function pollWrite(){
 }
 
 //플러스 버튼 눌렀을때 호출 되는 함수입니다.
-function chooseSelect(select, span){
+function chooseSelect(id,select, span){
 	//현재 체크박스인지 뭔지 구분하는 변수
 	var choose = select;
 	//스팬태그 
@@ -53,12 +53,13 @@ function chooseSelect(select, span){
 //설문지 내부 plus 버튼 클릭시
 function plusSpan(span){
 	var $parent = span.parent().parent().parent().parent().parent();
-	var id = $parent.attr("id");
 	
-	var $select = span.parent().parent().parent().parent().html();
-	console.log("4번째 위로: " +$select);
+	var id = $parent.attr("id");
+	var $select = span.parent().parent().parent().parent();
+	var select = $select.find("select").val();
+	
 	//어떤걸 선택했는지 확인한다.
-	//chooseSelect(id, span);
+	chooseSelect(id,select,span);
 }
 
 //동적으로 만든 셀렉박스가 바뀔때 well 한놈만 바뀌게 하는부분
