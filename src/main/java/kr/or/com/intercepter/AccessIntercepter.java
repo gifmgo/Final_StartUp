@@ -32,10 +32,14 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 			}
 			
 			if(session == null){
+				
+				System.out.println("CheckSession null >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				Date now = new Date();
 				SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 				session = request.getSession();
 				session.setAttribute("connectId", format.format(now));
+				System.out.println("TypeCheck >>>>>>>>>>>>>>>>  "+ format.format(now).getClass());
+				System.out.println("TypeCheck 22 >>>>>>>>>>>>>>>>  "+ format.format(now).getClass().getName());
 				updateTodayUser(format.format(now));
 			}
 			
