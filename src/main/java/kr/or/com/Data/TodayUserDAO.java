@@ -6,7 +6,7 @@ public interface TodayUserDAO {
 	
 	public List<TodayUserDTO> todayList();
 
-	public TodayUserDTO selectTodayUser(String adate);
+	public TodayUserDTO selectTodayUser(TodayUserDTO dto);
  
 	public TodayUserDTO lastTodayUserNo();
 	

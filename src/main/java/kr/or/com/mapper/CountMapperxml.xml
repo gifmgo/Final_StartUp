@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select no, to_char(adate, 'YYYY-MM-DD') as adate, todaytotaluser, totaluser from todayuser
 	</select>
 
-	<select id="selectTodayUser" resultType="kr.or.com.Data.TodayUserDTO">
-		select no, to_char(adate, 'YYYY-MM-DD') as adate, todaytotaluser, totaluser from todayuser where adate = #{param1}
+	<select id="selectTodayUser" parameterType="kr.or.com.Data.TodayUserDTO" resultType="kr.or.com.Data.TodayUserDTO">
+		select no, to_char(adate, 'YYYY-MM-DD') as adate, todaytotaluser, totaluser from todayuser where adate = #{adate}
 	</select>
 	
 	<select id="lastTodayUserNo" resultType="kr.or.com.Data.TodayUserDTO">
