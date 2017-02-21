@@ -32,8 +32,13 @@ public class DataController {
 	@RequestMapping("/userConnect.do")
 	public String userConnent(Model model, HttpServletRequest request) {
 		String s = tService.updateTodayUser();
-		model.addAttribute("excep", s);
-		return "dataView.connectView";
+		
+		if(!s.equals("")){
+			model.addAttribute("excep", s);
+			return "dataView.connectView";
+		}else{
+			return "redirect:/dataView.do";
+		}
 	}
 	
 }

@@ -25,9 +25,8 @@ public class TodayUserService {
 	public String updateTodayUser(){
 		String result="";
 		Date now = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String date = format.format(now);
-		System.out.println("UpdateTodayUser**************************");
 		TodayUserDTO tdto = new TodayUserDTO();
 		tdto.setAdate(date);
 		try{
