@@ -22,8 +22,8 @@ public class TodayUserService {
 		return list;
 	}
 	
-	public int updateTodayUser(){
-		int result = 0;
+	public String updateTodayUser(){
+		String result="";
 		Date now = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = format.format(now);
@@ -34,13 +34,13 @@ public class TodayUserService {
 			if(dto==null){
 				dto = new TodayUserDTO();
 				dto.setAdate(date);
-				result = dao.insertTodayUser(dto);
+				dao.insertTodayUser(dto);
 			}else{
 				dao.updateTodayUser(dto);
 				dao.updateTotalUser(dto);
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			result = e.getMessage();
 		}
 		
 		return result;
