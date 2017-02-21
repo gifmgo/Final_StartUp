@@ -6,15 +6,15 @@ public interface TodayUserDAO {
 	
 	public List<TodayUserDTO> todayList();
 
-	public TodayUserDTO selectTodayUser();
-
+	public TodayUserDTO selectTodayUser(String adate);
+ 
 	public TodayUserDTO lastTodayUserNo();
 	
-	public int insertTodayUser();
+	public int insertTodayUser(TodayUserDTO dto);
 	
-	public int updateTodayUser();
+	public int updateTodayUser(TodayUserDTO dto);
 	
 	public int updateTotalUser(TodayUserDTO dto);
 	
-	public int deleteTodayUser();
+	public int deleteTodayUser(TodayUserDTO dto);
 }
