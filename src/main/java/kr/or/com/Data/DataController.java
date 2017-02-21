@@ -29,4 +29,12 @@ public class DataController {
 		return "dataView.dataView";
 	}
 	
+	@RequestMapping("/userConnent.do")
+	public String userConnent(Model model, HttpServletRequest request) {
+		
+		tService.updateTodayUser();
+
+		return "redirect:/dataView.do";
+	}
+	
 }

@@ -8,22 +8,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from todayuser
 	</select>
 
-	<select id="selectTodayUser" resultType="kr.or.com.Data.TodayUserDTO" parameterType="kr.or.com.Data.TodayUserDTO">
-		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from todayuser where adate = #{adate}
+	<select id="selectTodayUser" resultType="kr.or.com.Data.TodayUserDTO">
+		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from todayuser where adate = to_char(sysdate,'YYYYMMDD')
+	</select>
+	
+	<select id="lastTodayUserNo" resultType="kr.or.com.Data.TodayUserDTO">
+		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from (select * from todayuser order by no desc) where rownum = 1
 	</select>
 	
 	<insert id="insertTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
-		insert into todayuser(no, adate, todaytotaluser, totaluser) values(todayuser_seq.nextval, to_date(to_char(sysdate, 'YYYYMMDD')), 1, 1)
+		insert into todayuser(no, adate, todaytotaluser, totaluser) 
+		values(todayuser_seq.nextval, to_char(sysdate, 'YYYYMMDD'), 1, (select totaluser from todayuser where no=(select no from (select no from todayuser order by no desc) where rownum = 1))+1)
 	</insert>
 	
 	<update id="updateTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
-		update todayuser set todayTotalUser= NVL(todayTotalUser, 0)+1 where adate = to_date(to_char(sysdate, 'YYYYMMDD'))
+		update todayuser 
+		set todayTotalUser= NVL(todayTotalUser, 0)+1 
+		where adate = to_char(sysdate, 'YYYYMMDD')
 	</update>
 
 	<update id="updateTotalUser" parameterType="kr.or.com.Data.TodayUserDTO">
 		update todayuser 
-		set totalUser= NVL((select totalUser from todayuser where no = no-1), 0)+NVL((select todayTotalUser from todayuser where no = no-1), 0) 
-		where no=(select no from todayuser where rownum = 1) 
+		set totalUser= NVL(totalUser, 0)+1
+		where adate = to_char(sysdate, 'YYYYMMDD')
 	</update>
 	
 	<delete id="deleteTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
