@@ -29,7 +29,7 @@ public class DataController {
 		return "dataView.dataView";
 	}
 	
-	@RequestMapping("/userConnent.do")
+	@RequestMapping("/userConnect.do")
 	public String userConnent(Model model, HttpServletRequest request) {
 		
 		tService.updateTodayUser();

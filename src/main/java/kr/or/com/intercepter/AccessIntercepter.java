@@ -32,12 +32,11 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 			}
 			
 			if(session == null){
-				System.out.println("^^^^^^^^^^%%%%%%%%%%%$$$$$$$$$$$$  이부분은 Null 입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~``");
 				Date now = new Date();
 				SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 				session = request.getSession();
 				session.setAttribute("connectId", format.format(now));
-				updateTodayUser();
+				updateTodayUser(format.format(now));
 			}
 			
 		}catch(Exception e){
@@ -46,15 +45,17 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 		return true;
 	}
 	
-	public int updateTodayUser(){
+	public int updateTodayUser(String date){
 		int result = 0;
 		
 		TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
-	    TodayUserDTO dto = dao.selectTodayUser();
+	    TodayUserDTO dto = dao.selectTodayUser(date);
 		if(dto==null){
-			dao.updateTotalUser(dto);
+			dto = new TodayUserDTO();
+			dto.setAdate(date);
+			result = dao.insertTodayUser(dto);
 		}else{
-			dao.updateTodayUser();
+			dao.updateTodayUser(dto);
 			dao.updateTotalUser(dto);
 		}
 		return result;
