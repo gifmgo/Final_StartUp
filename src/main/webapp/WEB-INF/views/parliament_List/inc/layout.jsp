@@ -114,14 +114,23 @@
       searchDiv += '</div>';
       return searchDiv;
    }
+   	
+    //UTF-8 변경
+    function encodeUTF8(str){
+     return encodeURIComponent(str);
+	}
+
    
-   
-   //국회의원 상세보기
+    //국회의원 상세보기
     function detailPaliament($obj){
       var img = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().children().attr("src");
+      img = encodeUTF8(img);
       var num = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      num = encodeUTF8(num);
       var deptCd = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      deptCd = encodeUTF8(deptCd);
       var name = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      name = encodeUTF8(name);
       location.href="PaliamentDetail.do?num="+num+"&dept_cd="+deptCd+"&img="+img+"&name="+name;
    }
 

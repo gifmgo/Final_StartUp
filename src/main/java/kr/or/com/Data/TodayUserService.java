@@ -19,10 +19,10 @@ public class TodayUserService {
 		List<TodayUserDTO> list = dao.todayList();
 		return list;
 	}
+
 	
 	public int updateTodayUser(){
 		int result = 0;
-		
 		TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
 	    TodayUserDTO dto = dao.selectTodayUser();
 		if(dto==null){
