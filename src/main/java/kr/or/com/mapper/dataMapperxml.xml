@@ -5,15 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="kr.or.com.Data.TodayUserDAO">
 	<select id="todayList" resultType="kr.or.com.Data.TodayUserDTO">
-		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from todayuser
+		select no, to_char(adate, 'YYYY-MM-DD') as adate, todaytotaluser, totaluser from todayuser
 	</select>
 
 	<select id="selectTodayUser" resultType="kr.or.com.Data.TodayUserDTO">
-		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from todayuser where adate = ${param1}
+		select no, to_char(adate, 'YYYY-MM-DD') as adate, todaytotaluser, totaluser from todayuser where adate = #{param1}
 	</select>
 	
 	<select id="lastTodayUserNo" resultType="kr.or.com.Data.TodayUserDTO">
-		select no, to_char(adate, 'YYYYMMDD') as adate, todaytotaluser, totaluser from (select * from todayuser order by no desc) where rownum = 1
+		select no, to_char(adate, 'YYYY-MM-DD') as adate, todaytotaluser, totaluser from (select * from todayuser order by no desc) where rownum = 1
 	</select>
 	
 	<insert id="insertTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">

@@ -226,7 +226,6 @@ $(function(){
 			$('#customCountDiv').html(table);
 		}
 	 });
-	 
  });
  //월별 접속자 확인
  $('.customUl>li:last-child').click(function(){

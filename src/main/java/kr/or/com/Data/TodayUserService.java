@@ -24,21 +24,25 @@ public class TodayUserService {
 	
 	public int updateTodayUser(){
 		int result = 0;
-		
 		Date now = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = format.format(now);
-		
-		TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
-	    TodayUserDTO dto = dao.selectTodayUser(date);
-		if(dto==null){
-			dto = new TodayUserDTO();
-			dto.setAdate(date);
-			result = dao.insertTodayUser(dto);
-		}else{
-			dao.updateTodayUser(dto);
-			dao.updateTotalUser(dto);
+		System.out.println("UpdateTodayUser**************************");
+		try{
+			TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
+		    TodayUserDTO dto = dao.selectTodayUser(date);
+			if(dto==null){
+				dto = new TodayUserDTO();
+				dto.setAdate(date);
+				result = dao.insertTodayUser(dto);
+			}else{
+				dao.updateTodayUser(dto);
+				dao.updateTotalUser(dto);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
+		
 		return result;
 	}
 	
