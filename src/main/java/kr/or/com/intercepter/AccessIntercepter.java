@@ -49,8 +49,12 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 		int result = 0;
 		
 		TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
-	    TodayUserDTO dto = dao.selectTodayUser(date);
-		if(dto==null){
+		
+		TodayUserDTO tdto = new TodayUserDTO();
+		tdto.setAdate(date);
+	    TodayUserDTO dto = dao.selectTodayUser(tdto);
+		
+	    if(dto==null){
 			dto = new TodayUserDTO();
 			dto.setAdate(date);
 			result = dao.insertTodayUser(dto);

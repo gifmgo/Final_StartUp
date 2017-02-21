@@ -28,9 +28,11 @@ public class TodayUserService {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = format.format(now);
 		System.out.println("UpdateTodayUser**************************");
+		TodayUserDTO tdto = new TodayUserDTO();
+		tdto.setAdate(date);
 		try{
 			TodayUserDAO dao = sqlSession.getMapper(TodayUserDAO.class);
-		    TodayUserDTO dto = dao.selectTodayUser(date);
+		    TodayUserDTO dto = dao.selectTodayUser(tdto);
 			if(dto==null){
 				dto = new TodayUserDTO();
 				dto.setAdate(date);
