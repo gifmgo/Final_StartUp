@@ -27,6 +27,10 @@ function banUser(){
 	location.href="AdminBanUserList.do";
 }
 
+//접속 유저 현황
+function UserCount(){
+	location.href="AdminCountUser.do";
+}
 
 //사용자 차단하기
 function ban(){
@@ -206,4 +210,26 @@ $(function(){
 	 return true;
  });
  
+ //일별 접속자 확인
+ $('.customUl>li:first-child').click(function(){
+	 alert("클릭!");
+	 $.ajax({
+		url:"AdminCountDate.do",
+		success : function(data){
+			var table = '<table class="table"><thead><tr><th class="text-center">No.</th><th class="text-center">날짜</th><th class="text-center">접속자</th><th class="text-center">전체 접속자</th></thead><tbody>';
+				for(var i = 0; i < data.list.length; i++){
+					table += '<tr class="text-center">'	
+					table += '<td>'+data.list[i].no+'</td><td>'+data.list[i].adate+'</td><td>'+data.list[i].todayTotalUser+'</td><td>'+data.list[i].totalUser+"</td>";
+					table += '</tr>';
+				}
+				table += '</tbody></table>';
+			$('#customCountDiv').html(table);
+		}
+	 });
+	 
+ });
+ //월별 접속자 확인
+ $('.customUl>li:last-child').click(function(){
+	 alert("월별 클릭!");
+ });
 });

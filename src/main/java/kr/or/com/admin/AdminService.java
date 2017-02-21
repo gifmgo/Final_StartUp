@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.com.Data.TodayUserDAO;
+import kr.or.com.Data.TodayUserDTO;
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.debate.admin_DebateDTO;
 import kr.or.com.debate.debateDAO;
@@ -77,6 +79,18 @@ public class AdminService {
 		List<debateDTO> list = null;
 		try{
 			list = dao.selectDebateList(keyword);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//요일별 접속자 확인하는 메서드
+	public List<TodayUserDTO> countDateUser() {	
+		TodayUserDAO dao = sqlsession.getMapper(TodayUserDAO.class);
+		List<TodayUserDTO> list = null;
+		try{
+			list = dao.todayList();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

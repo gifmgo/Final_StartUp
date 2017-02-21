@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.Data.TodayUserDTO;
 import kr.or.com.debate.admin_DebateDTO;
 import kr.or.com.debate.debateDTO;
-import kr.or.com.debate.debateService;
 
 @Controller
 public class AdminController {
@@ -135,6 +135,22 @@ public class AdminController {
 		model.addAttribute("link",link);
 		return "admin.AdminRedirect";
 	}
+	
+	//관리자 유저 접속수 확인 - 시작 리스트 뿌려주는 부분
+	@RequestMapping("/AdminCountUser.do")
+	public String CountUser(){
+		return "admin.AdminCountUser";
+	}
+	
+	//관리자 유저 접속수 확인 - 클릭 이벤트 발생시 아작스
+	@RequestMapping("/AdminCountDate.do")
+	public View countDate(Model model){
+		List<TodayUserDTO> list = adminservice.countDateUser();
+		model.addAttribute("list", list);
+		return jsonview;
+	}
+	
+	
 	
 	//관리자 설문지 쓰는 페이지 
 	@RequestMapping("/adminPollWrite.do")

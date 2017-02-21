@@ -22,23 +22,27 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 	}
 	
 	@Override
-	public boolean preHandle(HttpServletRequest request,HttpServletResponse response,Object object)throws Exception{
-
+	public boolean preHandle(HttpServletRequest request,HttpServletResponse response,Object object){
 		HttpSession session = request.getSession(false);
-		if(request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")){
-			System.out.println("local");
-			return true;
-		}
-		
-		if(session == null){
-			Date now = new Date();
-			SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-			session = request.getSession();
-			session.setAttribute("connectId", format.format(now));
+		try{
 			
-			updateTodayUser();
+			if(request.getRemoteAddr().equals("0:0:0:0:0:0:0:1")){
+				System.out.println("local");
+				return true;
+			}
+			
+			if(session == null){
+				System.out.println("^^^^^^^^^^%%%%%%%%%%%$$$$$$$$$$$$  이부분은 Null 입니다 ~~~~~~~~~~~~~~~~~~~~~~~~~~~``");
+				Date now = new Date();
+				SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+				session = request.getSession();
+				session.setAttribute("connectId", format.format(now));
+				updateTodayUser();
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-
 		return true;
 	}
 	
