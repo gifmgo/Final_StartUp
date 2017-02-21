@@ -74,10 +74,12 @@ public class MemberController {
 		
 		MemberDTO result = service.Login(dto);
 		
-		
 		System.out.println("로그인 결과 : "+result);
 		if(result != null){
-			if(dto.getId().equals("stpark89@naver.com")){
+			if(dto.getId().equals("stpark89@naver.com") || dto.getId().equals("abc@abc.com")){
+				HttpSession session = request.getSession();
+				session.setAttribute("admin", "superAdmin");
+				session.setAttribute("id", dto.getId());
 				model.addAttribute("result","관리자");
 			}else{
 				HttpSession session = request.getSession();

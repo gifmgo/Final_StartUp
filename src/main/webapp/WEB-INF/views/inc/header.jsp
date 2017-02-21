@@ -59,10 +59,10 @@
             <li><a href="Member_Parliament.do" class="fdMenu">국회의원</a></li>
             <li><a href="CommunityIndex.do">커뮤니티</a>
             	<ul id="b_menu">
-                    <li><a href="board.do?category=공지사항">공지사항</a></li>
-                	<li><a href="board.do?category=오늘의 이슈">오늘의 이슈</a></li>
-                	<li><a href="board.do?category=자유게시판">자유게시판</a></li>
-                    <li><a href="board.do?category=정치게시판">정치게시판</a></li>
+                    <li><a href="board.do?category=%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD">공지사항</a></li>
+                	<li><a href="board.do?category=%EC%98%A4%EB%8A%98%EC%9D%98%20%EC%9D%B4%EC%8A%88">오늘의 이슈</a></li>
+                	<li><a href="board.do?category=%EC%9E%90%EC%9C%A0%EA%B2%8C%EC%8B%9C%ED%8C%90">자유게시판</a></li>
+                    <li><a href="board.do?category=%EC%A0%95%EC%B9%98%EA%B2%8C%EC%8B%9C%ED%8C%90">정치게시판</a></li>
                     <li><a href="moreCommunityTalk.do">토론방</a></li>
                 </ul>
           	</li>
