@@ -23,6 +23,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.FreeBoard.FreeBoardDTO;
 import kr.or.com.FreeBoard.FreeBoardService;
+import kr.or.com.Util.Converter;
 
 @Controller
 public class FreeBoardController {
@@ -41,6 +42,8 @@ public class FreeBoardController {
 		String pagesize = request.getParameter("pagesize");
 		String currentpage = request.getParameter("currentpage");
 		
+		Converter cvt = new Converter();
+		category= cvt.engToKor(category);
 		if(category == null || category.trim().equals("")){
 			category = "자유게시판"; 			// default 10건씩 
         }else{
