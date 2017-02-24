@@ -11,4 +11,9 @@ public class PresidentController {
 		return "president.PresidentIndex";
 	}
 	
+	//그래프
+	@RequestMapping("/PresidentGraph.do")
+	public String presidentGrap(){
+		return "president.PresidentGrap";
+	}
 }
