@@ -11,7 +11,7 @@
        <!-- <p>이 주 </p> -->
        <article>
        	   <div>
-           		<h1 class="dashH">공지사항<span onclick="location.href='board.do?category=공지사항'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+           		<h1 class="dashH">공지사항<span onclick="location.href='board.do?category=qa'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
                <hr class="titleHr"/>
                <ul class="dashList">
                    <c:forEach var="list" items="${qa}">
@@ -32,7 +32,7 @@
                </ul>
            </div>
            <div>
-               <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=자유게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=free'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
                <hr class="titleHr"/>
                <ul class="dashList">
                		<c:forEach var="list" items="${free}">
@@ -53,7 +53,7 @@
                </ul>
            </div>
            <div>
-           	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=오늘의 이슈'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+           	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=issue'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
           	   <hr class="titleHr"/>
                <ul class="dashList">
                    <c:forEach var="list" items="${issue}">
@@ -74,7 +74,7 @@
 				</ul>
            </div>
            <div>
-	           	<h1 class="dashH">정치게시판<span onclick="location.href='board.do?category=정치게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+	           	<h1 class="dashH">정치게시판<span onclick="location.href='board.do?category=politics'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
 	               <hr class="titleHr"/>
 	               <ul class="dashList">
 	               <c:forEach var="list" items="${politics}">

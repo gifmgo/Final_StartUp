@@ -29,7 +29,9 @@ public class DataController {
 		return "dataView.dataView";
 	}
 	
-	@RequestMapping("/userConnect.do")
+	
+	/*유저 증가 확인*/
+	/*@RequestMapping("/userConnect.do")
 	public String userConnent(Model model, HttpServletRequest request) {
 		String s = tService.updateTodayUser();
 		
@@ -39,6 +41,6 @@ public class DataController {
 		}else{
 			return "redirect:/dataView.do";
 		}
-	}
+	}*/
 	
 }
