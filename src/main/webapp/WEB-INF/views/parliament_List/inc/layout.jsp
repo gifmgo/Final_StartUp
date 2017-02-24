@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="paliament/paliament_final_header0130.css">
+<link rel="stylesheet" href="paliament/paliament_final_header0220.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,6 +31,10 @@
       height:500px;
    }
    
+   
+   .customWell{
+   	   background-color: #ecf0f1 !important;
+   }
    
    @media only screen and (max-width:990px) {
       
@@ -114,14 +118,23 @@
       searchDiv += '</div>';
       return searchDiv;
    }
+   	
+    //UTF-8 변경
+    function encodeUTF8(str){
+     return encodeURIComponent(str);
+	}
+
    
-   
-   //국회의원 상세보기
+    //국회의원 상세보기
     function detailPaliament($obj){
       var img = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().children().attr("src");
+      img = encodeUTF8(img);
       var num = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      num = encodeUTF8(num);
       var deptCd = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      deptCd = encodeUTF8(deptCd);
       var name = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      name = encodeUTF8(name);
       location.href="PaliamentDetail.do?num="+num+"&dept_cd="+deptCd+"&img="+img+"&name="+name;
    }
 
@@ -631,6 +644,7 @@
       chart.draw(data, options);
     }   
    
-</script>   
+</script>
+<script src="paliament/presidentPaliament.js"></script>   
 </body>
 </html>

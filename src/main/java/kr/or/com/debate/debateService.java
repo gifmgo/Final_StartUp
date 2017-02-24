@@ -23,7 +23,6 @@ public class debateService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		return dto;
 	}
 	

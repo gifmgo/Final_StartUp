@@ -8,6 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.Data.TodayUserDTO;
+import kr.or.com.debate.admin_DebateDTO;
+import kr.or.com.debate.debateDTO;
+
 @Controller
 public class AdminController {
 
@@ -16,6 +20,7 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminservice;
+	
 	
 	//관리자 메인페이지
 	@RequestMapping("/adminIndex.do")
@@ -29,16 +34,17 @@ public class AdminController {
 		return "admin.AdminNotice";
 	}
 	
-	//관리자 토론
+	//관리자 토론 페이지
 	@RequestMapping("/AdminDebate.do")
-	public String adminDebate(){
+	public String adminDebate(Model model){
+		
 		return "admin.AdminDebate";
 	}
 	
 	//관리자 토론 주제 등록
 	@RequestMapping("/insertSubject.do")
-	public String insertSubject(String subject, Model model){
-		System.out.println("====주제=========="+subject);
+	public String insertSubject(admin_DebateDTO subject, Model model){
+		System.out.println("====주제=========="+subject.toString());
 		int result =0;
 		String msg, link="";
 		try{
@@ -47,6 +53,7 @@ public class AdminController {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		System.out.println(" result???????????"+result);
 		if(result>0){
 			msg="등록 성공";
@@ -62,19 +69,25 @@ public class AdminController {
 	
 	//관리자 토론 리스트
 	@RequestMapping("/AdminDeabteList.do")
-	public String adminDeabteList(){
+	public String adminDeabteList(Model model){
+		List<admin_DebateDTO> keyword = adminservice.selectKeyWord();
+		model.addAttribute("keyword", keyword);
 		return "admin.AdminDebateList";
+	}
+	
+	//관리자 토론 - 키워드 및 글개수 선택시 사용
+	@RequestMapping("/adminDebateListAjax.do")
+	public View chooseDebateList(String keyword, Model model){
+		System.out.println("확인좀 할께요 키워드 : "+keyword);
+		List<debateDTO> list = adminservice.selectList(keyword);
+		model.addAttribute("list", list);
+		return jsonview;
 	}
 	
 	//유저보기 
 	@RequestMapping("/AdminBanUserList.do")
 	public String adminBanUserList(Model model){
-		
 		List<BanUserDTO> list =adminservice.userList();
-		for(int i=0; i<list.size(); i++){
-			System.out.println("dtooooooooooooooooo???????"+list.get(i).toString());
-		}
-		
 		model.addAttribute("userlist", list);
 		return "admin.AdminBanUserList";
 	}
@@ -121,6 +134,28 @@ public class AdminController {
 		model.addAttribute("msg",msg);
 		model.addAttribute("link",link);
 		return "admin.AdminRedirect";
+	}
+	
+	//관리자 유저 접속수 확인 - 시작 리스트 뿌려주는 부분
+	@RequestMapping("/AdminCountUser.do")
+	public String CountUser(){
+		return "admin.AdminCountUser";
+	}
+	
+	//관리자 유저 접속수 확인 - 클릭 이벤트 발생시 아작스
+	@RequestMapping("/AdminCountDate.do")
+	public View countDate(Model model){
+		List<TodayUserDTO> list = adminservice.countDateUser();
+		model.addAttribute("list", list);
+		return jsonview;
+	}
+	
+	
+	
+	//관리자 설문지 쓰는 페이지 
+	@RequestMapping("/adminPollWrite.do")
+	public String pollWrite(){
+		return "admin.AdminPollWrite";
 	}
 	
 }

@@ -38,50 +38,55 @@
 				</div>
 			</div>
 	</div>
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-5">
-			<h4 class="text-center">진보</h4>
-			<hr/>
-				<ul class="list-group" style="float:none;">
-				<c:choose>
-					<c:when test="${list != null}">
-					<c:forEach var="dto" items="${list}">
-						<c:if test="${dto.choose eq '진보'}">
-							<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} ${dto.writeDate}</span></li>
-						</c:if>
-					</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li class="list-group-item">의견을 남겨주세요 !</li>
-					</c:otherwise>
-				</c:choose>
-				</ul>
+	<div class="container">
+		<div id="debateListDiv" style="min-height: 500px;">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-5" style="border-right: 5px solid gray;">
+					<h4 class="text-center">좋아요</h4>
+					<hr/>
+						<ul class="list-group" style="float:none;">
+						<c:choose>
+							<c:when test="${list != null}">
+							<c:forEach var="dto" items="${list}">
+								<c:if test="${dto.choose eq '진보'}">
+									<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} ${dto.writeDate}</span></li>
+								</c:if>
+							</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<li class="list-group-item">의견을 남겨주세요 !</li>
+							</c:otherwise>
+						</c:choose>
+						</ul>
+				</div>
+				
+				<div class="col-md-5">
+					<h4 class="text-center">싫어요</h4>
+					<hr/>
+					<ul class="list-group" style="float:none;">
+						<c:choose>
+							<c:when test="${list != null}">
+								<c:forEach var="dto" items="${list}">
+									<c:if test="${dto.choose eq '보수'}">
+										<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} / ${dto.writeDate}</span></li>
+									</c:if>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<li class="list-group-item">의견을 남겨주세요 !</li>
+							</c:otherwise>
+						</c:choose>
+					</ul>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
 		</div>
-		
-		<div class="col-md-5">
-			<h4 class="text-center">보수</h4>
-			<hr/>
-			<ul class="list-group" style="float:none;">
-				<c:choose>
-					<c:when test="${list != null}">
-						<c:forEach var="dto" items="${list}">
-							<c:if test="${dto.choose eq '보수'}">
-								<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} / ${dto.writeDate}</span></li>
-							</c:if>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<li class="list-group-item">의견을 남겨주세요 !</li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-		</div>
-		<div class="col-md-1"></div>
 	</div>
 	<hr/>
-	
-	<div class="col-md-11">
+</div>
+<div class="container">
+	<div class="col-md-12">
 		<c:choose>
 			<c:when test="${id != null}">
 				<input type="hidden" id="debateWord" value="${keyWord}">
@@ -89,30 +94,30 @@
 				
 				<div class="radio col-md-offset-5" style="left:5%;">
 					<label>
-						<input type="radio" name="choose" value="Bo">보수
+						<input type="radio" name="choose" value="Bo">싫어요
 					</label>
 					
 					<label>
-						<input type="radio" name="choose" value="Jin">진보
+						<input type="radio" name="choose" value="Jin">좋아요
 					</label>
 				</div>
 			
-				<div class="col-md-offset-4 col-md-8">
+				<div class="col-md-offset-2 col-md-8">
 					<form class="form-horizontal">	
 						<div class="form-group">
 							<label class="control-label col-md-2">제목 </label>
-							<div class="col-md-4">
+							<div class="col-md-10">
 								<input type="text" id="title" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">내용 </label>
-							<div class="col-md-4">
-								<textarea id="debateTextArea" class="form-control"></textarea>
+							<div class="col-md-10">
+								<textarea id="debateTextArea" class="form-control" rows="15"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-2" style="left:11%;">
+							<label class="control-label col-md-offset-1 col-md-2">
 								<input type="button" class="btn btn-success" id="debateWriteBtn" value="글쓰기">
 							</label>
 						</div>
@@ -123,11 +128,9 @@
 				<h4 class="text-center">로그인 하시면 글을 쓸 수 있습니다.</h4>
 			</c:otherwise>
 		</c:choose>
-		</div>
 	</div>
-	
-	
-	<br/><br/>
+</div>
+<br/><br/>
 
 <!-- </section> -->
 

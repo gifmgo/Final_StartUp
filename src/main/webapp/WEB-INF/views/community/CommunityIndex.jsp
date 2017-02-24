@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>​
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>​
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     
     <input type="hidden" id="hidden_id" value="${id}">
     <input type="hidden" id="hidden_favorit" value='${favorit}'>
@@ -11,45 +11,85 @@
        <!-- <p>이 주 </p> -->
        <article>
        	   <div>
-           		<h1 class="dashH">공지사항<span onclick="location.href='board.do?category=공지사항'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+           		<h1 class="dashH">공지사항<span onclick="location.href='board.do?category=qa'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
                <hr class="titleHr"/>
                <ul class="dashList">
                    <c:forEach var="list" items="${qa}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}<img src=""></span><hr class="listHr"/>
+						<div>
+							<p class="dashtitle">${list.title}</p>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
+						</div>
 					</li>
 					</c:forEach>
                </ul>
            </div>
            <div>
-               <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=자유게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+               <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=free'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
                <hr class="titleHr"/>
                <ul class="dashList">
                		<c:forEach var="list" items="${free}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						<div>
+							<p class="dashtitle">${list.title}</p>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
+						</div>
 					</li>
 					</c:forEach>
                </ul>
            </div>
            <div>
-           	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=오늘의 이슈'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+           	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=issue'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
           	   <hr class="titleHr"/>
                <ul class="dashList">
                    <c:forEach var="list" items="${issue}">
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-						<span>${list.title}</span><hr class="listHr"/>
+						<div>
+							<p class="dashtitle">${list.title}</p>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
+						</div>
 					</li>
 					</c:forEach>
 				</ul>
            </div>
            <div>
-	           	<h1 class="dashH">정치게시판<span onclick="location.href='board.do?category=정치게시판'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+	           	<h1 class="dashH">정치게시판<span onclick="location.href='board.do?category=politics'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
 	               <hr class="titleHr"/>
 	               <ul class="dashList">
 	               <c:forEach var="list" items="${politics}">
 						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-							<span>${list.title}</span><hr class="listHr"/>
+							<div>
+							<p class="dashtitle">${list.title}</p>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
+							</div>
 						</li>
 				   </c:forEach>
 	               </ul>
@@ -61,48 +101,103 @@
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
-		<p style="color:red; margin-top:-30px;">'${keyWord}'</p>
-        <p>여러분들의 의견을 소신껏 말해주세요 !</p><br/><br/>
+		<p style="color:red;">'${keyWord}'</p>
+        <p>여러분들의 의견을 소신껏 말해주세요 !</p>
 		<article>
-	       	    <div id="jinboDiv">
-	       	   		<h4>나는 진보다.</h4>
-	       	   		<br/>
-					<div class="jinbo_sub">
-						<c:choose>
-							<c:when test="${debate != null}">
-							<c:forEach var="dto" items="${debate}">
-								<c:if test="${dto.choose eq '진보'}">
-									<span class="titleSpan"><a href="#">${dto.title}</a></span>
-									<span class="dateSpan">
-										${dto.writeDate}
-									</span>
-									<br/>
-								</c:if>
-							</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<span>의견을 남겨주세요 !</span>
-							</c:otherwise>
-						</c:choose>
-					</div>
+       	   <div class="talkDiv">
+       	   		<h4>나는 <span style="color:#a00">진보</span>다</h4>
+				<div class="jinbo_sub">
+					<%-- <c:choose>
+						<c:when test="${debate != null}">
+						<c:forEach var="dto" items="${debate}">
+							<c:if test="${dto.choose eq '진보'}">
+								<span class="titleSpan"><a href="#">${dto.title}</a></span>
+								<span class="dateSpan">
+									${dto.writeDate}
+								</span>
+								<br/>
+							</c:if>
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<span>의견을 남겨주세요 !</span>
+						</c:otherwise>
+					</c:choose> --%>
+					<ul class="jinboList">
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+					</ul>
 				</div>
+			</div>
 				
-				<div id="bosuDiv">
-					<h4>나는 보수다.</h4>
-					<br/>
-					<div class="bosu_sub">
-						<span class="titleSpan"><a href="#">저는 보수청년입니다.</a></span><span class="dateSpan">2017-02-01</span>
-						<span class="titleSpan"><a href="#">저는 보수청년입니다2.</a></span><span class="dateSpan">2017-02-01</span>
-					</div>
-				</div>
+			<div class="talkDiv">
+       	   		<h4>나는 <span style="color:#00a">보수</span>다</h4>
+				<div class="jinbo_sub">
+					<%-- <c:choose>
+						<c:when test="${debate != null}">
+						<c:forEach var="dto" items="${debate}">
+							<c:if test="${dto.choose eq '진보'}">
+								<span class="titleSpan"><a href="#">${dto.title}</a></span>
+								<span class="dateSpan">
+									${dto.writeDate}
+								</span>
+								<br/>
+							</c:if>
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<span>의견을 남겨주세요 !</span>
+						</c:otherwise>
+					</c:choose> --%>
+					<ul class="jinboList">
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+						<li>
+							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
+							<p class="jinboDate">2017-02-18</p>
+						</li>
+					</ul>
+				</div> 
+			</div>
+			
 		</article>
-		
 		<article>
 			<div id="talkmoreDiv">
 				<button type="button" id="talkMoreBtn">보러가기</button>
 			</div>
 		</article>
-		
 	</section>
 	
     

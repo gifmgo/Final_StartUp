@@ -2,8 +2,11 @@ package kr.or.com.board;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -62,7 +65,6 @@ public class BoardController {
 				Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
 				String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
 				debate_dto.get(i).setWriteDate(newstring);
-				System.out.println("날짜 확인좀 : "+debate_dto.get(i).getWriteDate());
 			}
 
 		}catch(Exception e){
@@ -89,9 +91,12 @@ public class BoardController {
 			model.addAttribute("keyWord",keyWord);
 		}
 		
+		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+	    String strDate = fm.format(new Date());
 		
+	    model.addAttribute("now", strDate);
+	    model.addAttribute("imgsrc", "img alt src=");
 		model.addAttribute("id", id);
-
 		model.addAttribute("free", free);
 		model.addAttribute("issue", issue);
 		model.addAttribute("politics", politics);

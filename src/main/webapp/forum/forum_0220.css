@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+.myjumbo{
+	background-color: #fff !important;
+}
+
+@media only screen and (max-width:768px) {
+	#surveyDiv{
+		margin-left:-50px !important;
+	}
+	
+	.myjumbo{
+		background-color: #fff !important;
+	}	
+}

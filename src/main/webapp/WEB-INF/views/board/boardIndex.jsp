@@ -48,6 +48,12 @@
         
     	<table id="board_table">
     		<tbody id="board_list">
+    			<colgroup>
+    				<col width="10%">
+    				<col width="70%">
+    				<col width="10%">
+    				<col width="10%">
+    			</colgroup>
     			<tr>
 					<th>No</th>
 					<th>제목</th>
@@ -57,7 +63,12 @@
 				<c:forEach var="list" items="${list}">
 				<tr>
 					<td>${list.no}</td>
-					<td><a href="boardDetail.do?no=${list.no}&category=${title }&currentpage=${cpage}">${list.title}</a></td>
+					<td>
+						<a href="boardDetail.do?no=${list.no}&category=${title }&currentpage=${cpage}">${list.title}</a>
+						<c:if test="${list.regdatePO > now }">
+							<span class="new">N</span>
+						</c:if>
+					</td>
 					<td>${list.writer}</td>
 					<td>${list.viewcnt}</td>
 				</tr>
@@ -69,10 +80,10 @@
                     	<ul id="board_page">
                     		<c:choose>
 	                        	<c:when test="${cpage > 1}">
-					               <li class="paging" onclick="location.href='board.do?category=${title}&currentpage=${cpage-1}&pagesize=${pgsize}'"><</li>
+					               <li class="paging" onclick="location.href='board.do?category=${title}&currentpage=${cpage-1}&pagesize=${pgsize}'"></li>
 					            </c:when>
 					            <c:otherwise>
-					            	<li><</li>
+					            
 					            </c:otherwise>
 				            </c:choose>
 					        <c:forEach var="i" begin="1" end="${pagecount}" step="1">
@@ -90,22 +101,23 @@
 					              	<li onclick="location.href='board.do?category=${title}&currentpage=${cpage+1}&pagesize=${pgsize}'">></li>
 					           	</c:when>
 					            <c:otherwise>
-					            	<li>><li>
+					            
 					            </c:otherwise>
 				            </c:choose>					        
                     	</ul>
                     	<c:if test="${id != null}">
                     		<c:choose>
-                    		<c:when test='${title == "공지사항/QnA" }'>
-                    			<c:if test='${id == "admin@admin.com"}'> <!-- 운영자일때 -->
+                    		<c:when test='${title == "공지사항" }'>
+                    			<c:if test='${admin == "superAdmin"}'> <!-- 운영자일때 -->
 	                        		<button onclick="writeContentView()">글쓰기</button>
 	                        	</c:if>
 	                        </c:when>
 	                        <c:otherwise>
 	                        	<button onclick="writeContentView()">글쓰기</button>
-	                        </c:otherwise>
+	                        </c:otherwise>		
 	                        </c:choose>
                     	</c:if>
+                    	
                     </td>
                 <tr>
             </tfoot>
