@@ -32,6 +32,10 @@
    }
    
    
+   .customWell{
+   	   background-color: #ecf0f1 !important;
+   }
+   
    @media only screen and (max-width:990px) {
       
       #piechart {
@@ -640,6 +644,7 @@
       chart.draw(data, options);
     }   
    
-</script>   
+</script>
+<script src="paliament/presidentPaliament.js"></script>   
 </body>
 </html>
