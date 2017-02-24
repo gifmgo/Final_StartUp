@@ -21,11 +21,6 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							<%-- <c:set var="str1" value="${list.content }"/>
-							<c:set var="str2" value='src="upload/' />
- 							<c:if test="${ fn:contains(str1, str2) }">
-								<i class="fa fa-picture-o" aria-hidden="true"></i>
-							</c:if> --%>
 						</div>
 					</li>
 					</c:forEach>
@@ -42,11 +37,6 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							<%-- <c:set var="str1" value="${list.content }"/>
-							<c:set var="str2" value='src="upload/' />
- 							<c:if test="${ fn:contains(str1, str2) }">
-								<i class="fa fa-picture-o" aria-hidden="true"></i>
-							</c:if> --%>
 						</div>
 					</li>
 					</c:forEach>
@@ -63,11 +53,6 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							<%-- <c:set var="str1" value="${list.content }"/>
-							<c:set var="str2" value='src="upload/' />
- 							<c:if test="${ fn:contains(str1, str2) }">
-								<i class="fa fa-picture-o" aria-hidden="true"></i>
-							</c:if> --%>
 						</div>
 					</li>
 					</c:forEach>
@@ -84,120 +69,70 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-							<%-- <c:set var="str1" value="${list.content }"/>
-							<c:set var="str2" value='src="upload/' />
- 							<c:if test="${ fn:contains(str1, str2) }">
-								<i class="fa fa-picture-o" aria-hidden="true"></i>
-							</c:if> --%>
 							</div>
 						</li>
 				   </c:forEach>
 	               </ul>
            </div>
         </article>
-       <!-- <div id="more"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>-->
 	</section>
     
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
-		<p style="color:red;">'${keyWord}'</p>
-        <p>여러분들의 의견을 소신껏 말해주세요 !</p>
+		<p class="debateTitle" style="color:red;">'${keyWord}'</p>
+        <p class="debateCon">여러분들의 의견을 소신껏 말해주세요 !</p>
 		<article>
        	   <div class="talkDiv">
        	   		<h4>나는 <span style="color:#a00">진보</span>다</h4>
-				<div class="jinbo_sub">
-					<%-- <c:choose>
+				<div class="debate">
+					<c:choose>
 						<c:when test="${debate != null}">
+						<ul class="debateList">
 						<c:forEach var="dto" items="${debate}">
 							<c:if test="${dto.choose eq '진보'}">
-								<span class="titleSpan"><a href="#">${dto.title}</a></span>
-								<span class="dateSpan">
-									${dto.writeDate}
-								</span>
-								<br/>
+							<li>
+								<p class="debateText">${dto.title}</p>
+								<p class="debateDate">${dto.writeDate}</p>
+							</li>
 							</c:if>
 						</c:forEach>
+						</ul>
 						</c:when>
 						<c:otherwise>
 							<span>의견을 남겨주세요 !</span>
 						</c:otherwise>
-					</c:choose> --%>
-					<ul class="jinboList">
-						<li>
-							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 진보다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-					</ul>
+					</c:choose>
 				</div>
 			</div>
 				
 			<div class="talkDiv">
        	   		<h4>나는 <span style="color:#00a">보수</span>다</h4>
-				<div class="jinbo_sub">
-					<%-- <c:choose>
+				<div class="debate">
+					<c:choose>
 						<c:when test="${debate != null}">
+						<ul class="debateList">
 						<c:forEach var="dto" items="${debate}">
-							<c:if test="${dto.choose eq '진보'}">
-								<span class="titleSpan"><a href="#">${dto.title}</a></span>
-								<span class="dateSpan">
-									${dto.writeDate}
-								</span>
-								<br/>
+							<c:if test="${dto.choose eq '보수'}">
+							<li>
+								<p class="debateText">${dto.title}</p>
+								<p class="debateDate">${dto.writeDate}</p>
+							</li>
 							</c:if>
 						</c:forEach>
+						</ul>
 						</c:when>
 						<c:otherwise>
 							<span>의견을 남겨주세요 !</span>
 						</c:otherwise>
-					</c:choose> --%>
-					<ul class="jinboList">
-						<li>
-							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-						<li>
-							<p class="jinboText">나는 보수다 텍스트부분 테스트 아야어여오요우유으이이이이이이가갸거겨고교구규그기</p>
-							<p class="jinboDate">2017-02-18</p>
-						</li>
-					</ul>
+					</c:choose>
 				</div> 
 			</div>
 			
 		</article>
-		<article>
-			<div id="talkmoreDiv">
-				<button type="button" id="talkMoreBtn">보러가기</button>
-			</div>
-		</article>
+		<div id="talkmoreDiv">
+			<button type="button" id="talkMoreBtn">보러가기</button>
+		</div>
 	</section>
 	
     

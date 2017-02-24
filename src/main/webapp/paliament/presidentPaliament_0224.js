@@ -3,6 +3,9 @@
  */
 $(document).ready(function(){
 	
+	$('#paliamentD').css("display","block");
+	$('#presidentDiv').css("display","none");
+	
 	//의원 검색
 	$('#paliamentLi').click(function(){
 		

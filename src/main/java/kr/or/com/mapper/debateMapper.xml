@@ -12,11 +12,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from debate d
 		join adminDebate ad
 		on ad.admin_debate_debateword = d.debateWord
+		order by debateNo desc
 	</select>
 	
 	<!-- 키워드 가져옴 -->
 	<select id="selectKeyWord" resultType="String">
-		select admin_debate_debateword from adminDebate a where a.no=(select max(no) from adminDebate b) 
+		select admin_debate_debateword from adminDebate a where a.no=(select max(no) from adminDebate b)
 	</select>
 		
 	<insert id="debateWrite" parameterType="kr.or.com.debate.debateDTO">

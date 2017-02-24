@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="kr.or.com.Data.TodayUserDAO">
 	<select id="todayList" resultType="kr.or.com.Data.TodayUserDTO">
-		select no, adate, todaytotaluser, totaluser from todayuser
+		select no, adate, todaytotaluser, totaluser from todayuser order by no desc
 	</select>
 
 	<select id="selectTodayUser" parameterType="kr.or.com.Data.TodayUserDTO" resultType="kr.or.com.Data.TodayUserDTO">

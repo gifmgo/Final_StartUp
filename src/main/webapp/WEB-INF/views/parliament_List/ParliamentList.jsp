@@ -4,16 +4,9 @@
 
 <div class="container">
 <br/><br/><br/>
-<div class="row">
-	<div class="col-md-12">
-		<ul class="nav nav-tabs">
-		  	<li class="active" id="paliamentLi"><a href="#" style="font-size:20px;">의원보기</a></li>
-		  	<li id="presidentLi"><a href="#" style="font-size:20px;">대선정보</a></li>
-		</ul>
-	</div>
-</div>
-<br/>
 <div id="paliamentD">
+	<p style="font-size:32px;">의원 보기</p>
+	<hr/>
 	<div class="row">
 	<div class="col-md-6">
 		<div class="well" style="margin-top:15%;">
@@ -89,31 +82,6 @@
 				
 			</div>
 		</div>
-	</div>
-	
-	
-	<div id="presidentDiv">
-		<h4>정당별 대선주자</h4>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="well customWell text-center">
-					<i class="fa fa-bank" style="font-size:100px"></i>
-					<h4>새누리당</h4>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="well customWell">
-					<label class="form-control">바른정당</label>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="well customWell">
-					<label class="form-control">국민의당</label>
-				</div>
-			</div>
-		</div>
-		
-	</div>	
-		
+	</div>		
 </div>
 
