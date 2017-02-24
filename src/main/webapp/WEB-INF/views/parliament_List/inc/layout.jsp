@@ -32,8 +32,42 @@
    }
    
    
-   .customWell{
-   	   background-color: #ecf0f1 !important;
+   .customWell1{
+   	   background-color: #27ae60 !important;
+   }
+   
+   .customWell2{
+   		background-color: #2980b9 !important;
+   }
+   
+   .customWell3{
+   		background-color: #3498db !important;
+   }
+   
+   .customWell4{
+   		background-color: #e74c3c !important;
+   }
+   
+   .customWell5{
+   		background-color: #f1c40f !important;
+   }
+   
+   .customWell6{
+   		background-color: #95a5a6 !important;
+   }
+   
+   .listRow{
+   	  margin-top: 3%;
+   	  min-height : 400px;
+   }
+   
+   .customP{
+   		font-size : 32px !important;
+   }
+   
+   .nameJung{
+   	  font-size : 20px !important;
+   	  margin-top : 5%;
    }
    
    @media only screen and (max-width:990px) {
@@ -627,8 +661,8 @@
 
       var options = {
         title: '국회의원 현황',
-        is3D: true,
-          slices: {
+        sliceVisibilityThreshold: .0,
+        slices: {
            0: { color: '#79b394' },
            1: { color: '#1870b9' },
            2: { color: '#01B1EC' },
@@ -645,6 +679,5 @@
     }   
    
 </script>
-<script src="paliament/presidentPaliament.js"></script>   
 </body>
 </html>

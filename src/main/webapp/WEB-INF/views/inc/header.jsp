@@ -66,6 +66,7 @@
                     <li><a href="moreCommunityTalk.do">토론방</a></li>
                 </ul>
           	</li>
+          	<li><a href="PresidentMember.do" class="fdMenu">대선후보</a></li>
           	<li><a href="Programmer.do" class="fdMenu">개발자 포럼</a></li>
    		</ul>
 		<c:choose>
