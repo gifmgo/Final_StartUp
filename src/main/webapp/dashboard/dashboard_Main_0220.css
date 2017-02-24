@@ -536,6 +536,11 @@
 	#dashboard>article {
 		width:625px;	
 	}
+	
+	#talkmoreDiv>button{
+		margin: 40px 0;
+	}
+	
 }
 
 @media only screen and (max-width:640px) {
@@ -574,6 +579,10 @@
 		margin-left:60%;
 		top:25px;
 		font-size:10px;
+	}
+	
+	#talkmoreDiv>button{
+		margin: 40px 0;
 	}
 }	
 	
