@@ -186,6 +186,7 @@
 				</div>
 				<div class="col-md-8">
 					<input type="hidden" id="hiddenModalPoint">
+					<input type="hidden" id="hiddenModalPaliamentName">
 					<div class="well customWell">
 						<p>나의 포인트 : <span class="pointSpan">${memberDTO.point}</span>&nbsp;Point</p><br/>
 						<span class="explainSpan">많은 사용자들이 동일한 국회의원 포인트를 구매시,<br/> 해당 국회의원의 포인트는 증가하게 됩니다.</span><br/>
