@@ -133,9 +133,13 @@ public class FreeBoardController {
 		
 		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	    String strDate = fm.format(new Date());
+	    
+	    Converter cvt = new Converter();
+	    String category = cvt.korToEng(dto.getCategory());
 		
 	    model.addAttribute("now", strDate);
 		model.addAttribute("dto", dto);
+		model.addAttribute("category", category);
 		model.addAttribute("currentpage", currentpage);
 		model.addAttribute("comment", comment);
 		model.addAttribute("list", list);

@@ -187,11 +187,6 @@ function contentDel(){
 	}
 }
 
-function boardList(currentpage,category){
-	var url=encodeURI('board.do?currentpage='+currentpage+'&category='+category);
-	console.log(category+" ,"+ currentpage);
-	location.href=url;
-}
 
 //글 수정 뷰
 function contentModView(){
