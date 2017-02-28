@@ -167,6 +167,9 @@ function contentDel(){
 	if(confirm('삭제하시겠습니까?')){
 		var no = $("#contentNo").val();
 		var category = $('#category').text();
+		
+		category=encodeURIComponent(category);
+		
 		$.ajax({
 			url: 'removeContent.do?no='+no+'&category='+category,
 			success : function(data){
@@ -182,6 +185,12 @@ function contentDel(){
 			}
 		});
 	}
+}
+
+function boardList(currentpage,category){
+	var url=encodeURI('board.do?currentpage='+currentpage+'&category='+category);
+	console.log(category+" ,"+ currentpage);
+	location.href=url;
 }
 
 //글 수정 뷰
