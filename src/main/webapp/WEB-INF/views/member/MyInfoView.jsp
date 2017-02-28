@@ -2,62 +2,73 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
     
-    <input type="hidden" id="nick" value="${dto.nickName}">
-    <!--중복검사해야지 값들어감 -->
-    <input type="hidden" id="short_btn_hidden">
-    
-	<form method="POST" id="modifyForm">
-    <input type="hidden" id="member_favorit" name="favorit">
-    <div id="wrap">
-    	<h1>내 정보 보기</h1>
-        <hr/>								
-        <section id="personal_tb">
-        	<table>
-            	<tr>
-                	<th>아이디</th><td colspan="4">${dto.id}</td>
-                </tr>
-                <tr>
-                	<th>닉네임</th><td colspan="4">${dto.nickName}</td>
-                </tr>
-                <tr>
-                	<!-- 19890425 앞에 4자리 뒤에 2자리 2자리 잘라야함 -->
-                	<th>생년월일</th><td colspan="4" id="birth"></td>
-                </tr>
-                <tr>
-                	<!-- m 이면 남자, w 면 여자 -->
-                	<th>성별</th>
-                	<td colspan="4">
-                		<c:choose>
+    <div class="container customContainer">
+    	<div class="row">
+    		<div class="col-md-12 firstCustomArticle">
+    			<div class="row">
+	    			<form>
+    				<input type="hidden" id="member_favorit" name="favorit">
+	    			<div class="col-md-6 infoDiv">
+	    				<h4>개인정보</h4>
+	    				<hr/>
+		    			<ul class="list-group myUl">
+						  <li class="list-group-item"><span class="badge">아이디</span><span class="textSpan">${dto.id}</span></li>
+						  <li class="list-group-item"><span class="badge">닉네임</span><span class="textSpan">${dto.nickName}</span></li>
+						  <li class="list-group-item"><span class="badge">생년월일</span><span id="birth" class="textSpan2"></span></li>
+						  <c:choose>
                 			<c:when test="${dto.gender == 'm'}">
-                				남자
+                				<li class="list-group-item">
+                					<span class="badge">성별</span><span class="textSpan3">남자</span>
+                				</li>
                 			</c:when>
                 			<c:otherwise>
-                				여자
+                				<li class="list-group-item">
+                					<span class="badge">성별</span><span class="textSpan3">여자</span>
+                				</li>
                 			</c:otherwise>
-                		</c:choose>
-                	</td>
-                </tr>
-                <tr id="myfavoritTr">
-                	
-                </tr>
-                
-            </table>
-        </section>
-        
-        <button type="button">정보수정하기</button>
-    	<button type="button" id="modifyBtn" onclick="modifyResult();">수정완료</button>
+                		</c:choose>	
+                			<li class="list-group-item"><span class="badge">관심사</span><span id="myfavoritTr" class="textSpan"></span></li>
+						</ul>
+						<div class="form-group">
+							<div class="col-md-4">
+								<input type="button" class="btn btn-success" id="modifyStartBtn" value="정보수정하기">
+							</div>
+						</div>
+    				</div>
+    				</form>
+					<div class="col-md-6 pointDiv">
+						<h4>생활포인트</h4>
+	    				<hr/>
+	    				<div class="well myCustomWell text-center">
+	    					<p>생활포인트란(생포)?</p>
+	    					<p>
+	    						기본적으로 10 포인트를 제공하며, 의원들의 포인트를 구매 할 수 있습니다.<br/>
+	    					</p>
+	    					<hr/>
+	    					<p class="pointP">회원님의 현재 포인트</p>
+	    					<p class="pointP"><span class="lifePoint">${dto.point}</span> 점 입니다</p>
+	    					<a href="point.do" class="btn btn-default">생포 보러가기</a>
+	    				</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
-    </form>
-
  <script>
  	$(function(){
  		
  		var db_favorit = ${dto.favorit};
- 		var dongTd = "<th>관심사</th>";
+ 		var dongTd = "";
  		if(db_favorit.length > 0){
 			for(var i = 0; i < db_favorit.length; i++){
-				dongTd += "<td>"+db_favorit[i]+"</td>";
+				if(i < db_favorit.length-1){
+					dongTd += db_favorit[i]+",";
+				}else{
+					dongTd += db_favorit[i];
+				}
 			} 		
  		}else{
  			dongTd += "<td colspan='4'>선택하신 관심사가 없습니다.</td>";

@@ -8,9 +8,24 @@ public class MemberDTO {
 	private String birth;
 	private String gender;
 	private String favorit;
+	private int point;
 
 	public MemberDTO() {
 	}
+	
+	
+
+	public MemberDTO(String id, String pw, String nickName, String birth, String gender, String favorit, int point) {
+		this.id = id;
+		this.pw = pw;
+		this.nickName = nickName;
+		this.birth = birth;
+		this.gender = gender;
+		this.favorit = favorit;
+		this.point = point;
+	}
+
+
 
 	public MemberDTO(String id, String pw, String nickName, String birth, String gender, String favorit) {
 		this.id = id;
@@ -60,11 +75,25 @@ public class MemberDTO {
 		this.favorit = favorit;
 	}
 
+
+
+	public int getPoint() {
+		return point;
+	}
+
+
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
+
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pw=" + pw + ", nickName=" + nickName + ", birth=" + birth + ", gender="
-				+ gender + ", favorit=" + favorit + "]";
+				+ gender + ", favorit=" + favorit + ", point=" + point + "]";
 	}
+	
 	
 	
 

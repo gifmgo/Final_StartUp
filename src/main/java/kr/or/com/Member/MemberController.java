@@ -1,6 +1,7 @@
 package kr.or.com.Member;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
-import net.sf.json.JSONObject;
 
 @Controller
 public class MemberController {
@@ -18,6 +18,7 @@ public class MemberController {
 	private MemberService service;
 	@Autowired
 	private View jsonview;
+	
 	
 	
 	//회원가입시 아이디 체크
@@ -137,7 +138,46 @@ public class MemberController {
 		return jsonview;
 	}
 	
-	//내정보 수정 하기
+	//실제 db 데이터  - 수정하기 버튼 클릭했을 시 
+	@RequestMapping(value="/modifyView.do", method=RequestMethod.GET)
+	public String memberModify(HttpServletRequest request, Model model){
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		System.out.println("로그인 한 아이디 : "+id);
+
+		String link,msg="";
+		
+		if(id == null){
+			
+			link = "index.do";
+			msg = "잘못된 접근 입니다!";
+			model.addAttribute("link", link);
+			model.addAttribute("msg", msg);
+			
+			return "dbResult";
+			
+		}else{
+			MemberDTO dto = service.SelectMyInfo(id);
+			
+			if(dto.getId().equals(null)){
+			
+				link = "index.do";
+				msg = "ID/PW 를 확인해주세요!";
+				model.addAttribute("link", link);
+				model.addAttribute("msg", msg);
+				return "dbResult";
+
+			}else{
+				model.addAttribute("dto", dto);
+				System.out.println("최종 페이지 뿌리기전에 dto 리스트 확인 해볼께요 !! "+dto.toString());
+				return "member.MemberModify";
+			}
+		}
+	}
+	
+	//내정보 수정 하기 index 페이지
 	@RequestMapping(value="/infoView.do", method=RequestMethod.GET)
 	public String InfoView(HttpServletRequest request, Model model){
 		
@@ -177,14 +217,12 @@ public class MemberController {
 	}
 	
 	//내정보 수정 하기
-	@RequestMapping(value="/infoView.do", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyView.do", method=RequestMethod.POST)
 	public String infoViewPost(HttpServletRequest request, MemberDTO dto, Model model){
 		System.out.println("포스트 함수 호출 !! "+dto.toString() + " / 관심사 : "+dto.getFavorit().toString());
-		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		dto.setId(id);
-		
 		int result = service.updateMyInfo(dto);
 		
 		String link,msg="";

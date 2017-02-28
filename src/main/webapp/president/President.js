@@ -1,6 +1,12 @@
 /**
  * 
  */
+
+function community(tag){
+	 var $tag = tag;	 
+}
+
+
 $(document).ready(function(){
 	var topBar = $('#topBar').offset();
 	

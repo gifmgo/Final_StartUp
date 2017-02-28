@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kr.or.com.Member.MemberDAO">
     
  	 <select id="login" resultType="kr.or.com.Member.MemberDTO" parameterType="kr.or.com.Member.MemberDTO">
- 		select id, pw, nickName from member where id = #{id}
+ 		select id, pw, nickName, point from member where id = #{id}
  	</select>
  	
  	
