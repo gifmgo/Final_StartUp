@@ -101,7 +101,8 @@
                 </ul>
           	</li>
           	<li><a href="PresidentMember.do" class="fdMenu">대선후보</a></li>
-          	<li><a href="Programmer.do" class="fdMenu">개발자 포럼</a></li>
+          	<li><a href="point.do" class="fdMenu">생활 포인트</a></li>
+          	<!-- <li><a href="Programmer.do" class="fdMenu">개발자 포럼</a></li> -->
    		</ul>
         
        	<c:choose>
@@ -166,7 +167,8 @@
 	        <li><a href="statute.do">의안</a></li>
 	        <li><a href="Member_Parliament.do">의원</a></li>
 	        <li><a href="CommunityIndex.do">커뮤니티</a></li>
-	        <li><a href="Programmer.do">개발자 포럼</a></li>
+	        <li><a href="PresidentMember.do" class="fdMenu">대선후보</a></li>
+	        <li><a href="Programmer.do">생활 포인트</a></li>
 	    </ul>
     </aside>
 </body>
