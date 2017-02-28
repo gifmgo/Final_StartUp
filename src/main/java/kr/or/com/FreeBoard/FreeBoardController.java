@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.Util.Converter;
+
 @Controller
 public class FreeBoardController {
 
@@ -31,7 +33,7 @@ public class FreeBoardController {
 	private View jsonView;
 		
 	//게시판 커뮤니티 메인 페이지
-/*	@RequestMapping("/board.do")
+	@RequestMapping("/board.do")
 	public String BoardList(Model model,HttpServletRequest request, String f, String q){
 		
 		String category = request.getParameter("category");
@@ -108,7 +110,7 @@ public class FreeBoardController {
 
 		return "board.boardIndex";
 	}
-	*/
+	
 	//게시판 상세보기
 	@RequestMapping("/boardDetail.do")
 	public String BoardDetail(HttpServletRequest request, String no, String currentpage, Model model){
