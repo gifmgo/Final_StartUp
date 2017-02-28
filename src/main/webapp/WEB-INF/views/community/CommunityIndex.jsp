@@ -165,27 +165,36 @@
         </ul>
         <article>
 			<div>
-            	<img src="img/dashimg/ohmyLogo.gif" alt="오마이 뉴스" width="200"/>
-                <ul class="dashList" id="OhMyUl">
-                   
-               </ul>	
-            </div>
-            <div>	
-            	<img src="img/dashimg/mailLogo.jpg" alt="매일경재" width="150"/>
-                <ul class="dashList" id="mail">
-               </ul>	
-            </div>
-            <hr>
-            <div>
-            	<img src="img/dashimg/josunLogo.png" alt="조선닷컴" width="180"/>
-                <ul class="dashList" id="josun">
-                   
-               </ul>	
+				<div class = "newPadding"></div>
+				<div class = "newImg">
+            		<img src="img/dashimg/ohmyLogo.gif" alt="오마이 뉴스" width="200"/>
+            	</div>
+				<div class = "newPadding"></div>
+                <ul class="dashList" id="OhMyUl"></ul>	
             </div>
             <div>
-            	<img src="img/dashimg/jtbcLogo.png" alt="JTBC 뉴스" width="100"/>
-                <ul class="dashList" id="jtbc">
-               </ul>	
+            	<div class = "newPadding"></div>
+            	<div class = "newImg">	
+            		<img src="img/dashimg/mailLogo.jpg" alt="매일경재" width="150"/>
+            	</div>
+               <div class = "newPadding"></div>
+                <ul class="dashList" id="mail"></ul>
+            </div>
+            <div>
+            	<div class = "newPadding"></div>
+            	<div class = "newImg">
+            		<img src="img/dashimg/josunLogo.png" alt="조선닷컴" width="180"/>
+            	</div>
+               <div class = "newPadding"></div>
+                <ul class="dashList" id="josun"></ul>
+            </div>
+            <div>
+            	<div class = "newPadding"></div>
+            	<div class = "newImg">
+            		<img src="img/dashimg/jtbcLogo.png" alt="JTBC 뉴스" width="100"/>
+            	</div>
+               <div class = "newPadding"></div>
+                <ul class="dashList" id="jtbc"></ul>
             </div>
         </article>
     </section>
