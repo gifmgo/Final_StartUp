@@ -42,6 +42,8 @@ public class FreeBoardController {
 		
 		Converter cvt = new Converter();
 		category= cvt.engToKor(category);
+		
+		System.out.println(category);
 		if(category == null || category.trim().equals("")){
 			category = "자유게시판"; 			// default 10건씩 
         }else{
@@ -192,9 +194,12 @@ public class FreeBoardController {
 		
 		int result = free_Service.writeBoard(dto);
 		
+		Converter cvt = new Converter();
+		dto.setCategory(cvt.korToEng(dto.getCategory()));
+		
 		model.addAttribute("category", dto.getCategory());
 		model.addAttribute("result", result);
-
+		
 		return "board.FreeBoardpointer";
 	}
 	
@@ -238,6 +243,9 @@ public class FreeBoardController {
 		String s = request.getParameter("ckeditor");
 		dto.setContent(s);
 		int result = free_Service.updateContent(dto);
+		
+		Converter cvt = new Converter();
+		dto.setCategory(cvt.korToEng(dto.getCategory()));
 		
 		model.addAttribute("category", dto.getCategory());
 		model.addAttribute("result", result);
@@ -308,9 +316,11 @@ public class FreeBoardController {
 	public View deleteContent(String no,String category, Model model){
 		
 		int result = free_Service.deleteContent(no);
-
+		
+		Converter cvt = new Converter();
+		
 		model.addAttribute("result", result);
-		model.addAttribute("category", category);
+		model.addAttribute("category", cvt.korToEng(category));
 		return jsonView;
 	}
 	
