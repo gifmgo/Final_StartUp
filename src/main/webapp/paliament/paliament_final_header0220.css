@@ -33,20 +33,20 @@
 
 /******************** 변경이 있는 부분   **************/
 #mainMenu {
-	position:absolute;
-	width: auto;
+	position:relative;
+	width: 62%;
 	height:25px;
 	top:45px;
-	display:inline-block;
-	left:50%;
-	transform:translateX(-50%);
+	margin: 0 auto;
 }
 
 #mainMenu>li {
-	margin-right:70px;
+	margin:0 4%;
 	height:100%;
 	box-sizing:border-box;
 }
+
+#mainMenu>li:first-of-type {margin-left:6%;}
 #mainMenu>li:last-of-type {margin-right:0;}
 
 
@@ -118,7 +118,7 @@
 }
 
 #side_menu {
-	position:absolute;
+	position:fixed;
 	top:0;
 	left:-80%;
 	width:80%;
