@@ -28,12 +28,15 @@ function detailPointPaliament(tag){
 	$('#modalHiddenEmpNm').val('');
 	$('#hiddenModalPoint').val('');
 	$('#hiddenModalDeptCd').val('');
+	$('#hiddenModalPaliamentName').val('');
+	
 	
 	$('#paliamentImg').attr('src',img);
 	$('#modalName').text(name);
 	$('#modalPolyNm').text(jungDang);
 	$('#modalPoint').text(point);
 	$('#hiddenModalPoint').val(inputHidden);
+	$('#hiddenModalPaliamentName').val(name);
 	$('#myModal').modal();
 	
 	$('#modalHiddenDeptCd').val(dept_cd);
@@ -42,7 +45,7 @@ function detailPointPaliament(tag){
 	
 }
 
-
+//상세보기
 function detailView(){
 	var num =$('#modalHiddenNum2').val();
 	var dept_cd = $('#modalHiddenDeptCd').val();
@@ -52,11 +55,12 @@ function detailView(){
 }
 
 //구매시 가격 확인              //나  //국회의원
-function checkBuyPoint(my, pal){
+function checkBuyPoint(my, pal, count){
 	var result = '';
 	console.log("넘어온 포인트 내껏 : "+my + "// 국회의원 : "+pal);
 	
-	if((my-pal) < 0){
+	var total = count * pal;
+	if((my-total) < 0){
 		result = false;
 		console.log("if 내부 : "+result);
 	}else{
@@ -66,40 +70,68 @@ function checkBuyPoint(my, pal){
 	return result;
 }
 
+
 //상위랭커 - 구매버튼 클릭시
 function buyPoint(tag){
 	var $button = $(tag).parent().parent().parent().children().children().eq(0);
 	var $paliament = $(tag).parent().parent().parent().parent().children().eq(0);
-	
-	var $deptCd = $(tag).parent().parent().parent().parent().parent().children().children().eq(0);
-	var deptCd = $deptCd.val();
+	var $deptCd = $(tag).parent().parent().parent().parent().parent().children().children().children().eq(0);
+	var $paliamentName = $(tag).parent().parent().parent().parent().children().eq(1);
 	
 	//나의 포인트
 	var myPoint = $button.text();	
 	//국회의원 포인트
 	var paliamentPoint = $paliament.val();
-
-	console.log("dept : "+deptCd + " // 내 포인트 : "+myPoint + " // 국회의원 : "+paliamentPoint);
+	//국회의원 번호
+	var deptCd = $deptCd.val();
+	//국회의원 이름 
+	var paliamentName = $paliamentName.val();
+	
+	//몇개 구매 할 것인지.
+	var count = $('#count').val();
+	if(count == ''){
+		alert("수량을 입력해주세요 !");
+		$('#count').focus();
+		return false;
+	}
+	console.log("dept : "+deptCd + " // 내 포인트 : "+myPoint + " // 국회의원 포인트 : "+paliamentPoint + " // 국회의원 이름 : "+paliamentName);
 	
 	if(myPoint == '' || myPoint == null){
 		alert("로그인을 해주세요 !");
+		return false;
 	}else{
-		var result = checkBuyPoint(myPoint, paliamentPoint);
+		var result = checkBuyPoint(myPoint, paliamentPoint, count);
 		console.log("result  확인좀 : "+result);
 		if(result != false){
 			
+			var total = count * paliamentPoint;
+			var updatePoint = myPoint - total; 
 			$.ajax({
 				url :"buyPoint.do",
 				data : {
-					
+					deptCd : deptCd,
+					empNm : paliamentName,
+					point : count,
+					updatePoint : updatePoint
 				},
-				sucess : function(data){
+				success : function(data){
+					
+					var message = data.message;
+					console.log("message : "+message + "//  추가로 : "+data.result);
+					if(data.result > 0){
+						console.log("확인이요");
+						alert(message);
+						location.href="point.do";
+					}else{
+						alert(message);
+					}
 					
 				}
 			});
 			
 		}else{
 			alert("포인트가 부족합니다 !!");
+			return false;
 		}
 	}
 }

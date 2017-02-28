@@ -13,8 +13,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			]]>
 	</select>
 
+	<select id="buyPaliamentIndex" resultType="kr.or.com.Point.PointDTO">
+		select count(*)*(select point from tbl_paliament where deptcd = Tbl_Point.Deptcd) as Total, deptCd, empNm 
+		from tbl_Point 
+		where userId = #{userId}
+		group by deptcd, empNm
+	</select>
+
 	<select id="searchPaliament" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
 		select num2, deptcd, empnm, jpgLink, polynm, point from tbl_paliament where empNm like '%' || #{empNm} || '%'
 	</select>
-
+	
+	<insert id="buyPoint" parameterType="kr.or.com.Point.PointDTO">
+		insert into tbl_Point values(pointSeq.nextval,#{userId}, #{deptCd}, #{empNm}, #{point}, sysdate)
+	</insert>
+	
+	<update id="updateMyPoint" parameterType="kr.or.com.Point.PointDTO">
+		update member set point = #{updatePoint} where id=#{userId}
+	</update>
+	
+	
+	
 </mapper>

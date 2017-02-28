@@ -14,6 +14,23 @@ public class PointService {
 
 	@Autowired
 	private SqlSession sqlSession;
+
+	//내가산 국회의원 리스트
+	public List<PointDTO> buyPaliamentIndex(String userId) {
+		
+		List<PointDTO> pointList = null;
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			pointList = dao.buyPaliamentIndex(userId);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return pointList;
+	}
+	
 	
 	public List<PaliamentList_DTO> PointIndex(){
 		
@@ -48,6 +65,35 @@ public class PointService {
 		}
 		return list;
 	}
+	
+	
+	//포인트 구매
+	public int buyPoint(PointDTO dto) {
+		int result = 0;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			result = dao.buyPoint(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	//구매후 내 포인트 빼는것
+	public int updateMyInfo(PointDTO dto) {
+		
+		int result = 0;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			result = dao.updateMyPoint(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	
 	
 	
 }
