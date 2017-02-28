@@ -40,7 +40,7 @@
 											<td>${status.count}</td>
 											<td>${list.empNm}</td>
 											<td>${list.polyNm}</td>
-											<td><input type="button" class="btn btn-default" value="상세보기" onclick="detailPointPaliament(this);"></td>
+											<td><input type="button" class="btn btn-success" value="상세보기" onclick="detailPointPaliament(this);"></td>
 										</tr>
 									</c:forEach>
 								</c:when>
@@ -62,46 +62,28 @@
 						<tr>
 								<th class="text-center">No.</th>
 								<th class="text-center">이름</th>
-								<th class="text-center">정당</th>
-								<th colspan="2"/>
+								<th class="text-center">보유량</th>
+								<th colspan="1"/>
 						</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-								<td>테스트</td>
-							</tr>
+							<c:choose>
+								<c:when test="${pointList != null}">
+									<c:forEach var="buylist" items="${pointList}" varStatus="count">
+										<tr>
+											<td class="text-center">${count.count}</td>
+											<td>${buylist.empNm}</td>
+											<td>${buylist.totalCount}</td>
+											<td><input type="button" class="btn btn-success" value="상세보기"></td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td class="text-center" colspan="5">보유한 의원 리스트가 없습니다</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
 				</div>

@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="buyPaliamentIndex" resultType="kr.or.com.Point.PointDTO">
-		select count(*)*(select point from tbl_paliament where deptcd = Tbl_Point.Deptcd) as Total, deptCd, empNm 
+		select count(*)*(select point from tbl_paliament where deptcd = Tbl_Point.Deptcd) as totalCount, deptCd, empNm 
 		from tbl_Point 
 		where userId = #{userId}
 		group by deptcd, empNm

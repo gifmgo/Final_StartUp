@@ -30,7 +30,8 @@ public class PointController {
 		
 		List<PaliamentList_DTO> list = service.PointIndex();
 		List<PointDTO> pointList = service.buyPaliamentIndex(userId);
-
+		
+		
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("list", list);
 		return "point.PointIndex";

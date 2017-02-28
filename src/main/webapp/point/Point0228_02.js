@@ -37,11 +37,13 @@ function detailPointPaliament(tag){
 	$('#modalPoint').text(point);
 	$('#hiddenModalPoint').val(inputHidden);
 	$('#hiddenModalPaliamentName').val(name);
-	$('#myModal').modal();
+
 	
 	$('#modalHiddenDeptCd').val(dept_cd);
 	$('#modalHiddenNum2').val(num);
 	$('#modalHiddenEmpNm').val(name);
+	
+	$('#myModal').modal();
 	
 }
 
@@ -136,6 +138,50 @@ function buyPoint(tag){
 	}
 }
 
+//검색해서 구매하기
+function searchBuy(tag){
+	var $button = $(tag);
+		//이미지
+	var jpgLink = $button.parent().children().eq(0).attr("src");
+		//의원 이름
+	var empNm = $button.prev().prev().prev().children().text();
+		//정당 이름
+	var polyNm = $button.prev().prev().children().text();
+		//포인트
+	var point = $button.prev().children().text();
+	
+	var deptCd = $button.parent().prev().prev().val();
+	var num = $button.parent().prev().val();
+	
+	$('#paliamentImg').attr('src','');
+	$('#modalName').val();
+	$('#modalPolyNm').text();
+	$('#modalPoint').text();
+	
+	$('#modalHiddenDeptCd').val('');
+	$('#modalHiddenNum2').val('');
+	$('#modalHiddenEmpNm').val('');
+	$('#hiddenModalPoint').val('');
+	$('#hiddenModalDeptCd').val('');
+	$('#hiddenModalPaliamentName').val('');
+	
+	$('#paliamentImg').attr('src',jpgLink);
+	$('#modalName').text(empNm);
+	$('#modalPolyNm').text(polyNm);
+	$('#modalPoint').text(point);
+	$('#hiddenModalPoint').val(point);
+	$('#hiddenModalPaliamentName').val(empNm);
+
+	
+	$('#modalHiddenDeptCd').val(deptCd);
+	$('#modalHiddenNum2').val(num);
+	$('#modalHiddenEmpNm').val(empNm);
+	
+	$('#myModal').modal();
+	
+}
+
+
 $(document).ready(function(){
 	
 	$('.point_explainePtag').css("display", "none");
@@ -175,15 +221,19 @@ $(document).ready(function(){
 					if(data.list != null && data.list != ''){
 						$('#searchResultDiv').empty();
 						var well = '';
+						
 						$.each(data.list, function(index, obj){
-							well += '<div class="col-md-3"><div class="well customWell">';
-							well += '<img src='+obj.jpgLink+' class="img-circle" alt='+obj.empNm+' width="100" height="100"><br/><br/>'; 
-							well += "<p>이름 : "+obj.empNm+"</p>";
-							well += "<p>정당 : "+obj.polyNm+"</p>";
-							well += "<p>포인트 : <span class='pointSpan'>"+obj.point+"</span></p>";
-							well += "<button class='btn btn-default'>구매하기</button>";
-							well += "</div></div>";
 							
+							well += '<div class="col-md-3">';
+							well += '<input type="hidden" value='+obj.deptCd+'>';
+							well += '<input type="hidden" value='+obj.num2+'>';	
+							well += '<div class="well customWell">';
+							well += '<img src='+obj.jpgLink+' class="img-circle" alt='+obj.empNm+' width="100" height="100"><br/><br/>'; 
+							well += "<p>이름 : <span>"+obj.empNm+"</span></p>";
+							well += "<p>정당 : <span>"+obj.polyNm+"</span></p>";
+							well += "<p>포인트 : <span class='pointSpan'>"+obj.point+"</span></p>";
+							well += "<button class='btn btn-default' onclick='searchBuy(this);'>구매하기</button>";
+							well += "</div></div>";
 						});
 						$('#searchResultDiv').html(well);
 					}else{
