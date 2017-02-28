@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+.pointJumbotronDiv{
+	background-color: #ecf0f1 !important;
+}
+
+
+.articlerow{
+	margin-top:2%;
+}
+
+.customJumbo{
+	background-color: #1abc9c !important;
+	color: #fff !important; 
+}
+
+.customWell{
+	background-color: #fff !important;
+	border: 4px solid #ecf0f1 !important;
+}
+
+.pointSpan{
+	color: #e74c3c !important;
+}
+
+
+.explainSpan{
+	line-height: 30px !important;
+}
+
+#pointForm{
+	margin-top:7%;
+}
+
+.statusDiv{
+	border: 4px solid #ecf0f1 !important;
+}
+
+.secondPointDiv{
+	background-color: #ecf0f1 !important;
+	position:relative;
+	color: black;
+}
+
+
+.point_explainePtag{
+	font-size : 12px !important;
+	line-height: 30px !important;
+}
+
+.titleH4{
+	color:#7f8c8d;
+}
+

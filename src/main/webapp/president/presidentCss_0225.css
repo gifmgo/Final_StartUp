@@ -4,7 +4,7 @@
 }
 
 .presidentMemberH4{
-	line-height: 50px !important;
+	line-height: 35px !important;
 }
 
 .firstDiv{
@@ -17,6 +17,7 @@
 	min-height: 400px;
 	background-color: #ecf0f1;
 	margin:5px;
+	bottom:30px;
 }
 
 .secondRow{
@@ -24,15 +25,16 @@
 }
 
 
-.btn{
+.customGroup{
+	background-color: #1abc9c !important;
+	color: #fff;
 	height: 80px !important;
 	line-height: 80px !important;
 	font-size:20px !important;
 }
 
-.customGroup{
-	background-color: #1abc9c !important;
-	color: #fff;
+.TFbtnRow{
+	margin-top: 5%;
 }
 
 .top_bar_fix{

@@ -1,6 +1,12 @@
 /**
  * 
  */
+
+function community(tag){
+	 var $tag = tag;	 
+}
+
+
 $(document).ready(function(){
 	var topBar = $('#topBar').offset();
 	
@@ -17,6 +23,22 @@ $(document).ready(function(){
 			barThis.removeClass("top_bar_fix");
 			fixNext.removeClass("pd_top_80");
 		}
+	});
+	
+	
+	$('#listGroupBtn').click(function(){
+		
+	});
+	
+	$('#graphBtn').click(function(){
+		location.href="PresidentGraph.do";
+	});
+	
+	$('#tooPyooBtn').click(function(){
+		
+	});
+	
+	$('#presidentTalkBtn').click(function(){
 		
 	});
 	

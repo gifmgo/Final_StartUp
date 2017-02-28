@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.com.Point.PointDAO">
+
+	<select id="countPaliament" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+			<![CDATA[
+			select * from (select num2, deptCd,empNm,jpgLink,polyNm, point, dense_rank() over (order by point desc) as rank from tbl_paliament) 
+			where rank >= 1 and rank <= 3 
+			order by rank
+			]]>
+	</select>
+
+	<select id="searchPaliament" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select num2, deptcd, empnm, jpgLink, polynm, point from tbl_paliament where empNm like '%' || #{empNm} || '%'
+	</select>
+
+</mapper>
