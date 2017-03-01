@@ -76,7 +76,7 @@
 	    	<button onclick="contentModView()">수정</button>
 	    	<button onclick="contentDel()">삭제</button>
         </c:if>
-        <button onclick="boardList(${currentpage},'${dto.category}')">목록</button>
+        <button onclick="location.href='board.do?currentpage=${currentpage}&category=${category}'">목록</button>
     </div>
     
 </div>
