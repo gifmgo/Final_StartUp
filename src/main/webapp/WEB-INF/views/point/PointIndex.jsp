@@ -121,15 +121,37 @@
 					 </div>
 					 <div id="selectPaliamentDiv">
 					 	 <div class="col-md-offset-4 col-md-2">
-					     	 <select class="form-control" onchange="areaSelectFunc()">
-					     	 	<option>지역구</option>
-					     	 	<option value="seoul">서울</option>
-					     	 	<option value="gyung">경기</option>
+					     	 <select class="form-control" id="areaSelect" onchange="areaSelectFunc()">
+					     	 	<option disabled="disabled">지역구</option>
+					     	 	<option>비례대표</option>
+			      				<option>강원</option>
+			      				<option>경기</option>
+			      				<option>경남</option>
+			      				<option>경북</option>
+			      				<option>광주</option>
+			      				<option>대구</option>
+			      				<option>대전</option>
+			      				<option>부산</option>
+			      				<option>서울</option>
+			      				<option>세종</option>
+			      				<option>울산</option>
+			      				<option>인천</option>
+			      				<option>전남</option>
+			      				<option>전북</option>
+			      				<option>제주</option>
+			      				<option>충남</option>
+			      				<option>충북</option>
 					     	 </select>
 						 </div>
 						 <div class="col-md-2" id="jungDangDiv">
-					     	 <select class="form-control">
-					     	 	<option>정당</option>
+					     	 <select class="form-control" id="jungDangSelect" onchange="jungDangFunc();">
+					     	 	<option disabled="disabled">정당</option>
+					     	 	<option>국민의당</option>
+			      				<option>더불어민주당</option>
+			      				<option>무소속</option>
+			      				<option>바른정당</option>
+			      				<option>새누리당</option>
+			      				<option>정의당</option>
 					     	 </select>
 						 </div>
 					 </div>
@@ -156,9 +178,10 @@
 <div class="container-fluid secondPointDiv">
 	<div class="row">
 		<div class="col-md-12 text-center secondPointCol">
-			<p class="secondTitleP">More 생활포인트</p>
-			<p class="secondPointP">부족한 포인트를 위한, 포인트 퀴즈 입니다 ~ </p>
-			
+			<div class="textDiv">
+				<p class="secondTitleP">More 생활포인트</p>
+				<p class="secondPointP">부족한 포인트를 위한, 포인트 퀴즈 입니다 ~ </p>
+			</div>
 			<form>
 				<div class="row">
 						<div class="col-sm-offset-4 col-sm-4 col-md-4 col-lg-4">
@@ -172,31 +195,29 @@
 						<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
 						<label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
 					</div>
+					<input type="button" class="btn btn-default" value="문제풀기">
 			</form>			
 		</div>
 		<div class="container">
 			<div class="col-md-12 text-center secondPointCol">
 				<div class="row">
-					<div class="col-md-4 col-sm-4 col-md-4 col-lg-4">
+					<div class="col-md-offset-2 col-md-4 col-sm-4 col-md-4 col-lg-4">
 						<div class="well customSecondWell">
 							<i class="fa fa-comments-o"></i><br/>
 							<span class="iconTitle">토론방</span>
 							<p class="secondPtag"><br/>토론방에 자신의 의견을 쓰시면<br/>포인트가 증가합니다.</p>
-							<input type="button" class="btn btn-primary" value="보러가기" onclick="debateFunc();">
+							<input type="button" class="btn btn-success" value="보러가기" onclick="debateFunc();">
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 col-md-4 col-lg-4">
 						<div class="well customSecondWell">
-							<i class="fa fa-comments-o"></i>
-							<p>토론방</p>
+							<i class="fa fa-address-card-o"></i><br/>
+							<span class="iconTitle">의원</span>
+							<p class="secondPtag"><br/>상승세가 높은 의원의 포인트를<br/>미리 구매하세요</p>
+							<input type="button" class="btn btn-success" value="보러가기" onclick="paliamentFunc();">
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 col-md-4 col-lg-4">
-						<div class="well customSecondWell">
-							<i class="fa fa-comments-o"></i>
-							<p>토론방</p>
-						</div>
-					</div>
+		
 				</div>
 			  </div>
 		</div>

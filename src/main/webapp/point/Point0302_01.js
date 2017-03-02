@@ -5,7 +5,10 @@
 function debateFunc(){
 	location.href="moreCommunityTalk.do";
 }
-
+//국회의원방 보러가기 버튼
+function paliamentFunc(){
+	location.href="Member_Parliament.do";
+}
 //포인트 > 국회의원 상세 보기 넘어가는 부분
 function detailPointPaliament(tag){
 
@@ -278,7 +281,51 @@ function chooseSearchFun(){
 	}
 }
 
+//검색하기 위한 지역구  변수
+var areaSelect = '';
 //지역 선택시
 function areaSelectFunc(){
+	areaSelect = $('#areaSelect').val();
 	$('#jungDangDiv').css("display","block");
+}
+//정당 선택할때
+function jungDangFunc(){
+	var jungDang = $('#jungDangSelect').val();
+	alert("확인  지역 : "+areaSelect + " // 정당 : "+jungDang);
+	
+	$.ajax({
+		url:"pointSearchSelect.do",
+		data : {
+			area : areaSelect,
+			jungDang : jungDang
+		},
+		success : function(data){
+			
+		
+			if(data.selectlist != null && data.selectlist != ''){
+				$('#searchResultDiv').empty();
+				var well = '';
+				
+				$.each(data.selectlist, function(index, obj){
+					
+					well += '<div class="col-md-3">';
+					well += '<input type="hidden" value='+obj.deptCd+'>';
+					well += '<input type="hidden" value='+obj.num2+'>';	
+					well += '<div class="well customWell">';
+					well += '<img src='+obj.jpgLink+' class="img-circle" alt='+obj.empNm+' width="100" height="100"><br/><br/>'; 
+					well += "<p>이름 : <span>"+obj.empNm+"</span></p>";
+					well += "<p>정당 : <span>"+obj.polyNm+"</span></p>";
+					well += "<p>포인트 : <span class='pointSpan'>"+obj.point+"</span></p>";
+					well += "<button class='btn btn-default' onclick='searchBuy(this);'>구매하기</button>";
+					well += "</div></div>";
+				});
+				$('#searchResultDiv').html(well);
+			}else{
+				var well = "<div class='col-md-12'><div class='well'>검색하신 결과가 없습니다.</div></div>";
+				$('#searchResultDiv').html(well);	
+			}	
+			
+		}
+	});
+	
 }

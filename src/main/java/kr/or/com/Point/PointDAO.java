@@ -19,6 +19,9 @@ public interface PointDAO {
 	//국회의원 포인트 구매후 내 포인트 변경
 	public int updateMyPoint(PointDTO dto);
 
+	//국회의원 - 셀렉트 박스 이용시 - > point 중간 부분
+	public List<PaliamentList_DTO> selectBoxPaliament(PaliamentList_DTO dto);
+
 	
 	
 }

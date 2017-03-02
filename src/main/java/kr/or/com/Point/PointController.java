@@ -87,4 +87,18 @@ public class PointController {
 		return result;
 	}
 	
+	
+	//셀렉트 최종 !!
+	@RequestMapping("/pointSearchSelect.do")
+	public View selectResult(String area, String jungDang, Model model){
+		System.out.println("확인좀 해볼께요 : "+area+ " // 정당 : "+jungDang);
+		List<PaliamentList_DTO> list = service.selectPaliament(area, jungDang);
+		for(int i = 0; i < list.size(); i++){
+			System.out.println("확인좀 할께요 : "+list.get(i).toString());
+		}
+		model.addAttribute("selectlist", list);
+		return jsonview;
+	}
+	
+	
 }

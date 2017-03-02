@@ -46,7 +46,9 @@
 
 .secondPointCol{
 	margin-top:2%;
+	margin-bottom: 50px !important;
 }
+
 
 /* 타이틀 */
 .secondTitleP{
@@ -61,6 +63,12 @@
 }
 .fa-comments-o{
 	font-size:150px !important;
+	color: #1abc9c;
+}
+
+.fa-address-card-o{
+	font-size:150px !important;
+	color: #1abc9c;
 }
 
 .customSecondWell{
@@ -79,4 +87,11 @@
 .titleH4{
 	color:#7f8c8d;
 }
+
+
+
+@media only screen and (max-width:768px) {
+	.secondPtag{
+		margin-top:-15px;
+	}
 
