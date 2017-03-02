@@ -1,6 +1,10 @@
 /**
  * 
  */
+//토론방 보러가기 버튼
+function debateFunc(){
+	location.href="moreCommunityTalk.do";
+}
 
 //포인트 > 국회의원 상세 보기 넘어가는 부분
 function detailPointPaliament(tag){
