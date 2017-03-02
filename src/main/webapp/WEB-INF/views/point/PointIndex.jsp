@@ -155,16 +155,50 @@
 
 <div class="container-fluid secondPointDiv">
 	<div class="row">
-		<div class="col-md-12 text-center">
-			<h4>More 생활포인트!</h4>
+		<div class="col-md-12 text-center secondPointCol">
+			<p class="secondTitleP">More 생활포인트</p>
+			<p class="secondPointP">부족한 포인트를 위한, 포인트 퀴즈 입니다 ~ </p>
 			
-			<p>퀴즈쇼 입니다.</p>
 			<form>
-				<label class="radio-inline"><input type="radio" name="optradio">Option 1</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
-				<label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
+				<div class="row">
+						<div class="col-sm-offset-4 col-sm-4 col-md-4 col-lg-4">
+							<div class="form-group">
+								<label class="form-control">문제 들어갑니다 슝슝슝</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="radio-inline"><input type="radio" name="optradio">Option 1</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
+						<label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
+					</div>
 			</form>			
-			
+		</div>
+		<div class="container">
+			<div class="col-md-12 text-center secondPointCol">
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-md-4 col-lg-4">
+						<div class="well customSecondWell">
+							<i class="fa fa-comments-o"></i><br/>
+							<span class="iconTitle">토론방</span>
+							<p class="secondPtag"><br/>토론방에 자신의 의견을 쓰시면<br/>포인트가 증가합니다.</p>
+							<input type="button" class="btn btn-primary" value="보러가기" onclick="debateFunc();">
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-md-4 col-lg-4">
+						<div class="well customSecondWell">
+							<i class="fa fa-comments-o"></i>
+							<p>토론방</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-md-4 col-lg-4">
+						<div class="well customSecondWell">
+							<i class="fa fa-comments-o"></i>
+							<p>토론방</p>
+						</div>
+					</div>
+				</div>
+			  </div>
 		</div>
 	</div>
 </div>
