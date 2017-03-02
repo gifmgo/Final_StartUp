@@ -89,6 +89,23 @@ public class PointService {
 		return result;
 	}
 
+
+	//셀렉트 박스 지역 검사
+	public List<PaliamentList_DTO> selectPaliament(String origNm, String polyNm) {
+		PaliamentList_DTO dto = new PaliamentList_DTO();
+		dto.setOrigNm(origNm);
+		dto.setPolyNm(polyNm);
+		List<PaliamentList_DTO> list = null;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.selectBoxPaliament(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
 	
 	
 	
