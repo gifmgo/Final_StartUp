@@ -29,8 +29,10 @@ public class PointController {
 		String userId = (String)session.getAttribute("id");
 		
 		List<PaliamentList_DTO> list = service.PointIndex();
-		List<PointDTO> pointList = service.buyPaliamentIndex(userId);
-		
+		List<PointDTO> pointList = null;
+		if(userId != null && userId != ""){
+			pointList = service.buyPaliamentIndex(userId);
+		}
 		
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("list", list);

@@ -90,52 +90,84 @@
 			</div>
 		</div>
 		
-		<div class="col-md-12">
+		<div class="col-md-12" style="">
 			<hr/>
-			<h4 class="text-center titleH4">의원 검색</h4>
-			 <div class="input-group col-md-offset-4 col-md-4">
-			    <input type="text" class="form-control" placeholder="국회의원 이름을 검색하세요" id="searchPaliamentNameInput">
-			    <div class="input-group-btn">
-			      <button class="btn btn-default" type="button" id="searchPaliamentBtn">
-			        <i class="glyphicon glyphicon-search"></i>
-			      </button>
-			    </div>
-			</div>
+				<div class="row">
+				<h4 class="text-center titleH4">의원 검색</h4>
+					<div class="col-md-offset-4 col-md-4">
+						<select class="form-control" onchange="chooseSearchFun();" id="chooseSelectSearch">
+							<option value="0">선택</option>
+							<option value="1">이름 검색</option>
+							<option value="2">지역별 검색</option>
+						</select>	
+					</div>
+				</div>
+	     </div>
+		     
+		     <div class="col-md-12">
+		     	 <br/>
+		     	 <div class="row">
+			     	 <div id="searchPaliamentDiv">
+				     	 <div class="col-md-offset-4 col-md-4">
+					     	 <div class="input-group">
+								    <input type="text" class="form-control" placeholder="국회의원 이름을 검색하세요" id="searchPaliamentNameInput">
+								    <div class="input-group-btn">
+								      <button class="btn btn-default" type="button" id="searchPaliamentBtn">
+								        <i class="glyphicon glyphicon-search"></i>
+								      </button>
+								    </div>
+								</div>
+						 </div>
+					 </div>
+					 <div id="selectPaliamentDiv">
+					 	 <div class="col-md-offset-4 col-md-2">
+					     	 <select class="form-control" onchange="areaSelectFunc()">
+					     	 	<option>지역구</option>
+					     	 	<option value="seoul">서울</option>
+					     	 	<option value="gyung">경기</option>
+					     	 </select>
+						 </div>
+						 <div class="col-md-2" id="jungDangDiv">
+					     	 <select class="form-control">
+					     	 	<option>정당</option>
+					     	 </select>
+						 </div>
+					 </div>
+				</div>
+		     </div>
+		     
 		</div>
-	</div>
 	<br/>
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 text-center searchPaliamentDiv">
 			<div class="row" id="searchResultDiv">
-				<h4 class="text-center">검색하신 정보가 없습니다.</h4>
+				<div class="col-sm-offset-4 col-sm-4 col-md-4">
+					<div class="well customWell" style="min-height: 300px;">
+						<h4 class="text-center">검색하신 정보가 없습니다.</h4>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
 <div class="container-fluid secondPointDiv">
-	
 	<div class="row">
 		<div class="col-md-12 text-center">
 			<h4>More 생활포인트!</h4>
 			
-		</div>
+			<p>퀴즈쇼 입니다.</p>
+			<form>
+				<label class="radio-inline"><input type="radio" name="optradio">Option 1</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
+				<label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
+			</form>			
 			
+		</div>
 	</div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 

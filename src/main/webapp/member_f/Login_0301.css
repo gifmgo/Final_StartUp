@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+body{
+	background-image: url("../img/loginBack.jpg");
+	background-repeat:no-repeat;
+	background-size:100% 100%; 
+	background-color: #fff;
+}
+
+.LoginDiv{
+	height: 100%;
+}
+
+.LoginMainDiv{
+	margin-top:2%;
+}
+
+.well{
+	background-color: rgba( 255, 255, 255, 0.8) !important;
+	border: none !important;
+}
+
+.explaineDiv{
+	margin-top : 5%;
+}
+
+.explaineDiv > label{
+	line-height: 30px !important;
+}
+
+.explaineDiv > p{
+	line-height: 30px !important;
+}
+
+.titleLabel{
+	color: #e74c3c !important;
+}
+
+
+.customForm{
+	margin-top:20% !important;
+}
+
+.customP{
+	font-size:30px !important;
+}
+.customP span{
+	font-size:14px !important;
+	line-height:30px !important;
+}
+
+.iconCustomDiv{
+	margin-left:15% !important; 
+}
+.material-icons{
+	font-size:65px !important;
+}
+
+@media only screen and (max-width:768px) {
+	
+	.customP{
+		font-size:20px !important;
+	}	
+	.customP span{
+		font-size:13px !important;
+		line-height: 60px !important;
+	}		
+	.material-icons{
+		display: none;
+	}	
+	
+	.customForm{
+		margin-top: 1% !important;	
+	}
+	
+	.customInput{
+		height: 35px !important;
+	}
+	
+}

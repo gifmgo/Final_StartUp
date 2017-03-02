@@ -184,6 +184,10 @@ function searchBuy(tag){
 
 $(document).ready(function(){
 	
+	$('#searchPaliamentDiv').css("display","none");
+	$('#selectPaliamentDiv').css("display","none");
+	$('#jungDangDiv').css("display","none");
+	
 	$('.point_explainePtag').css("display", "none");
 	
 	var count = 0;
@@ -244,5 +248,33 @@ $(document).ready(function(){
 			});
 		}
 	});
-	
 });
+
+
+function chooseSearchFun(){
+	
+	var choose =$('#chooseSelectSearch option:selected').val();
+	if(choose == 0){
+		alert("옵션틀 선택해주세요 !");
+			//이름
+	}else if(choose == 1){
+		//이름 만 검색
+		$('#searchPaliamentDiv').css("display","block");
+		//지역구 셀렉트로 보여줌
+		$('#selectPaliamentDiv').css("display","none");
+		$('#jungDangDiv').css("display","none");
+		   
+		//지역구
+	}else if(choose == 2){
+		//이름 만 검색
+		$('#searchPaliamentDiv').css("display","none");
+		//지역구 셀렉트로 보여줌
+		$('#selectPaliamentDiv').css("display","block");
+		$('#jungDangDiv').css("display","none");
+	}
+}
+
+//지역 선택시
+function areaSelectFunc(){
+	$('#jungDangDiv').css("display","block");
+}

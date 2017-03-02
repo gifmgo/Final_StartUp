@@ -107,7 +107,8 @@
         
        	<c:choose>
 			<c:when test="${id == null}">					
-       			<div id="s_loginDiv"><i class="fa fa-sign-in" aria-hidden="true"></i> 로그인</div>
+       			<!-- <div id="s_loginDiv"><i class="fa fa-sign-in" aria-hidden="true"></i> 로그인</div> -->
+       			<div><a href="LoginP.do" style="color:#fff;"><i class="fa fa-sign-in" aria-hidden="true"></i> 로그인</a></div>
 			</c:when>
 		<c:otherwise>
 			<div id="s_logOutDiv">

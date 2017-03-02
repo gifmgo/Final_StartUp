@@ -7,6 +7,10 @@
       <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
       <put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
    </definition>
+	
+   <definition name="admin.*" template="/WEB-INF/views/login/inc/layout.jsp">
+      <put-attribute name="content" value="/WEB-INF/views/login/{1}.jsp" />
+   </definition>	
 		
    <definition name="admin.*" template="/WEB-INF/views/admin/inc/layout.jsp">
       <put-attribute name="header" value="/WEB-INF/views/admin/inc/header.jsp" />

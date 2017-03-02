@@ -20,6 +20,12 @@ public class MemberController {
 	private View jsonview;
 	
 	
+	//로그인 페이지
+	@RequestMapping("/LoginP.do")
+	public String Login(){
+		return "login.LoginIndex";
+	}
+	
 	
 	//회원가입시 아이디 체크
 	@RequestMapping("/id_Check.do")

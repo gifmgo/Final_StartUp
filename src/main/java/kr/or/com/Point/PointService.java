@@ -33,18 +33,14 @@ public class PointService {
 	
 	
 	public List<PaliamentList_DTO> PointIndex(){
-		
 		List<PaliamentList_DTO> list = new ArrayList<PaliamentList_DTO>();
-		
 		try{
 			
 			PointDAO dao = sqlSession.getMapper(PointDAO.class);
 			List<PaliamentList_DTO>list2 = dao.countPaliament();
-			
 			for(int i = 0; i < 5; i++){
 				list.add(i, list2.get(i));
 			}
-			
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -69,6 +69,7 @@ public class indexController {
 		return "index";
 	}
 	
+	
 
 	//페이지 소개
 	@RequestMapping("/explanation.do")
