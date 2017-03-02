@@ -22,20 +22,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="css/main_header_modify0213.js"></script>
+<script src="login/login.js"></script>
 <title>로그인</title>
 </head>
 <body>
 
 	<!-- Main Wrapper -->
 	<tiles:insertAttribute name="content" />
-	
-	<script>
-		$(document).ready(function(){
-			$('#loginSubmitLabel').click(function(){
-				$('#newLoginForm').submit();
-			});
-		});
-	</script>
-	
+
 </body>
 </html>
