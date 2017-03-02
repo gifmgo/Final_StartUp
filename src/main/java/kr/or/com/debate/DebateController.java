@@ -51,6 +51,7 @@ public class DebateController {
 			 for(int i=0; i<list.size(); i++){
 				 if(list.get(i).getChoose().equals("진보")){
 					 jlist.add(list.get(i));
+					 System.out.println("확인좀요 : "+list.get(i).toString());
 				 }else{
 					 blist.add(list.get(i));
 				 }
