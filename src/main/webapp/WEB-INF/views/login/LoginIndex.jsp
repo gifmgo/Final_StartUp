@@ -32,22 +32,22 @@
 						</div>
 					</div>
 					
-					<form class="form-horizontal customForm">
+					<form class="form-horizontal customForm" action="LoginPage.do" method="POST" id="newLoginForm">
 					  <div class="form-group">
 					    <div class="col-sm-12">
-					      <input type="email" class="form-control customInput" id="email" placeholder="Enter email">
+					      <input type="email" class="form-control customInput" id="email" name="id" placeholder="Enter email" required="required">
 					    </div>
 					  </div>
 					  
 					  <div class="form-group">
 					    <div class="col-sm-12"> 
-					      <input type="password" class="form-control customInput" id="pwd" placeholder="Enter password">
+					      <input type="password" class="form-control customInput" id="pwd" name="pw" placeholder="Enter password" required="required">
 					    </div>
 					  </div>
 					  
 					  <div class="form-group">
 					    <div class="col-sm-12"> 
-					      <label class="form-control btn btn-default customInput">로그인</label>
+					      <label class="form-control btn btn-default customInput" id="loginSubmitLabel">로그인</label>
 					    </div>
 					  </div>
 					</form>
@@ -69,3 +69,4 @@
 		</div>
 	</div>
 </div>
+

@@ -65,7 +65,6 @@ public class indexController {
 	@RequestMapping("/index.do")
 	public String index(){
 		System.out.println("인덱스 . do ");
-		
 		return "index";
 	}
 	

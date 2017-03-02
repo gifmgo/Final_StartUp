@@ -28,6 +28,14 @@
 
 	<!-- Main Wrapper -->
 	<tiles:insertAttribute name="content" />
-
+	
+	<script>
+		$(document).ready(function(){
+			$('#loginSubmitLabel').click(function(){
+				$('#newLoginForm').submit();
+			});
+		});
+	</script>
+	
 </body>
 </html>
