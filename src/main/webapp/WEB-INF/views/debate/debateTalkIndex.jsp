@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- <section style="width:100%; height:100%;"> -->
 <div class="container-fluid">
 	<div class="jumbotron" style="width:100%; margin-top:1%; background-color: #ecf0f1">
@@ -47,10 +48,10 @@
 					<hr/>
 						<ul class="list-group" style="float:none;">
 						<c:choose>
-							<c:when test="${list != null}">
-							<c:forEach var="dto" items="${list}">
-								<c:if test="${dto.choose eq '진보'}">
-									<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} ${dto.writeDate}</span></li>
+							<c:when test="${jlist != null}">
+							<c:forEach var="dto" items="${jlist}" varStatus="status">
+								<c:if test="${dto.choose eq '진보' && status.count<6}">
+								   <li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} ${dto.writeDate}</span></li>
 								</c:if>
 							</c:forEach>
 							</c:when>
@@ -66,9 +67,9 @@
 					<hr/>
 					<ul class="list-group" style="float:none;">
 						<c:choose>
-							<c:when test="${list != null}">
-								<c:forEach var="dto" items="${list}">
-									<c:if test="${dto.choose eq '보수'}">
+							<c:when test="${blist != null}">
+								<c:forEach var="dto" items="${blist}" varStatus="status">
+									<c:if test="${dto.choose eq '보수' && status.count<6}">
 										<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} / ${dto.writeDate}</span></li>
 									</c:if>
 								</c:forEach>

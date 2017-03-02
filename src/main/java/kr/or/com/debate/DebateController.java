@@ -1,5 +1,6 @@
 package kr.or.com.debate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +41,20 @@ public class DebateController {
 	@RequestMapping("/moreCommunityTalk.do")
 	public String debate(Model model){
 		List<debateDTO> list = null;
+		List<debateDTO> jlist = new ArrayList<debateDTO>();
+		List<debateDTO> blist =new ArrayList<debateDTO>();
+		
 		admin_DebateDTO link=null;
 		try{	
 			 //리스트 담아둠
 			 list = service.list();
+			 for(int i=0; i<list.size(); i++){
+				 if(list.get(i).getChoose().equals("진보")){
+					 jlist.add(list.get(i));
+				 }else{
+					 blist.add(list.get(i));
+				 }
+			 }
 			 //키워드, 링크 담아둠
 			 link = service.videosrc();
 		}catch(Exception e){
@@ -51,7 +62,9 @@ public class DebateController {
 		}
 		
 		model.addAttribute("keyWord", link);
-		model.addAttribute("list", list);
+		
+		model.addAttribute("jlist", jlist);
+		model.addAttribute("blist", blist);
 		return "debate.debateTalkIndex";
 	}
 	

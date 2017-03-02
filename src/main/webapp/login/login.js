@@ -7,7 +7,7 @@ $(document).ready(function(){
 		
 		var id=$('#email').val();
 		var pwd =$('#pwd').val();
-		alert('클릭' + id +" / "+pwd);
+		
 		$.ajax({
 			url:"LoginPage.do",
 			type : "POST",
