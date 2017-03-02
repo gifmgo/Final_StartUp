@@ -73,9 +73,10 @@ public class MemberController {
 	
 	//
 	@RequestMapping(value="/LoginPage.do", method=RequestMethod.POST)
-	public String LoginPageMethod(String id, String pw, HttpServletRequest request, Model model){		
+	public View LoginPageMethod(String id, String pw, HttpServletRequest request, Model model){		
 		//로그인 성공시 - 성공  
 		//로그인 실패시 - 실패
+		System.out.println(" 아이디 : "+id+ " / "+pw);
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
 		dto.setPw(pw);
@@ -94,8 +95,12 @@ public class MemberController {
 				session.setAttribute("memberDTO", result);
 				session.setAttribute("id", dto.getId());
 			}
+			model.addAttribute("msg", "성공");
+		}else{
+			model.addAttribute("msg", "실패");
 		}
-		return "redirect:index.do";
+		//return "redirect:index.do";
+		return jsonview;
 	}
 	
 	
