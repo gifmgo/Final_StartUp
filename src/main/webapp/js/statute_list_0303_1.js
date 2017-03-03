@@ -106,11 +106,12 @@ function pagingAjax(pagingNumber){
 				   
 				}else{
 					table += "</table>";
-					$('#statuteTable').empty();
-					$('#statuteTable').html(table);
 					return;
 				}
 			}
+			$('#statuteTable').empty();
+			$('#statuteTable').html(table);
+			
 		}
 	}else{
 	
@@ -123,6 +124,7 @@ function pagingAjax(pagingNumber){
 	var lengthCount = pagingNumber * 10; 
 	
 	if(lengthCount == 0){
+		
 		$.each(pagingData, function(index, obj){
 			
 			table+="<tr><td>"+obj.proposeDt+"</td><td><a href='http://likms.assembly.go.kr/bill/billDetail.do?billId="+obj.billId+"' target='_blank'>"+obj.billName+"</a></td><td>"+obj.committeeName+"</td><td>"+obj.generalResult+"</td></tr>";
@@ -134,18 +136,23 @@ function pagingAjax(pagingNumber){
 			}
 		});
 	}else{
+		
 		//페이징 > 1이상일때
 		var totalLength = (lengthCount+10)-1;
+		
 		for(var i = lengthCount; i < totalLength; i++){
 			if(pagingData[i] != undefined || pagingData[i] != null){
 				table+="<tr><td>"+pagingData[i].proposeDt+"</td><td><a href='http://likms.assembly.go.kr/bill/billDetail.do?billId="+pagingData[i].billId+"' target='_blank'>"+pagingData[i].billName+"</a></td><td>"+pagingData[i].committeeName+"</td><td>"+pagingData[i].generalResult+"</td></tr>";
+				
 			}else{
 				table += "</table>";
-				$('#statuteTable').empty();
-				$('#statuteTable').html(table);
-				return;
+			return;
 			}
 		}
+		
+		$('#statuteTable').empty();
+		$('#statuteTable').html(table);
+		
 	}
   }
 }
@@ -161,24 +168,44 @@ function pagingAjax(pagingNumber){
      	$('#tabMenu').html(tab);
     	
     	
+     	
     	var chooseTab;
   	  $('#pagingSize_Select').change(function(){
+  		
   		 var number = $('#pagingSize_Select option:selected').val();
   		 selectPageNumber = number;
   		 ///// 어느탭을 선택하고 있는지에 따라서 호출 해야 하는 함수가 달라짐.
-  		 if(chooseTab==0){
-               getRecentPasageList();
-            //최근 접수의안     
-            }else if(chooseTab==1){
-               getRecentRceptList();      
-            //처리의안     
-            }else if(chooseTab==2){
-               getJsictionComiteProcessList();
-            //계류의안         
-            }else{
-               getRecentMoorList();
-            }
-  		 
+  		 	if(chooseTab==''||chooseTab ==null){
+  		 		chooseTab='0';
+  		 		if(chooseTab==0){
+	                 getRecentPasageList();
+	              //최근 접수의안     
+	              }else if(chooseTab==1){
+	                 getRecentRceptList();      
+	              //처리의안     
+	              }else if(chooseTab==2){
+	                 getJsictionComiteProcessList();
+	              //계류의안         
+	              }else if(chooseTab==3){
+	                 getRecentMoorList();
+	              }
+  		 	}else{
+	  		 	 if(chooseTab==0){
+	                 getRecentPasageList();
+	              //최근 접수의안     
+	              }else if(chooseTab==1){
+	                 getRecentRceptList();      
+	              //처리의안     
+	              }else if(chooseTab==2){
+	                 getJsictionComiteProcessList();
+	              //계류의안         
+	              }else if(chooseTab==3){
+	                 getRecentMoorList();
+	              }
+  		 	}
+  		   	 
+    	
+  		
   	  });
     	
     	$.ajax({
@@ -237,7 +264,7 @@ function pagingAjax(pagingNumber){
             console.log(tSts);
             
             $(this).css({backgroundColor:"#333",color:"#fff"}).siblings().css({backgroundColor:"#fff",color:"#000"});
-             
+              if(tSts != '' && tSts !== "undefined"){
               //최근 통과의안
                if(tSts==0){
                   getRecentPasageList();
@@ -251,6 +278,22 @@ function pagingAjax(pagingNumber){
                }else{
                   getRecentMoorList();
                }
+               
+              }else{
+            	  tSts = 0;
+            	  if(tSts==0){
+                      getRecentPasageList();
+                   //최근 접수의안     
+                   }else if(tSts==1){
+                      getRecentRceptList();      
+                   //처리의안     
+                   }else if(tSts==2){
+                      getJsictionComiteProcessList();
+                   //계류의안         
+                   }else{
+                      getRecentMoorList();
+                   }
+              }  
         });
     	return;
     }else{
@@ -263,19 +306,36 @@ function pagingAjax(pagingNumber){
 		 selectPageNumber = number;
 		 ///// 어느탭을 선택하고 있는지에 따라서 호출 해야 하는 함수가 달라짐.
 		
-		 if(chooseTab==0){
-             getRecentPasageList();
-          //최근 접수의안     
-          }else if(chooseTab==1){
-             getRecentRceptList();      
-          //처리의안     
-          }else if(chooseTab==2){
-             getJsictionComiteProcessList();
-          //계류의안         
-          }else{
-             getRecentMoorList();
-          }
-		 
+		 //console.log("========== select 선택  "+number +" / "+selectPageNumber);
+		 if(chooseTab==''||chooseTab ==null){
+		 		chooseTab='0';
+		 		if(chooseTab==0){
+	                 getRecentPasageList();
+	              //최근 접수의안     
+	              }else if(chooseTab==1){
+	                 getRecentRceptList();      
+	              //처리의안     
+	              }else if(chooseTab==2){
+	                 getJsictionComiteProcessList();
+	              //계류의안         
+	              }else if(chooseTab==3){
+	                 getRecentMoorList();
+	              }
+		 	}else{
+	  		 	 if(chooseTab==0){
+	                 getRecentPasageList();
+	              //최근 접수의안     
+	              }else if(chooseTab==1){
+	                 getRecentRceptList();      
+	              //처리의안     
+	              }else if(chooseTab==2){
+	                 getJsictionComiteProcessList();
+	              //계류의안         
+	              }else if(chooseTab==3){
+	                 getRecentMoorList();
+	              }
+		 	}
+		   	 
 	  });
 	  
 	  //맨처음 뿌려주는 데이터 
@@ -408,9 +468,10 @@ function pagingAjax(pagingNumber){
              
        
                  if(data.statutelist.length>0){
-                
+                	 
 	            	 $.each(data.statutelist, function(index, obj){
-			               
+	            		// console.log("통과====="+obj.billId+" / "+obj.billName+ " / "+obj.committeeName+" / "+obj.generalResult);
+				           
 			              if(index <= selectPageNumber){
 			                   var billName = obj.billName;
 			                   if(billName.length>30){
@@ -420,6 +481,8 @@ function pagingAjax(pagingNumber){
 			                   if(committeeName.length>15){
 			                      committeeName= committeeName.substring(0,15)+"...";
 			                   }
+			                   //console.log("통과====="+obj.billId+" / "+billName+ " / "+committeeName+" / "+obj.generalResult);
+					             
 			                  table+="<tr><td>"+obj.proposeDt+"</td><td><a href='http://likms.assembly.go.kr/bill/billDetail.do?billId="+obj.billId+"' target='_blank'>"+billName+"</a></td><td>"+committeeName+"</td><td>"+obj.generalResult+"</td></tr>";
 			                  }else{
 			                	  return;

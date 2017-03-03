@@ -25,7 +25,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="css/main_header_modify0213.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/statute_list_0128.js"></script>
+<script src="js/statute_list_0303_1.js"></script>
 <title>의안</title>
 </head>
 <body>
