@@ -100,5 +100,10 @@ public class PointController {
 		return jsonview;
 	}
 	
+	//PointDetail 페이지
+	@RequestMapping("/PointDetail.do")
+	public String PointDetailIndex(){
+		return "point.PointDetailIndex";
+	}
 	
 }
