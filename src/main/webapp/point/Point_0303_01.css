@@ -1,9 +1,5 @@
 @CHARSET "UTF-8";
 
-.pointJumbotronDiv{
-	background-color: #ecf0f1 !important;
-}
-
 
 .articlerow{
 	margin-top:2%;
@@ -88,6 +84,9 @@
 	color:#7f8c8d;
 }
 
+.customPlabel{
+	padding: 5px !important;
+}
 
 
 @media only screen and (max-width:768px) {

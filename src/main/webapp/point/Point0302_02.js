@@ -321,11 +321,19 @@ function jungDangFunc(){
 				});
 				$('#searchResultDiv').html(well);
 			}else{
-				var well = "<div class='col-md-12'><div class='well'>검색하신 결과가 없습니다.</div></div>";
+				var well = "<div class='col-md-12'>" +
+						"<div class='row'>" +
+						"<div class='col-sm-offset-4 col-sm-4 col-md-4'>" +
+						"<div class='well customWell' style='min-height:300px;'>검색하신 결과가 없습니다.</div></div></div></div>";
 				$('#searchResultDiv').html(well);	
 			}	
 			
 		}
 	});
-	
 }
+
+//포인트 상세 보기 - 랭킹  >>
+function PointDetailFunc(){
+	location.href="PointDetail.do";
+}
+
