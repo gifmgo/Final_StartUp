@@ -36,6 +36,7 @@ function detailDebate(no){
 
 $(function(){
 	
+	var checkcount=0;
 	
 	$('#debateWriteBtn').click(function(){
 		var choose = $('input[name=choose]:radio:checked').val();

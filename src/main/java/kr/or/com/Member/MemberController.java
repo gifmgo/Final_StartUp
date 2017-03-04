@@ -20,6 +20,12 @@ public class MemberController {
 	private View jsonview;
 	
 	
+	//로그인 페이지
+	@RequestMapping("/LoginP.do")
+	public String Login(){
+		return "login.LoginIndex";
+	}
+	
 	
 	//회원가입시 아이디 체크
 	@RequestMapping("/id_Check.do")
@@ -65,6 +71,40 @@ public class MemberController {
 	}
 	
 	
+	//
+	@RequestMapping(value="/LoginPage.do", method=RequestMethod.POST)
+	public View LoginPageMethod(String id, String pw, HttpServletRequest request, Model model){		
+		//로그인 성공시 - 성공  
+		//로그인 실패시 - 실패
+		System.out.println(" 아이디 : "+id+ " / "+pw);
+		MemberDTO dto = new MemberDTO();
+		dto.setId(id);
+		dto.setPw(pw);
+		
+		MemberDTO result = service.Login(dto);
+		
+		System.out.println("로그인 결과 : "+result);
+		if(result != null){
+			if(dto.getId().equals("stpark89@naver.com") || dto.getId().equals("abc@abc.com")){
+				HttpSession session = request.getSession();
+				session.setAttribute("admin", "superAdmin");
+				session.setAttribute("id", dto.getId());
+				
+			}else{
+				HttpSession session = request.getSession();
+				session.setAttribute("memberDTO", result);
+				session.setAttribute("id", dto.getId());
+			}
+			model.addAttribute("msg", "성공");
+		}else{
+			model.addAttribute("msg", "실패");
+		}
+		//return "redirect:index.do";
+		return jsonview;
+	}
+	
+	
+	//기존 팝업
 	@RequestMapping("/Login.do")
 	public View loginResult(String id, String pw, HttpServletRequest request, Model model){		
 		//로그인 성공시 - 성공  

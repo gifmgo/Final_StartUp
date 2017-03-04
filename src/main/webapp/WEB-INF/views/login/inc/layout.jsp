@@ -1,3 +1,8 @@
+<!--  
+	작성자 : 박성준
+	작성일 : 2016-03-01
+	목  적 : 로그인 페이지
+-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>  
@@ -9,24 +14,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="debate/final_header3_0225.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
-<link rel="stylesheet" type="text/css" href="point/Point_0303_01.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="member_f/Login_0301.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="point/Point0302_02.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
 <script src="css/main_header_modify0213.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-<title>생활 포인트</title>
+<script src="login/login.js"></script>
+<title>로그인</title>
 </head>
 <body>
-	<!-- Header -->
-	<tiles:insertAttribute name="header" />
+
 	<!-- Main Wrapper -->
 	<tiles:insertAttribute name="content" />
-	<!--풋터-->
-	<tiles:insertAttribute name="footer" />
 
 </body>
 </html>

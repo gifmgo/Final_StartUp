@@ -33,18 +33,14 @@ public class PointService {
 	
 	
 	public List<PaliamentList_DTO> PointIndex(){
-		
 		List<PaliamentList_DTO> list = new ArrayList<PaliamentList_DTO>();
-		
 		try{
 			
 			PointDAO dao = sqlSession.getMapper(PointDAO.class);
 			List<PaliamentList_DTO>list2 = dao.countPaliament();
-			
 			for(int i = 0; i < 5; i++){
 				list.add(i, list2.get(i));
 			}
-			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -92,6 +88,23 @@ public class PointService {
 		}
 		return result;
 	}
+
+
+	//셀렉트 박스 지역 검사
+	public List<PaliamentList_DTO> selectPaliament(String origNm, String polyNm) {
+		PaliamentList_DTO dto = new PaliamentList_DTO();
+		dto.setOrigNm(origNm);
+		dto.setPolyNm(polyNm);
+		List<PaliamentList_DTO> list = null;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.selectBoxPaliament(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 	
 	

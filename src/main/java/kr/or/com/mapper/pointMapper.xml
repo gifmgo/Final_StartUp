@@ -33,5 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
+	<select id="selectBoxPaliament" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select * from tbl_paliament where origNm like '%' || #{origNm} || '%' and polyNm = #{polyNm}
+	</select>	
 	
 </mapper>

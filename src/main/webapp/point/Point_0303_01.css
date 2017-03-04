@@ -1,9 +1,5 @@
 @CHARSET "UTF-8";
 
-.pointJumbotronDiv{
-	background-color: #ecf0f1 !important;
-}
-
 
 .articlerow{
 	margin-top:2%;
@@ -36,11 +32,47 @@
 	border: 4px solid #ecf0f1 !important;
 }
 
+
+/* 퀴즈쇼 디브 */
 .secondPointDiv{
 	background-color: #ecf0f1 !important;
 	position:relative;
 	color: black;
 }
+
+.secondPointCol{
+	margin-top:2%;
+	margin-bottom: 50px !important;
+}
+
+
+/* 타이틀 */
+.secondTitleP{
+	font-size: 32px;
+}
+
+.secondPtag{
+	line-height: 30px !important;	
+}
+.iconTitle{
+	font-size:20px !important;
+}
+.fa-comments-o{
+	font-size:150px !important;
+	color: #1abc9c;
+}
+
+.fa-address-card-o{
+	font-size:150px !important;
+	color: #1abc9c;
+}
+
+.customSecondWell{
+	background-color: #fff !important;
+}
+	
+/********/
+
 
 
 .point_explainePtag{
@@ -51,4 +83,14 @@
 .titleH4{
 	color:#7f8c8d;
 }
+
+.customPlabel{
+	padding: 5px !important;
+}
+
+
+@media only screen and (max-width:768px) {
+	.secondPtag{
+		margin-top:-15px;
+	}
 

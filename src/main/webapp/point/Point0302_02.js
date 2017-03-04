@@ -1,7 +1,14 @@
 /**
  * 
  */
-
+//토론방 보러가기 버튼
+function debateFunc(){
+	location.href="moreCommunityTalk.do";
+}
+//국회의원방 보러가기 버튼
+function paliamentFunc(){
+	location.href="Member_Parliament.do";
+}
 //포인트 > 국회의원 상세 보기 넘어가는 부분
 function detailPointPaliament(tag){
 
@@ -184,6 +191,10 @@ function searchBuy(tag){
 
 $(document).ready(function(){
 	
+	$('#searchPaliamentDiv').css("display","none");
+	$('#selectPaliamentDiv').css("display","none");
+	$('#jungDangDiv').css("display","none");
+	
 	$('.point_explainePtag').css("display", "none");
 	
 	var count = 0;
@@ -244,5 +255,85 @@ $(document).ready(function(){
 			});
 		}
 	});
-	
 });
+
+
+function chooseSearchFun(){
+	
+	var choose =$('#chooseSelectSearch option:selected').val();
+	if(choose == 0){
+		alert("옵션틀 선택해주세요 !");
+			//이름
+	}else if(choose == 1){
+		//이름 만 검색
+		$('#searchPaliamentDiv').css("display","block");
+		//지역구 셀렉트로 보여줌
+		$('#selectPaliamentDiv').css("display","none");
+		$('#jungDangDiv').css("display","none");
+		   
+		//지역구
+	}else if(choose == 2){
+		//이름 만 검색
+		$('#searchPaliamentDiv').css("display","none");
+		//지역구 셀렉트로 보여줌
+		$('#selectPaliamentDiv').css("display","block");
+		$('#jungDangDiv').css("display","none");
+	}
+}
+
+//검색하기 위한 지역구  변수
+var areaSelect = '';
+//지역 선택시
+function areaSelectFunc(){
+	areaSelect = $('#areaSelect').val();
+	$('#jungDangDiv').css("display","block");
+}
+//정당 선택할때
+function jungDangFunc(){
+	var jungDang = $('#jungDangSelect').val();
+	alert("확인  지역 : "+areaSelect + " // 정당 : "+jungDang);
+	
+	$.ajax({
+		url:"pointSearchSelect.do",
+		data : {
+			area : areaSelect,
+			jungDang : jungDang
+		},
+		success : function(data){
+			
+		
+			if(data.selectlist != null && data.selectlist != ''){
+				$('#searchResultDiv').empty();
+				var well = '';
+				
+				$.each(data.selectlist, function(index, obj){
+					
+					well += '<div class="col-md-3">';
+					well += '<input type="hidden" value='+obj.deptCd+'>';
+					well += '<input type="hidden" value='+obj.num2+'>';	
+					well += '<div class="well customWell">';
+					well += '<img src='+obj.jpgLink+' class="img-circle" alt='+obj.empNm+' width="100" height="100"><br/><br/>'; 
+					well += "<p>이름 : <span>"+obj.empNm+"</span></p>";
+					well += "<p>정당 : <span>"+obj.polyNm+"</span></p>";
+					well += "<p>포인트 : <span class='pointSpan'>"+obj.point+"</span></p>";
+					well += "<button class='btn btn-default' onclick='searchBuy(this);'>구매하기</button>";
+					well += "</div></div>";
+				});
+				$('#searchResultDiv').html(well);
+			}else{
+				var well = "<div class='col-md-12'>" +
+						"<div class='row'>" +
+						"<div class='col-sm-offset-4 col-sm-4 col-md-4'>" +
+						"<div class='well customWell' style='min-height:300px;'>검색하신 결과가 없습니다.</div></div></div></div>";
+				$('#searchResultDiv').html(well);	
+			}	
+			
+		}
+	});
+}
+
+//포인트 상세 보기 - 랭킹  >>
+function PointDetailFunc(){
+	location.href="PointDetail.do";
+}
+
