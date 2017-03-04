@@ -1,0 +1,396 @@
+@charset "utf-8";
+
+#main-header{
+	/* background-color: #222; */
+	background-color: #1e1811;
+	padding:8px 0 16px 0;
+	border: 0;
+}
+#main-header > img{
+	width: 80px;
+}
+#main-header > ul{
+	position: absolute;
+    top: 53px;
+    right: 20px;
+	color:#fff;
+}
+#main-header > ul > li{
+	margin-left:20px;
+	float:left !important;
+}
+#main-header > ul > li > a{
+	color:#fff;
+	font-size: 16px;
+}
+
+/* nav */
+#header-navBar{
+	background-color:#1e1811;
+	margin:0;
+	min-height: 45px !important;/*  */
+	border-radius:0 !important;
+	border: 0;
+	/* border-color: #fff; */
+}
+
+@media (max-width: 768px){
+	#header-navBar{ min-height: auto !important;}
+}
+
+#header-navBar .navbar-header{
+	text-align: center;
+}
+#header-navBar .navbar-header > button{
+	float: none;
+	width:100%;
+	color: white;
+	margin:0;
+	border: 0;
+}
+#header-navBar .navbar-header > button >span{
+	padding: 0 25px;
+}
+
+#header-navi{text-align: center;}
+#header-navi > #header-menu{display: inline-block; float: none; margin-top: 4px;}
+@media (min-width: 768px){
+	#community>a{
+		padding-right:10px !important;
+	}
+}
+#header-navi>#header-menu>li>a{
+	font-size: 17px;
+	color: #fff;
+	padding-right: 25px;
+	padding-left: 25px;
+}
+
+#sub-navi a{
+	padding-right:15px !important;
+	padding-left: 15px !important;
+}
+@media (max-width: 768px){
+	#sub-navi a{ color:#fff; }
+}
+
+#sub-navi>ul{
+	left:-90px;
+}
+
+#header-navi>#mobile-login{
+	margin-top:4px;
+}
+#header-navi>#mobile-login>li>a{
+	color: #fff;
+}
+
+@media (max-width: 768px){
+	#main-header > ul {
+		display:none;
+	}
+	#header-navi>#mobile-login{
+		display:block !important;
+	}
+}
+
+@media (min-width: 768px){
+	#header-navi>#mobile-login{
+		display:none !important;
+	}
+	
+}
+
+.top_bar_fix{
+	position: fixed;
+	z-index:999;
+	top:0;
+	width:100%;
+	background-color: rgba(2,2,2,0.7);
+}
+
+.pd_top_60{
+	margin-top:60px;
+	padding-top:60px;
+}
+.pd_top_38{
+	margin-top:38px;
+	padding-top:38px;
+}
+/* 
+
+login
+
+#login_bg {
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	opacity:0.7;
+	z-index:9999;
+	display:none;
+}
+
+#loginForm {
+	position:fixed;
+	width:70%;
+	height:700px;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	background-color:#fff;
+	z-index:100000;	
+	border-radius:10px;
+	display:none;
+}
+
+#login {
+	position:relative;
+	width:70%;
+	height:100%;
+	display:none;
+	margin:0 auto;
+}
+
+#loginForm h1 {
+	position:relative;
+	width:100%;
+	height:120px;
+	text-align:center;
+	font:bold 30px/120px Nanum;
+}
+
+#login input {
+	position:relative;
+	width:100%;
+	height:50px;
+	left:50%;
+	transform:translateX(-50%);
+	margin-top:30px;
+	font:20px Nanum;
+	padding:20px;
+	border:0;
+	border-bottom:2px solid #999 !important;
+	box-sizing:border-box;	
+	
+}
+
+#login input:last-of-type {
+	font-family:맑은 고딕;
+}
+	
+#login input:last-of-type {
+	margin-bottom:40px;	
+}
+
+.long_btn {
+	position:relative;
+	width:100%;
+	height:60px;
+	left:50%;
+	transform:translateX(-50%);
+	margin-top:20px;
+	font:bold 20px Nanum;
+	border:0;
+	background-color:#999;
+	color:#fff;
+	box-sizing:border-box;	
+	cursor:pointer;
+	transition:background-color 0.4s ease-out;
+}
+
+.short_btn {
+	width:18%;
+	height:37px;
+	border:0;
+	background-color:#999;
+	color:#fff;		
+	vertical-align:middle;
+	font:bold 12px Nanum;
+	cursor:pointer;
+	transition:background-color 0.4s ease-out;
+}
+
+#loginForm button:hover {
+	background-color:#333;	
+}
+
+#loginForm span {
+	position:absolute;
+	top:1%;
+	right:3%;
+	font-size:70px;	
+	cursor:pointer;
+}
+
+#loginForm p {
+	position:relative;
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;	
+	cursor:pointer;
+	font-weight:bold;
+	color:#333;
+}
+
+#register {
+	position:relative;
+	width:70%;
+	height:100%;
+	margin:0 auto;
+	display:none;
+	
+}
+
+#register h1 {
+	height:100px !important;	
+}
+
+#register label {
+	position:relative;
+	width:100%;
+	height:auto;
+	display:block;
+	margin-bottom:10px;	
+}
+
+#register input[type=email], #register input[type=password] {
+	position:relative;
+	height:35px;
+	border:0;
+	border-bottom:2px solid #ccc;
+	margin-bottom:20px;
+	box-sizing:border-box;
+	padding:10px;
+	font-size:16px;
+}
+
+#register input[type=email] {
+	width:80% !important;	
+}
+
+#register input[type=password] {
+	width:48%;	
+}
+
+#register input[type=text] {
+	width:100%;
+	height:35px;	
+	border:0;
+	border-bottom:2px solid #ccc;
+	box-sizing:border-box;
+	padding:10px;
+	margin-right:2%;
+	margin-bottom:20px;
+	font-size:16px;
+}
+
+.nick {
+	position:relative;
+	width:78% !important;	
+	height:35px;	
+	border:0;
+	border-bottom:2px solid #ccc;
+	box-sizing:border-box;
+	padding:10px;
+	margin-right:2%;
+	margin-bottom:20px;
+	font-size:16px;
+}
+
+#register select {
+	width:30%;
+	height:35px;	
+	border:0;
+	border-bottom:2px solid #ccc;
+	box-sizing:border-box;
+	margin-right:2%;
+	font-size:16px;
+}
+
+#gender {
+	position:relative;
+	width:100%;
+	height:40px;
+	border:1px solid #ccc;
+	box-sizing:border-box;
+	margin-bottom:20px;
+}
+
+#gender li {
+	width:50%;
+	height:100%;
+	text-align:center;
+	line-height:40px;
+	box-sizing:border-box;
+	border-right:1px solid #ccc;	
+	cursor:pointer;
+}
+
+#interest {
+	position:relative;
+	width:100%;
+	height:40px;
+	border:1px solid #ccc;
+	box-sizing:border-box;
+}
+
+#interest li {
+	width:25%;
+	height:100%;
+	text-align:center;
+	line-height:40px;
+	box-sizing:border-box;
+	border-right:1px solid #ccc;	
+	cursor:pointer;
+}
+
+#register ul li:last-child {
+	border-right:0;	
+}
+
+#find_password {
+	position:relative;
+	width:70%;
+	height:100%;
+	margin:0 auto;
+	display:none;
+}
+
+#find_password>h1 {
+	height:150px;	
+}
+
+#find_password input {
+	position:relative;
+	width:100%;
+	height:35px;
+	border:0;
+	border-bottom:2px solid #ccc;
+	margin-bottom:30px;
+	box-sizing:border-box;
+	padding:10px;
+	font-size:16px;
+}
+
+@media only screen and (max-width:1210px) {
+	#loginForm {
+		width:100%;
+		height:100%;
+		border-radius:0;
+	}
+	
+	#login {
+		width:80%;
+	}
+	
+	#register {
+		width:80%;
+		overflow-y:scroll;
+	}
+	
+	#find_password {
+		width:80%;
+	}
+} */

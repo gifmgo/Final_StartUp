@@ -595,17 +595,20 @@
    color:#ccc;
    font:14px/30px Nanum;   
 }
-/* 
-@media only screen and (max-width:1230px) {
-	#mainMenu>li {
-		margin-right:60px;
-	}
+
+.navbar-inverse{
+	margin:0;
+	border-radius: 4px 4px 0 0;	
 }
 
-@media only screen and (max-width:1133px) {
-	#mainMenu>li {
-		margin-right:45px;
-	}
+/* .top_bar_fix{
+	position: fixed;
+	z-index:999;
+	top:0; left:0; width:100%; opacity:0.6 !important;
+}
+
+.pd_top_80{
+	padding-top:80px;
 } */
 
 @media only screen and (max-width:1210px) {

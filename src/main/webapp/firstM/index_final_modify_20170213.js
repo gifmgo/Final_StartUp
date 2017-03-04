@@ -603,3 +603,42 @@ function check_birth(birth){
     return result;
 }
 
+
+$(document).ready(function(){
+	var topBar = $('#header-navBar').offset();
+	$("#mobile-nav-img").hide();
+	$("#under-nav").hide();
+	
+	$(window).scroll(function(){
+		var doScrollY = $(document).scrollTop();
+		var barThis = $("#header-navBar");
+		var fixNext = $("#banner");
+		var logo = $("#mobile-nav-img");
+		
+		if(doScrollY > topBar.top){
+			barThis.addClass("top_bar_fix");
+			if(window.innerWidth<768){
+				fixNext.addClass("pd_top_38");
+			}else{
+				fixNext.addClass("pd_top_60");				
+			}
+		}else{
+			barThis.removeClass("top_bar_fix");
+			logo.hide();
+			if(window.innerWidth<768){
+				fixNext.removeClass("pd_top_38");
+			}else{
+				fixNext.removeClass("pd_top_60");
+			}
+		}
+	});
+	
+/*	$("#community").hover(function(){
+		$("#under-nav").css({height:"40px !important"});
+		$("#under-nav").stop().animate({height:"40px !important"},300);
+	},function(){
+		$("#under-nav").css({height:"0 !important"});
+		$("#under-nav").stop().animate({height:"0px !important"},300);
+	});*/
+});
+

@@ -13,12 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="lastTodayUserNo" resultType="kr.or.com.Data.TodayUserDTO">
-		select no, adate, todaytotaluser, totaluser from (select * from todayuser order by no desc) where rownum = 1
+		select no, adate, todaytotaluser, totaluser from (select * from todayuser order by adate desc) where rownum = 1
 	</select>
 	
 	<insert id="insertTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
 		insert into todayuser(no, adate, todaytotaluser, totaluser) 
-		values(todayuser_seq.nextval, #{adate}, 1, (select totaluser from todayuser where no=(select no from (select no from todayuser order by no desc) where rownum = 1))+1)
+		values(todayuser_seq.nextval, #{adate}, 1, (select totaluser from todayuser where no=(select no from (select no from todayuser order by adate desc) where rownum = 1))+1)
 	</insert>
 	
 	<update id="updateTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
