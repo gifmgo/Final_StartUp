@@ -1,7 +1,9 @@
 package kr.or.com.Member;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,9 +73,18 @@ public class MemberController {
 	}
 	
 	
-	//
+	//변경된 로그인 페이지
 	@RequestMapping(value="/LoginPage.do", method=RequestMethod.POST)
-	public View LoginPageMethod(String id, String pw, HttpServletRequest request, Model model){		
+	public View LoginPageMethod(String id, String pw, String prev, HttpServletRequest request, Model model){		
+		
+		/*String prevURI = request.getRequestURI();*/
+		String uri[] = prev.split("/");
+		String prevUrIResult = uri[uri.length-1];
+		System.out.println("이전 요청 경로좀 다시보자 : "+prevUrIResult);
+		//이전 페이지 요청 경로
+		model.addAttribute("prev",prevUrIResult);
+		
+		
 		//로그인 성공시 - 성공  
 		//로그인 실패시 - 실패
 		System.out.println(" 아이디 : "+id+ " / "+pw);
@@ -89,11 +100,12 @@ public class MemberController {
 				HttpSession session = request.getSession();
 				session.setAttribute("admin", "superAdmin");
 				session.setAttribute("id", dto.getId());
-				
+				model.addAttribute("result","관리자");
 			}else{
 				HttpSession session = request.getSession();
 				session.setAttribute("memberDTO", result);
 				session.setAttribute("id", dto.getId());
+				model.addAttribute("result","성공");
 			}
 			model.addAttribute("msg", "성공");
 		}else{

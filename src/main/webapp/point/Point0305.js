@@ -120,15 +120,13 @@ function buyPoint(tag){
 				data : {
 					deptCd : deptCd,
 					empNm : paliamentName,
-					point : count,
+					buypoint : count,
 					updatePoint : updatePoint
 				},
 				success : function(data){
 					
 					var message = data.message;
-					console.log("message : "+message + "//  추가로 : "+data.result);
 					if(data.result > 0){
-						console.log("확인이요");
 						alert(message);
 						location.href="point.do";
 					}else{
@@ -147,6 +145,7 @@ function buyPoint(tag){
 
 //검색해서 구매하기
 function searchBuy(tag){
+	
 	var $button = $(tag);
 		//이미지
 	var jpgLink = $button.parent().children().eq(0).attr("src");

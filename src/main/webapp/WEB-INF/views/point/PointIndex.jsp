@@ -55,7 +55,7 @@
 				</div>
 				<div class="col-md-1"></div>
 				<div class="col-md-offset-1 col-md-4 statusDiv">
-					<h4>포인트 현황</h4>
+					<h4>구매 현황<span><i class="fa fa-chevron-circle-right" style="font-size:20px"></i></span></h4>
 					<br/>
 					<table class="table">
 						<thead>
@@ -70,12 +70,14 @@
 							<c:choose>
 								<c:when test="${pointList != null}">
 									<c:forEach var="buylist" items="${pointList}" varStatus="count">
-										<tr>
-											<td class="text-center">${count.count}</td>
-											<td>${buylist.empNm}</td>
-											<td>${buylist.totalCount}</td>
-											<td><input type="button" class="btn btn-success" value="상세보기"></td>
-										</tr>
+										<c:if test="${count.count <= 5}">
+											<tr>
+												<td class="text-center">${count.count}</td>
+												<td>${buylist.empNm}</td>
+												<td>${buylist.totalCount}</td>
+												<td><input type="hidden" value="${buylist.deptCd}"><input type="button" class="btn btn-success" value="상세보기"></td>
+											</tr>
+										</c:if>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
@@ -91,7 +93,7 @@
 			<br/>
 			<div class="row">
 				<div class="col-md-offset-4 col-sm-4 col-md-4 col-lg-4">
-					<input type="button" class="btn btn-info" value="랭킹보기" onclick="PointDetailFunc();">
+					<input type="button" class="btn btn-info" value="상세보기" onclick="PointDetailFunc();">
 				</div>
 			</div>
 			
@@ -264,7 +266,7 @@
 					<input type="hidden" id="hiddenModalPoint">
 					<input type="hidden" id="hiddenModalPaliamentName">
 					<div class="well customWell">
-						<p>나의 포인트 : <span class="pointSpan">${memberDTO.point}</span>&nbsp;Point</p><br/>
+						<p>나의 포인트 : <span class="pointSpan" id="deleteMyPoint">${memberDTO.point}</span>&nbsp;Point</p><br/>
 						<span class="explainSpan">많은 사용자들이 동일한 국회의원 포인트를 구매시,<br/> 해당 국회의원의 포인트는 증가하게 됩니다.</span><br/>
 						<form class="form-horizontal" id="pointForm">
 							<div class="form-group">

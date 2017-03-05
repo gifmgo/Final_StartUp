@@ -164,6 +164,15 @@
 			<div class="row text-center">
 				<div class="col-md-12">
 					<div class="well customWell">
+						<label>나의 포인트 현황</label>
+						<div id="line-example"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row text-center">
+				<div class="col-md-12">
+					<div class="well customWell">
 						<h4>구매한 국회의원</h4>
 						<table class="table">
 							<thead>
@@ -196,14 +205,7 @@
 				</div>
 			</div>
 			
-			<div class="row text-center">
-				<div class="col-md-12">
-					<div class="well customWell">
-						<label>나의 포인트 현황</label>
-						<div id="line-example"></div>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 </div>
@@ -211,16 +213,16 @@
 Morris.Line({
 	  element: 'line-example',
 	  data: [
-	    { y: '2006', a: 100, b: 90 },
-	    { y: '2007', a: 75,  b: 65 },
-	    { y: '2008', a: 50,  b: 40 },
-	    { y: '2009', a: 75,  b: 65 },
-	    { y: '2010', a: 50,  b: 40 },
-	    { y: '2011', a: 75,  b: 65 },
-	    { y: '2012', a: 100, b: 90 }
+	    { y: '2017-01', a: 100, b: 90 },
+	    { y: '2017-02', a: 75,  b: 65 },
+	    { y: '2017-03', a: 50,  b: 40 },
+	    { y: '2017-04', a: 75,  b: 65 },
+	    { y: '2017-05', a: 50,  b: 40 },
+	    { y: '2017-06', a: 75,  b: 65 },
+	    { y: '2017-07', a: 100, b: 90 }
 	  ],
 	  xkey: 'y',
 	  ykeys: ['a', 'b'],
-	  labels: ['Series A', 'Series B']
+	  labels: ['월별', '보유포인트']
 	});
 </script>

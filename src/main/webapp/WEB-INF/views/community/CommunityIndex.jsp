@@ -89,13 +89,18 @@
 					<c:choose>
 						<c:when test="${debate != null}">
 						<ul class="debateList">
-						<c:forEach var="dto" items="${debate}">
-							<c:if test="${dto.choose eq '진보'}">
-							<li>
-								<p class="debateText">${dto.title}</p>
-								<p class="debateDate">${dto.writeDate}</p>
-							</li>
-							</c:if>
+						<c:forEach var="dto" items="${debate}" varStatus="jinstatus">
+							<c:choose>
+								<c:when test="${dto.choose eq '진보'}">
+										<li>
+											<p class="debateText">${dto.title}</p>
+											<p class="debateDate">${dto.writeDate}</p>
+										</li>
+								</c:when>
+								<c:otherwise>
+									
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 						</ul>
 						</c:when>
@@ -112,8 +117,8 @@
 					<c:choose>
 						<c:when test="${debate != null}">
 						<ul class="debateList">
-						<c:forEach var="dto" items="${debate}">
-							<c:if test="${dto.choose eq '보수'}">
+						<c:forEach var="dto" items="${debate}" varStatus="bostatus">
+							<c:if test="${dto.choose eq '보수' && bostatus.count <= 5}">
 							<li>
 								<p class="debateText">${dto.title}</p>
 								<p class="debateDate">${dto.writeDate}</p>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String prevURI = request.getHeader("referer");
+%>    
 <div class="container LoginDiv">
 	<div class="row">
 		<!-- <div class="form-group">
@@ -21,7 +24,7 @@
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-8">
-									<p class="text-left customP">로그인을 해주세요<br/>
+									<p class="text-left customP">로그인을 해주세요 <br/>
 									<span class="customp_Span">아이디와 비밀번호를 입력해주세요</span>
 									</p>
 								</div>
@@ -33,6 +36,7 @@
 					</div>
 					
 					<form class="form-horizontal customForm" action="LoginPage.do" method="POST" id="newLoginForm">
+					  <input type="hidden" id="prevURI" value="<%=prevURI%>">
 					  <div class="form-group">
 					    <div class="col-sm-12">
 					      <input type="email" class="form-control customInput" id="email" name="id" placeholder="Enter email" required="required">

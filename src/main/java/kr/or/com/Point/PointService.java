@@ -105,6 +105,70 @@ public class PointService {
 		return list;
 	}
 
+	
+	//의원정보 한번 읽어 오는 부분
+	public PaliamentList_DTO selectPaliamentTotalCount(String deptCd) {
+		
+		PaliamentList_DTO dto = null;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			dto = dao.selectPaliamentTotalCount(deptCd);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+
+	//총 구매회수만 증가할때
+	public int updatePaliamentCount(PaliamentList_DTO dto) {
+		
+		int result = 0;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			result = dao.updatePaliamentCount(dto);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+
+	//총 구매회수 + 의원 포인트 증가
+	public int updatePaliamentPointCount(PaliamentList_DTO selectDTO) {
+		int result = 0;
+		try{	
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			result = dao.updatePaliamentPointCount(selectDTO);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	
+	
+	//총 구매 누적 숫자가 0일때 한번 호출됨
+	public int zeroUpdatePaliamentCount(PaliamentList_DTO dto) {
+		
+		int result = 0;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			result = dao.zeroUpdatePaliamentCount(dto);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 
 	
 	
