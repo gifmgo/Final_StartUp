@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
@@ -23,11 +22,7 @@
 <link rel="stylesheet" type="text/css" href="point/Point_0303_01.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script src="point/Point0302_02.js"></script>
-=======
 <script src="point/Point0305.js"></script>
-<script src="css/main_header_modify0213.js"></script>
->>>>>>> c09e06e863232abd5a44cf1bc319c14fb3311332
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 <title>생활 포인트</title>
