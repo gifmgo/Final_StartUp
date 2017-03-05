@@ -7,18 +7,23 @@ $(document).ready(function(){
 		
 		var id=$('#email').val();
 		var pwd =$('#pwd').val();
-		
+		var prev = $('#prevURI').val();
 		$.ajax({
 			url:"LoginPage.do",
 			type : "POST",
 			data:{
 				id: id,
-				pw:pwd
+				pw:pwd,
+				prev:prev
 			},
 			success : function(data){
 				if(data.msg=='성공'){
-					alert('로그인 성공');
-					history.back();
+					alert(data.msg);
+					if(data.result == '관리자'){
+						location.href="adminIndex.do";
+					}else{
+						location.href=data.prev;
+					}
 				}else{
 					alert('로그인 실패, 아이디와 비밀번호를 다시 확인해주세요');
 				}

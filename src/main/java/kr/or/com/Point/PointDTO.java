@@ -6,6 +6,7 @@ public class PointDTO {
 	private String userId;
 	private String deptCd;
 	private String empNm;
+			//보유 수량
 	private int point;
 	private String buyDate;
 	private int updatePoint;

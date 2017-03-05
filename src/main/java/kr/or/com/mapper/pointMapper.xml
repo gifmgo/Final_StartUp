@@ -12,29 +12,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			order by rank
 			]]>
 	</select>
-
+	
+	<!-- 내가 구매한 애들 -->
 	<select id="buyPaliamentIndex" resultType="kr.or.com.Point.PointDTO">
-		select count(*)*(select point from tbl_paliament where deptcd = Tbl_Point.Deptcd) as totalCount, deptCd, empNm 
+		<!-- select count(*)*(select point from tbl_paliament where deptcd = Tbl_Point.Deptcd) as totalCount, deptCd, empNm 
 		from tbl_Point 
 		where userId = #{userId}
-		group by deptcd, empNm
+		group by deptcd, empNm -->
+		select sum(point) as totalCount,empNm, deptcd from tbl_point where userid = #{userId} group by empNm, deptcd
 	</select>
 
 	<select id="searchPaliament" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
 		select num2, deptcd, empnm, jpgLink, polynm, point from tbl_paliament where empNm like '%' || #{empNm} || '%'
 	</select>
 	
+	<!-- 내가 구매 할 때.  point >>  몇개 구매한건지 개수 나옴 -->
 	<insert id="buyPoint" parameterType="kr.or.com.Point.PointDTO">
-		insert into tbl_Point values(pointSeq.nextval,#{userId}, #{deptCd}, #{empNm}, #{point}, sysdate)
+		insert into tbl_Point(pointSeq, userId, deptCd, empNm, point, buydate) values(pointSeq.nextval,#{userId}, #{deptCd}, #{empNm}, #{point}, sysdate)
 	</insert>
 	
 	<update id="updateMyPoint" parameterType="kr.or.com.Point.PointDTO">
 		update member set point = #{updatePoint} where id=#{userId}
 	</update>
 	
+	<!-- 카운트 증가전에 읽어보자 -->
+	<select id="selectPaliamentTotalCount" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select deptCd, point, pointcount from tbl_Paliament where deptcd = #{deptCd}
+	</select>
+	
+	<!-- 국회의원 구매한적이 한번도 없는  의원 업데이트시 -->
+	<update id="zeroUpdatePaliamentCount" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		update tbl_Paliament set pointCount = #{pointCount} where deptCd = #{deptCd}
+	</update>
+	
+	
+	<!-- 3-2 국회의원 포인트 및 총 토탈 카운트 증가  -->
+	<update id="updatePaliamentPointCount" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		 update tbl_Paliament set point=#{point}, pointCount = #{pointCount} where deptCd = #{deptCd}
+	</update>
+	
 	
 	<select id="selectBoxPaliament" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
 		select * from tbl_paliament where origNm like '%' || #{origNm} || '%' and polyNm = #{polyNm}
 	</select>	
+	
+	
+	
 	
 </mapper>
