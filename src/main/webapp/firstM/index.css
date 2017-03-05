@@ -14,6 +14,10 @@
 	background-color: rgba(2,2,2,0.8);
 }
 
+#header-navBar{
+	background-color: rgba(2,2,2,0.8);
+}
+
 #banner>#posts {
 	position:absolute;
 	top:200px;

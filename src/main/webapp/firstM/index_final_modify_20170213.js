@@ -598,6 +598,7 @@ $(document).ready(function(){
 			if(window.innerWidth<768){
 				fixNext.removeClass("pd_top_38");
 			}else{
+				fixNext.removeClass("pd_top_38");
 				fixNext.removeClass("pd_top_60");
 			}
 		}
