@@ -1,8 +1,6 @@
 @CHARSET "UTF-8";
 /* CSS Document */
 
-@import url(core.css);
-
 #wrap {
    position:relative;
    width:100%;
@@ -53,6 +51,7 @@
    border-right:1px solid #ccc;
    box-sizing:border-box;
    cursor:pointer;
+   float: left;
 }
 
 #tabMenu li:last-child {
@@ -64,4 +63,8 @@
    width:1000px;
    height:600px;   
    margin:0 auto;
+}
+
+#pagingDiv{
+	width: 100% !important;
 }

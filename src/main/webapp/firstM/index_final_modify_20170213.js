@@ -331,36 +331,6 @@ $(document).ready(function(e) {
     });
 	
 	
-	//화살표 누를때 메뉴 나오는 것 /////////////////////////////////////// 
-	var bot_sts = 0;
-	$("#bott_menu").click(function(e) {
-     	var bott_ul = $("#banner>div").eq(1).find("ul").height();
-		if(bot_sts == 0) {
-			$("#banner>div").eq(1).animate({bottom:"0px"});
-			$("#bott_menu").html('<i class="fa fa-angle-double-down" aria-hidden="true"></i>');
-			bot_sts = 1;
-		} else if(bot_sts == 1) {
-			$("#banner>div").eq(1).animate({bottom:-bott_ul+"px"});
-			$("#bott_menu").html('<i class="fa fa-angle-double-up" aria-hidden="true"></i>');
-			bot_sts = 0;
-		}
-    });
-	
-	
-	$(window).resize(function() {
-		var bott_ul = $("#banner>div").eq(1).find("ul").height();
-		
-		if(bot_sts == 0) { 
-			$("#banner>div").eq(1).css({bottom:-bott_ul+"px"});
-		} else if(bot_sts == 1) {
-			$("#banner>div").eq(1).css({bottom:"0px"});
-		}
-			
-	});
-
-	////////////////////////////////////////////////////////////////////////
-	
-	
 	$("#mainMenu").find("li").eq(3).hover(function(){
 		$("#b_menu").css({height:"40px"});
 		$("#menu_bg").stop().animate({height:"40px"},300);
@@ -405,31 +375,31 @@ var tSts = 0;
 function text_slide() {
 	
 	if(tSts == 0) {
-		$("#banner>div").eq(0).find("h2").animate({top:"0",opacity:"1"},1000);	
-		$("#banner>div").eq(0).find("p").delay(200).animate({top:"0",opacity:"1"},1000);
+		$("#banner>#posts").eq(0).find("h2").animate({top:"0",opacity:"1"},1000);	
+		$("#banner>#posts").eq(0).find("p").delay(200).animate({top:"0",opacity:"1"},1000);
 		
-		$("#banner>div").eq(0).find("h2").delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
+		$("#banner>#posts").eq(0).find("h2").delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
 			$(this).text("대한민국 헌법 1조 2항");
-			$("#banner>div").eq(0).find("h2").css({top:"50px",opacity:"0"});
+			$("#banner>#posts").eq(0).find("h2").css({top:"50px",opacity:"0"});
 		});	
-		$("#banner>div").eq(0).find("p") .delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
+		$("#banner>#posts").eq(0).find("p") .delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
 			$(this).text("대한민국의 주권은 국민에게 있고, 모든 권력은 국민으로부터 나온다.");
-			$("#banner>div").eq(0).find("p").css({top:"50px",opacity:"0"});
+			$("#banner>#posts").eq(0).find("p").css({top:"50px",opacity:"0"});
 		});
 		
 		tSts = 1;
 		
 	} else if (tSts == 1) {
-		$("#banner>div").eq(0).find("h2").animate({top:"0",opacity:"1"},1000);	
-		$("#banner>div").eq(0).find("p").delay(200).animate({top:"0",opacity:"1"},1000);
+		$("#banner>#posts").eq(0).find("h2").animate({top:"0",opacity:"1"},1000);	
+		$("#banner>#posts").eq(0).find("p").delay(200).animate({top:"0",opacity:"1"},1000);
 		
-		$("#banner>div").eq(0).find("h2").delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
+		$("#banner>#posts").eq(0).find("h2").delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
 			$(this).text("대한민국 헌법 1조 1항");
-			$("#banner>div").eq(0).find("h2").css({top:"50px",opacity:"0"});
+			$("#banner>#posts").eq(0).find("h2").css({top:"50px",opacity:"0"});
 		});	
-		$("#banner>div").eq(0).find("p").delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
+		$("#banner>#posts").eq(0).find("p").delay(5000).animate({top:"-50px",opacity:"0"},1000,function() {
 			$(this).text("대한민국은 민주공화국이다.");
-			$("#banner>div").eq(0).find("p").css({top:"50px",opacity:"0"});
+			$("#banner>#posts").eq(0).find("p").css({top:"50px",opacity:"0"});
 		});
 		
 		tSts = 0;
@@ -602,4 +572,43 @@ function check_birth(birth){
     }
     return result;
 }
+
+
+$(document).ready(function(){
+	var topBar = $('#header-navBar').offset();
+	$("#mobile-nav-img").hide();
+	$("#under-nav").hide();
+	
+	$(window).scroll(function(){
+		var doScrollY = $(document).scrollTop();
+		var barThis = $("#header-navBar");
+		var fixNext = $(".main-content");
+		var logo = $("#mobile-nav-img");
+		
+		if(doScrollY > topBar.top){
+			barThis.addClass("top_bar_fix");
+			if(window.innerWidth<768){
+				fixNext.addClass("pd_top_38");
+			}else{
+				fixNext.addClass("pd_top_60");				
+			}
+		}else{
+			barThis.removeClass("top_bar_fix");
+			logo.hide();
+			if(window.innerWidth<768){
+				fixNext.removeClass("pd_top_38");
+			}else{
+				fixNext.removeClass("pd_top_60");
+			}
+		}
+	});
+	
+/*	$("#community").hover(function(){
+		$("#under-nav").css({height:"40px !important"});
+		$("#under-nav").stop().animate({height:"40px !important"},300);
+	},function(){
+		$("#under-nav").css({height:"0 !important"});
+		$("#under-nav").stop().animate({height:"0px !important"},300);
+	});*/
+});
 

@@ -478,7 +478,8 @@
 	height:auto;
 }
 
- #news .dashList li>a {
+ #news .dashList li a {
+ 	display:inline-block;
 	width:calc(100% - 100px);
 	height:auto;
 	overflow: hidden;
@@ -487,7 +488,6 @@
 } 
 
 #news .dashList li span {
-	display:inline-block;
 	font-weight:normal;	
 	float:right;
 	color:#666;
@@ -574,4 +574,11 @@
 		width: 160px;
 	}
 	
+	#news>article{
+		height: initial;
+	}
+	
+	#news>article div .newPadding{
+		height: 5px;
+	}
 }
