@@ -36,7 +36,9 @@
 <body>
 	<section id="banner" class="main-content">
 	    <div class="container-fluid" id="main-header">
-		  	<img class="img-responsive center-block" src="img/logo.png" id="logo">
+	    	<div class="center-block" style="width:80px;">
+			  	<img class="img-responsive" src="img/logo.png" id="logo" style="width:80px;">
+	    	</div>
 		  	<ul>
 		  	<c:choose>
 			<c:when test="${id == null}">
