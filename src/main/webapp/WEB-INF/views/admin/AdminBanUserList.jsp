@@ -4,10 +4,13 @@
 <div class="container">
 	 <div class="demo-row typography-row">
 			<div class="demo-title">
-				<h3 class="demo-panel-title">차단 유저 관리</h3>
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#">차단 유저 관리</a></li>
+				  <li><a href="#">문의 메일</a></li>
+				</ul>
 			</div>
 	 </div>	
-	 <hr><br>	
+	 <br>	
 </div>
   <div class="container">
    		<div class="form-group col-md-offset-5 col-md-7">

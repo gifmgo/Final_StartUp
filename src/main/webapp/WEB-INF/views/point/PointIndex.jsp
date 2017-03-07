@@ -187,10 +187,14 @@
 <div class="container-fluid secondPointDiv">
 	<div class="row">
 		<div class="col-md-12 text-center secondPointCol">
-			<div class="textDiv">
-				<p class="secondTitleP">More 생활포인트</p>
-				<p class="secondPointP">부족한 포인트를 위한, 포인트 퀴즈 입니다 ~ </p>
-			</div>
+			<div class="row">
+			<div class="col-sm-offset-2 col-sm-8">
+				<div class="well customSecondWell">
+					<div class="textDiv">
+						<i class="fa fa-pencil-square-o"></i><br/>
+						<p class="secondTitleP">Quiz.</p>
+						<p class="secondPointP">부족한 포인트를 위한, 포인트 퀴즈 입니다 ~ </p>
+					</div>
 			<form>
 				<div class="row">
 						<div class="col-sm-offset-4 col-sm-4 col-md-4 col-lg-4">
@@ -213,11 +217,14 @@
 				        로그인 하시면 문제를 푸실 수 있습니다.
 				   </c:otherwise>
 				 </c:choose>
-					
 			</form>			
+				
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="container">
-			<div class="col-md-12 text-center secondPointCol">
+			<div class="col-md-12 text-center secondPointCol" style="margin-top:-2%;">
 				<div class="row">
 					<div class="col-md-offset-2 col-md-4 col-sm-4 col-md-4 col-lg-4">
 						<div class="well customSecondWell">

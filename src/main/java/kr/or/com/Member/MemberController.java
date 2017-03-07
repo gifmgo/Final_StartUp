@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.admin.banUserMailDTO;
+
 
 @Controller
 public class MemberController {
@@ -92,27 +94,61 @@ public class MemberController {
 		dto.setId(id);
 		dto.setPw(pw);
 		
-		MemberDTO result = service.Login(dto);
+		//밴유저 확인
+		boolean checkBanUser = service.CheckBanUser(id);
 		
-		System.out.println("로그인 결과 : "+result);
-		if(result != null){
-			if(dto.getId().equals("stpark89@naver.com") || dto.getId().equals("abc@abc.com")){
-				HttpSession session = request.getSession();
-				session.setAttribute("admin", "superAdmin");
-				session.setAttribute("id", dto.getId());
-				model.addAttribute("result","관리자");
+		if(checkBanUser == true){
+		
+			MemberDTO result = service.Login(dto);
+			System.out.println("로그인 결과 : "+result);
+			if(result != null){
+				if(dto.getId().equals("stpark89@naver.com") || dto.getId().equals("abc@abc.com")){
+					HttpSession session = request.getSession();
+					session.setAttribute("admin", "superAdmin");
+					session.setAttribute("id", dto.getId());
+					model.addAttribute("result","관리자");
+				}else{
+					HttpSession session = request.getSession();
+					session.setAttribute("memberDTO", result);
+					session.setAttribute("id", dto.getId());
+					model.addAttribute("result","성공");
+				}
+				model.addAttribute("msg", "성공");
 			}else{
-				HttpSession session = request.getSession();
-				session.setAttribute("memberDTO", result);
-				session.setAttribute("id", dto.getId());
-				model.addAttribute("result","성공");
+				model.addAttribute("msg", "실패");
 			}
-			model.addAttribute("msg", "성공");
 		}else{
-			model.addAttribute("msg", "실패");
+			model.addAttribute("msg","차단");
 		}
 		//return "redirect:index.do";
 		return jsonview;
+		
+	}
+	
+	//차단 유저 페이지
+	@RequestMapping(value="/banPage.do", method=RequestMethod.GET)
+	public String BanPage(){
+		return "BanPage";
+	}
+	
+	//차단유저가 >> 메일 보내기
+	@RequestMapping(value="/banPage.do", method=RequestMethod.POST)
+	public String BanPageResult(banUserMailDTO dto, Model model){
+		System.out.println("확인좀 해볼께요 !! : "+dto.toString());
+		int result = service.BanUserMail(dto);
+		String msg = null;
+		String link = null;
+		if(result > 0){
+			msg = "메일보내기에 성공하였습니다!";
+			link= "index.do";
+		}else{
+			msg = "잠시후 다시 이용해주세요!";
+			link = "banPage.do";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("link",link);
+		return "dbResult";
 	}
 	
 	
@@ -333,7 +369,7 @@ public class MemberController {
 	public String addMember(){
 		return "member.AddMember";
 	}
-	
+	//회원가입 DB 저장
 	@RequestMapping(value="/addMember.do", method=RequestMethod.POST)
 	public String addMemberPost(MemberDTO dto,  String favorit, Model model){
 		System.out.println( "포스트 !!!!!!!!  : "+dto.toString());

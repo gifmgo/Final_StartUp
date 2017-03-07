@@ -211,12 +211,14 @@ public class PointController {
 		 * 2.유저의 포인트를 증가시키고
 		 * 3.유저의 구매수량을 판매수량만큼 감소시켜야함.
 		 */
-		
-	     int result = service.sellTotal(deptCd, sellCount, getPoint,paliamentPoint, myDTO);
-		
-		
-		
-		
+		String message = "";
+	    int result = service.sellTotal(deptCd, sellCount, getPoint,paliamentPoint, myDTO);
+	    if(result > 0){
+	    	message = "판매성공!";
+	    }else{
+	    	message = "판매실패";
+	    }
+	    model.addAttribute("message",message);
 		return jsonview;
 	}
 	

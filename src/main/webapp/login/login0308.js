@@ -24,8 +24,10 @@ $(document).ready(function(){
 					}else{
 						location.href=data.prev;
 					}
-				}else{
+				}else if(data.msg == '실패'){
 					alert('로그인 실패, 아이디와 비밀번호를 다시 확인해주세요');
+				}else{
+					location.href="banPage.do";
 				}
 			}
 		});
