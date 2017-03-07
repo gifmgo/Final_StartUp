@@ -5,7 +5,7 @@
 	<div class="container-fluid" id="main-header">
 	  	<div class="center-block" style="width:80px;">
 	  		<a href="index.do">
-		  		<img class="img-responsive" src="img/logo.png" id="logo" style="width:80px;">
+		  		<img class="img-responsive" src="img/logo.png" id="logo" style="width:100%;">
 		  	</a>
     	</div>
 	  	<ul>

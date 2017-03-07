@@ -89,19 +89,19 @@
 					<c:choose>
 						<c:when test="${debate != null}">
 						<ul class="debateList">
-						<c:forEach var="dto" items="${debate}" varStatus="jinstatus">
-							<c:choose>
-								<c:when test="${dto.choose eq '진보'}">
-										<li>
-											<p class="debateText">${dto.title}</p>
-											<p class="debateDate">${dto.writeDate}</p>
-										</li>
-								</c:when>
-								<c:otherwise>
-									
-								</c:otherwise>
-							</c:choose>
+						<c:set var="sum" value="0"/>
+						<c:forEach var="dto" items="${debate}">
+						<c:if test="${dto.choose == '진보' && sum<5}">
+							<li>
+								<c:set var="sum" value="${sum+1}"/>
+								
+								<p class="debateText">${dto.title}</p>
+								<p class="debateDate">${dto.writeDate}</p>
+							</li>
+						</c:if>
+							<%-- <li>${status.index }</li> --%>
 						</c:forEach>
+						<c:remove var="count"/>
 						</ul>
 						</c:when>
 						<c:otherwise>
@@ -117,9 +117,11 @@
 					<c:choose>
 						<c:when test="${debate != null}">
 						<ul class="debateList">
+						<c:set var="sum" value="0"/>
 						<c:forEach var="dto" items="${debate}" varStatus="bostatus">
-							<c:if test="${dto.choose eq '보수' && bostatus.count <= 5}">
+							<c:if test="${dto.choose eq '보수'  && sum<5}">
 							<li>
+								<c:set var="sum" value="${sum+1}"/>
 								<p class="debateText">${dto.title}</p>
 								<p class="debateDate">${dto.writeDate}</p>
 							</li>

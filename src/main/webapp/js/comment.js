@@ -1,14 +1,13 @@
 $(document).ready(function(e) {
 	//댓글 쓰기 관련
-	$("#talkWrite").hide();
 	$(".double_comm").hide();
-	$("#commButton").click(function() {
-		if($(this).attr("data-id")==null || $(this).attr("data-id")==""){
+	$("#talkWrite > textarea").focus(function() {
+		if($("#commButton").attr("data-id")==null || $("#commButton").attr("data-id")==""){
 			//로그인 연결
-			$("#s_loginDiv").click();
+			location.href="LoginP.do";
 		}else{
-			$("#talkWrite").show();
-		}	
+			
+		}
 	});
 	
 	//답글 펼치기

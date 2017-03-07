@@ -37,11 +37,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 import net.sf.json.xml.XMLSerializer;
-/*
- * 작성일 : 2016-12-29
- * 작성자 : 박성준
- * 목  적 : 국회의원 관련 컨트롤러
- */
+
 @Controller
 public class PaliamentController {
 

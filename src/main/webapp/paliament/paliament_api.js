@@ -151,7 +151,7 @@ function memberStatute(data){
 		success : function(data){
 			
 			$('#statusDiv').empty();
-			var table = "<table id='bill_table'><tr><th>제안일</th><th>의안명</th><th>진행</th></tr>";
+			var table = "<table id='bill_table' class='table table-hover'><tr><th>제안일</th><th>의안명</th><th>진행</th></tr>";
 			//Model 에 담긴값 : result
 			$.each(data.result, function(index, obj){
 				var billId=obj.billId;

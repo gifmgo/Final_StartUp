@@ -56,11 +56,9 @@ public class BoardController {
 		//토론 키워드
 		String keyWord = null;
 		try{
-					
 			debate_dto = debate_Service.list();
 			keyWord = debate_Service.debateKeyWord();
-			
-			
+
 			for(int i = 0; i < debate_dto.size(); i++){
 				Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
 				String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
