@@ -277,7 +277,7 @@
 							</div>
 							<br/>
 							<div class="form-group">
-								<input type="button" class="btn btn-default" value="구매" onclick="buyPoint(this);">
+								<input type="button" class="btn btn-default" value="판매" onclick="buyPoint(this);">
 							</div>
 						</form>
 					</div>

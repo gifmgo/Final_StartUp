@@ -11,6 +11,7 @@ public class PointDTO {
 	private String buyDate;
 	private int updatePoint;
 	private String totalCount;
+	private String polyNm;
 	
 	
 	public PointDTO() {
@@ -20,6 +21,14 @@ public class PointDTO {
 		this.deptCd = deptCd;
 		this.empNm = empNm;
 		this.totalCount = totalCount;
+	}
+
+	public PointDTO(String deptCd, String empNm, int point, String totalCount, String polyNm) {
+		this.deptCd = deptCd;
+		this.empNm = empNm;
+		this.point = point;
+		this.totalCount = totalCount;
+		this.polyNm = polyNm;
 	}
 	public int getPotinSeq() {
 		return potinSeq;
@@ -69,15 +78,19 @@ public class PointDTO {
 	public void setTotalCount(String totalCount) {
 		this.totalCount = totalCount;
 	}
+	public String getPolyNm() {
+		return polyNm;
+	}
+	public void setPolyNm(String polyNm) {
+		this.polyNm = polyNm;
+	}
+	
 	@Override
 	public String toString() {
 		return "PointDTO [potinSeq=" + potinSeq + ", userId=" + userId + ", deptCd=" + deptCd + ", empNm=" + empNm
 				+ ", point=" + point + ", buyDate=" + buyDate + ", updatePoint=" + updatePoint + ", totalCount="
-				+ totalCount + "]";
+				+ totalCount + ", polyNm=" + polyNm + "]";
 	}
-	
-	
-	
 	
 	
 }

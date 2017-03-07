@@ -1,6 +1,88 @@
 /**
  * 
  */
+
+var paliament = {};
+//내가 구매한 국회의원 판매하기
+function sellPaliament(tag){
+	//판매하려는 의원의 번호
+	var deptCd = $(tag).prev().val();
+	if(deptCd != ''){
+		$.ajax({
+			url:"detailMyPaliament.do",
+			data : {
+				deptCd : deptCd
+			},
+			success : function(data){
+				if(data.paliamentDTO != null){
+					
+					//판매 누른 국회의원 객체 
+					paliament.deptCd = data.paliamentDTO.deptCd;
+					paliament.jpgLink = data.paliamentDTO.jpgLink;
+					paliament.empNm = data.paliamentDTO.empNm;
+					paliament.num2 = data.paliamentDTO.num2;
+					paliament.polyNm = data.paliamentDTO.polyNm;
+					paliament.point = data.paliamentDTO.point;
+					paliament.pointCount = data.paliamentDTO.pointCount;
+					
+					//모달 이미지
+					$('#sellpaliamentImg').attr('src','');
+					//모달 의원 이름 
+					$('#sellmodalName').text('');
+					//모달 의원 정당
+					$('#sellmodalPolyNm').text('');
+					//모달 의원 포인트
+					$('#sellmodalPoint').text('');
+					
+					
+					$('#sellpaliamentImg').attr('src',paliament.jpgLink);
+					//모달 의원 이름 
+					$('#sellmodalName').text(paliament.empNm);
+					//모달 의원 정당
+					$('#sellmodalPolyNm').text(paliament.polyNm);
+					//모달 의원 포인트
+					$('#sellmodalPoint').text(paliament.point);
+					
+					$('#sellCount').val(0);
+					
+					$('#paliamentSellModal').modal();
+					
+				}
+			}
+		});
+	}else{
+		alert("잠시후 이용해주세요 !");
+	}
+}
+
+//의원 판매 
+function sellPoint(){
+	var count = $('#sellCount').val();
+	console.log("판매 수량 : "+count + " // 내가 갖고있는 수량 : "+paliament.pointCount);
+	if(paliament.pointCount < count || count <= 0){
+		alert("판매수량을 다시 입력해주세요 !!");
+		$('#sellCount').val(0);
+		$('#sellCount').focus();
+	}else{
+		
+		var getPoint = count * paliament.point; 
+		
+		$.ajax({
+			url : "sellStartPaliament.do",
+			data:{
+				deptCd : paliament.deptCd,
+				sellCount : count,
+				paliamentPoint : paliament.point,
+				getPoint : getPoint 
+			},
+			success : function(data){
+				
+			}
+		});
+		
+	}
+}
+
 //토론방 보러가기 버튼
 function debateFunc(){
 	location.href="moreCommunityTalk.do";
@@ -335,4 +417,5 @@ function jungDangFunc(){
 function PointDetailFunc(){
 	location.href="PointDetail.do";
 }
+
 

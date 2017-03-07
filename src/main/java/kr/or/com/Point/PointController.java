@@ -2,6 +2,7 @@ package kr.or.com.Point;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -117,42 +118,7 @@ public class PointController {
 				}else{
 					message = "죄송합니다 잠시후 다시 이용해주세요!";
 				}
-				
-				
-		}		
-				//구매한 숫자가 0 이거나 토탈카운트가 100 이 안넘었을 경우. 
-				/*if(totalCount == 0 || (totalCount/100) == 0){
-					System.out.println("if 탑니다..... : "+totalCount);
-					result = service.zeroUpdatePaliamentCount(dto);
-					System.out.println("if 확인좀요 : total : "+totalCount);	
-
-					
-				//전체 구매수 / 100 이  국회의원 포인트와 같지 않을시  
-				}else if((totalCount/100) != paliamentPoint){
-					
-					System.out.println("나눈거 뭔데 : "+(totalCount/100) + " // paliamentPoint 는 ?? : "+paliamentPoint);
-					
-					selectDTO.setPoint(totalCount/100);
-					System.out.println("엘스 if 탑니다. "+selectDTO.toString());
-					System.out.println("else if 확인좀요 : total : "+totalCount);
-					result = service.updatePaliamentPointCount(selectDTO);
-					
-				//(totalCount/100) != paliamentPoint  같을때는 그냥 총 토탈 값만 증가시켜주면 된다.	
-				}else{
-					System.out.println("엘스 탑니다...");
-					result = service.zeroUpdatePaliamentCount(dto);
-				}
-				
-				System.out.println("확인해볼께요2222 : "+(totalCount/100)+ " ////  국회의원 몸값 : "+paliamentPoint);
-				
-				message = "구매 성공!";
-				System.out.println("2단계 if");
-			}else{
-				message = "죄송합니다 잠시후 다시 이용해주세요!";
-				System.out.println("2단계 else");
-			}
-			result = UpdateUser(dto);
-			*/
+			}		
 		model.addAttribute("message", message);
 		model.addAttribute("result", result);
 		return jsonview;
@@ -177,12 +143,7 @@ public class PointController {
 		return result;
 	}
 	*/
-	
-	
-	
-	
-	
-	
+
 	//셀렉트 최종 !!
 	@RequestMapping("/pointSearchSelect.do")
 	public View selectResult(String area, String jungDang, Model model){
@@ -197,8 +158,61 @@ public class PointController {
 	
 	//PointDetail 페이지
 	@RequestMapping("/PointDetail.do")
-	public String PointDetailIndex(){
+	public String PointDetailIndex(Model model, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		//유저 랭킹
+		List<MemberDTO> list = service.pointRank();
+		//인기의원
+		List<PaliamentList_DTO> pal_list = service.lovePaliament();
+		//정당별 인기의원
+		List<PaliamentList_DTO> jungDang_list = service.lovepolyNmBase();
+		
+		//내가 구매한 국회의원
+		List<PointDTO> myPaliament = service.buyPaliamentList(id);
+		
+		model.addAttribute("pointRank", list);
+		model.addAttribute("lovePal", pal_list);
+		model.addAttribute("baseJungDang",jungDang_list);
+		model.addAttribute("buyPaliament", myPaliament);
 		return "point.PointDetailIndex";
+	}
+	
+	//PointDetail 페이지 ajax  - > 판매하려는 의원 상세정보 보기
+	@RequestMapping("/detailMyPaliament.do")
+	public View detailMyPaliament(String deptCd, Model model){
+		
+		System.out.println("의원번호 : "+deptCd);
+		PaliamentList_DTO dto = service.selectPaliamentDeptCd(deptCd);
+		System.out.println("아작스 : "+dto.toString());
+		model.addAttribute("paliamentDTO", dto);
+		return jsonview;
+	}
+	
+	//의원 판매 시작하자
+	@RequestMapping("/sellStartPaliament.do")
+	public View sellPaliament(String deptCd, String sellCount, String getPoint, String paliamentPoint, Model model, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		MemberDTO myDTO = (MemberDTO)session.getAttribute("memberDTO");
+		
+		/* 변수
+		 * ------------------------------------
+		 * getPoint >> 판매수량 * 의원 포인트
+		 * sellCount >> 유저가 입력한 판매 수량
+		 * paliamentPoint >> 의원 포인트
+		 * ------------------------------------
+		 * 1.국회의원 토탈카운트를 판매수량 만큼 감소를 시킨다.
+		 * 2.유저의 포인트를 증가시키고
+		 * 3.유저의 구매수량을 판매수량만큼 감소시켜야함.
+		 */
+		
+	     int result = service.sellTotal(deptCd, sellCount, getPoint,paliamentPoint, myDTO);
+		
+		
+		
+		
+		return jsonview;
 	}
 	
 }

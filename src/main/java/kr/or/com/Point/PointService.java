@@ -3,10 +3,14 @@ package kr.or.com.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 
 @Service
@@ -68,7 +72,20 @@ public class PointService {
 		int result = 0;
 		try{
 			PointDAO dao = sqlSession.getMapper(PointDAO.class);
-			result = dao.buyPoint(dto);
+			PointDTO secondDTO = dao.selectPointDTO(dto);
+			
+			if(secondDTO == null){
+			
+				System.out.println("dto 가 널일때 !! insert 해야함");
+				result = dao.buyPoint(dto);
+			}else{
+				System.out.println("널 아닐때 update 해야함");
+				int plusPoint = (secondDTO.getPoint() + dto.getPoint());
+				dto.setUpdatePoint(plusPoint);
+				result = dao.updatePoint(dto);
+			}
+			
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -161,6 +178,161 @@ public class PointService {
 		try{
 			PointDAO dao = sqlSession.getMapper(PointDAO.class);
 			result = dao.zeroUpdatePaliamentCount(dto);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	
+	//포인트 유저 랭킹
+	public List<MemberDTO> pointRank() {
+		
+		List<MemberDTO> list = null;
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.pointRank();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	
+	// 좋아하는 국회의원
+	public List<PaliamentList_DTO> lovePaliament() {
+		
+		List<PaliamentList_DTO> list = null;
+		
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.lovePaliament();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//정당별 - >  맨처음 쓰여지는 것
+	public List<PaliamentList_DTO> lovepolyNmBase() {
+		
+
+		List<PaliamentList_DTO> list = null;
+		
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.lovepolyNmBase();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
+	//내가 구매한 국회의원 리스트
+	public List<PointDTO> buyPaliamentList(String id) {
+		
+		List<PointDTO> list = null;
+		
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.buyPaliamentList(id);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//내가 구매한 국회의원 상세 정보 보는 부분
+	public PaliamentList_DTO selectPaliamentDeptCd(String deptCd) {
+		
+		PaliamentList_DTO dto = null;
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			dto = dao.selectPaliamentDeptCd(deptCd);
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	//의원 판매
+	public int sellTotal(String deptCd, String sellCount, String getPoint, String paliamentPoint, MemberDTO mydto) {
+		
+		/* 변수
+		 * ------------------------------------
+		 * getPoint >> 판매수량 * 의원 포인트
+		 * sellCount >> 유저가 입력한 판매 수량
+		 * paliamentPoint >> 의원 포인트
+		 * ------------------------------------
+		 * 1.국회의원 토탈카운트를 판매수량 만큼 감소를 시킨다.
+		 * 2.유저의 포인트를 증가시키고
+		 * 3.유저의 구매수량을 판매수량만큼 감소시켜야함.
+		 */
+		 
+		int result = 0;
+		
+		PaliamentList_DTO dto = new PaliamentList_DTO();
+		dto.setDeptCd(deptCd);
+		int sellCount2 = Integer.parseInt(sellCount);
+		dto.setPointCount(sellCount2);
+		
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			
+			result = dao.sellPaliamentTotalCount(dto);
+			
+			//의원 판매 >> totalCount - 시킨것
+			if(result > 0){
+				int getPoint2 = Integer.parseInt(getPoint);
+				System.out.println("처음 if 문  getPoint2 는 ?? "+getPoint2);
+				//판매후 나의 포인트 증가시키는 부분.
+				mydto.setPoint(mydto.getPoint()+getPoint2);
+				
+				result = dao.sell_updateMyPoint(mydto);
+				//이젠 point 테이블에서 뺴줘야함
+				if(result > 0){
+					System.out.println("내부 if 문");
+					//의원포인트인데..
+					//int palPoint = Integer.parseInt(paliamentPoint);
+					
+					
+					
+					PointDTO pdto = new PointDTO();
+					//pdto.setUpdatePoint(sellCount2);
+					pdto.setDeptCd(deptCd);
+					pdto.setUserId(mydto.getId());
+					
+					PointDTO secondDTO = dao.selectPointDTO(pdto);
+					pdto.setUpdatePoint(secondDTO.getPoint()-sellCount2);
+					
+					System.out.println("마지막 업뎃 전 확인좀 : "+pdto.toString());
+					if(pdto.getUpdatePoint() < 0){
+						System.out.println("0보다 작습니다...");
+					}else{
+						result = dao.updatePoint(pdto);
+					}
+				}else{
+					System.out.println("내부 else 문");
+					result = 0;
+					return result;
+				}
+
+			}else{
+				System.out.println("바깥 else 문");
+				return result;
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
