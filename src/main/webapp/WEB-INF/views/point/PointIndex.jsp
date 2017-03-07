@@ -200,9 +200,9 @@
 						</div>
 					</div>
 					<div class="form-group">	
-						<label class="radio-inline"><input type="radio" name="optradio" value="${quizdto.option1}">${quizdto.option1}</label>
-						<label class="radio-inline"><input type="radio" name="optradio" value="${quizdto.option2}">${quizdto.option2}</label>
-						<label class="radio-inline"><input type="radio" name="optradio" value="${quizdto.option3}">${quizdto.option3}</label>
+						<label class="radio-inline"><input type="radio" name="optradio" value="1">${quizdto.option1}</label>
+						<label class="radio-inline"><input type="radio" name="optradio" value="2">${quizdto.option2}</label>
+						<label class="radio-inline"><input type="radio" name="optradio" value="3">${quizdto.option3}</label>
 					</div>
 					<input type="hidden" id="hidden_no" value="${quizdto.quiz_no}">	
 				 <c:choose>
