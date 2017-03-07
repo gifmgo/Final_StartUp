@@ -66,7 +66,7 @@ public class MemberController {
 			msg = "사용할 수 없는 닉네임 입니다!";
 			use="2";
 		}
-		model.addAttribute("msg", msg);
+		model.addAttribute("msg2", msg);
 		model.addAttribute("use", use);
 		model.addAttribute("hidden_nick", hidden_nick);
 		return jsonview;
@@ -171,7 +171,7 @@ public class MemberController {
 	
 	
 	//회원가입 버튼 클릭시
-	@RequestMapping(value="/AddMember.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/AddMember.do", method=RequestMethod.POST)
 	public View AddMember(MemberDTO dto, String favorit, Model model){
 		
 		dto.setFavorit(favorit);
@@ -188,7 +188,7 @@ public class MemberController {
 			System.out.println("실패");
 		}
 		return jsonview;
-	}
+	}*/
 	
 	//실제 db 데이터  - 수정하기 버튼 클릭했을 시 
 	@RequestMapping(value="/modifyView.do", method=RequestMethod.GET)
@@ -327,5 +327,36 @@ public class MemberController {
 		return jsonview;
 	}
 	
+	
+	//회원가입 페이지
+	@RequestMapping(value="/addMember.do", method=RequestMethod.GET)
+	public String addMember(){
+		return "member.AddMember";
+	}
+	
+	@RequestMapping(value="/addMember.do", method=RequestMethod.POST)
+	public String addMemberPost(MemberDTO dto,  String favorit, Model model){
+		System.out.println( "포스트 !!!!!!!!  : "+dto.toString());
+		dto.setFavorit(favorit);
+		int result = 0;
+		String msg,link = "";
+		try{
+			result = service.AddMember(dto);	
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		System.out.println("result 확인 : "+result);
+		if(result > 0){
+			msg = "회원가입 성공!";
+			link = "index.do";
+		}else{
+			msg = "회원가입 실패!";
+			link = "addMember.do";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("link",link);
+		return "dbResult";
+	}
 	
 }

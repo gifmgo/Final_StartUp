@@ -64,7 +64,7 @@
 							<a href="#">아이디 찾기</a>
 						</div>
 						<div class="col-md-offset-1 col-md-3">
-							<a href="#">회원가입</a>
+							<a href="addMember.do">회원가입</a>
 						</div>
 					</div>
 					

@@ -246,7 +246,7 @@
 
 <!-- 모달용 div -->
 <div class="container">
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal fade" id="myModal" role="dialog" style="z-index: 999999999;">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">

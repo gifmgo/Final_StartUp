@@ -7,6 +7,45 @@
     <input type="hidden" id="detailHiden_dept_cd" value="${dept_cd}">
     <input type="hidden" id="tid" value="${tid}">
  <!----------------------------------------------------------------------------------->
+	<ul class="nav nav-tabs">
+	    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+	    <li><a data-toggle="tab" href="#menu1"> 기본정보 </a></li>
+	    <li><a data-toggle="tab" href="#menu2"> 법안발의  </a></li>
+	    <li><a data-toggle="tab" href="#menu3"> 상임의원회 활동  </a></li>
+	</ul>
+	
+	  <div class="tab-content">
+	    <div id="home" class="tab-pane fade in active">
+	     	<img src="http://placehold.it/300x400" alt="의원사진" id="paliamentDetail_img"/>
+	        <table id="info">
+	        	<tr>
+	            	<th>이름</th><td id="nameTd"></td><th>정당</th><td id="jungTd"></td>
+	            </tr>
+	            <tr>
+	            	<th>소속위원회</th><td id="shrtNmTd"></td><th>당선횟수</th><td id="electionNumTd"></td>
+	            </tr>
+	            <tr>
+	            	<th>학력</th><td colspan="3" id="memTitleTd"></td>
+	            </tr>
+	            <tr>
+	            	<th>연락처</th><td id="phoneTd"></td><th>이메일</th><td id="emailTd"></td>
+	            </tr>
+	        </table>
+	    </div>
+	    <div id="menu1" class="tab-pane fade">
+	      <h3>Menu 1</h3>
+	      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	    </div>
+	    <div id="menu2" class="tab-pane fade">
+	      <h3>Menu 2</h3>
+	      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+	    </div>
+	    <div id="menu3" class="tab-pane fade">
+	      <h3>Menu 3</h3>
+	      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+	    </div>
+	  </div>
+	</div>
 	<section id="basicInfo">
     	<h1 class="infoTitle">1. 기본정보</h1>
     	<img src="http://placehold.it/300x400" alt="의원사진" id="paliamentDetail_img"/>

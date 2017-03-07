@@ -4,7 +4,6 @@
 	목  적 : 글쓰기 관련 layout css 
 */
 @CHARSET "UTF-8";
-@import url(core.css);
 
 #wrap {
 	position:relative;
