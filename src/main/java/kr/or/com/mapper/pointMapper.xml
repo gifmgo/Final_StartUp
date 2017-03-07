@@ -15,10 +15,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 내가 구매한 애들 -->
 	<select id="buyPaliamentIndex" resultType="kr.or.com.Point.PointDTO">
-		<!-- select count(*)*(select point from tbl_paliament where deptcd = Tbl_Point.Deptcd) as totalCount, deptCd, empNm 
-		from tbl_Point 
-		where userId = #{userId}
-		group by deptcd, empNm -->
 		select sum(point) as totalCount,empNm, deptcd from tbl_point where userid = #{userId} group by empNm, deptcd
 	</select>
 
@@ -26,16 +22,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select num2, deptcd, empnm, jpgLink, polynm, point from tbl_paliament where empNm like '%' || #{empNm} || '%'
 	</select>
 	
-	<!-- 내가 구매 할 때.  point >>  몇개 구매한건지 개수 나옴 -->
-	<insert id="buyPoint" parameterType="kr.or.com.Point.PointDTO">
-		insert into tbl_Point(pointSeq, userId, deptCd, empNm, point, buydate) values(pointSeq.nextval,#{userId}, #{deptCd}, #{empNm}, #{point}, sysdate)
-	</insert>
-	
 	<update id="updateMyPoint" parameterType="kr.or.com.Point.PointDTO">
 		update member set point = #{updatePoint} where id=#{userId}
 	</update>
 	
-	<!-- 카운트 증가전에 읽어보자 -->
+		<!-- 카운트 증가전에 읽어보자 -->
 	<select id="selectPaliamentTotalCount" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
 		select deptCd, point, pointcount from tbl_Paliament where deptcd = #{deptCd}
 	</select>
@@ -56,7 +47,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from tbl_paliament where origNm like '%' || #{origNm} || '%' and polyNm = #{polyNm}
 	</select>	
 	
+	<!-- 유저 포인트 랭킹 -->
+	<select id="pointRank" resultType="kr.or.com.Member.MemberDTO">
+		select id, nickName, point, RANK() OVER(ORDER BY point desc) as rank from member
+	</select>
+	
+	<!-- 인기 국회의원 -->
+	<select id="lovePaliament" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select deptcd,empnm,pointCount, RANK() OVER(ORDER BY pointCount desc) as rank from tbl_paliament
+	</select>
+	
+	<!-- 정당별 인기 의원 -->
+	<select id="lovepolyNmBase" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select deptcd,empnm,pointcount, RANK() OVER(ORDER BY pointCount desc) as rank from tbl_paliament where polynm='국민의당'
+	</select>
+	
+	<!-- 내가 구매한 의원  -->	
+	<select id="buyPaliamentList" resultType="kr.or.com.Point.PointDTO">
+			select totalCount, a.empNm as empNm, a.deptcd as deptCd, b.point as point, b.polyNm as polyNm
+			from (select sum(p.point) as totalCount, p.empNm, p.deptcd
+			      from tbl_point p 
+			      where p.userId = #{id}
+			      group by p.empNm, p.deptcd) a, tbl_paliament b
+			where a.deptcd = b.deptcd
+	</select>
+	
+	<!-- 내가 구매한 의원 한명 상세보기 -->
+	<select id="selectPaliamentDeptCd" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select deptCd, empNm, jpgLink, num2, polyNm, point, pointCount  from tbl_paliament where deptCd = #{deptCd}
+	</select>
+	
+	<!-- 국회의원 총 수량 빼준 부분 >> 판매시 사용  -->
+	<update id="sellPaliamentTotalCount" parameterType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		update tbl_paliament set pointCount=(pointCount-#{pointCount})
+	    where deptCd = #{deptCd}
+	</update>
+	<!-- 의원팔고 포인트 올라가는 부분 -->
+	<update id="sell_updateMyPoint" parameterType="kr.or.com.Member.MemberDTO">
+		update member set point = #{point} where id = #{id}
+	</update>
 	
 	
+	<!-- Point테이블 조회 -->
+	<select id="selectPointDTO" parameterType="kr.or.com.Point.PointDTO" resultType="kr.or.com.Point.PointDTO">
+	select * from tbl_point where userID = #{userId} and deptCd = #{deptCd}
+	</select>
+	
+	<!-- 내가 구매 할 때.  point >>  몇개 구매한건지 개수 나옴 -->
+	<insert id="buyPoint" parameterType="kr.or.com.Point.PointDTO">
+		insert into tbl_Point(pointSeq, userId, deptCd, empNm, point, buydate) values(pointSeq.nextval,#{userId}, #{deptCd}, #{empNm}, #{point}, sysdate)
+	</insert>
+	
+	<update id="updatePoint" parameterType="kr.or.com.Point.PointDTO">
+		update tbl_Point set point = #{updatePoint}, buydate = sysdate where userId=#{userId} and deptCd=#{deptCd}  
+	</update>
+
 	
 </mapper>

@@ -21,7 +21,6 @@ public class AdminController {
 	@Autowired
 	private AdminService adminservice;
 	
-	
 	//관리자 메인페이지
 	@RequestMapping("/adminIndex.do")
 	public String adminIndex(){
