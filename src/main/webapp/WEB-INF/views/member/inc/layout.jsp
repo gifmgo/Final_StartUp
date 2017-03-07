@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="member_f/personal_info_0225_02.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<script src="member_f/addMember0307.js"></script>
 <script src="member_f/member_modify_0226.js"></script>
 <title>개인정보</title>
 </head>
