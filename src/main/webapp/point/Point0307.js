@@ -336,6 +336,35 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	//퀴즈 풀기 버튼 클릭시
+	$('#solveQuizBtn').click(function(){
+		var select_answer =$('input[type=radio][name=optradio]:checked').val();
+		var quiz_no=$('#hidden_no').val();
+		console.log(" 선택한 답=========="+select_answer+" / "+quiz_no);
+	
+		$.ajax({
+		   url:"solveQuiz.do",
+		   data:{
+			    quiz_no:quiz_no,
+			    select_answer:select_answer
+		   },
+		   success:function(data){
+			   if(data.result=='정답'){
+				   alert('정답입니다');
+				   var mypoint = $('#deleteMyPoint').text();
+				   console.log("내 포인트 : "+mypoint);
+				   var update_mypoint = Number(mypoint)+1;
+				   $('#deleteMyPoint').text(update_mypoint);
+				   console.log("업데이트 포인트: " +$('#deleteMyPoint').text());
+			   }else if(data.result=='오답'){
+				   alert('안타깝지만 틀렸습니다');
+			   }else{
+				   alert('이미 퀴즈를 푸셨습니다');
+			   }
+		   }
+		});
+	});
 });
 
 

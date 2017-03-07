@@ -40,4 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where d.debateWord = #{keyword}
 		order by d.debateNo desc
  </select>
+ 
+ <insert id="quiz" parameterType="kr.or.com.admin.QuizDTO">
+    insert into tbl_quiz(quiz_no, question, option1, option2, option3, answer) values(quiz_no_Seq.nextval, #{question}, #{option1}, #{option2}, #{option3}, #{answer})
+ </insert>
 </mapper>

@@ -96,5 +96,17 @@ public class AdminService {
 		}
 		return list;
 	}
+
+	public int quiz(QuizDTO dto) {
+		AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+		int result =0;
+		 try{
+			 result = dao.quiz(dto);
+				
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}
+		 	return result;
+	}
 	
 }

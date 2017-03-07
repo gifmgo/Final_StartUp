@@ -27,4 +27,7 @@ public interface AdminDAO {
 
 	//토론글 리스트 읽어 오는 것
 	public List<debateDTO> selectDebateList(String keyword);
+
+	//퀴즈 작성하기
+	public int quiz(QuizDTO dto);
 }

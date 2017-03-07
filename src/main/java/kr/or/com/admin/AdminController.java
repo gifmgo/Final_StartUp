@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
 import kr.or.com.Data.TodayUserDTO;
@@ -157,4 +158,28 @@ public class AdminController {
 		return "admin.AdminPollWrite";
 	}
 	
+	//퀴즈 작성 페이지로 이동
+    @RequestMapping("/pointQuiz.do")
+    public String pointQuiz(){
+    	return "admin.pointQuiz";
+    }
+    
+    //퀴즈 작성 버튼 클릭시
+    @RequestMapping(value="/QuizForm.do", method=RequestMethod.POST)
+    public String quizForm(QuizDTO dto, Model model){
+    	System.out.println(" ????????????"+dto.toString());
+    	int result = adminservice.quiz(dto);
+    	String msg="";
+    	String link="";
+    	if(result>0){
+    		msg="퀴즈 등록 성공";
+    		link="pointQuiz.do";
+    	}else{
+    		msg="퀴즈 등록 실패";
+    		link="pointQuiz.do";
+    	}
+    	 model.addAttribute("msg", msg);
+    	 model.addAttribute("link", link);
+    	return "admin.AdminRedirect";
+    }
 }

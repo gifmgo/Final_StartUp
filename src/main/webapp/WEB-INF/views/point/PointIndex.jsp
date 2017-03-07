@@ -195,16 +195,25 @@
 				<div class="row">
 						<div class="col-sm-offset-4 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
-								<label class="form-control">문제 들어갑니다 슝슝슝</label>
+								<label class="form-control">${quizdto.question}</label>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">	
-						<label class="radio-inline"><input type="radio" name="optradio">Option 1</label>
-						<label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
-						<label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
+						<label class="radio-inline"><input type="radio" name="optradio" value="${quizdto.option1}">${quizdto.option1}</label>
+						<label class="radio-inline"><input type="radio" name="optradio" value="${quizdto.option2}">${quizdto.option2}</label>
+						<label class="radio-inline"><input type="radio" name="optradio" value="${quizdto.option3}">${quizdto.option3}</label>
 					</div>
-					<input type="button" class="btn btn-default" value="문제풀기">
+					<input type="hidden" id="hidden_no" value="${quizdto.quiz_no}">	
+				 <c:choose>
+				   <c:when test="${memberDTO !=null}">
+				   		<input type="button" class="btn btn-default" value="문제풀기" id="solveQuizBtn">
+				   </c:when>
+				   <c:otherwise>
+				        로그인 하시면 문제를 푸실 수 있습니다.
+				   </c:otherwise>
+				 </c:choose>
+					
 			</form>			
 		</div>
 		<div class="container">

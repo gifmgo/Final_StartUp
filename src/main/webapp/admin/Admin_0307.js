@@ -135,6 +135,11 @@ function checkList(){
 	 return result;
 }
 
+//포인트 - 퀴즈
+function PointQuiz(){
+	location.href="pointQuiz.do";
+}
+
 $(function(){
 
   $('#chooseResultDiv').css("display","none");	
@@ -231,4 +236,27 @@ $(function(){
  $('.customUl>li:last-child').click(function(){
 	 alert("월별 클릭!");
  });
+ 
+ //퀴즈 작성 버튼 클릭시
+   $('#quizFormButton').click(function(){
+	  if($('#question').val()==''){
+		  alert('문제를 작성해주세요');
+		  $('#question').focus();
+	  }else if($('#option1').val()==''){
+		  alert('보기1을 작성해주세요');
+		  $('#option1').focus();
+	  }
+	  else if($('#option2').val()==''){
+		  alert('보기2을 작성해주세요');
+		  $('#option2').focus();
+	  }else if($('#option3').val()==''){
+		  alert('보기3을 작성해주세요');
+		  $('#option3').focus();
+	  }else if($('#answer').val()==''){
+		  alert('정답을 작성해주세요');
+		  $('#answer').focus();
+	  }else{
+		  $('#quizForm').submit();
+	  }
+   });
 });

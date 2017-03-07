@@ -2,7 +2,6 @@ package kr.or.com.Point;
 
 import java.util.List;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
+import kr.or.com.admin.QuizDTO;
 
 @Controller
 public class PointController {
@@ -35,6 +35,11 @@ public class PointController {
 		if(userId != null && userId != ""){
 			pointList = service.buyPaliamentIndex(userId);
 		}
+		
+		//퀴즈 불러오기
+		QuizDTO dto = service.quiz();
+		model.addAttribute("quizdto", dto);
+		
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("list", list);
 		return "point.PointIndex";
@@ -212,6 +217,28 @@ public class PointController {
 		
 		
 		
+		return jsonview;
+	}
+	
+	//퀴즈 풀기 버튼 클릭시
+	@RequestMapping("/solveQuiz.do")
+	public View solveQuiz(int quiz_no, String select_answer, HttpServletRequest request, Model model){
+		
+		QuizDTO dto = new QuizDTO();
+	    HttpSession session = request.getSession();
+	    String id = (String)session.getAttribute("id");
+	    dto.setQuiz_no(quiz_no);
+	    dto.setId(id);
+	    dto.setAnswer(select_answer);
+	    
+		String result = service.insert_member(dto);
+		if(result.equals("정답")){
+			MemberDTO mdto= (MemberDTO)session.getAttribute("memberDTO");
+			mdto.setPoint(mdto.getPoint()+1);
+			
+		}
+		System.out.println(" 컨트롤러**************"+result);
+		model.addAttribute("result", result);
 		return jsonview;
 	}
 	
