@@ -2,6 +2,11 @@
 /* CSS Document */
 @import url(core.css);
 
+#tabMenu>ul>li>a{
+	color:#222;
+}
+
+
 #pDetail {
 	position:relative;
 	top:20px;
@@ -161,15 +166,10 @@
 
 /*상임위원회 활동*/
 
-#attendance {
-	position:relative;
-	width:100%;
-	max-width:1300px;
-	margin: 50px auto;
-	/*background-color:#99F;*/
-}
 
-#attendance>h2 {
+
+
+#menu3>h2 {
 	position:relative;
 	width:100%;
 	height:100px;
@@ -177,13 +177,13 @@
 	font:bold 20px/100px Nanum;	
 }
 
-#attendance>article {
+#menu3>article {
 	position:relative;
 	width:100%;
 	height:100px;	
 }
 
-#attendance>article>h3 {
+#menu3>article>h3 {
 	position:relative;
 	width:100%;
 	height:50px;
@@ -212,7 +212,7 @@
 }
 
 
-#attendance>div {
+#menu3>div {
 	position:relative;
 	width:95%;
 	top:0;
