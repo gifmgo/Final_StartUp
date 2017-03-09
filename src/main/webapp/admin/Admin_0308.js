@@ -140,6 +140,52 @@ function PointQuiz(){
 	location.href="pointQuiz.do";
 }
 
+//문의 메일 확인
+function detailMailFunc(seq){
+	var banUserMailSeq = seq;
+	$.ajax({
+		url:"banUserMailModal.do",
+		data:{
+			banUserMailSeq : banUserMailSeq
+		},
+		success : function(data){
+			if(data.dto != null){
+				
+				var dto = {
+					seq : data.dto.banUserMailSeq,
+					banUser : data.dto.banUserId,
+					realId : data.dto.realId,
+					banContent : data.dto.banContent,
+					mailDay : data.dto.mailDay
+				};
+				
+				//매일 seq 번호
+				$('#mailSeq').text('');
+				//차단 유저
+				$('#banUser').text('');
+				//연락받을 유저
+				$('#realUser').text('');
+				$('#content').val('');
+				
+				$('#mailSeq').text(dto.seq);
+				$('#banUser').text(dto.banUser);
+				$('#realUser').text(dto.realId);
+				$('#content').val(dto.banContent);
+				
+				console.log("확인 : "+dto.seq + " // 유저 : "+dto.banUser+ " // 리얼 : "+dto.realId+ " / 밴콘텐 : "+dto.banContent+ " / 날 : "+dto.mailDay);
+				$('#mailModal').modal();
+				
+			}else{
+				alert("죄송합니다. 잠시후 이용해주세요");
+			}
+		}
+	});
+	
+	
+	
+}
+
+
 $(function(){
 
   $('#chooseResultDiv').css("display","none");	
@@ -260,3 +306,6 @@ $(function(){
 	  }
    });
 });
+
+
+

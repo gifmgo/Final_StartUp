@@ -84,10 +84,14 @@ public class AdminController {
 		return jsonview;
 	}
 	
-	//유저보기 
+	//유저보기 --> 페이징을 해야 합니다. 
 	@RequestMapping("/AdminBanUserList.do")
 	public String adminBanUserList(Model model){
 		List<BanUserDTO> list =adminservice.userList();
+		
+		//현재페이지 -1 * 10 + 1
+		//마지막 번호 = 시작번호 + 10-1
+		
 		model.addAttribute("userlist", list);
 		return "admin.AdminBanUserList";
 	}
@@ -182,4 +186,24 @@ public class AdminController {
     	 model.addAttribute("link", link);
     	return "admin.AdminRedirect";
     }
+    
+    
+    //차단 유저 문의 메일
+    @RequestMapping("/BanUserMail.do")
+    public String BanUserMailList(Model model){					
+    	List<banUserMailDTO> mailList = adminservice.banUserMailList(); 
+    	model.addAttribute("mailList", mailList);
+    	return "admin.BanUserMailList";
+    }
+    
+    //차단유저 문의 메일 -- > 모달창 띄울때
+    @RequestMapping("/banUserMailModal.do")
+    public View banUserMailModal(Model model, int banUserMailSeq){
+    	System.out.println("넘어온 시퀀스 : "+banUserMailSeq);
+    	banUserMailDTO dto = adminservice.banuserMailDTO(banUserMailSeq);
+    	model.addAttribute("dto", dto);
+    	return jsonview;
+    }
+    
+    
 }

@@ -8,16 +8,19 @@ public class banUserMailDTO {
 	private String banUserId;	//차단된 아이디
 	private String realId;		//연락받을 아이디
 	private String banContent;
+	private String mailDay;
 	
 	public banUserMailDTO() {
 	}
-	
-	public banUserMailDTO(int banUserMailSeq, String banUserId, String realId, String banContent) {
+
+	public banUserMailDTO(int banUserMailSeq, String banUserId, String realId, String banContent, String mailDay) {
 		this.banUserMailSeq = banUserMailSeq;
 		this.banUserId = banUserId;
 		this.realId = realId;
 		this.banContent = banContent;
+		this.mailDay = mailDay;
 	}
+
 	public String getBanUserId() {
 		return banUserId;
 	}
@@ -45,13 +48,19 @@ public class banUserMailDTO {
 		this.banUserMailSeq = banUserMailSeq;
 	}
 
+	public String getMailDay() {
+		return mailDay;
+	}
+
+	public void setMailDay(String mailDay) {
+		this.mailDay = mailDay;
+	}
+
 	@Override
 	public String toString() {
 		return "banUserMailDTO [banUserMailSeq=" + banUserMailSeq + ", banUserId=" + banUserId + ", realId=" + realId
-				+ ", banContent=" + banContent + "]";
+				+ ", banContent=" + banContent + ", mailDay=" + mailDay + "]";
 	}
-
-	
 	
 	
 	

@@ -109,4 +109,34 @@ public class AdminService {
 		 	return result;
 	}
 	
+	//차단 당한 유저가 보내는 메일 확인하는 부분
+	public List<banUserMailDTO> banUserMailList() {
+		
+		List<banUserMailDTO> list = null;
+		try{
+			
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			list = dao.banUserMailList();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	//메일보낸것 팝업 띄우기!
+	public banUserMailDTO banuserMailDTO(int banUserMailSeq) {
+		banUserMailDTO dto = null;
+		try{
+			
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			dto = dao.banuserMailDTO(banUserMailSeq);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
 }

@@ -30,4 +30,10 @@ public interface AdminDAO {
 
 	//퀴즈 작성하기
 	public int quiz(QuizDTO dto);
+	
+	//차단 유저들이 보낸 메일 관리 함
+	public List<banUserMailDTO> banUserMailList();
+	
+	//차단 유저들이 보낸 메일  상세보기
+	public banUserMailDTO banuserMailDTO(int banUserMailSeq);
 }

@@ -44,4 +44,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <insert id="quiz" parameterType="kr.or.com.admin.QuizDTO">
     insert into tbl_quiz(quiz_no, question, option1, option2, option3, answer) values(quiz_no_Seq.nextval, #{question}, #{option1}, #{option2}, #{option3}, #{answer})
  </insert>
+ 
+ <!-- 차단유저들이 보낸 메일함 -->
+ <select id="banUserMailList" resultType="kr.or.com.admin.banUserMailDTO">
+ 	select * from banUserMail
+ </select>
+ 
+ <select id="banuserMailDTO" parameterType="int" resultType="kr.or.com.admin.banUserMailDTO">
+ 	select * from banUserMail where banUserMailSeq = #{param1}
+ </select>
+ 
 </mapper>
