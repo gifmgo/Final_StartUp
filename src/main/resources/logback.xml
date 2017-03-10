@@ -1,18 +1,16 @@
 <configuration>
-	<property name="LOG_HOME" value="logs" />
-    <property name="LOG_PATTERN" value="%logger{36} %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>/var/log/web-acc.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
+            daily rollover
             <fileNamePattern>/var/log/web-acc.log.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- keep 30 days' worth of history -->
+            keep 30 days' worth of history
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
-    </appender>
+    </appender> -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -24,6 +22,6 @@
     <logger name="org.springframework.context" level="DEBUG"></logger>
     <root level="warn">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
+        <!-- <appender-ref ref="FILE" /> -->
     </root>
 </configuration>
