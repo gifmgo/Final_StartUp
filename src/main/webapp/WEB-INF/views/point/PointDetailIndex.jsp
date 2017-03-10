@@ -75,13 +75,13 @@
 					    			<label class="text-left customPlabel" style="margin-top:5px;">인기)정당별</label>
 					    		</div>
 					    		<div class="col-md-6">
-					    			<select class="form-control">
+					    			<select class="form-control" id="polyNmSelect">
 					    				<option disabled="disabled">정당</option>
 					     	 			<option>국민의당</option>
 			      						<option>더불어민주당</option>
 			      						<option>무소속</option>
 			      						<option>바른정당</option>
-			      						<option>새누리당</option>
+			      						<option>자유한국당</option>
 			      						<option>정의당</option>
 					    			</select>
 					    		</div>
@@ -96,7 +96,7 @@
 									<th class="text-center">구매횟수</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="favoritPaliamentTbody">
 								<c:forEach var="baseList" items="${baseJungDang}" varStatus="jungDangStatus">
 									<c:if test="${jungDangStatus.count<=5}">
 										<tr>
@@ -119,7 +119,7 @@
 				<div class="col-md-12">
 					<div class="well customWell">
 						
-						<h4>구매한 국회의원</h4>
+						<label>구매한 국회의원</label>
 						
 						<div class="table-responsive" style="margin-top:2%;">
 						<table class="table">
@@ -144,6 +144,9 @@
 											<td class="text-center"><input type="hidden" value="${buyList.deptCd}"><input type="button" id="${SellStatus.count}" class="btn btn-info" value="판매" onclick="sellPaliament(this);"></td>
 										</tr>
 									</c:forEach>
+										<tr>
+											<td colspan="5"><input type="button" class="btn btn-info" value="그래프 보기" onclick="grapFunc();"></td>
+										</tr>
 									</c:when>
 									<c:otherwise>
 										<tr class="danger"><td class="text-center" colspan="5">로그인을 해주세요</tr>
@@ -168,8 +171,18 @@
 			<div class="row text-center">
 				<div class="col-md-12">
 					<div class="well customWell">
-						<label>나의 포인트 현황</label>
-						<div id="line-example"></div>
+						<label class="myPointLabel">그래프 보기</label><hr/>
+						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#1abc9c">국민의당</i></span>
+						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#2980b9">더불어 민주당</i></span>
+						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#3498db">바른정당</i></span>
+						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#e74c3c">자유한국당</i></span>
+						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#f1c40f">정의당</i></span>
+						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#95a5a6">무소속</i></span>
+						<hr/>
+						<br/><br/>
+						<div id="progressDiv">
+						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -228,21 +241,21 @@
   </div>
 </div>
 
-
 <script>
-Morris.Line({
-	  element: 'line-example',
-	  data: [
-	    { y: '2017-01', a: 100, b: 90 },
-	    { y: '2017-02', a: 75,  b: 65 },
-	    { y: '2017-03', a: 50,  b: 40 },
-	    { y: '2017-04', a: 75,  b: 65 },
-	    { y: '2017-05', a: 50,  b: 40 },
-	    { y: '2017-06', a: 75,  b: 65 },
-	    { y: '2017-07', a: 100, b: 90 }
-	  ],
-	  xkey: 'y',
-	  ykeys: ['a', 'b'],
-	  labels: ['월별', '보유포인트']
-	});
+	
+	function grapFunc(){
+	var dtoList = new Array();
+	var scriptDto;
+	<c:forEach items="${buyPaliament}" var="dto">
+	scriptDto = {
+		empNm : "${dto.empNm}",
+		polyNm : "${dto.polyNm}",
+		totalCount : "${dto.totalCount}",
+		point : "${dto.point}"
+	};
+	dtoList.push(scriptDto);
+	</c:forEach>
+	
+	makeGrap(dtoList);
+	}
 </script>

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
+import kr.or.com.admin.QuizDTO;
 
 @Controller
 public class PointController {
@@ -35,6 +36,11 @@ public class PointController {
 		if(userId != null && userId != ""){
 			pointList = service.buyPaliamentIndex(userId);
 		}
+		
+		//퀴즈 불러오기
+		QuizDTO dto = service.quiz();
+		model.addAttribute("quizdto", dto);
+		
 		model.addAttribute("pointList", pointList);
 		model.addAttribute("list", list);
 		return "point.PointIndex";
@@ -206,12 +212,70 @@ public class PointController {
 		 * 2.유저의 포인트를 증가시키고
 		 * 3.유저의 구매수량을 판매수량만큼 감소시켜야함.
 		 */
+		String message = "";
+	    int result = service.sellTotal(deptCd, sellCount, getPoint,paliamentPoint, myDTO);
+	    if(result > 0){
+	    	message = "판매성공!";
+	    }else{
+	    	message = "판매실패";
+	    }
+	    model.addAttribute("message",message);
+		return jsonview;
+	}
+	
+	//퀴즈 풀기 버튼 클릭시
+	@RequestMapping("/solveQuiz.do")
+	public View solveQuiz(int quiz_no, String select_answer, HttpServletRequest request, Model model){
 		
-	     int result = service.sellTotal(deptCd, sellCount, getPoint,paliamentPoint, myDTO);
+		QuizDTO dto = new QuizDTO();
+	    HttpSession session = request.getSession();
+	    String id = (String)session.getAttribute("id");
+	    dto.setQuiz_no(quiz_no);
+	    dto.setId(id);
+	    dto.setAnswer(select_answer);
+	    
+		String result = service.insert_member(dto);
+		if(result.equals("정답")){
+			MemberDTO mdto= (MemberDTO)session.getAttribute("memberDTO");
+			mdto.setPoint(mdto.getPoint()+1);
+			
+		}
+		System.out.println(" 컨트롤러**************"+result);
+		model.addAttribute("result", result);
+		return jsonview;
+	}
+	
+	//포인트 디테일 페이지 >> 정당별 인기의원
+	@RequestMapping("/PointDetailSelectAjax.do")
+	public View PointDetailSelect(String polyNm, Model model){
 		
+		List<PaliamentList_DTO> list = service.pointSelectAjax(polyNm);
+		model.addAttribute("poly_detail", list);
+		return jsonview;
+	}
+	
+	//pointIndex >> 내가 보유한 국회의원 상세보기
+	@RequestMapping("/myPaliamentDetail.do")
+	public View myPaliamentDetail(String deptCd, Model model, HttpServletRequest request){
 		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("id");
 		
+		PointDTO mypoint = new PointDTO();
+		mypoint.setDeptCd(deptCd);
+		mypoint.setUserId(userId);
+		PointDTO point = service.selectMyDetailPoint(mypoint);
 		
+		//국회의원 정보 뿌려주는 부분
+		PaliamentList_DTO dto = service.selectPaliamentDeptCd(deptCd);
+		
+		//나의 포인트
+		MemberDTO myDto = service.selectMyInfo(userId);
+		int myPoint = myDto.getPoint();
+	
+		model.addAttribute("count", point.getPoint());
+		model.addAttribute("dto", dto);
+		model.addAttribute("myPoint", myPoint);
 		return jsonview;
 	}
 	

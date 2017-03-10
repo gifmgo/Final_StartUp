@@ -9,9 +9,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
+import kr.or.com.admin.QuizDTO;
 
 @Service
 public class PointService {
@@ -341,8 +343,127 @@ public class PointService {
 		return result;
 	}
 
+	//퀴즈 불러오기
+	public QuizDTO quiz() {
+	    PointDAO dao  = sqlSession.getMapper(PointDAO.class);
+	    QuizDTO dto =null;
+	     try{
+	    	dto= dao.quiz();
+	     }catch (Exception e) {
+	    	 e.printStackTrace();
+		}
+	    
+		return dto;
+	}
 
+	//퀴즈 풀기 버튼 클릭시
+	public String insert_member(QuizDTO dto) {
+		PointDAO dao = sqlSession.getMapper(PointDAO.class);
+		int result =0;
+		String final_result="";
+		try{
+			//퀴즈 풀었었는지 확인
+			String check_id = check_quizMember(dto);
+			
+			if(check_id !=null){
+				final_result="이미 퀴즈 완료";
+				System.out.println(" 퀴즈 이미 풀었어------------------");
+			}else{
+				result = dao.insert_member(dto);
+				System.out.println(" 퀴즈 처음이네 insert 결과==========="+result);
+				if(result>0){
+					String answer = dao.checkQuizAnswer(dto);
+					if(answer.equals(dto.getAnswer())){
+						int update_result =updateMyPointQuiz(dto);
+						if(update_result>0){
+							final_result="정답";
+						}
+						
+					}else{
+						final_result="오답";
+					}
+					System.out.println(" 정답이니??????????"+final_result);
+				}
+			}
+				
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return final_result;
+	}
+	  
+	//퀴즈 풀었는지 확인
+     public String check_quizMember(QuizDTO dto){
+    	 PointDAO dao = sqlSession.getMapper(PointDAO.class);
+    	 String check_id=""; 
+    	 try{
+    		 check_id = dao.checkId(dto);
+    	 }catch (Exception e) {
+			e.printStackTrace();
+		}
+    	 
+    	 return check_id;
+     }
 	
-	
+	//퀴즈 맞췄을 경우 포인트 업데이트
+     public int updateMyPointQuiz(QuizDTO dto){
+    	 PointDAO dao = sqlSession.getMapper(PointDAO.class);
+    	 int result=0;
+    	  try{
+    		  result = dao.updateMyPointQuiz(dto);
+    	  }catch (Exception e) {
+			e.printStackTrace();
+		}
+    	 return result;
+     }
+
+    //포인트 디테일 페이지 >> 정당별 인기의원
+	public List<PaliamentList_DTO> pointSelectAjax(String polyNm) {
+		
+		List<PaliamentList_DTO> list = null;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.pointSelectAjax(polyNm);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	//포인트 Index >> 내가 구매한 국회의원 상세보기
+	public PointDTO selectMyDetailPoint(PointDTO dto) {
+		
+		PointDTO db_dto = null;
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			db_dto = dao.myPointPaliament_Detail(dto);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return db_dto;
+	}
+
+	//내 포인트 가져오기 위한 것 
+	public MemberDTO selectMyInfo(String id) {
+		
+		MemberDTO dto = null;
+		
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			dto = dao.selectMyInfo(id);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 	
 }

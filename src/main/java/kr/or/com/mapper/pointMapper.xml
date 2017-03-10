@@ -102,5 +102,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update tbl_Point set point = #{updatePoint}, buydate = sysdate where userId=#{userId} and deptCd=#{deptCd}  
 	</update>
 
+	<select id="quiz" resultType="kr.or.com.admin.QuizDTO">
+	  select quiz_no, question, option1, option2, option3 from tbl_quiz q where q.quiz_no =(select max(quiz_no) from tbl_quiz b)
+	</select>
+	
+	<insert id="insert_member" parameterType="kr.or.com.admin.QuizDTO">
+	 	insert into tbl_quiz_member(quiz_no, id) values(#{quiz_no}, #{id})
+	</insert>
+	
+	<select id="checkQuizAnswer" parameterType="kr.or.com.admin.QuizDTO" resultType="String">
+	 	select answer from tbl_quiz where quiz_no=#{quiz_no}
+	</select>
+	
+	<select id="checkId" parameterType="kr.or.com.admin.QuizDTO" resultType="String">
+		select id from tbl_quiz_member where id=#{id} and quiz_no=#{quiz_no}
+	</select>
+	
+	<update id="updateMyPointQuiz" parameterType="kr.or.com.admin.QuizDTO">
+	  update member set point=(point+1) where id=#{id}
+	</update>
+	
+	<!-- 포인트 디테일 >> 셀렉트박스 >> 정당별 인기의원 포인트 확인 -->
+	<select id="pointSelectAjax" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select * from tbl_paliament where polyNm = #{polyNm} order by pointcount desc
+	</select>
+	
+	<!-- 포인트 Index >> 내가 구매한 국회의원 상세보기 -->
+	<select id="myPointPaliament_Detail" parameterType="kr.or.com.Point.PointDTO" resultType="kr.or.com.Point.PointDTO">
+		select Point from tbl_point where userid=#{userId} and deptCd = #{deptCd}
+	</select>
+	
+	<!-- 나의 개인정보 -->
+	<select id="selectMyInfo" resultType="kr.or.com.Member.MemberDTO">
+		select point from member where id=#{id}
+	</select>
 	
 </mapper>

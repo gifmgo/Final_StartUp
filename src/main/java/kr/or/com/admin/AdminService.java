@@ -96,5 +96,76 @@ public class AdminService {
 		}
 		return list;
 	}
+
+	public int quiz(QuizDTO dto) {
+		AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+		int result =0;
+		 try{
+			 result = dao.quiz(dto);
+				
+		 }catch (Exception e) {
+			e.printStackTrace();
+		}
+		 	return result;
+	}
+	
+	//차단 당한 유저가 보내는 메일 확인하는 부분
+	public List<banUserMailDTO> banUserMailList() {
+		
+		List<banUserMailDTO> list = null;
+		try{
+			
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			list = dao.banUserMailList();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	//메일보낸것 팝업 띄우기!
+	public banUserMailDTO banuserMailDTO(int banUserMailSeq) {
+		banUserMailDTO dto = null;
+		try{
+			
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			dto = dao.banuserMailDTO(banUserMailSeq);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	//포인트 업데이트 해주는 부분
+	public List<MemberDTO> selectMemberList() {
+		List<MemberDTO> list = null;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			list = dao.userList2();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//유저 포인트 업데이트!
+	public int updateMemberPoint(List<MemberDTO> prevList) {
+
+		int result = 0;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			for(int i=0; i<prevList.size(); i++){
+				result = dao.updateMemberPoint(prevList.get(i));
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }

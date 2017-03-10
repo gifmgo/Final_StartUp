@@ -135,8 +135,87 @@ function checkList(){
 	 return result;
 }
 
-$(function(){
+//포인트 - 퀴즈
+function PointQuiz(){
+	location.href="pointQuiz.do";
+}
 
+//문의 메일 확인
+function detailMailFunc(seq){
+	var banUserMailSeq = seq;
+	$.ajax({
+		url:"banUserMailModal.do",
+		data:{
+			banUserMailSeq : banUserMailSeq
+		},
+		success : function(data){
+			if(data.dto != null){
+				
+				var dto = {
+					seq : data.dto.banUserMailSeq,
+					banUser : data.dto.banUserId,
+					realId : data.dto.realId,
+					banContent : data.dto.banContent,
+					mailDay : data.dto.mailDay
+				};
+				
+				//매일 seq 번호
+				$('#mailSeq').text('');
+				//차단 유저
+				$('#banUser').text('');
+				//연락받을 유저
+				$('#realUser').text('');
+				$('#content').val('');
+				
+				$('#mailSeq').text(dto.seq);
+				$('#banUser').text(dto.banUser);
+				$('#realUser').text(dto.realId);
+				$('#content').val(dto.banContent);
+				
+				console.log("확인 : "+dto.seq + " // 유저 : "+dto.banUser+ " // 리얼 : "+dto.realId+ " / 밴콘텐 : "+dto.banContent+ " / 날 : "+dto.mailDay);
+				$('#mailModal').modal();
+				
+			}else{
+				alert("죄송합니다. 잠시후 이용해주세요");
+			}
+		}
+	});
+	
+	
+	
+}
+
+
+$(document).ready(function(){
+  
+  //유저 포인트 추가
+  $('#plusPointBtn').click(function(){
+	  alert("포인트 추가 !!");
+	  $.ajax({
+		 url:"UpdatePointAjax.do",
+		 success : function(data){
+			 if(data.list != null){
+				 alert("업데이트 성공!");
+				 $('#pointTbody').empty();
+				 var tbody = '';
+				 $.each(data.list, function(index, obj){
+					 tbody += '<tr>';
+					 tbody += '<td class="text-center">'+index+'</td>';
+					 tbody += '<td class="text-center">'+obj.id+'</td>';
+					 tbody += '<td class="text-center">'+obj.nickName+'</td>';
+					 tbody += '<td class="text-center">'+obj.point+'</td>';
+					 tbody += '</tr>';
+				 });
+				 
+				 $('#pointTbody').html(tbody);
+				 
+			 }else{
+				 alert("죄송합니다. 잠시후 이용해주세요");
+			 }
+		 }
+	  });
+  });
+	
   $('#chooseResultDiv').css("display","none");	
 	
  //debateList 검색 부분
@@ -231,4 +310,30 @@ $(function(){
  $('.customUl>li:last-child').click(function(){
 	 alert("월별 클릭!");
  });
+ 
+ //퀴즈 작성 버튼 클릭시
+   $('#quizFormButton').click(function(){
+	  if($('#question').val()==''){
+		  alert('문제를 작성해주세요');
+		  $('#question').focus();
+	  }else if($('#option1').val()==''){
+		  alert('보기1을 작성해주세요');
+		  $('#option1').focus();
+	  }
+	  else if($('#option2').val()==''){
+		  alert('보기2을 작성해주세요');
+		  $('#option2').focus();
+	  }else if($('#option3').val()==''){
+		  alert('보기3을 작성해주세요');
+		  $('#option3').focus();
+	  }else if($('#answer').val()==''){
+		  alert('정답을 작성해주세요');
+		  $('#answer').focus();
+	  }else{
+		  $('#quizForm').submit();
+	  }
+   });
 });
+
+
+

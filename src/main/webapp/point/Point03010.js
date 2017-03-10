@@ -2,6 +2,108 @@
  * 
  */
 
+
+//내가 구매한 국회의원 - 상세보기 페이지 
+function myPointDetail(tag){
+	var deptCd = tag.previousSibling.value;
+	
+	$.ajax({
+		url:'myPaliamentDetail.do',
+		data : {
+			deptCd : deptCd
+		},
+		success : function(data){
+			var dto = data.dto;
+			//나의 보유 수량
+			var myCount = data.count;
+			//내 포인트
+			var myPoint = data.myPoint;
+			
+			//select deptCd, empNm, jpgLink, num2, polyNm, point, pointCount  from tbl_paliament where deptCd = #{deptCd}
+			$('#myPointImg').attr("src",'');
+			$('#myPointEmpNm').text('');
+			$('#myPointPolyNm').text('');
+			$('#myPointPoint').text('');
+			$('#myGetCount').text('');
+			$('#BuyModalMyPoint').text('');
+			$('#PointIndexDeptCd').val('');
+			$('#PointIndexNum2').val('');
+
+			$('#myPointImg').attr("src",dto.jpgLink);
+			$('#myPointEmpNm').text(dto.empNm);
+			$('#myPointPolyNm').text(dto.polyNm);
+			$('#myPointPoint').text(dto.point);
+			$('#myGetCount').text(myCount);
+			$('#BuyModalMyPoint').text(myPoint);
+			$('#PointIndexDeptCd').val(dto.deptCd);
+			$('#PointIndexNum2').val(dto.num2);
+			$('#BuyModal').modal();
+			//console.log("디티오 확인 : deptCd  -  "+dto.deptCd + " / dto.empNm : "+dto.empNm + " / data.jpg : "+dto.jpgLink);
+		}
+	});
+}
+
+//내가 가지고 있는 국회의원  판매 하기
+function PointIndexSellPoint(){
+	//판매하려는 수량
+	var sellPoint = $('#pointIndexsellCount').val();
+	//나의 총 포인트
+	var myPoint = $('#BuyModalMyPoint').text();
+	//해당 국회의원 보유 포인트
+	var paliamentPoint = $('#myGetCount').text();
+	
+	//의원 자체 포인트 - ex)1
+	var paliamentRealPoint = $('#myPointPoint').text();
+	console.log("곱한값 :/ 의원 자체 포인트 : "+paliamentRealPoint);
+
+	
+	//해당 의원 포인트
+	var getPoint =$('#myPointPoint').text() * sellPoint; 
+	
+	//의원번호 
+	var deptCd =  $('#PointIndexDeptCd').val();
+	//의원 
+	var num2 = $('#PointIndexNum2').val();
+	//이미지
+	var jpgLink = $('#myPointImg').attr("src");
+	
+	console.log("dept : "+deptCd + " / num2 : "+num2 + " / jpgLink : "+jpgLink);
+	
+	if(sellPoint > 0){
+		
+		if(sellPoint > paliamentPoint){
+			alert("나의 보유 포인트가 부족합니다 !");
+			$('#pointIndexsellCount').val(0);
+		}else{
+			
+			$.ajax({
+				url:"sellStartPaliament.do",
+				data : {
+					deptCd : deptCd,
+					sellCount : sellPoint,
+					getPoint : getPoint,
+					paliamentPoint : paliamentRealPoint
+				},
+				success : function(data){
+					if(data.message == '판매성공'){
+						alert(data.message);
+						location.href="point.do";
+					}else{
+						alert(data.message);
+					}
+					
+				}
+			});
+			
+		}
+	}else{
+		alert("판매수량을 정확히 입력해주세요 !");
+	}
+	
+}
+
+
+
 var paliament = {};
 //내가 구매한 국회의원 판매하기
 function sellPaliament(tag){
@@ -76,11 +178,20 @@ function sellPoint(){
 				getPoint : getPoint 
 			},
 			success : function(data){
-				
+				alert(data.message);
+				location.href="PointDetail.do";
 			}
 		});
 		
 	}
+}
+//내가 구매한 의원 상세보기 
+function myPaliamentDetailView(){
+	var num = $('#PointIndexNum2').val();
+	var dept_cd = $('#PointIndexDeptCd').val();
+	var img = $('#myPointImg').attr("src");
+	var name = $('#myPointEmpNm').text();
+	location.href="PaliamentDetail.do?num="+num+"&dept_cd="+dept_cd+"&img="+img+"&name="+name;
 }
 
 //토론방 보러가기 버튼
@@ -271,6 +382,28 @@ function searchBuy(tag){
 
 
 $(document).ready(function(){
+	//포인트 detail 페이지 >> 정당별 >> select 박스 이용시
+	$('#polyNmSelect').change(function(){
+		var value = $('#polyNmSelect').val();
+		$.ajax({
+			url:"PointDetailSelectAjax.do",
+			data:{
+				polyNm : value
+			},
+			success : function(data){
+				//tbody
+				$('#favoritPaliamentTbody').empty();
+				var td = '';
+				$.each(data.poly_detail,function(index, obj){
+					if(index < 5){
+						td += '<tr><td>'+(index+1)+'</td><td>'+obj.empNm+'</td><td>'+obj.pointCount+'</td></tr>';
+					}
+				});
+				$('#favoritPaliamentTbody').html(td);
+			}
+		});
+	});	
+	
 	
 	$('#searchPaliamentDiv').css("display","none");
 	$('#selectPaliamentDiv').css("display","none");
@@ -336,7 +469,37 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	//퀴즈 풀기 버튼 클릭시
+	$('#solveQuizBtn').click(function(){
+		var select_answer =$('input[type=radio][name=optradio]:checked').val();
+		var quiz_no=$('#hidden_no').val();
+		console.log(" 선택한 답=========="+select_answer+" / "+quiz_no);
+	
+		$.ajax({
+		   url:"solveQuiz.do",
+		   data:{
+			    quiz_no:quiz_no,
+			    select_answer:select_answer
+		   },
+		   success:function(data){
+			   if(data.result=='정답'){
+				   alert('정답입니다');
+				   var mypoint = $('#deleteMyPoint').text();
+				   console.log("내 포인트 : "+mypoint);
+				   var update_mypoint = Number(mypoint)+1;
+				   $('#deleteMyPoint').text(update_mypoint);
+				   console.log("업데이트 포인트: " +$('#deleteMyPoint').text());
+			   }else if(data.result=='오답'){
+				   alert('안타깝지만 틀렸습니다');
+			   }else{
+				   alert('이미 퀴즈를 푸셨습니다');
+			   }
+		   }
+		});
+	});
 });
+
 
 
 function chooseSearchFun(){
@@ -372,8 +535,7 @@ function areaSelectFunc(){
 //정당 선택할때
 function jungDangFunc(){
 	var jungDang = $('#jungDangSelect').val();
-	alert("확인  지역 : "+areaSelect + " // 정당 : "+jungDang);
-	
+
 	$.ajax({
 		url:"pointSearchSelect.do",
 		data : {
@@ -418,4 +580,57 @@ function PointDetailFunc(){
 	location.href="PointDetail.do";
 }
 
+//그래프 보기
+function makeGrap(obj){
 
+	var progress = '<div class="row">';
+	var $proDiv = $('#progressDiv');
+	$.each(obj, function(index, dto){
+		var color = chooseJungDang(dto.polyNm);
+		progress += '<div class="col-md-2">';
+		progress +=	'<span class="text-center">이름 : '+dto.empNm+ '</span></div>';
+		progress += '<div class="col-md-10">';
+		progress += '<div class="progress">';
+		progress += '<div class="progress-bar progress-bar-'+color+'" progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style=width:'+dto.totalCount+'%>';
+		progress += dto.totalCount+'%';
+		progress += '</div></div></div>';
+	});
+	progress += '</div>';
+	
+	$proDiv.empty();
+	$proDiv.html(progress);
+}
+
+function chooseJungDang(polyNm){
+	console.log("polyNm : "+polyNm);
+	var color = '';
+	switch (polyNm) {
+	case '바른정당':
+		  color = 'info';
+		  break;
+	case '국민의당' :
+		  color = 'success';
+		  break;
+
+	case '더불어민주당' :
+		  color = 'primary';
+		break;
+		
+
+	case '무소속' :
+		  color = 'default';
+		break;
+
+	case '자유한국당' :
+		  color = 'danger';
+		  break;	
+		
+
+	case '정의당' :
+		  color = 'warning';
+		  break;		
+	default:
+		break;
+	}
+	return color;
+}

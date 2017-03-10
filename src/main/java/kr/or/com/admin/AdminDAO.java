@@ -27,4 +27,19 @@ public interface AdminDAO {
 
 	//토론글 리스트 읽어 오는 것
 	public List<debateDTO> selectDebateList(String keyword);
+
+	//퀴즈 작성하기
+	public int quiz(QuizDTO dto);
+	
+	//차단 유저들이 보낸 메일 관리 함
+	public List<banUserMailDTO> banUserMailList();
+	
+	//차단 유저들이 보낸 메일  상세보기
+	public banUserMailDTO banuserMailDTO(int banUserMailSeq);
+	
+	//유저 리스트 보여주는 부분
+	public List<MemberDTO> userList2();
+	
+	//유저포인트 업데이트 !!
+	public int updateMemberPoint(MemberDTO prevList);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
+import kr.or.com.admin.QuizDTO;
 
 public interface PointDAO {
 	//내가 산 국회의원 리스트 보여주는 부분
@@ -59,6 +60,30 @@ public interface PointDAO {
 	public int updatePoint(PointDTO dto);
 	//국회의원 포인트 구매
 	public int buyPoint(PointDTO dto);
+
+	//퀴즈 불러오기
+	public QuizDTO quiz();
+
+	//퀴즈 풀기 > 아이디 insert
+	public int insert_member(QuizDTO dto);
+
+	//퀴즈 풀기 > 정답 체크
+	public String checkQuizAnswer(QuizDTO dto);
+
+	//퀴즈 풀었었는지 확인
+	public String checkId(QuizDTO dto);
+
+	//퀴즈 정답시 포인트 업데이트
+	public int updateMyPointQuiz(QuizDTO dto);
+	
+	//포인트 디테일 페이지 정당별 인기의원 보는 SELECT 박스
+	public List<PaliamentList_DTO> pointSelectAjax(String polyNm);
+	
+	//내가 구매한 의원 상세보기시 사용
+	public PointDTO myPointPaliament_Detail(PointDTO dto);
+	
+	//내 상세정보 가져오기 >> 포인트만 뽑을것
+	public MemberDTO selectMyInfo(String id);
 
 	
 	
