@@ -36,4 +36,10 @@ public interface AdminDAO {
 	
 	//차단 유저들이 보낸 메일  상세보기
 	public banUserMailDTO banuserMailDTO(int banUserMailSeq);
+	
+	//유저 리스트 보여주는 부분
+	public List<MemberDTO> userList2();
+	
+	//유저포인트 업데이트 !!
+	public int updateMemberPoint(MemberDTO prevList);
 }

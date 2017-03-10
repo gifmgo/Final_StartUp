@@ -75,7 +75,7 @@
 												<td class="text-center">${count.count}</td>
 												<td>${buylist.empNm}</td>
 												<td>${buylist.totalCount}</td>
-												<td><input type="hidden" value="${buylist.deptCd}"><input type="button" class="btn btn-success" value="상세보기"></td>
+												<td><input type="hidden" value="${buylist.deptCd}"><input type="button" class="btn btn-success" value="상세보기" onclick="myPointDetail(this);"></td>
 											</tr>
 										</c:if>
 									</c:forEach>
@@ -159,7 +159,7 @@
 			      				<option>더불어민주당</option>
 			      				<option>무소속</option>
 			      				<option>바른정당</option>
-			      				<option>새누리당</option>
+			      				<option>자유한국당</option>
 			      				<option>정의당</option>
 					     	 </select>
 						 </div>
@@ -293,7 +293,7 @@
 							</div>
 							<br/>
 							<div class="form-group">
-								<input type="button" class="btn btn-default" value="판매" onclick="buyPoint(this);">
+								<input type="button" class="btn btn-default" value="구매" onclick="buyPoint(this);">
 							</div>
 						</form>
 					</div>
@@ -307,3 +307,60 @@
     </div>
   </div>
 </div>
+
+<!-- 내가 구매한 의원 상세정보 div -->
+<div class="container">
+	<div class="modal fade" id="BuyModal" role="dialog" style="z-index: 999999999;">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">국회의원 상세보기</h4>
+        </div>
+        <div class="modal-body text-center">
+          <div class="row">
+          	<div class="col-md-4">
+		          <div class="well customWell">
+						<img id="myPointImg" src="" class="img-circle" alt="Cinque Terre" width="100" height="100">
+						<br/><br/>
+						<label>이름 : <span id="myPointEmpNm"></span></label><br/>
+						<label>정당 : <span id="myPointPolyNm"></span></label><br/>
+						<label>포인트 : <span class="pointSpan" id="myPointPoint">&nbsp;Point</span></label> <br/>
+						<input type="hidden" id="PointIndexDeptCd">
+						<input type="hidden" id="PointIndexNum2">
+						<br/>
+						<div class="form-group">
+							<input type="button" class="btn btn-default" value="상세보기" onclick="myPaliamentDetailView();">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="well customWell">
+						<p>나의 포인트 : <span class="pointSpan" id="BuyModalMyPoint"></span>&nbsp;Point</p><br/>
+						<p>보유중인 포인트 : <span class="pointSpan" id="myGetCount"></span>&nbsp;Point</p>
+						<hr/>
+						<form class="form-horizontal" id="pointForm">
+							<div class="form-group">
+								<label>보유중인 의원 포인트를 판매시, 나의 포인트는 증가합니다.</label>
+							</div>
+							<div class="form-group">
+								<div class="col-md-offset-4 col-md-4">
+									<input type="number" id="pointIndexsellCount" class="form-control" placeholder="판매수량" min="1">
+								</div>
+							</div>
+							<div class="form-group">
+								<input type="button" class="btn btn-warning" value="판매" onclick="PointIndexSellPoint();">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

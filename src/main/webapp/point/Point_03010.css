@@ -93,9 +93,29 @@
 	padding: 5px !important;
 }
 
+/* 프로그레스 바  */
+.progress-bar-default{
+	background-color: #95a5a6 !important;
+}
+
+.progress-bar-primary{
+	background-color: #2980b9 !important;
+}
+
+.iconSpan{
+	padding:30px !important;
+}
+
+.myPointLabel{
+	line-height: 50px !important;
+}
 
 @media only screen and (max-width:768px) {
 	.secondPtag{
 		margin-top:-15px;
+	}
+	
+	.iconSpan{
+		padding:2px !important;
 	}
 }

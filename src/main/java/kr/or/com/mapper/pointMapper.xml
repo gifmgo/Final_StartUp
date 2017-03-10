@@ -121,4 +121,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateMyPointQuiz" parameterType="kr.or.com.admin.QuizDTO">
 	  update member set point=(point+1) where id=#{id}
 	</update>
+	
+	<!-- 포인트 디테일 >> 셀렉트박스 >> 정당별 인기의원 포인트 확인 -->
+	<select id="pointSelectAjax" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select * from tbl_paliament where polyNm = #{polyNm} order by pointcount desc
+	</select>
+	
+	<!-- 포인트 Index >> 내가 구매한 국회의원 상세보기 -->
+	<select id="myPointPaliament_Detail" parameterType="kr.or.com.Point.PointDTO" resultType="kr.or.com.Point.PointDTO">
+		select Point from tbl_point where userid=#{userId} and deptCd = #{deptCd}
+	</select>
+	
+	<!-- 나의 개인정보 -->
+	<select id="selectMyInfo" resultType="kr.or.com.Member.MemberDTO">
+		select point from member where id=#{id}
+	</select>
+	
 </mapper>

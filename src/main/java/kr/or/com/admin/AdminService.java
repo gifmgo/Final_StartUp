@@ -139,4 +139,33 @@ public class AdminService {
 		return dto;
 	}
 	
+	//포인트 업데이트 해주는 부분
+	public List<MemberDTO> selectMemberList() {
+		List<MemberDTO> list = null;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			list = dao.userList2();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//유저 포인트 업데이트!
+	public int updateMemberPoint(List<MemberDTO> prevList) {
+
+		int result = 0;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			for(int i=0; i<prevList.size(); i++){
+				result = dao.updateMemberPoint(prevList.get(i));
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }

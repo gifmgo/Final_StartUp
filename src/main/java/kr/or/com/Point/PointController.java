@@ -2,6 +2,7 @@ package kr.or.com.Point;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -241,6 +242,40 @@ public class PointController {
 		}
 		System.out.println(" 컨트롤러**************"+result);
 		model.addAttribute("result", result);
+		return jsonview;
+	}
+	
+	//포인트 디테일 페이지 >> 정당별 인기의원
+	@RequestMapping("/PointDetailSelectAjax.do")
+	public View PointDetailSelect(String polyNm, Model model){
+		
+		List<PaliamentList_DTO> list = service.pointSelectAjax(polyNm);
+		model.addAttribute("poly_detail", list);
+		return jsonview;
+	}
+	
+	//pointIndex >> 내가 보유한 국회의원 상세보기
+	@RequestMapping("/myPaliamentDetail.do")
+	public View myPaliamentDetail(String deptCd, Model model, HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("id");
+		
+		PointDTO mypoint = new PointDTO();
+		mypoint.setDeptCd(deptCd);
+		mypoint.setUserId(userId);
+		PointDTO point = service.selectMyDetailPoint(mypoint);
+		
+		//국회의원 정보 뿌려주는 부분
+		PaliamentList_DTO dto = service.selectPaliamentDeptCd(deptCd);
+		
+		//나의 포인트
+		MemberDTO myDto = service.selectMyInfo(userId);
+		int myPoint = myDto.getPoint();
+	
+		model.addAttribute("count", point.getPoint());
+		model.addAttribute("dto", dto);
+		model.addAttribute("myPoint", myPoint);
 		return jsonview;
 	}
 	

@@ -418,5 +418,52 @@ public class PointService {
 		}
     	 return result;
      }
+
+    //포인트 디테일 페이지 >> 정당별 인기의원
+	public List<PaliamentList_DTO> pointSelectAjax(String polyNm) {
+		
+		List<PaliamentList_DTO> list = null;
+		try{
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			list = dao.pointSelectAjax(polyNm);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	//포인트 Index >> 내가 구매한 국회의원 상세보기
+	public PointDTO selectMyDetailPoint(PointDTO dto) {
+		
+		PointDTO db_dto = null;
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			db_dto = dao.myPointPaliament_Detail(dto);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return db_dto;
+	}
+
+	//내 포인트 가져오기 위한 것 
+	public MemberDTO selectMyInfo(String id) {
+		
+		MemberDTO dto = null;
+		
+		try{
+			
+			PointDAO dao = sqlSession.getMapper(PointDAO.class);
+			dto = dao.selectMyInfo(id);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 	
 }

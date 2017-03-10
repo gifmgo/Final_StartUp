@@ -63,7 +63,7 @@
 	          </div>
 	          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
 	              <div class="tile">
-	              	<span class="fui-gear" style="font-size: 60px;"></span>
+	              	<span class="fui-new" style="font-size: 60px;"></span>
 	                <h3 class="tile-title">포인트 메뉴</h3>
 	                <p></p>
 	              	<button class="btn btn-primary btn-large btn-block" onclick="PointQuiz();">메뉴보기</button>

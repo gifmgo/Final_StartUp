@@ -1,7 +1,7 @@
 package kr.or.com.Member;
 
 public class MemberDTO {
-	
+	private int index;
 	private String id;
 	private String pw;
 	private String nickName;
@@ -12,6 +12,15 @@ public class MemberDTO {
 	private String rank; 
 	
 	
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
 	public MemberDTO() {
 	}
 

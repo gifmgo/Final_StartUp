@@ -27,6 +27,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="debate/debate_0203.css"> -->
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script src="debate/debate_0302.js"></script>
 <script src="js/jquery.tubular.1.0.js"></script>

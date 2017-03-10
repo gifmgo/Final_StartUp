@@ -448,7 +448,7 @@
         	    	   wellColor = '#01B1EC';
         	    	   ba += 1;
         	    	   break;
-           case '새누리당': 
+           case '자유한국당': 
                       wellColor = '#dc5356';
                        sae += 1;
                        break;
@@ -482,7 +482,7 @@
          case '바른정당':
          			 wellColor = '#01B1EC';
          			 break;
-         case '새누리당': 
+         case '자유한국당': 
                      wellColor = '#dc5356';
                      break;
          case '정의당': 
@@ -591,7 +591,7 @@
                  noNameJustPolyNm(polyNm);
                  break;
                  
-            case '새누리당':
+            case '자유한국당':
                  $('#resultDiv').empty(); 
                  noNameJustPolyNm(polyNm);
                  break;        
@@ -660,7 +660,7 @@
         ['국민의당',     guck],
         ['더불어 민주당',      doub],
         ['바른 정당',      ba],
-        ['새누리당',  sae],
+        ['자유한국당',  sae],
         ['정의당', jung],
         ['무소속',    muso]
       ]);

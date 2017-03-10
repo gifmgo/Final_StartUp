@@ -166,7 +166,9 @@ function moremore(){
 							<c:when test="${jlist != null}">
 							<c:forEach var="dto" items="${jlist}" varStatus="status">
 								<c:if test="${dto.choose eq '진보' && status.count<11}">
-								   <li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} ${dto.writeDate}</span></li>
+								   <c:set var="sTitle" value="${dto.title}"/>
+								   <c:set var="fntitle" value="${fn:substring(sTitle,0,10)}"/>
+								   <li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${fntitle}...<span class="badge col-sm-offset-2">${dto.nickName} ${dto.writeDate}</span></li>
 								</c:if>
 							</c:forEach>
 							</c:when>
@@ -194,7 +196,9 @@ function moremore(){
 							<c:when test="${blist != null}">
 								<c:forEach var="dto" items="${blist}" varStatus="status">
 									<c:if test="${dto.choose eq '보수' && status.count<11}">
-										<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${dto.title}<span class="badge col-sm-offset-2">${dto.nickName} / ${dto.writeDate}</span></li>
+										<c:set var="sTitle" value="${dto.title}"/>
+								   		<c:set var="fntitle" value="${fn:substring(sTitle,0,10)}"/>
+										<li onclick="detailDebate(${dto.debateNo});" class="list-group-item" style="float: none;">${fntitle}...<span class="badge col-sm-offset-2">${dto.nickName} / ${dto.writeDate}</span></li>
 									</c:if>
 								</c:forEach>
 							</c:when>
@@ -250,7 +254,7 @@ function moremore(){
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-offset-1 col-md-2">
+							<label class="control-label col-md-offset-2 col-md-2">
 								<input type="button" class="btn btn-success" id="debateWriteBtn" value="글쓰기">
 							</label>
 						</div>
@@ -268,22 +272,24 @@ function moremore(){
 <!-- </section> -->
 
 <!-- 모달 -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">제목 : <span id="dbTitle"></span>&nbsp;&nbsp;<span id="date" class="col-md-offset-4"></span></h4>
-      </div>
-      <div class="modal-body">
-        <p>내용 : <span id="dbcontent"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
+<div class="container">
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title"><i class="fa fa-chevron-right" style="font-size:24px"></i>&nbsp;&nbsp;&nbsp;<span id="dbTitle"></span>
+	        	<br/><hr/><i class="fa fa-calendar" style="font-size:24px"></i>&nbsp;&nbsp;&nbsp;<span id="date"></span></h4>
+	      </div>
+	      <div class="modal-body">
+	        <p><i class="fa fa-pencil-square-o" style="font-size:24px"></i>&nbsp;&nbsp;&nbsp;<span id="dbcontent"></span></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
 

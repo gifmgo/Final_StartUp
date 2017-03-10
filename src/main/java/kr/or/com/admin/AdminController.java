@@ -1,5 +1,6 @@
 package kr.or.com.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
 import kr.or.com.Data.TodayUserDTO;
+import kr.or.com.Member.MemberDTO;
 import kr.or.com.debate.admin_DebateDTO;
 import kr.or.com.debate.debateDTO;
 
@@ -205,5 +207,82 @@ public class AdminController {
     	return jsonview;
     }
     
+    //유저 포인트 추가 페이지 - > 유저 리스트
+    @RequestMapping("/AdminPointPlus.do")
+    public String UserPointUpdate(Model model,String pageSize, String pnowPage){
+    	
+    	System.out.println("페이지 번호 확인좀 : "+pnowPage);
+    	
+    	List<MemberDTO> list = adminservice.selectMemberList();
+    	
+    	List<MemberDTO> list2 = new ArrayList<MemberDTO>();
+    	
+    	//게시물 총 개수
+    	int totalCount = list.size();
+
+    	//현재 페이지  >> 밑에 페이징 한 a 태크 클릭시
+    	int nowPage;
+    	if(pnowPage == null){
+    		nowPage = 0;
+    	}else{
+    		nowPage = Integer.parseInt(pnowPage);
+    	}
+    
+    	//페이지에 뿌려줄 데이터 개수
+    	int i_pageSize = 10;
+    	if(nowPage == 0){
+    		model.addAttribute("index", 1);
+    		for(int i = nowPage; i <= i_pageSize; i++){
+    			System.out.println("for 문 내부임  : "+i);
+    			if(i < i_pageSize){
+    				list.get(i).setIndex(i);
+    				list2.add(list.get(i));
+    			}
+    		}
+    	}else{
+    		model.addAttribute("index", ((nowPage-1)*i_pageSize));	
+    		for(int i = ((nowPage-1)*i_pageSize); i <= ((nowPage * i_pageSize)); i++){
+    			System.out.println("for 문 내부임  : "+i);
+    			if(i <= ((nowPage * i_pageSize)-1) && i < list.size()){
+    				list.get(i).setIndex(i);
+    				System.out.println("lsit index : "+list.get(i).getIndex());
+    				list2.add(list.get(i));
+    			}
+    		}
+    	}
+    	
+    	//페이징 개수
+    	int pageNumbering;
+    	if(totalCount%i_pageSize == 0){
+    		pageNumbering = totalCount / i_pageSize;
+    	}else{
+    		pageNumbering = ((totalCount / i_pageSize) + 1);
+    	}
+    	
+    	
+    	model.addAttribute("pageSize",i_pageSize);
+    	model.addAttribute("pageNumbering", pageNumbering);
+    	model.addAttribute("list", list2);
+    	return "admin.UserPointPlus";
+    }
+    
+    //유저 포인트 추가
+    @RequestMapping("/UpdatePointAjax.do")
+    public View UpdateAajx(Model model){
+    	
+    	List<MemberDTO> prevList = adminservice.selectMemberList();
+    	int result = 0;
+    	
+    	result = adminservice.updateMemberPoint(prevList);
+    	
+    	List<MemberDTO> list = null;
+    	if(result > 0){
+    		list = adminservice.selectMemberList();
+    	}
+    	
+    	System.out.println("list 싸이즈 : "+list.size());
+    	model.addAttribute("list", list);
+    	return jsonview;
+    }
     
 }

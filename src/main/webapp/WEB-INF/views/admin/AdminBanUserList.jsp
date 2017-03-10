@@ -7,6 +7,7 @@
 				<ul class="nav nav-tabs">
 				  <li class="active"><a href="AdminBanUserList.do">차단 유저 관리</a></li>
 				  <li><a href="BanUserMail.do">문의 메일</a></li>
+				  <li><a href="AdminPointPlus.do">포인트추가</a></li>
 				</ul>
 			</div>
 	 </div>	

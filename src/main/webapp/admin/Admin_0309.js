@@ -186,8 +186,36 @@ function detailMailFunc(seq){
 }
 
 
-$(function(){
-
+$(document).ready(function(){
+  
+  //유저 포인트 추가
+  $('#plusPointBtn').click(function(){
+	  alert("포인트 추가 !!");
+	  $.ajax({
+		 url:"UpdatePointAjax.do",
+		 success : function(data){
+			 if(data.list != null){
+				 alert("업데이트 성공!");
+				 $('#pointTbody').empty();
+				 var tbody = '';
+				 $.each(data.list, function(index, obj){
+					 tbody += '<tr>';
+					 tbody += '<td class="text-center">'+index+'</td>';
+					 tbody += '<td class="text-center">'+obj.id+'</td>';
+					 tbody += '<td class="text-center">'+obj.nickName+'</td>';
+					 tbody += '<td class="text-center">'+obj.point+'</td>';
+					 tbody += '</tr>';
+				 });
+				 
+				 $('#pointTbody').html(tbody);
+				 
+			 }else{
+				 alert("죄송합니다. 잠시후 이용해주세요");
+			 }
+		 }
+	  });
+  });
+	
   $('#chooseResultDiv').css("display","none");	
 	
  //debateList 검색 부분

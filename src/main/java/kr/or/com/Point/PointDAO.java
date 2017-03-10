@@ -75,6 +75,15 @@ public interface PointDAO {
 
 	//퀴즈 정답시 포인트 업데이트
 	public int updateMyPointQuiz(QuizDTO dto);
+	
+	//포인트 디테일 페이지 정당별 인기의원 보는 SELECT 박스
+	public List<PaliamentList_DTO> pointSelectAjax(String polyNm);
+	
+	//내가 구매한 의원 상세보기시 사용
+	public PointDTO myPointPaliament_Detail(PointDTO dto);
+	
+	//내 상세정보 가져오기 >> 포인트만 뽑을것
+	public MemberDTO selectMyInfo(String id);
 
 	
 	
