@@ -34,7 +34,6 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 			Date now = new Date();
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 			String acc = "remote :"+ request.getRemoteAddr() + "\n";
-			logger.warn(acc);
 			
 			if(request.getRemoteAddr().equals("0:0:0:0:0:0:0:1") || request.getRemoteAddr().equals("127.0.0.1") ){
 				return true;
