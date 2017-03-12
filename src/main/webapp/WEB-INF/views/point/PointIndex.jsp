@@ -6,15 +6,14 @@
 	<div class="row articlerow">
 		<div class="col-sm-12 text-center">
 			<h4 class="text-center titleH4">생활 포인트 <span><i id="moreIcon" class="fa fa-angle-double-down" style="font-size:20px"></i></span></h4>
-			<p class="point_explainePtag text-center">생활정치 사이트에서 제공하는 포인트를 나타내며<br/>
-			     간단한 주식이라 보시면 됩니다.<br/>의안을 발행하는 의원, 한줄토크에서 많은 지지를 받는 의원<br/>
-			     또는 많은 사용자들이 특정 국회의원의 포인트를 구매시 <br/>
+			<p class="point_explainePtag text-center">생활포인트는 간단한 주식이라 보시면 됩니다.<br/>
+			     많은 사용자들이 특정 국회의원의 포인트를 구매시 <br/>
 			     해당 국회의원의 포인트는 증가하게 됩니다.<br/>
-			   <span class="pointSpan">매월 포인트가 제일 높으신 10분은 문화상품권을 드립니다!</span></p>
+			   1.생활 포인트는 <span style="font-size:15px; color: blue;">무료</span>입니다.<br/>
+			   2.매월 포인트가 제일 높으신 10분은 <span class="pointSpan">문화상품권</span> 을 드립니다!</p>
 			<br/>
 			<div class="row text-center">
 				<br/>
-				
 				<div class="col-md-offset-1 col-md-4 statusDiv">
 					<h4>베스트 국회의원</h4><br/>
 					<table class="table">
@@ -176,6 +175,7 @@
 			<div class="row" id="searchResultDiv">
 				<div class="col-sm-offset-4 col-sm-4 col-md-4">
 					<div class="well customWell" style="min-height: 300px;">
+						<span class="text-center"><i class="fa fa-meh-o" style="font-size:48px;color:red"></i></span>
 						<h4 class="text-center">검색하신 정보가 없습니다.</h4>
 					</div>
 				</div>
@@ -258,7 +258,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">국회의원 상세보기</h4>
+          <h4 class="modal-title">국회의원 상세보기 <span class="text-right"><a href="#" data-toggle="tooltip" title="Hooray!">설명보기</a></span></h4>
         </div>
         <div class="modal-body text-center">
           <div class="row">

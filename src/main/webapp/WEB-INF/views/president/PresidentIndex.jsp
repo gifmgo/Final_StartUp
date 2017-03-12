@@ -28,7 +28,6 @@
 							<c:choose>
 							<c:when test="${status.count % 2 != 0}">
 								<div class="col-md-12 firstDiv">
-									
 									<div class="row">
 										<div class="col-md-4">
 											<img src="img/president${status.count}.jpg" class="img-rounded" width="70%;" height="300px;">
@@ -45,7 +44,7 @@
 													</c:forEach>
 												 </ul>
 											</p>
-											<div class="row TFbtnRow">
+											<div class="form-group">
 												<div class="btn-group">
 												  <button type="button" class="btn btn-success" id="${list.twitter}">twitter</button>
 												  <button type="button" class="btn btn-success" id="${list.facebook}">faceBook</button>
@@ -75,7 +74,7 @@
 									<div class="col-md-4">
 										<img src="img/president${status.count}.jpg" class="img-rounded" width="70%;" height="300px;">
 									</div>											
-									<div class="row TFbtnRow">
+									<div class="form-group">
 										<div style="margin-left:3%;">	
 											<div class="btn-group">
 											  <button type="button" class="btn btn-primary" id="${list.twitter}">twitter</button>

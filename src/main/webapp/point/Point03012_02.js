@@ -409,23 +409,23 @@ $(document).ready(function(){
 	$('#selectPaliamentDiv').css("display","none");
 	$('#jungDangDiv').css("display","none");
 	
-	$('.point_explainePtag').css("display", "none");
 	
+	
+	$('.point_explainePtag').css("display","block");
+	$('#moreIcon').removeClass('fa fa-angle-double-down');
+	$('#moreIcon').addClass('fa fa-angle-double-up');
 	var count = 0;
 	$('#moreIcon').click(function(){
 		if(count == 0){
-			$('#moreIcon').removeClass('fa fa-angle-double-down');
-			$('#moreIcon').addClass('fa fa-angle-double-up');
-			count=1;
-			
-			$('.point_explainePtag').css("display","block");
-			
-		}else{
 			$('#moreIcon').removeClass('fa fa-angle-double-up');
 			$('#moreIcon').addClass('fa fa-angle-double-down');
-			count=0;
-			
+			count=1;
 			$('.point_explainePtag').css("display","none");
+		}else{
+			$('#moreIcon').removeClass('fa fa-angle-double-down');
+			$('#moreIcon').addClass('fa fa-angle-double-up');
+			count=0;
+			$('.point_explainePtag').css("display","block");
 		}
 	});
 	
@@ -462,7 +462,8 @@ $(document).ready(function(){
 						});
 						$('#searchResultDiv').html(well);
 					}else{
-						var well = "<div class='col-md-12'><div class='well'>검색하신 결과가 없습니다.</div></div>";
+						var well = "<div class='col-md-12'>";
+							well +='<span class="text-center"><i class="fa fa-meh-o" style="font-size:48px;color:red"></i></span><div class="well">검색하신 결과가 없습니다.</div></div>';
 						$('#searchResultDiv').html(well);	
 					}
 				}
@@ -567,7 +568,7 @@ function jungDangFunc(){
 				var well = "<div class='col-md-12'>" +
 						"<div class='row'>" +
 						"<div class='col-sm-offset-4 col-sm-4 col-md-4'>" +
-						"<div class='well customWell' style='min-height:300px;'>검색하신 결과가 없습니다.</div></div></div></div>";
+						"<div class='well customWell' style='min-height:300px;'><span class='text-center'><i class='fa fa-meh-o' style='font-size:48px;color:red'></i></span><h4 class='text-center'>검색하신 결과가 없습니다.</h4></div></div></div></div>";
 				$('#searchResultDiv').html(well);	
 			}	
 			

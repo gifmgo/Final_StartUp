@@ -1,27 +1,8 @@
 @CHARSET "UTF-8";
-.presidentDiv{
-	min-height:500px !important;
-}
+
 
 .presidentMemberH4{
 	line-height: 35px !important;
-}
-
-.firstDiv{
-	min-height: 400px;
-	background-color: #fff;
-	margin:5px;
-}
-
-.secondDiv{
-	min-height: 400px;
-	background-color: #ecf0f1;
-	margin:5px;
-	bottom:30px;
-}
-
-.secondRow{
-	padding: 30px !important;
 }
 
 .customGroup{
@@ -32,9 +13,6 @@
 	font-size:20px !important;
 }
 
-.TFbtnRow{
-	margin-top: 5%;
-}
 
 .top_bar_fix{
 	position: fixed;
@@ -45,5 +23,3 @@
 .pd_top_80{
 	padding-top:80px;
 }
-
-.listDiv{margin-top:5%;}
