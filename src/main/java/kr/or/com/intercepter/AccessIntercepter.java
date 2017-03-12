@@ -41,8 +41,9 @@ public class AccessIntercepter extends HandlerInterceptorAdapter {
 			
 			if(session == null){
 				session = request.getSession();
-				session.setAttribute("connectId", format.format(now));
 				updateTodayUser(format.format(now));
+				format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+				session.setAttribute("connectId", format.format(now));
 				System.out.println("session : " + session.getAttribute("connectId"));
 				logger.warn(acc);
 			}
