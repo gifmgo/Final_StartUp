@@ -51,6 +51,15 @@ public class PaliamentController {
    //국회의원 에게 댓글 단 대쉬보드 페이지
    @RequestMapping("/Paliament_DashBoard.do")
    public String Paliament_DashBoard(Model model){
+	   
+	   List<PCommentDTO> clist = service.rPCommentList();
+	   
+	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+	   String strDate = fm.format(new Date());
+	   
+	   model.addAttribute("now", strDate);
+	   model.addAttribute("RPComment", clist);
+	   
 	   return "parliament_List.Paliament_Talk_DashBoard";
    }
    
@@ -59,13 +68,13 @@ public class PaliamentController {
    public String Parliament_List(Model model){
 	   
 	   //최근 써진 댓글 뽑아오기
-	   List<PCommentDTO> clist = service.rPCommentList();
+	   /*List<PCommentDTO> clist = service.rPCommentList();
    
 	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	   String strDate = fm.format(new Date());
 	   
 	   model.addAttribute("now", strDate);
-	   model.addAttribute("RPComment", clist);
+	   model.addAttribute("RPComment", clist);*/
 	   
 	   return "parliament_List.ParliamentList";
    }
