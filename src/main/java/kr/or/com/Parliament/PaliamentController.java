@@ -46,6 +46,12 @@ public class PaliamentController {
    @Autowired
    private PaliamentService service;
    
+   //국회의원 에게 댓글 단 대쉬보드 페이지
+   @RequestMapping("/Paliament_DashBoard.do")
+   public String Paliament_DashBoard(Model model){
+	   return "parliament_List.Paliament_Talk_DashBoard";
+   }
+   
    //국회의원 헤더부분 클릭시 이동하는 페이지
    @RequestMapping("/Member_Parliament.do")
    public String Parliament_List(Model model){

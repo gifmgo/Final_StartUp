@@ -1,6 +1,6 @@
 package kr.or.com.President;
 
-public class PresidentDTO {
+public class PresidentDTO extends PresidentVote_DTO{
 	
 	private String name;
 	private String jungDang;
@@ -9,6 +9,8 @@ public class PresidentDTO {
 	private String twitter;
 	private String facebook;
 	private String homepage;
+	private int pools;
+	
 	public String getName() {
 		return name;
 	}
@@ -52,11 +54,19 @@ public class PresidentDTO {
 		this.homepage = homepage;
 	}
 	
+	public int getPools() {
+		return pools;
+	}
+	public void setPools(int pools) {
+		this.pools = pools;
+	}
 	@Override
 	public String toString() {
 		return "PresidentDTO [name=" + name + ", jungDang=" + jungDang + ", area=" + area + ", status=" + status
-				+ ", twitter=" + twitter + ", facebook=" + facebook + ", homepage=" + homepage + "]";
+				+ ", twitter=" + twitter + ", facebook=" + facebook + ", homepage=" + homepage + ", pools=" + pools
+				+ "]";
 	}
+	
 	
 	
 	
