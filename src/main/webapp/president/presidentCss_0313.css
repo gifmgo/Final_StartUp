@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+
+
+/* 
+	1.국민의당 
+	2.더불어 민주당
+	3.바른정당
+	4.자유 한국당
+	5.정의당
+	6.무소속
+*/
+.progress-bar-guck{
+	background-color: #1abc9c !important;
+}
+
+.progress-bar-double{
+	background-color: #2980b9 !important;
+}
+
+.progress-bar-ba{
+	background-color: #3498db !important;
+}
+
+.progress-bar-ja{
+	background-color: #e74c3c !important;
+}
+
+.progress-bar-jung{
+	background-color: #f1c40f !important;
+}
+
+.progress-bar-mu{
+	background-color: #95a5a6 !important;
+}
+
+
+
+
+.presidentMemberH4{
+	line-height: 35px !important;
+}
+
+.customGroup{
+	background-color: #1abc9c !important;
+	color: #fff;
+	height: 80px !important;
+	line-height: 80px !important;
+	font-size:20px !important;
+}
+
+
+.top_bar_fix{
+	position: fixed;
+	z-index:999;
+	top:0; left:0; width:100%; opacity:0.6 !important;
+}
+
+.pd_top_80{
+	padding-top:80px;
+}

@@ -4,7 +4,6 @@
 <div class="container">
 	<div class="row articlerow">
 		<div class="container text-center">
-			<label>작업중인 페이지</label>
 			<div class="row">
 				<div class="col-md-4 text-center">
 					 <div class="panel panel-info">

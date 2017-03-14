@@ -75,12 +75,37 @@
     			<label class="control-label" for="empNm">이름</label>
       			<input type="text" class="form-control" id="empNm" placeholder="이름을 입력하세요">
  			 </div>
+<<<<<<< HEAD
  			 
  			 <div class="form-group">
    				<input type="button" id="searchBtn" class="btn" value="검색" style="background:black; color:white; border:0;">
+=======
+ 			 <div class="form-group text-center">
+   				<div class="btn-group customBtnGroup">
+				  <button type="button" id="dashBoardTalkBtn" class="btn btn-success">의원 글보기</button>
+				  <button type="button" id="searchBtn" class="btn btn-info">검색</button>
+				</div>
+   				<!-- <input type="button" id="searchBtn" class="btn col-sm-offset-8 col-sm-3" value="검색" style="background:black; color:white; border:0;"> -->
+>>>>>>> 4443cf17e39e91cd44b1d31c6c77d39e3be5c9e7
  			 </div>
 		</form>
 	</div>
+<<<<<<< HEAD
+=======
+</div>	
+		<!--검색 결과 나올 Div 영역-->
+		<div class="container">
+			<div class="row" id="resultDiv">
+				<div class="col-md-offset-4 col-md-4">
+					<div class="well customWell text-center">
+						<span class="text-center"><i class="fa fa-meh-o" style="font-size:48px;color:red"></i></span><br/><br/>
+						<p>검색하신 의원이 없습니다.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+>>>>>>> 4443cf17e39e91cd44b1d31c6c77d39e3be5c9e7
 </div>
 
 <div class="container">

@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="paliament/custom.css">
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 <script src="js/main_header.js"></script>
@@ -527,7 +527,7 @@
                PaliamentArray.push(new PaliamentDTO(obj.empNm,obj.deptCd,obj.num2,obj.polyNm, obj.jpgLink, obj.origNm, obj.reeleGbnNm));
             });
             
-            $('#resultDiv').html(PaliamentDiv);
+            //$('#resultDiv').html(PaliamentDiv);
             google.charts.load('current', {'packages':['corechart']});
              google.charts.setOnLoadCallback(drawChart);
              
@@ -538,6 +538,10 @@
          },timeout : 100000
       });
       
+      
+      $('#dashBoardTalkBtn').click(function(){
+    	 location.href="Paliament_DashBoard.do"; 
+      });
       
       //의원 검색 클릭시
       $("#searchBtn").click(function() {
