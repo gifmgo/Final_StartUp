@@ -115,5 +115,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    where co_no = #{co_no}
 	</update>
    
+   
+   	<!-- 댓글 뽑기 -->
+	<select id="rPCommentList" resultType="kr.or.com.Parliament.PCommentDTO">
+		select no as deptcd, co_no, content, writer, id, regdate, regdatePO, good, bed, grpno, depth, grporder ,p.jpglink as img ,p.empnm as name, p.num2 as no, p.orignm as orignm
+		from (select no, co_no, content, writer, id, regdate, regdatePO, good, bed, grpno, depth, grporder
+		    from (select no, co_no, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, to_char(regdate+1,'YYYYMMDDHH24MI') as regdatePO, good, bed, grpno, depth, grporder
+		        from paliament_talk_comment
+		        where depth = 0)
+		    where rownum &lt;= 10) ptc, tbl_paliament p
+		where ptc.no = p.deptcd
+		order by grpno, co_no asc
+	</select>
 
 </mapper>

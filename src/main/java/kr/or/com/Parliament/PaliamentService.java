@@ -214,7 +214,6 @@ public class PaliamentService {
         return list;
  	}
  	
- 	
  	//댓글 list 뽑기
  	public List<CommentDTO> commSelect(String no) {
  		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
@@ -222,6 +221,14 @@ public class PaliamentService {
  		
  		return list;
  	}
+ 	
+	//최근 국회의원 댓글
+ 	public List<PCommentDTO> rPCommentList() {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		List<PCommentDTO> list = dao.rPCommentList();
+ 		return list;
+ 	}
+ 	
  	//쓰기
  	public int writeComment(CommentDTO cdto) {
  		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);

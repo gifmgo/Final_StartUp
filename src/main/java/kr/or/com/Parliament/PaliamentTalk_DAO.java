@@ -56,5 +56,8 @@ public interface PaliamentTalk_DAO {
  	public int deleteAllComment(int co_no);
  	
  	public int updateComment(CommentDTO dto);
+ 	
+ 	//최근 국회의원 댓글
+	public List<PCommentDTO> rPCommentList();
    
 }
