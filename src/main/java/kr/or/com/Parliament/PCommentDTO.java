@@ -7,6 +7,7 @@ public class PCommentDTO extends CommentDTO {
 	private String name;
 	private String deptcd;
 	private String orignm;
+	private String polyNm;
 	
 	public PCommentDTO() {
 		super();
@@ -30,17 +31,7 @@ public class PCommentDTO extends CommentDTO {
 	public void setDeptcd(String deptcd) {
 		this.deptcd = deptcd;
 	}
-	@Override
-	public String toString() {
-		return "PCommentDTO [img=" + img + ", name=" + name + ", deptcd=" + deptcd + ", getImg()=" + getImg()
-				+ ", getName()=" + getName() + ", getDeptcd()=" + getDeptcd() + ", getNo()=" + getNo() + ", getCo_no()="
-				+ getCo_no() + ", getContent()=" + getContent() + ", getRegdate()=" + getRegdate() + ", getGood()="
-				+ getGood() + ", getBed()=" + getBed() + ", getDepth()=" + getDepth() + ", getGrporder()="
-				+ getGrporder() + ", getWriter()=" + getWriter() + ", getId()=" + getId() + ", getGrpno()=" + getGrpno()
-				+ ", toString()=" + super.toString() + ", getRegdatePO()=" + getRegdatePO() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + "]";
-	}
-
+	
 	public String getOrignm() {
 		return orignm;
 	}
@@ -48,5 +39,18 @@ public class PCommentDTO extends CommentDTO {
 	public void setOrignm(String orignm) {
 		this.orignm = orignm;
 	}
-	
+
+	public String getPolyNm() {
+		return polyNm;
+	}
+
+	public void setPolyNm(String polyNm) {
+		this.polyNm = polyNm;
+	}
+
+	@Override
+	public String toString() {
+		return "PCommentDTO [img=" + img + ", name=" + name + ", deptcd=" + deptcd + ", orignm=" + orignm + ", polyNm="
+				+ polyNm + "]" +  super.toString();
+	}
 }

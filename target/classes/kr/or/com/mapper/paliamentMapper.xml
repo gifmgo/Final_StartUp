@@ -116,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
    
    
-   	<!-- 댓글 뽑기 -->
+   	<!-- 최근 댓글 뽑기 -->
 	<select id="rPCommentList" resultType="kr.or.com.Parliament.PCommentDTO">
 		select no as deptcd, co_no, content, writer, id, regdate, regdatePO, good, bed, grpno, depth, grporder ,p.jpglink as img ,p.empnm as name, p.num2 as no, p.orignm as orignm
 		from (select no, co_no, content, writer, id, regdate, regdatePO, good, bed, grpno, depth, grporder
@@ -126,6 +126,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    where rownum &lt;= 10) ptc, tbl_paliament p
 		where ptc.no = p.deptcd
 		order by grpno, co_no asc
+	</select>
+	
+   	<!-- 댓글 뽑기 -->
+	<select id="pCommentList" resultType="kr.or.com.Parliament.PCommentDTO">
+		select no as deptcd, co_no, content, writer, id, regdate, regdatePO, good, bed, grpno, depth, grporder ,p.jpglink as img ,p.empnm as name, p.num2 as no, p.orignm as orignm
+		from (select no, co_no, content, writer, id, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, to_char(regdate+1,'YYYYMMDDHH24MI') as regdatePO, good, bed, grpno, depth, grporder
+		      from paliament_talk_comment
+		      where depth = 0) ptc, tbl_paliament p
+		where ptc.no = p.deptcd
+		order by no, co_no asc
+	</select>
+	
+   	<!-- 댓글 뽑기 -->
+	<select id="sCommentList" resultType="kr.or.com.Parliament.PCommentDTO">
+		select no as deptcd, co_no, content, writer, id, regdate, good, bed, grpno, depth, grporder ,p.jpglink as img ,p.empnm as name, p.num2 as no, p.orignm as orignm
+		from paliament_talk_comment ptc,
+		     (select *
+		      from tbl_paliament
+		      where polyNm like '${param1}%'
+		      and orignm like '${param2}%'
+		      and empnm like '${param3}%') p
+		where ptc.no = p.deptcd
+		order by no, co_no asc
 	</select>
 
 </mapper>

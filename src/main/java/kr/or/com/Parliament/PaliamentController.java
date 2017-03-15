@@ -50,9 +50,9 @@ public class PaliamentController {
    
    //국회의원 에게 댓글 단 대쉬보드 페이지
    @RequestMapping("/Paliament_DashBoard.do")
-   public String Paliament_DashBoard(Model model){
+   public String paliament_DashBoard(Model model){
 	   
-	   List<PCommentDTO> clist = service.rPCommentList();
+	   List<PCommentDTO> clist = service.PCommentList();
 	   
 	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	   String strDate = fm.format(new Date());
@@ -60,21 +60,48 @@ public class PaliamentController {
 	   model.addAttribute("now", strDate);
 	   model.addAttribute("RPComment", clist);
 	   
-	   return "parliament_List.Paliament_Talk_DashBoard";
+	   return "parliament_comment.Paliament_Talk_DashBoard";
+   }
+   
+   //국회의원 에게 댓글 단 대쉬보드 페이지 search
+   @RequestMapping("/PaliamentCommentSearch.do")
+   public View paliamentCommentSearch(Model model,String polyNm,String orignm, String name){
+	   if(polyNm==null || polyNm.equals("")){
+		   polyNm="%%";
+	   }else if(polyNm.equals("전체")){
+		   polyNm="%%";		   
+	   }
+	   
+	   if(orignm==null || orignm.equals("")){
+		   orignm="%%";
+	   }else if(orignm.equals("전체")){
+		   orignm="%%";		   
+	   }
+	   
+	   if(name==null || name.equals("")){
+		   name="%%";
+	   }
+	   
+	   List<PCommentDTO> clist = service.sCommentList(polyNm,orignm,name);
+	   for(PCommentDTO list : clist){
+		   System.out.println(list);
+	   }
+	   model.addAttribute("list", clist);
+	   return jsonView;
    }
    
    //국회의원 헤더부분 클릭시 이동하는 페이지
    @RequestMapping("/Member_Parliament.do")
-   public String Parliament_List(Model model){
+   public String parliament_List(Model model){
 	   
 	   //최근 써진 댓글 뽑아오기
-	   /*List<PCommentDTO> clist = service.rPCommentList();
+	   List<PCommentDTO> clist = service.rPCommentList();
    
 	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	   String strDate = fm.format(new Date());
 	   
 	   model.addAttribute("now", strDate);
-	   model.addAttribute("RPComment", clist);*/
+	   model.addAttribute("RPComment", clist);
 	   
 	   return "parliament_List.ParliamentList";
    }

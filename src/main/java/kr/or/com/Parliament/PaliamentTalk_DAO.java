@@ -57,7 +57,11 @@ public interface PaliamentTalk_DAO {
  	
  	public int updateComment(CommentDTO dto);
  	
- 	//최근 국회의원 댓글
+ 	//최근 국회의원 최신댓글
 	public List<PCommentDTO> rPCommentList();
+	// 국회의원 댓글
+	public List<PCommentDTO> pCommentList();
+	//선택된 국회의원 댓글
+	public List<PCommentDTO> sCommentList(String polyNm,String orignm, String name);
    
 }
