@@ -13,7 +13,6 @@
 <input type="hidden" id="detailHiden_num" value="${num}">
 <input type="hidden" id="detailHiden_dept_cd" value="${dept_cd}">
 <input type="hidden" id="detailName" value="${name}">
-<input type="hidden" id="detailHiden_dept_cd" value="${dept_cd}">
 <input type="hidden" id="tid" value="${tid}">
 
  <!----------------------------------------------------------------------------------->

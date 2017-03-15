@@ -37,7 +37,7 @@ $(document).ready(function(e) {
 		li.append(div);
 	});
 	
-	//답글 수정 뷰
+	//답글 수정
 	$("#commList").on("click",".commmodButton",function(){
 		var dept_cd = $("#detailHiden_dept_cd").val();
 		var img = $("#detail_img").val();

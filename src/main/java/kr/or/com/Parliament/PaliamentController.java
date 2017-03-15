@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -48,14 +50,60 @@ public class PaliamentController {
    
    //국회의원 에게 댓글 단 대쉬보드 페이지
    @RequestMapping("/Paliament_DashBoard.do")
-   public String Paliament_DashBoard(Model model){
-	   return "parliament_List.Paliament_Talk_DashBoard";
+   public String paliament_DashBoard(Model model){
+	   
+	   List<PCommentDTO> clist = service.PCommentList();
+	   
+	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+	   String strDate = fm.format(new Date());
+	   
+	   model.addAttribute("now", strDate);
+	   model.addAttribute("RPComment", clist);
+	   
+	   return "parliament_comment.Paliament_Talk_DashBoard";
+   }
+   
+   //국회의원 에게 댓글 단 대쉬보드 페이지 search
+   @RequestMapping("/PaliamentCommentSearch.do")
+   public View paliamentCommentSearch(Model model,String polyNm,String orignm, String name){
+	   if(polyNm==null || polyNm.equals("")){
+		   polyNm="%%";
+	   }else if(polyNm.equals("전체")){
+		   polyNm="%%";		   
+	   }
+	   
+	   if(orignm==null || orignm.equals("")){
+		   orignm="%%";
+	   }else if(orignm.equals("전체")){
+		   orignm="%%";		   
+	   }
+	   
+	   if(name==null || name.equals("")){
+		   name="%%";
+	   }
+	   
+	   List<PCommentDTO> clist = service.sCommentList(polyNm,orignm,name);
+	   for(PCommentDTO list : clist){
+		   System.out.println(list);
+	   }
+	   model.addAttribute("list", clist);
+	   return jsonView;
    }
    
    //국회의원 헤더부분 클릭시 이동하는 페이지
    @RequestMapping("/Member_Parliament.do")
-   public String Parliament_List(Model model){
-     return "parliament_List.ParliamentList";
+   public String parliament_List(Model model){
+	   
+	   //최근 써진 댓글 뽑아오기
+	   List<PCommentDTO> clist = service.rPCommentList();
+   
+	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+	   String strDate = fm.format(new Date());
+	   
+	   model.addAttribute("now", strDate);
+	   model.addAttribute("RPComment", clist);
+	   
+	   return "parliament_List.ParliamentList";
    }
    
    //말말말!!  >> View 페이지 보여줌
@@ -72,15 +120,20 @@ public class PaliamentController {
    @RequestMapping("/Paliament_Talk_Detail.do")
    public String Paliament_Talk_Detail(String seq, String num, String dept_cd, String img, String name, Model model){
       
-      PaliamentTalk_DTO dto = service.talk_Detail(seq);
-      List<CommentDTO> list = service.commentList(seq);
-      List<CommentDTO> comment = service.commSelect(seq);
+      /*PaliamentTalk_DTO dto = service.talk_Detail(dept_cd);*/
+      /*List<CommentDTO> list = service.commentList(dept_cd); 대댓글*/
+	  System.out.println(dept_cd);
+      List<CommentDTO> comment = service.commSelect(dept_cd);
       
-      model.addAttribute("list", list);
+      for(CommentDTO cd : comment){
+    	  System.out.println(cd);
+      }
+      
+     /* model.addAttribute("list", list);*/
       model.addAttribute("comment", comment);
       model.addAttribute("dept_cd", dept_cd);
       model.addAttribute("img", img);
-      model.addAttribute("detail", dto);
+      /*model.addAttribute("detail", dto);*/
       return "parliament_Detail.Parliament_Talk_Detail";
    }
    
@@ -231,69 +284,8 @@ public class PaliamentController {
  	    model.addAttribute("result", result);
   		return jsonView;
   	}
-   
-   //게시판 코멘트 부분
-   	/*//코멘트 쓰기
- 	@RequestMapping("paliamentCommentWrite.do")
- 	public View paliamentCommentWrite(CommentDTO cdto, String coNo, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
- 		
- 		HttpSession session = request.getSession();
- 		String logId = (String)session.getAttribute("id");
- 		cdto.setId(logId);
- 		
- 		if(logId == null || logId.equals("")){
- 			model.addAttribute("result", 0);
- 			return jsonView;
- 		} //임시
- 		
- 		if(cdto.getDepth()==1){
- 			cdto.setGrpno(Integer.parseInt(coNo));
- 		}else if(cdto.getDepth()==0){ //return을 안 하기 위해
- 		}else{
- 			model.addAttribute("result", 0);
- 			return jsonView;
- 		}
- 		
- 		int result = service.writeComment(cdto);
- 		
- 		model.addAttribute("seq", cdto.getNo());
-	    model.addAttribute("dept_cd", dept_cd);
-	    model.addAttribute("name", name);
-	    model.addAttribute("num", num);
-	    model.addAttribute("img", img);
- 		model.addAttribute("result", result);
- 		return jsonView;
- 	}
- 	
- 	//코멘트 삭제
- 	@RequestMapping("paliamentRemoveComment.do")
- 	public View paliamentRemoveComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
- 		
- 		int result = service.removeComment(dto.getCo_no(), dto.getDepth());
- 		
- 		model.addAttribute("seq", dto.getNo());
- 		model.addAttribute("dept_cd", dept_cd);
-	    model.addAttribute("name", name);
-	    model.addAttribute("num", num);
-	    model.addAttribute("img", img);
-	    model.addAttribute("result", result);
- 		return jsonView;
- 	}
- 	
- 	//코멘트 수정
- 	@RequestMapping("paliamentmodifyComment.do")
- 	public View paliamentmodifyComment(CommentDTO dto, String name, String img,String num, String dept_cd, Model model, HttpServletRequest request){
- 		int result = service.modifyComment(dto);
- 		
- 		model.addAttribute("seq", dto.getNo());
- 		model.addAttribute("dept_cd", dept_cd);
-	    model.addAttribute("name", name);
-	    model.addAttribute("num", num);
-	    model.addAttribute("img", img);
- 		model.addAttribute("result", result);
- 		return jsonView;
- 	}*/
- 	
+
+
  	//의원 댓글로 바꾸기
  	//코멘트 쓰기
  	@RequestMapping("paliamentCommentWrite.do")
@@ -302,7 +294,7 @@ public class PaliamentController {
  		HttpSession session = request.getSession();
  		String logId = (String)session.getAttribute("id");
  		cdto.setId(logId);
- 		
+ 		cdto.setNo(Integer.parseInt(dept_cd));
  		if(logId == null || logId.equals("")){
  			model.addAttribute("result", 0);
  			return jsonView;
@@ -450,19 +442,13 @@ public class PaliamentController {
    //국회의원 상세보기 - 기본  페이지
    @RequestMapping("/PaliamentDetail.do")
    public String detail(String num, String dept_cd, String img, String name, Model model){
-      
-      System.out.println("%%%%%%%%%%%%%%%%%%%%%%5$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
-      List<PaliamentTalk_DTO> list;
-      
-      System.out.println(num);
-      
+	   
+	   List<PaliamentTalk_DTO> list;
+
       if(num.contains(",")){
-         System.out.println("상세보기 if 탑니다.");
          String[] array = num.split(",");
          num = array[0];
          
-         System.out.println("%%%%%%%%% 확인좀 : "+num+" /// dept : "+dept_cd  + " / img : "+img + " / 이름 : "+name);
-
           List<String> splitList = new ArrayList<String>();
           String[] array2 = num.split(",");
          splitList.add(array2[0]);
@@ -472,10 +458,10 @@ public class PaliamentController {
            array2 = new String[4];
            array2 = img.split(",");
            splitList.add(array2[0]);
-              
-         List<CommentDTO> comment = service.commSelect(splitList.get(0));
-         model.addAttribute("comment", comment);
-        
+         
+           List<CommentDTO> comment = service.commSelect(splitList.get(1));
+           model.addAttribute("comment", comment);
+           
          /* 글 리스트 뿌려주기
           * list = service.talkToMe(num); 
          if(list.size() == 0){
@@ -487,20 +473,15 @@ public class PaliamentController {
          model.addAttribute("dept_cd", splitList.get(1));
          model.addAttribute("img", splitList.get(2));
          model.addAttribute("name",name);
-         model.addAttribute("tid", "1");   
-         
-         
+         model.addAttribute("tid", "1");
       }else{
-    	  
-    	  System.out.println("else num: "+ num);
-    	  List<CommentDTO> comment = service.commSelect(num);
+    	  List<CommentDTO> comment = service.commSelect(dept_cd);
           model.addAttribute("comment", comment);
     	  /*list=service.talkToMe(num);
           if(list.size() == 0){
 	          list = null;
 	      }
           model.addAttribute("list", list);*/
-          
           model.addAttribute("num", num);
           model.addAttribute("dept_cd", dept_cd);
           model.addAttribute("img", img);

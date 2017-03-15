@@ -7,6 +7,7 @@ public class CommentDTO {
 	private String writer;
 	private String id;
 	private String regdate;
+	private String regdatePO;
 	private int good;
 	private int bed;
 	private int grpno;
@@ -94,6 +95,14 @@ public class CommentDTO {
 		return "CommentDTO [no=" + no + ", co_no=" + co_no + ", content=" + content + ", writer=" + writer + ", id="
 				+ id + ", regdate=" + regdate + ", good=" + good + ", bed=" + bed + ", grpno=" + grpno + ", depth="
 				+ depth + ", grporder=" + grporder + "]";
+	}
+
+	public String getRegdatePO() {
+		return regdatePO;
+	}
+
+	public void setRegdatePO(String regdatePO) {
+		this.regdatePO = regdatePO;
 	}
 
 
