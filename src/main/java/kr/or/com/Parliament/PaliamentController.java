@@ -76,11 +76,7 @@ public class PaliamentController {
 	   if(name==null || name.equals("")){
 		   name="%%";
 	   }
-	   
-	   System.out.println("polyNm: "+polyNm);
-	   System.out.println("orignm: "+orignm);
-	   System.out.println("name: "+name);
-	   
+
 	   List<PCommentDTO> clist = service.sCommentList(polyNm,orignm,name);
 
 	   model.addAttribute("list", clist);
