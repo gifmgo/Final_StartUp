@@ -27,7 +27,7 @@
   <c:forEach var="list" items="${list}" varStatus="status">
 	  <div class="row">
 	  	 <div class="col-md-4 text-center">
-	  	   	<img src="img/president${status.count}.jpg" class="img-rounded" style="width:70%; height:300px;">
+	  	   	<img src="img/15_president${status.count}.jpg" class="img-rounded" style="width:70%; height:300px;">
 	  	 </div>
 	  	 <div class="col-md-8">
 	  	 	<h4 class="text-left" style="line-height: 40px;">이름: <span>${list.name}</span></h4>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.View;
 
 import kr.or.com.Member.MemberDTO;
@@ -47,10 +48,62 @@ public class PresidentController {
 	}
 	
 	//대선 관련 한마디 하기 페이지
-	@RequestMapping("/PresidentTalk.do")
+	@RequestMapping(value="/PresidentTalk.do", method=RequestMethod.GET)
 	public String PresidentTalk(Model model){
+		
+		//유저들이 쓴 글 리스트
+		List<PresidentTalk_DTO> comment_List = service.presidentTalk_List();
+		for(int i = 0; i < comment_List.size(); i++){
+			System.out.println("ddd : "+comment_List.get(i).toString());
+		}
+		//드래그앤 드랍에 쓸 대선 후보 정보
+		List<PresidentDTO> list = service.presidentTalk();
+		
+		model.addAttribute("comment_List",comment_List);
+		model.addAttribute("talk_list", list);
 		return "president.PresidentTalk";
 	}
+	
+	//대선관련 드래그앤 드랩 해서 만든 폼 이용해서 글쓰기
+	@RequestMapping(value="/PresidentTalk.do", method=RequestMethod.POST)
+	public String PresidentTalkPOST(Model model, HttpServletRequest request, PresidentTalk_DTO dto){
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		int result = 0;
+		if(id == null){
+			System.out.println("아이디가 없어 비회원 : "+dto.toString());
+			result = service.notLoginUserTalk(dto);
+		}else{
+			
+			MemberDTO login_dto = (MemberDTO)session.getAttribute("memberDTO");
+			dto.setNickName(login_dto.getNickName());
+			dto.setLoginPw(id);
+			result = service.loginUserTalk(dto);
+		}
+		String msg, link = "";
+		if(result > 0){
+			msg = "글 등록 성공!";
+			link = "PresidentTalk.do";
+		}else{
+			msg = "글 등록 실패!";
+			link = "PresidentTalk.do";
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("link", link);
+		return "dbResult";
+	}
+	
+	//대선관련 >> 글 삭제하기
+	@RequestMapping(value="/deletePresidentTalk.do")
+	public View deletePresidentTalk(String seq,String nickName, String pw,Model model){
+		int presidentTalk_seq = Integer.parseInt(seq);
+		PresidentTalk_DTO dto=service.selectPresidentTalk(presidentTalk_seq);
+		int result = service.deletePresidentTalk(presidentTalk_seq,nickName,pw,dto.getPw());
+		
+		model.addAttribute("result", result);
+		return jsonview;
+	}
+	
 	
 	//로그인했는지 체크하는 함수
 	@RequestMapping("/loginCheck.do")

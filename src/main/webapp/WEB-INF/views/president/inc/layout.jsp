@@ -13,7 +13,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
-<script src="js/main_header.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
@@ -22,11 +21,11 @@
 <link rel="stylesheet" href="paliament/paliament_final_header0220.css">
 <link rel="stylesheet" href="president/presidentCss_0313.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link rel="stylesheet" href="paliament/paliament_final_header0220.css">
 <link rel="stylesheet" type="text/css" href="point/Point_03010.css">
-<script src="president/President_0314_02.js"></script>
-<!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>대선후보</title>
 </head>
 <body>
@@ -36,7 +35,12 @@
    <!-- Main Wrapper -->
    <tiles:insertAttribute name="content" />
    
-<!--풋터-->
+	<!--풋터-->
    <tiles:insertAttribute name="footer" />
+   
+   
+<script src="president/President_0316_02.js"></script>
+<script src="js/main_header.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
 </body>
 </html>
