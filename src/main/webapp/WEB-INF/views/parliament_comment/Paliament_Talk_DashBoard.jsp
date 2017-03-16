@@ -8,7 +8,7 @@
 	<div class="row">
 		<h3 class="text-center">의원별 게시글 보기</h3>
 		<div class="well customWell">
-			<form action="" class="form-inline">
+			<form onsubmit="return false;" class="form-inline">
 			  	<div class="form-group">
 	    			<label class="control-label" for="polyNm">정당</label>
 	      			<select class="form-control" id="polyNm">
@@ -53,8 +53,8 @@
 				  	<button type="button" id="searchBtn" class="btn btn-default text-right">검색</button>
 				</div>
 			</form>
-		</div>
 	</div>
+</div>
 
 	<p>검색하여 원하는 의원에 댓글을 볼 수 있습니다.</p><br>
 	  
@@ -100,27 +100,30 @@
 	</div>
 	<hr/> -->
 	
+	<div id = "pal-comm">
+ 	<c:set var="palgroup" value="0"/>
  	<c:forEach var="list" items="${RPComment}">
-		<div class="media pal">
-	    <div class="media-left media-middle">
-	      <img src="${list.img }" class="media-object" style="width:40px; height: 60px;">
-	    </div>
-	    <div class="media-body">
-	      <h4 class="media-heading">${list.orignm}</h4>
-	      <h4>${list.name}</h4>
-	  </div>
-	  <hr>
-	  <!-- Right-aligned media object -->
-	  <div class="media sub">
-	    <div class="media-body">
-	      <h4 class="media-heading">${list.writer}</h4>
-	      <p>${list.content}</p>
-	    </div>
-
-	  </div>
-	</div>
+		<c:if test="${palgroup==0||palgroup!=list.deptcd}">
+			<c:set var="palgroup" value="${list.deptcd }"/>
+			<div class="media pal">
+			    <div class="media-left media-middle">
+			      <img src="${list.img }" class="media-object" style="width:40px; height: 60px;">
+			    </div>
+			    <div class="media-body">
+			      <h4 class="media-heading">${list.orignm}</h4>
+			      <h4>${list.name}</h4>
+			  	</div>
+				<hr style="margin-top: 15px; margin-bottom: 5px;">
+			</div>
+		</c:if>
+		<!-- Right-aligned media object -->
+		<div class="media sub">
+		    <div class="media-body">
+		      <h4 class="media-heading">${list.writer}</h4>
+		      <p>${list.content}</p>
+		    </div>
+	 	</div>
 	</c:forEach>
-
-</div>
-</div>
+	</div>
+	<div style="padding: 30px"></div>
 </div>
