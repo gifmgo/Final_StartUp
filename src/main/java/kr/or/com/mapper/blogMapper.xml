@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.com.blog.BlogDAO">
+	
+	<!-- 글리스트 읽어오는 부분 -->
+	<select id="selectBlogContents" resultType="kr.or.com.blog.BlogContents_DTO">		
+		select b.bloger_mainUrl, b.bloger_img, p.posting_id, p.posting_url, p.posting_seq, p.posting_title, p.posting_date
+		from tbl_bloger b join tbl_blogerPosting p
+		on b.bloger_id = P.Posting_Id and b.bloger_id = #{id}
+	</select>
+	
+	
+	
+</mapper>

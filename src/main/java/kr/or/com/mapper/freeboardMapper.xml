@@ -117,6 +117,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectFavorit" resultType="String">
 		select favorit from member where id=#{id}
 	</select>
+
+	<!-- 블로거 정보 -->
+	<select id="selectBloger" resultType="kr.or.com.blog.BlogList_DTO">
+		select bloger_id, bloger_img, rownum from tbl_bloger order by rownum desc
+	</select>
 	
 </mapper>	 
  

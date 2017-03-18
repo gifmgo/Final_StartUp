@@ -1,6 +1,7 @@
 package kr.or.com.admin;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,6 @@ public class AdminController {
 	//관리자 토론 페이지
 	@RequestMapping("/AdminDebate.do")
 	public String adminDebate(Model model){
-		
 		return "admin.AdminDebate";
 	}
 	

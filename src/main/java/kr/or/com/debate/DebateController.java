@@ -63,7 +63,6 @@ public class DebateController {
 		}
 		
 		model.addAttribute("keyWord", link);
-		
 		model.addAttribute("jlist", jlist);
 		model.addAttribute("blist", blist);
 		return "debate.debateTalkIndex";

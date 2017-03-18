@@ -22,6 +22,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.FreeBoard.FreeBoardDTO;
 import kr.or.com.FreeBoard.FreeBoardService;
+import kr.or.com.blog.BlogList_DTO;
 import kr.or.com.debate.debateDTO;
 import kr.or.com.debate.debateService;
 import net.sf.json.JSONArray;
@@ -92,6 +93,13 @@ public class BoardController {
 		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	    String strDate = fm.format(new Date());
 		
+	    List<BlogList_DTO> blogList = free_Service.selectBloger();
+	    
+	    for(int i = 0; i < blogList.size(); i++){
+	    	System.out.println("보드 컨트롤러 : "+blogList.get(i).toString());
+	    }
+	    
+	    model.addAttribute("blog", blogList);
 	    model.addAttribute("now", strDate);
 	    model.addAttribute("imgsrc", "img alt src=");
 		model.addAttribute("id", id);
@@ -104,7 +112,7 @@ public class BoardController {
 	}
 	
 	// 고용 노동부
-	@RequestMapping("/CommunityNews_1.do")
+/*	@RequestMapping("/CommunityNews_1.do")
 	public View News1(Model model) {
 
 		List<DashBoard_Goyoung_DTO> dto_list = new ArrayList<DashBoard_Goyoung_DTO>();
@@ -139,10 +147,10 @@ public class BoardController {
 		model.addAttribute("goyoung", dto_list);
 		return jsonView;
 
-	}
+	}*/
 
 	// 교육부
-	@RequestMapping("/education.do")
+/*	@RequestMapping("/education.do")
 	public View education(Model model) {
 
 		List<DashBoard_education_DTO> dto_list = new ArrayList<DashBoard_education_DTO>();
@@ -173,5 +181,5 @@ public class BoardController {
 			model.addAttribute("education", dto_list);
 		}
 		return jsonView;
-	}
+	}*/
 }

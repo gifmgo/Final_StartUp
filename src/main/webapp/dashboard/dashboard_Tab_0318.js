@@ -18,6 +18,13 @@ function TimeFormatFuc(obj){
 
 
 
+//블로거 보러가기임 
+function bloger(id){
+	alert("id 확인좀 : "+id);
+	location.href="blogerPosting.do?id="+id;
+}
+
+
 $(function(){
    
    
@@ -61,7 +68,7 @@ $(function(){
         ///////////////////////////////////////////////////////////////////////////// 
          
    //대한민국 정보
-   $.ajax({
+   /*  $.ajax({
       url : "CommunityNews_1.do",
       dataType : "json",
       success : function(data){
@@ -93,7 +100,7 @@ $(function(){
          });
          
          
-   /*   
+    
          if(data.Goyoung  === undefined || data.Goyoung == null){
             
             $('#GoverMenthGoyoung').html("<h4>점검중입니다.</h4>");
@@ -127,7 +134,7 @@ $(function(){
                   $('#goUl').append("<li><a href="+value.link+" target='_blank'>"+title+"</a><span>"+dateResult+"</span></li>");
                }
                
-               */
+               
       
       }, error : function(){
          $('#GoverMenthGoyoung').html("<h4>점검중입니다.</h4>");
@@ -166,7 +173,7 @@ $(function(){
          //education
       }
    });
-   
+   */
    
    //오마이 속보
    chooseSock_ohMy();
@@ -438,7 +445,6 @@ function chooseSock_Mail(){
          
          $.each(data.mail_news.channel.item, function(index, obj){
             var result = TimeFormatFuc(obj.pubDate);
-            //console.log("매일 경재 확인 : " +obj["dc:date"]["#text"]);
             if(index >=0 && index <= 3){
                
                if(obj.title.length <= 30){
@@ -563,9 +569,6 @@ function chooseSock_Josun(){
       dataType : "json",
       success : function(data){
          $.each(data.josun.channel.item, function(index, obj){
-            
-            console.log("조선 속보 확인좀 ...  "+obj.pubDate);
-            
             var result = TimeFormatFuc(obj.pubDate);
             if(index >= 0 && index <= 3){
                if(obj.title.length <= 30){

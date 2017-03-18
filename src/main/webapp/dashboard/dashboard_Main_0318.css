@@ -136,11 +136,37 @@
 }
 
 
+#bloger{
+	background-color: #eee;
+}
+
+#blogTitle{
+	font-size: 40px; font-weight: bold; line-height: 150px;
+}
+
+.customWell{
+	background-color: #fff !important;
+	border: 4px solid #ecf0f1 !important;
+}
+
+#blogStatus{
+	line-height: 30px;
+}
+
+#moreBlogerDiv{
+	padding:60px;
+}
+
 /* 나는 진보다, 나는 보수다 */
 #MyTalk{
 	width:100%;
 	height:auto;
-	background-color:#eee;
+	background-color:#fff;
+}
+
+#moreBlogerDiv > input{
+	height:50px !important;
+	width: 20% !important;
 }
 
 #MyTalk>h1 {
@@ -522,6 +548,10 @@
 
 @media only screen and (max-width:960px) {
 	
+	#moreBlogerDiv{
+		padding:0px !important;
+	}
+	
 	#dashboard>article>div {
 		width:48%;
 	}
@@ -545,6 +575,10 @@
 }
 
 @media only screen and (max-width:640px) {
+	
+	#moreBlogerDiv{
+		padding:0px !important;
+	}
 	
 	#dashboard>article {
 		width:90%;	

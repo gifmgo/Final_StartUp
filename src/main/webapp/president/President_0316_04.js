@@ -441,5 +441,39 @@ $(document).ready(function(){
 		
 	});
 	
+	var talkCount = 0;
+	//더보기 버튼 클릭시 
+	$('#moreTalkBtn').click(function(){
+		talkCount = (talkCount+1);
+		$.ajax({
+			url : "PresidentAjaxTalk.do",
+			data : {
+				talkCount : talkCount
+			},
+			success : function(data){
+		
+				if(data.comment_List.length != 0){
+				var notLogin = ''; 
+				$.each(data.comment_List,function(index, obj){
+					console.log("확인좀 : "+obj.title);
+					if(obj.loginPw == null || obj.loginPw == ''){
+						notLogin += '<div class="panel panel-default">'
+						notLogin += '<div class="panel-heading" style="color:#fff; background-color:'+obj.color+'">'+obj.title+'<em>('+obj.empNm + '/'+obj.polyNm+')</em> <span class="pull-right">'+obj.writeDate+'<input type="hidden" value='+obj.presidentTalk_seq+'><i class="material-icons" style="font-size:15px" data-toggle="modal" data-target="#talkModal" onclick="delteComment(this)">delete</i></span></div>';
+						notLogin += '<div class="panel-body">'+obj.comments+'</div></div>'
+					}else{
+						notLogin += '<div class="panel panel-default">'
+						notLogin += '<div class="panel-heading" style="color:#fff; background-color:'+obj.color+'">'+obj.title+'<em>('+obj.empNm + '/'+obj.polyNm+')</em> <span class="pull-right">'+obj.writeDate+'<input type="hidden" value='+obj.presidentTalk_seq+'><i class="material-icons" style="font-size:15px" data-toggle="modal" data-target="#talkModal" onclick="deleteCommentUser(this)">delete</i></span></div>';
+						notLogin += '<div class="panel-body">'+obj.comments+'</div></div>'
+					}
+				});
+				
+				}else{
+					alert("더이상 내용이 없습니다.");
+				}
+				
+				$('#makeDiv').html(notLogin);
+			}	
+		});
+	});
 	
 });

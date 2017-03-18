@@ -77,6 +77,73 @@
         </article>
 	</section>
     
+    <section id="bloger">
+    	<div class="container-fluid text-center">
+    		<div class="row">
+    			<div class="col-md-12">
+    				<h1 id="blogTitle">블로거 이야기</h1>
+    				<label id="blogStatus">정치에 관심이 많은 분들의 의견을 볼 수 있습니다 !<br/>
+    					   블로그를 하시는 분들 혹은 개인 사이트를<br/> 운영하시는 분들에 한해서<br/>
+    					   쓰신 글을 저희가 퍼오고 블로그 주소 및 개인사이트 주소를<br/>
+    					   연동하여 더많은 글을 보고싶은분들에게 <br/>
+    					   블로그 및 개인 사이트로 연결 해드립니다.<br/>
+    				</label>
+    				<br/><br/>
+    				<div class="row">
+    					<c:forEach var="blog" items="${blog}" varStatus="Status">
+    						
+    						<c:choose>
+    							<c:when test="${Status.count<4}">
+		    						<div class="col-md-3">
+		    							<div class="well customWell">
+		    								<img src="blog/${blog.bloger_img}" alt="${blog.bloger_id} 님" class="img-circle"/><br/><br/>
+		    								<label>${blog.bloger_id} 님</label><br/>
+		    								<input type="button" class="btn btn-success" value="글보기" onclick="bloger('${blog.bloger_id}');">	
+		    							</div>
+		    						</div>
+		    						<div class="col-md-3">
+		    							<div class="well customWell">
+		    								<span><i class="material-icons" style="font-size:160px">person_pin</i></span><br/><br/>
+		    								<label>블로거 분들을 기다립니다.</label><br/>
+		    								<input type="button" class="btn btn-success" value="신청"  data-toggle="modal" data-target="#applyModal">
+		    							</div>
+		    						</div>
+		    						<div class="col-md-3">
+		    							<div class="well customWell">
+		    								<span><i class="material-icons" style="font-size:160px">person_pin</i></span><br/><br/>
+		    								<label>블로거 분들을 기다립니다.</label><br/>
+		    								<input type="button" class="btn btn-success" value="신청"  data-toggle="modal" data-target="#applyModal">
+		    							</div>
+		    						</div>
+		    						<div class="col-md-3">
+		    							<div class="well customWell">
+		    								<span><i class="material-icons" style="font-size:160px">person_pin</i></span><br/><br/>
+		    								<label>블로거 분들을 기다립니다.</label><br/>
+		    								<input type="button" class="btn btn-success" value="신청"  data-toggle="modal" data-target="#applyModal">
+		    							</div>
+		    						</div>
+    							</c:when>
+    							<c:otherwise>
+		    						<div class="col-md-3">
+			    							<div class="well customWell">
+			    								<img src="blog/${blog.bloger_img}" alt="${blog.bloger_id} 님" class="img-circle"/><br/><br/>
+			    								<label>${blog.bloger_id} 님</label><br/>
+			    								<input type="button" class="btn btn-default" value="글보기" onclick="bloger('${blog.bloger_id}');">	
+			    							</div>
+			    					</div>
+	    						</c:otherwise>	
+	    					</c:choose>
+    					</c:forEach>
+    				</div>
+    			</div>
+    		</div>
+    		
+    		<div class="form-group" id="moreBlogerDiv">
+    			<input type="button" class="btn btn-default text-center" value="더보기">
+    		</div>
+    		<br/><br/>
+    	</div>
+    </section>
 	
 	<section id="MyTalk">
 		<h1>나의 한마디</h1>
@@ -84,7 +151,7 @@
         <p class="debateCon">여러분들의 의견을 소신껏 말해주세요 !</p>
 		<article>
        	   <div class="talkDiv">
-       	   		<h4>나는 <span style="color:#a00">진보</span>다</h4>
+       	   		<h4><span style="color:#a00">좋아요</span></h4>
 				<div class="debate">
 					<c:choose>
 						<c:when test="${debate != null}">
@@ -112,7 +179,7 @@
 			</div>
 				
 			<div class="talkDiv">
-       	   		<h4>나는 <span style="color:#00a">보수</span>다</h4>
+       	   		<h4><span style="color:#00a">싫어요</span></h4>
 				<div class="debate">
 					<c:choose>
 						<c:when test="${debate != null}">
@@ -143,7 +210,7 @@
 	</section>
 	
     
-     <section id="recent">
+    <!-- <section id="recent">
     	<h1>정부소식</h1>
         <p>대한민국 정부에서 제공하는 데이터 입니다. 창업 및 취업 관련 정보를 제공합니다.</p>
 	       <article>
@@ -162,7 +229,7 @@
 	                <ul class="dashList" id="eduli"></ul>
 	            </div>
 	       </article>
-    </section>
+    </section> -->
     
     <section id="news">
     	<h1>NEWS</h1>
@@ -206,5 +273,41 @@
         </article>
     </section>
     
+
+
+<div class="container">
+ <div class="modal fade" id="applyModal" role="dialog">
+ 	<form class="form-horizontal">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">감사합니다!</h4>
+        </div>
+        <div class="modal-body">
+          <p class="text-center"><span style="line-height: 30px;">블로그 주소 혹은 개인사이트 주소를 남겨주시면</span> <br/> <span style="line-height: 30px;">확인후 연락 드리겠습니다.</span></p>
+          <br/>
+        	  <div class="form-group">
+			    <label class="control-label col-sm-offset-2 col-sm-2" for="email">메일주소</label>
+			    <div class="col-sm-6">
+			      <input type="email" class="form-control" id="email" placeholder="연락받으실 메일">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-offset-2 col-sm-2" for="pwd">사이트 주소</label>
+			    <div class="col-sm-6"> 
+			      <input type="text" class="form-control" id="pwd" placeholder="사이트 주소">
+			    </div>
+			  </div>
+	      </div>
+        <div class="modal-footer">
+           <button type="submit" class="btn btn-default">신청</button>	
+          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
     
+    </form>
+  </div>
+</div>    
     

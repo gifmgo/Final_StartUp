@@ -26,7 +26,9 @@ public interface PresidentDAO {
 	public List<PresidentDTO> presidentTalk();
 	
 	//대선 후보 사용자들이 글 쓴 내용 가져오기
-	public List<PresidentTalk_DTO> selectPresidentTalk_list();
+	public List<PresidentTalk_DTO> selectPresidentTalk_list(int count);
+	//대선 후보 사용자들이 글 쓴 내용 가져오기 >> 더보기 클릭시
+	public List<PresidentTalk_DTO> selectPresidentTalk_list2(PresidentTalk_PagingDTO dto);
 	
 	//대선후보 관련 토크 >> 비회원 글쓰기
 	public int notLoginUserTalk(PresidentTalk_DTO dto);
@@ -39,6 +41,8 @@ public interface PresidentDAO {
 	
 	//db 데이터 삭제  >> 입력한 비번 일치 할 때 >> 비회원
 	public int deletePresidentTalk(int presidentTalk_seq);
+
+	
 	
 	
 	
