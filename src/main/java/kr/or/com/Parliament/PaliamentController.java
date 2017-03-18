@@ -53,11 +53,6 @@ public class PaliamentController {
    public String paliament_DashBoard(Model model){
 	   
 	   List<PCommentDTO> clist = service.PCommentList();
-	   
-	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
-	   String strDate = fm.format(new Date());
-	   
-	   model.addAttribute("now", strDate);
 	   model.addAttribute("RPComment", clist);
 	   
 	   return "parliament_comment.Paliament_Talk_DashBoard";
@@ -81,11 +76,9 @@ public class PaliamentController {
 	   if(name==null || name.equals("")){
 		   name="%%";
 	   }
-	   
+
 	   List<PCommentDTO> clist = service.sCommentList(polyNm,orignm,name);
-	   for(PCommentDTO list : clist){
-		   System.out.println(list);
-	   }
+
 	   model.addAttribute("list", clist);
 	   return jsonView;
    }
