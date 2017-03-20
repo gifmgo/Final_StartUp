@@ -5,19 +5,12 @@
 %>    
 <div class="container LoginDiv">
 	<div class="row">
-		<!-- <div class="form-group">
-			<div class="col-md-offset-3 col-md-6 explaineDiv text-center">
-				<label class="titleLabel">생활정치</label>
-				<p>재미있는 정치, 직접 찾아보고 알아가는 정치</p>
-				<p>다양한 정보가 있는 생활정치에 오신 여러분들을 환영합니다.</p>
-			</div>
-		</div> -->
 		 <div class="form-group">
 			<div class="col-md-offset-3 col-md-6 explaineDiv text-center">
 				<img alt="생활정치" src="img/logo.png" width="20%;" height="20%;">
 			</div>
-		</div>
-		<div class="col-md-12 LoginMainDiv">
+		 </div>
+		 <div class="col-md-12 LoginMainDiv">
 			<div class="col-md-offset-3 col-md-6">
 				<div class="well customWell">
 					<div class="form-group">
@@ -57,14 +50,10 @@
 					</form>
 					
 					<div class="row">
-						<div class="col-md-offset-1 col-md-3">
-							<a href="index.do">Home</a>
-						</div>
-						<div class="col-md-offset-1 col-md-3">
-							<a href="#">아이디 찾기</a>
-						</div>
-						<div class="col-md-offset-1 col-md-3">
-							<a href="addMember.do">회원가입</a>
+						<div class="col-sm-12 text-center">
+							<a href="index.do" class="btn btn-info">Home</a>
+							<a href="#" class="btn btn-info">아이디찾기</a>
+							<a href="addMember.do" class="btn btn-info">회원가입</a>
 						</div>
 					</div>
 					

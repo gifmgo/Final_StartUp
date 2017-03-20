@@ -95,10 +95,6 @@ public class BoardController {
 		
 	    List<BlogList_DTO> blogList = free_Service.selectBloger();
 	    
-	    for(int i = 0; i < blogList.size(); i++){
-	    	System.out.println("보드 컨트롤러 : "+blogList.get(i).toString());
-	    }
-	    
 	    model.addAttribute("blog", blogList);
 	    model.addAttribute("now", strDate);
 	    model.addAttribute("imgsrc", "img alt src=");

@@ -16,7 +16,7 @@
 <script src="js/main_header.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="debate/final_header3_0225.css"> -->
 <link rel="stylesheet" type="text/css" href="css/icon.css">
-<link rel="stylesheet" type="text/css" href="point/Point_03010.css">
+<link rel="stylesheet" type="text/css" href="point/Point_03020.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="point/Point03012_02.js"></script>

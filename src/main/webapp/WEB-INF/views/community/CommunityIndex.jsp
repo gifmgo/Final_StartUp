@@ -89,16 +89,19 @@
     					   블로그 및 개인 사이트로 연결 해드립니다.<br/>
     				</label>
     				<br/><br/>
+    				<div class="form-group">
+    						<input type="button" class="btn btn-info" value="신청하기"  data-toggle="modal" data-target="#applyModal">	
+    				</div>
     				<div class="row">
+    					<c:set var="length" value="${fn:length(blog)}"></c:set>
     					<c:forEach var="blog" items="${blog}" varStatus="Status">
-    						
     						<c:choose>
-    							<c:when test="${Status.count<4}">
+    							<c:when test="${length<2}">
 		    						<div class="col-md-3">
 		    							<div class="well customWell">
 		    								<img src="blog/${blog.bloger_img}" alt="${blog.bloger_id} 님" class="img-circle"/><br/><br/>
 		    								<label>${blog.bloger_id} 님</label><br/>
-		    								<input type="button" class="btn btn-success" value="글보기" onclick="bloger('${blog.bloger_id}');">	
+		    								<input type="button" class="btn btn-success" value="사이트보기" onclick="bloger('${blog.bloger_mainUrl}');">	
 		    							</div>
 		    						</div>
 		    						<div class="col-md-3">
@@ -126,9 +129,9 @@
     							<c:otherwise>
 		    						<div class="col-md-3">
 			    							<div class="well customWell">
-			    								<img src="blog/${blog.bloger_img}" alt="${blog.bloger_id} 님" class="img-circle"/><br/><br/>
+			    								<img src="blog/${blog.bloger_img}" alt="${blog.bloger_id} 님" class="img-circle" style="width:160px; height: 160px;"/><br/><br/>
 			    								<label>${blog.bloger_id} 님</label><br/>
-			    								<input type="button" class="btn btn-default" value="글보기" onclick="bloger('${blog.bloger_id}');">	
+			    								<input type="button" class="btn btn-success" value="사이트보기" onclick="bloger('${blog.bloger_mainUrl}');">	
 			    							</div>
 			    					</div>
 	    						</c:otherwise>	
@@ -139,7 +142,7 @@
     		</div>
     		
     		<div class="form-group" id="moreBlogerDiv">
-    			<input type="button" class="btn btn-default text-center" value="더보기">
+    			<input type="button" class="btn btn-default text-center" value="글보기" onclick="blogerIndex();">
     		</div>
     		<br/><br/>
     	</div>
@@ -277,7 +280,7 @@
 
 <div class="container">
  <div class="modal fade" id="applyModal" role="dialog">
- 	<form class="form-horizontal">
+ 	<form class="form-horizontal" id="blogerApplyForm" action="BlogerApply.do" method="POST">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
@@ -288,15 +291,21 @@
           <p class="text-center"><span style="line-height: 30px;">블로그 주소 혹은 개인사이트 주소를 남겨주시면</span> <br/> <span style="line-height: 30px;">확인후 연락 드리겠습니다.</span></p>
           <br/>
         	  <div class="form-group">
-			    <label class="control-label col-sm-offset-2 col-sm-2" for="email">메일주소</label>
+			    <label class="control-label col-sm-offset-2 col-sm-2" for="applyUser_email">메일주소</label>
 			    <div class="col-sm-6">
-			      <input type="email" class="form-control" id="email" placeholder="연락받으실 메일">
+			      <input type="email" class="form-control" id="applyUser_email" name="applyUser_email" placeholder="연락받으실 메일" required="required">
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-offset-2 col-sm-2" for="pwd">사이트 주소</label>
+			    <label class="control-label col-sm-offset-2 col-sm-2" for="applyUser_page">사이트 주소</label>
 			    <div class="col-sm-6"> 
-			      <input type="text" class="form-control" id="pwd" placeholder="사이트 주소">
+			      <input type="text" class="form-control" id="applyUser_page" name="applyUser_page" placeholder="사이트 주소">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-offset-2 col-sm-2" for="applyUser_page">닉네임</label>
+			    <div class="col-sm-6"> 
+			      <input type="text" class="form-control" id="applyUser_NickName" name="applyUser_NickName" placeholder="사용하실 닉네임">
 			    </div>
 			  </div>
 	      </div>

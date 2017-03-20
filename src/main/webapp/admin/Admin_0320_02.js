@@ -32,6 +32,11 @@ function UserCount(){
 	location.href="AdminCountUser.do";
 }
 
+//블로거 신청 리스트 확인
+function Bloger(){
+	location.href="AdminBloger.do";
+}
+
 //사용자 차단하기
 function ban(){
 	var banId = '';
@@ -180,14 +185,44 @@ function detailMailFunc(seq){
 			}
 		}
 	});
-	
-	
-	
 }
 
+//블로거 글 상세 보기 
+function checkBloger(tag){
+	var seq = $(tag).attr('name');
+	
+	$.ajax({
+		url : "AdminBlogerInfo.do",
+		data: {
+			seq : seq
+		},
+		success : function(data){
+			if(data.blogerInfo != null){
+				var dto = data.blogerInfo;
+				$('#blogerDate').text('');
+				$('#blogerId').text('');
+				$('#blogerPage').text('');
+				$('#applyUser_seq').val('');
+				$('#applyUser_NickName').val('');
+				$('#blogerNickName').text('');
+				
+				
+				$('#applyUser_seq').val(seq);
+				$('#applyUser_NickName').val(dto.applyUser_NickName);
+				$('#blogerNickName').text(dto.applyUser_NickName);
+				$('#blogerDate').text(dto.applyUser_date);
+				$('#blogerId').text(dto.applyUser_email);
+				$('#blogerPage').text(dto.applyUser_page);
+			}else{
+				alert("죄송합니다. 잠시후 이용해주세요");
+			}
+		}
+	});
+	$('#myModal').modal();
+}
 
 $(document).ready(function(){
-  
+ 
   //유저 포인트 추가
   $('#plusPointBtn').click(function(){
 	  alert("포인트 추가 !!");
@@ -333,6 +368,27 @@ $(document).ready(function(){
 		  $('#quizForm').submit();
 	  }
    });
+   
+   
+   //블로거 정보 등록하기
+   $('#BlogerInfoForm').submit(function(){
+	    var date = $('#blogerDate').text();
+		var email = $('#blogerId').text();
+		var page = $('#blogerPage').text();
+		var upload = $('#upload').val();
+		if(date != '' && email != '' && page != '' && upload != ''){
+			$('#applyUser_email').val(email);
+			$('#applyUser_page').val(page);
+			$('#applyUser_date').val(date);
+			return true;
+		}else{
+			alert("내용을 확인해주세요 !");
+			return false;
+		}
+		
+		
+   });
+   
 });
 
 

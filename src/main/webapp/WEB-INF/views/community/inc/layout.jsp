@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="dashboard/dashboard_Tab_0318.js"></script>
+<script src="dashboard/dashboard_Tab_0320.js"></script>
 <title>커뮤니티</title>
 <script>
 $(function(){

@@ -19,17 +19,55 @@ function TimeFormatFuc(obj){
 
 
 //블로거 보러가기임 
-function bloger(id){
-	alert("id 확인좀 : "+id);
-	location.href="blogerPosting.do?id="+id;
+function bloger(url){
+	location.href=url;
 }
 
+//블로거 인덱스 페이지 가기
+function blogerIndex(){
+	location.href="blogerPosting.do";
+}
+
+function checkModal(){
+	var check = true;
+	var email = $('#applyUser_email').val();
+	var page = $('#applyUser_page').val();
+	var nickName = $('#applyUser_NickName').val();
+	
+	if(email == '' || email == undefined){
+		alert("이메일을 입력해주세요 !");
+		$('#applyUser_email').focus();
+		return false;
+	}
+	
+	if(page == '' || page == undefined){
+		alert("페이지를 입력해주세요 !");
+		$('#applyUser_page').focus();
+		return false;
+	}
+	
+	if(nickName == '' || nickName == undefined){
+		alert("닉네임을 입력해주세요 !");
+		$('#applyUser_NickName').focus();
+		return false;
+	}
+	
+	return check;
+}
 
 $(function(){
-   
+	
+	//블로거 글쓰기 신청 하기 
+	$('#blogerApplyForm').submit(function(){
+		var chk = checkModal();
+		if(chk == false){
+			return false;
+		}else{
+			return true;
+		}
+	});
    
    // 회원의 관심사에 맞춰서 탭 메뉴 구성 하는 부분
-   
    var id = $('#hidden_id').val();
    var favorit = $('#hidden_favorit').val();
    

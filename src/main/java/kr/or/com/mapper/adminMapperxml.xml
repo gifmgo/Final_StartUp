@@ -62,4 +62,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <update id="updateMemberPoint" parameterType="kr.or.com.Member.MemberDTO">
  	update member set point=(point+1) where id=#{id}
  </update>
+ 
+ <!-- 블로거 신청 리스트 확인 -->
+ <select id="selectBlogerList" resultType="kr.or.com.blog.BlogerApply_DTO">
+ 	 select applyUser_seq, applyUser_email, applyUser_page, to_char(applyUser_date,'YYYY/MM/DD') as applyUser_date from tbl_applyUser order by applyUser_seq asc
+ </select>
+
+ <select id="selectBlogerInfo" resultType="kr.or.com.blog.BlogerApply_DTO">
+ 	select applyUser_seq,applyUser_email,applyUser_page,applyUser_NickName, to_char(applyUser_date,'YYYY/MM/DD') as applyUser_date from tbl_applyUser where applyuser_seq = #{i_seq}
+ </select>
+ 
+ <!-- 블로거 이미지 까지 등록하는 부분 -->
+ <update id="insertBlogerInfo" parameterType="kr.or.com.blog.BlogerApply_DTO">
+ 	update tbl_applyUser
+ 	set filename = #{filename}, filepath = #{filepath}
+ 	where applyUser_seq = #{applyUser_seq}
+ </update>
+ 
+ <!-- 블로거 테이블  등록  리스트 뿌려줄때 쓰는 테이블 -->
+  <insert id="insertBloger" parameterType="kr.or.com.blog.BlogerApply_DTO">
+ 	  insert into tbl_bloger(bloger_id, bloger_img, bloger_mainUrl) values(#{applyUser_NickName},#{filename},#{applyUser_page})
+  </insert> 
+ 
+ <delete id="AdminWaitBloger_Delete" parameterType="kr.or.com.blog.BlogerApply_DTO">
+ 	delete tbl_applyUser where applyUser_seq = #{applyUser_seq}
+ </delete>
+	 
 </mapper>

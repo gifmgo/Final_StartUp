@@ -120,7 +120,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 블로거 정보 -->
 	<select id="selectBloger" resultType="kr.or.com.blog.BlogList_DTO">
-		select bloger_id, bloger_img, rownum from tbl_bloger order by rownum desc
+		select bloger_id, bloger_img, bloger_mainUrl, rownum from tbl_bloger order by rownum desc
 	</select>
 	
 </mapper>	 
