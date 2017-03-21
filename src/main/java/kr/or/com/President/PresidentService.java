@@ -104,17 +104,7 @@ public class PresidentService {
 		return list;
 	}
 	
-	//대선관련  유저들이 글쓴것 뿌려주는 부분
-	public List<PresidentTalk_DTO> presidentTalk_List() {
-		List<PresidentTalk_DTO> list = null;
-		try{
-			PresidentDAO dao = sqlSession.getMapper(PresidentDAO.class);
-			list = dao.selectPresidentTalk_list();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return list;
-	}
+
 	
 	//대선관련 토크
 	public List<PresidentDTO> presidentTalk() {
@@ -187,6 +177,31 @@ public class PresidentService {
 		}
 		
 		return result;
+	}
+
+	//대선관련  유저들이 글쓴것 뿌려주는 부분
+	public List<PresidentTalk_DTO> presidentTalk_List(int count) {
+		List<PresidentTalk_DTO> list = null;
+		try{
+			PresidentDAO dao = sqlSession.getMapper(PresidentDAO.class);
+			list = dao.selectPresidentTalk_list(count);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
+	//대선관련  유저들이 글쓴것 뿌려주는 부분 >> 더보기 버튼 클릭시
+	public List<PresidentTalk_DTO> presidentTalk_List2(PresidentTalk_PagingDTO dto) {
+		List<PresidentTalk_DTO> list = null;
+		try{
+			PresidentDAO dao = sqlSession.getMapper(PresidentDAO.class);
+			list = dao.selectPresidentTalk_list2(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

@@ -2,6 +2,8 @@ package kr.or.com.FreeBoard;
 
 import java.util.List;
 
+import kr.or.com.blog.BlogList_DTO;
+
 public interface FreeBoardDAO {
 	
 	//베스트 글 뽑기
@@ -48,4 +50,7 @@ public interface FreeBoardDAO {
 	
 	//관심사 뽑아오기
 	public String selectFavorit(String id);
+	
+	//커뮤니티 >> 블로거 정보 뽑아오기
+	public List<BlogList_DTO> selectBloger();
 }

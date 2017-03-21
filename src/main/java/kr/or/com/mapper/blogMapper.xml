@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.com.blog.BlogDAO">
+	
+	<!-- 글리스트 읽어오는 부분 -->
+	<select id="selectBlogContents" resultType="kr.or.com.blog.BlogContents_DTO">		
+		select b.bloger_mainUrl, b.bloger_img, p.posting_id, p.posting_url, p.posting_seq, p.posting_title, p.posting_date
+		from tbl_bloger b join tbl_blogerPosting p
+		on b.bloger_id = P.Posting_Id
+	</select>
+	
+	<!-- 블로거 id 가져옴 -->
+	<select id="selectBlogerId" resultType="kr.or.com.blog.BlogList_DTO">
+		select * from tbl_bloger
+	</select>
+	
+	<!-- 블로거가 쓴 글 상세보기 -->
+	<select id="selectDetailContent" resultType="kr.or.com.blog.BlogContents_DTO">
+		select b.bloger_img, p.posting_id, p.posting_url, p.posting_title, p.posting_content, to_char(p.posting_date, 'YYYY/MM/DD') as posting_date
+		from tbl_blogerPosting p join tbl_bloger b
+		on  posting_id = b.bloger_id
+		where posting_seq = #{seq}
+	</select>
+	
+	<!--블로거가 신청 할때 사용 -->
+	<insert id="blogerApply" parameterType="kr.or.com.blog.BlogerApply_DTO">
+		insert into tbl_applyUser(applyUser_seq,applyUser_email,applyUser_page,applyUser_NickName,applyUser_date) values(applyUser_seq.nextval,#{applyUser_email},#{applyUser_page},#{applyUser_NickName},sysdate)
+	</insert>
+		
+</mapper>

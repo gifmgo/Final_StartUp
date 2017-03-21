@@ -1,16 +1,21 @@
 package kr.or.com.admin;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.com.Data.TodayUserDAO;
 import kr.or.com.Data.TodayUserDTO;
 import kr.or.com.Member.MemberDTO;
+import kr.or.com.blog.BlogerApply_DTO;
 import kr.or.com.debate.admin_DebateDTO;
-import kr.or.com.debate.debateDAO;
 import kr.or.com.debate.debateDTO;
 
 @Service
@@ -162,6 +167,82 @@ public class AdminService {
 				result = dao.updateMemberPoint(prevList.get(i));
 			}
 			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	//블로거 신청 리스트 !!
+	public List<BlogerApply_DTO> selectBlogerList() {
+		List<BlogerApply_DTO> list = null;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			list = dao.selectBlogerList();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//신청한 블로거 한명 정보 확인 하는 부분
+	public BlogerApply_DTO blogerInfo(int i_seq) {
+		BlogerApply_DTO	dto = null;
+		try{
+			
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			dto = dao.selectBlogerInfo(i_seq);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
+	//블로거 신청 리스트 수락하는 부분
+	public int AdminBlogerInfoResult(MultipartFile file, BlogerApply_DTO dto, HttpServletRequest request) {
+		
+		int result = 0;
+		try{
+		
+		if(file != null){
+			  //파일 이름
+			 String fileName = file.getOriginalFilename();
+			  dto.setFilename(fileName);
+			  //파일 경로
+			 String filePath = request.getRealPath("/blog");
+			 dto.setFilepath(filePath);
+			 
+			 File myFile = new File(filePath+"/"+fileName);
+			 file.transferTo(myFile);
+			 System.out.println("서비스 dto 확인좀요  >>>> "+dto.toString());
+			 AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			 result = dao.insertBlogerInfo(dto);
+		}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+  		return result;
+	}
+	
+	//블로거 신청 리스트 수락 성공 후 >> tbl_bloger 에 insert 하는 부부
+	public int AdminBlogerUpdate(BlogerApply_DTO dto) {
+		int result = 0;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			result = dao.insertBloger(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	//대기중인 블로거 승인 후 삭제 하는 부분
+	public int AdminWaitBloger_Delete(BlogerApply_DTO dto) {
+		int result = 0;
+		try{
+			AdminDAO dao = sqlsession.getMapper(AdminDAO.class);
+			result = dao.AdminWaitBloger_Delete(dto);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

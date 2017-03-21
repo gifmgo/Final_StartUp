@@ -18,11 +18,56 @@ function TimeFormatFuc(obj){
 
 
 
+//블로거 보러가기임 
+function bloger(url){
+	location.href=url;
+}
+
+//블로거 인덱스 페이지 가기
+function blogerIndex(){
+	location.href="blogerPosting.do";
+}
+
+function checkModal(){
+	var check = true;
+	var email = $('#applyUser_email').val();
+	var page = $('#applyUser_page').val();
+	var nickName = $('#applyUser_NickName').val();
+	
+	if(email == '' || email == undefined){
+		alert("이메일을 입력해주세요 !");
+		$('#applyUser_email').focus();
+		return false;
+	}
+	
+	if(page == '' || page == undefined){
+		alert("페이지를 입력해주세요 !");
+		$('#applyUser_page').focus();
+		return false;
+	}
+	
+	if(nickName == '' || nickName == undefined){
+		alert("닉네임을 입력해주세요 !");
+		$('#applyUser_NickName').focus();
+		return false;
+	}
+	
+	return check;
+}
+
 $(function(){
-   
+	
+	//블로거 글쓰기 신청 하기 
+	$('#blogerApplyForm').submit(function(){
+		var chk = checkModal();
+		if(chk == false){
+			return false;
+		}else{
+			return true;
+		}
+	});
    
    // 회원의 관심사에 맞춰서 탭 메뉴 구성 하는 부분
-   
    var id = $('#hidden_id').val();
    var favorit = $('#hidden_favorit').val();
    
@@ -61,7 +106,7 @@ $(function(){
         ///////////////////////////////////////////////////////////////////////////// 
          
    //대한민국 정보
-   $.ajax({
+   /*  $.ajax({
       url : "CommunityNews_1.do",
       dataType : "json",
       success : function(data){
@@ -93,7 +138,7 @@ $(function(){
          });
          
          
-   /*   
+    
          if(data.Goyoung  === undefined || data.Goyoung == null){
             
             $('#GoverMenthGoyoung').html("<h4>점검중입니다.</h4>");
@@ -127,7 +172,7 @@ $(function(){
                   $('#goUl').append("<li><a href="+value.link+" target='_blank'>"+title+"</a><span>"+dateResult+"</span></li>");
                }
                
-               */
+               
       
       }, error : function(){
          $('#GoverMenthGoyoung').html("<h4>점검중입니다.</h4>");
@@ -166,7 +211,7 @@ $(function(){
          //education
       }
    });
-   
+   */
    
    //오마이 속보
    chooseSock_ohMy();
@@ -438,7 +483,6 @@ function chooseSock_Mail(){
          
          $.each(data.mail_news.channel.item, function(index, obj){
             var result = TimeFormatFuc(obj.pubDate);
-            //console.log("매일 경재 확인 : " +obj["dc:date"]["#text"]);
             if(index >=0 && index <= 3){
                
                if(obj.title.length <= 30){
@@ -563,9 +607,6 @@ function chooseSock_Josun(){
       dataType : "json",
       success : function(data){
          $.each(data.josun.channel.item, function(index, obj){
-            
-            console.log("조선 속보 확인좀 ...  "+obj.pubDate);
-            
             var result = TimeFormatFuc(obj.pubDate);
             if(index >= 0 && index <= 3){
                if(obj.title.length <= 30){

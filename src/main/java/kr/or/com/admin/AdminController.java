@@ -1,17 +1,25 @@
 package kr.or.com.admin;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 
 import kr.or.com.Data.TodayUserDTO;
 import kr.or.com.Member.MemberDTO;
+import kr.or.com.blog.BlogList_DTO;
+import kr.or.com.blog.BlogerApply_DTO;
 import kr.or.com.debate.admin_DebateDTO;
 import kr.or.com.debate.debateDTO;
 
@@ -39,7 +47,6 @@ public class AdminController {
 	//관리자 토론 페이지
 	@RequestMapping("/AdminDebate.do")
 	public String adminDebate(Model model){
-		
 		return "admin.AdminDebate";
 	}
 	
@@ -283,6 +290,49 @@ public class AdminController {
     	System.out.println("list 싸이즈 : "+list.size());
     	model.addAttribute("list", list);
     	return jsonview;
+    }
+    
+    //블로거 신청 리스트 확인
+    @RequestMapping("/AdminBloger.do")
+    public String AdminBlogerIndex(Model model){
+    	List<BlogerApply_DTO> list = adminservice.selectBlogerList();
+    	model.addAttribute("list", list);
+    	return "admin.AdminBlogerIndex";
+    }
+    
+    //블로거가 신청했을때 내용 확인 하고, 파일 업로드 해줭
+    @RequestMapping("/AdminBlogerInfo.do")
+    public View AdminBlogerInfo(String seq, Model model){
+    	
+    	String msg = "";
+    	BlogerApply_DTO dto = null;
+    	if(seq != null){
+    		int i_seq = Integer.parseInt(seq);
+    		dto = adminservice.blogerInfo(i_seq);
+    	}else{
+    		msg = "잘못된 접근 입니다.";
+    	}
+    	
+    	model.addAttribute("msg",msg);
+    	model.addAttribute("blogerInfo", dto);
+    	return jsonview;
+    }
+    
+    
+    //블로거 신청했을 때 내용 확인 하고 db 에 등록 하는 부분
+    @RequestMapping("/BlogerInfoForm.do")
+    public String AdminBlogerInfoResult(@RequestParam("upload") MultipartFile file,HttpServletRequest request,  BlogerApply_DTO dto){    	
+    	int result = adminservice.AdminBlogerInfoResult(file, dto, request);
+    	if(result > 0){
+    		result = adminservice.AdminBlogerUpdate(dto);
+    	}
+    	
+    	if(result > 0){
+    		result = adminservice.AdminWaitBloger_Delete(dto);
+    	}
+    	
+    	System.out.println("최종 result 값은 ? : "+result);
+    	return "redirect:AdminBloger.do";
     }
     
 }

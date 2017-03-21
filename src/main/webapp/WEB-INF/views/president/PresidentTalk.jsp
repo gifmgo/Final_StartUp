@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+ 
 <div class="container">
 	<br/><br/>
 	<div class="row">
@@ -26,10 +28,11 @@
     <div class="row">
   	  <div class="col-md-12">
   	  	  <div class="well customWell">
+		  <c:set var="length" value="${fn:length(comment_List)}"></c:set>
 			  <c:choose>
 			  	<c:when test="${comment_List != null}">
 			  		<c:forEach var="comment" items="${comment_List}">
-						<c:choose>
+			  			<c:choose>
 							<c:when test="${comment.loginPw == null}">
 								<div class="panel panel-default">
 						  			<div class="panel-heading" style="color:#fff;background-color:${comment.color}">${comment.title}<em>(${comment.empNm} / ${comment.polyNm})</em> <span class="pull-right">${comment.writeDate}<input type="hidden" value="${comment.presidentTalk_seq}"><i class="material-icons" style="font-size:15px" data-toggle="modal" data-target="#talkModal" onclick="deleteComment(this)">delete</i></span></div>
@@ -49,6 +52,13 @@
 			  		<label>죄송합니다. 잠시후 이용해주세요.</label>
 			  	</c:otherwise>
 			  </c:choose>
+			  	<div id="makeDiv"></div>
+			  	<div class="row">
+				  	<div class="col-md-12 text-center">
+				  		<input type="button" class="btn btn-success" value="더보기" id="moreTalkBtn">
+				  	</div>
+			  	</div>
+			  
 		  </div>
 	  </div>
 	</div>

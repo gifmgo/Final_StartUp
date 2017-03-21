@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.com.Member.MemberDAO;
 import kr.or.com.Member.MemberDTO;
+import kr.or.com.blog.BlogList_DTO;
 
 @Service
 public class FreeBoardService {
@@ -93,7 +94,6 @@ public class FreeBoardService {
 		FreeBoardDAO freeboarddao = sqlSession.getMapper(FreeBoardDAO.class);
         List<CommentDTO> list = null;
         list = freeboarddao.commentList(no);
-        
         return list;
 	}
 	
@@ -133,17 +133,40 @@ public class FreeBoardService {
 	}
 	
 	public int modifyComment(CommentDTO dto) {
-		FreeBoardDAO freeboarddao = sqlSession.getMapper(FreeBoardDAO.class);
+		
 		int result = 0;
-		result = freeboarddao.updateComment(dto);
+		try{
+			FreeBoardDAO freeboarddao = sqlSession.getMapper(FreeBoardDAO.class);
+			result = freeboarddao.updateComment(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
 	//관심사 뽑아오는 메서드
 	public String selectFavorit(String id){
-		FreeBoardDAO dao = sqlSession.getMapper(FreeBoardDAO.class);
-		String favorit = dao.selectFavorit(id);
+		String favorit = null;
+		try{
+			FreeBoardDAO dao = sqlSession.getMapper(FreeBoardDAO.class);
+			favorit = dao.selectFavorit(id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return favorit;
+	}
+
+	//블로거 리스트 
+	public List<BlogList_DTO> selectBloger() {
+		List<BlogList_DTO> list = null;
+		try{
+			
+			FreeBoardDAO dao = sqlSession.getMapper(FreeBoardDAO.class);
+			list = dao.selectBloger();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 }

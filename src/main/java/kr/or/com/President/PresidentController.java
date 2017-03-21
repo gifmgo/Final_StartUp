@@ -47,14 +47,33 @@ public class PresidentController {
 		return "president.PresidentVote";
 	}
 	
+	
+	//대선관련 더보기 페이징
+	@RequestMapping("/PresidentAjaxTalk.do")
+	public View preSidentTalkPaging(String talkCount, Model model){
+		int count = (Integer.parseInt(talkCount)*10 + 1);
+		int count2 = count + 9;
+		PresidentTalk_PagingDTO paging = new PresidentTalk_PagingDTO();
+		paging.setCount(count);
+		paging.setCount2(count2);
+		
+		List<PresidentTalk_DTO> comment_List = service.presidentTalk_List2(paging);
+		model.addAttribute("comment_List",comment_List);
+		return jsonview;
+	}
+	
 	//대선 관련 한마디 하기 페이지
 	@RequestMapping(value="/PresidentTalk.do", method=RequestMethod.GET)
-	public String PresidentTalk(Model model){
+	public String PresidentTalk(Model model, String talkCount){
 		
 		//유저들이 쓴 글 리스트
-		List<PresidentTalk_DTO> comment_List = service.presidentTalk_List();
-		for(int i = 0; i < comment_List.size(); i++){
-			System.out.println("ddd : "+comment_List.get(i).toString());
+		List<PresidentTalk_DTO> comment_List = null; 
+		
+		//클릭 횟수 체크  >> 처음엔  클릭안해서 없음 >> 0 ~ 20 개 
+		if(talkCount == null){
+			int count = 10;
+			System.out.println("talkCount = null >> count 값은 ??  "+count);
+			comment_List = service.presidentTalk_List(count);
 		}
 		//드래그앤 드랍에 쓸 대선 후보 정보
 		List<PresidentDTO> list = service.presidentTalk();
