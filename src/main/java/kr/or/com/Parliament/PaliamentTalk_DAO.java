@@ -38,6 +38,8 @@ public interface PaliamentTalk_DAO {
    //API >  디비에 있는 데이터 뽑아옴
    public List<PaliamentList_DTO> selectPaliamentList_DTO();
    
+   public List<PaliamentList_DTO> selectPaliamentList(String polyNm,String orignm,String empnm);
+   
    
    //댓글
    //댓글 쓰기

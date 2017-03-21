@@ -74,6 +74,7 @@
 
 #sub-navi>ul{
 	left:-90px;
+	text-align: center;
 }
 
 #header-navi>#mobile-login{

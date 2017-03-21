@@ -26,13 +26,23 @@ public class PaliamentService {
    public List<PaliamentList_DTO> selectPaliamentList(){
       List<PaliamentList_DTO> list = new ArrayList<PaliamentList_DTO>();
       try{
-         System.out.println("try");
          PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
          list = dao.selectPaliamentList_DTO();
       }catch(Exception e){
          e.printStackTrace();
       }
       return list;
+   }
+   
+   public List<PaliamentList_DTO> selectPaliament(String polyNm,String orignm,String empnm){
+	   List<PaliamentList_DTO> list = new ArrayList<PaliamentList_DTO>();
+	   try{
+		   PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+		   list = dao.selectPaliamentList(polyNm,orignm,empnm);
+	   }catch(Exception e){
+		   e.printStackTrace();
+	   }
+	   return list;
    }
    
    

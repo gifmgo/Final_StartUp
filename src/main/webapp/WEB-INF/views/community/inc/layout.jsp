@@ -33,10 +33,6 @@ $(function(){
 </script>
 </head>
 <body>
-	<div id="loading_form">
-        <div id="loading"></div>
-        <p>Loading...</p>  
-    </div> 
     
 	<!-- Header -->
 	<tiles:insertAttribute name="header" />

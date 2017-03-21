@@ -24,81 +24,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <title>의원정보</title>
-<style>
-   #info {
-      width:100%;
-      height:500px;
-      background-color:#ccc;   
-   }
-   
-   #piechart {
-      position:relative;
-      width:100%;
-      height:500px;
-   }
-   
-   
-   .customWell1{
-   	   background-color: #27ae60 !important;
-   }
-   
-   .customWell2{
-   		background-color: #2980b9 !important;
-   }
-   
-   .customWell3{
-   		background-color: #3498db !important;
-   }
-   
-   .customWell4{
-   		background-color: #e74c3c !important;
-   }
-   
-   .customWell5{
-   		background-color: #f1c40f !important;
-   }
-   
-   .customWell6{
-   		background-color: #95a5a6 !important;
-   }
-   
-   .listRow{
-   	  margin-top: 3%;
-   	  min-height : 400px;
-   }
-   
-   .customP{
-   		font-size : 32px !important;
-   }
-   
-   .nameJung{
-   	  font-size : 20px !important;
-   	  margin-top : 5%;
-   }
-   
-   @media only screen and (max-width:990px) {
-      
-      #piechart {
-         
-         left:10%;
-      }
-   }
-   
-</style>
+
 </head>
 <body>
-   <div id="loading_form">
-        <div id="loading"></div>
-        <p>Loading...</p>  
-    </div> 
-   
+
    <!-- Header -->
    <tiles:insertAttribute name="header" />
    
    <!-- Main Wrapper -->
    <tiles:insertAttribute name="content" />
    
-<!--풋터-->
+	<!--풋터-->
    <tiles:insertAttribute name="footer" />
 
 <script>
@@ -532,15 +468,8 @@
              google.charts.setOnLoadCallback(drawChart);
              
          },beforeSend:function(){
-            $('#loading_form').css("display","block");
          },complete:function(){
-            $('#loading_form').css("display","none");
          },timeout : 100000
-      });
-      
-      
-      $('#dashBoardTalkBtn').click(function(){
-    	 location.href="Paliament_DashBoard.do"; 
       });
       
       //의원 검색 클릭시
@@ -549,14 +478,65 @@
          //국회의원 객체                이미지   이름       정당          지역구    당선횟수
          //  empnm,deptCd,num, img, name, jungDang, orignm, reelegbnnm
          
-         //이름
          var empNm = $('#empNm').val();
-         //정당
          var polyNm =$('#polyNm').val();
-         
-         //지역구 
          var orignm = $('#orignm').val();
-         
+
+         $.ajax({
+            url:"selectPaliament.do",
+            data:{
+            	empnm: $('#empNm').val(),
+            	polyNm:$('#polyNm').val(),
+            	orignm: $('#orignm').val()
+            },
+            success : function(data){   
+               var PaliamentDiv = '';
+               $('#resultDiv').empty();
+               $(data).each(function(index,item){
+            	   with(item){
+            		   if(size==0){
+            			   PaliamentDiv += '<div class="col-md-offset-4 col-md-4">';
+            			   PaliamentDiv += '<div class="well customWell text-center">';
+            			   PaliamentDiv += '<span class="text-center"><i class="fa fa-meh-o" style="font-size:48px;color:red"></i></span><br/><br/>';
+            			   PaliamentDiv += '<p>검색한 의원이 없습니다.</p>';
+            			   PaliamentDiv += '</div>';
+            			   PaliamentDiv += '</div>';
+            			   $('#resultDiv').html(PaliamentDiv);
+            			   return false;
+            		   }
+            	   }
+               });
+               //var resultJung = jungDang2(data.xml);
+               //xml 데이터 담겨져있음\
+               $.each(data.xml, function(index, obj){
+                  var wellColor = f_wellColor(obj.polyNm);      
+                  PaliamentDiv += '<div class="col-sm-3">';
+                  PaliamentDiv += '<div class="well text-center" style="background-color:white; border-top:10px solid '+wellColor+'">';
+                  PaliamentDiv += '<input type="hidden" id='+obj.empNm+'>';
+                  PaliamentDiv += '<input type="hidden" id='+obj.deptCd+'>';
+                  PaliamentDiv += '<input type="hidden" id='+obj.num2+'>';
+                  PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+'></span><br/><br/>';
+                  PaliamentDiv += '<span>이름 : '+obj.empNm+'</span><br/>';
+                  PaliamentDiv += '<span>정당 : '+obj.polyNm+'</span><br/>';
+                  if(obj.origNm != '비례대표'){
+               	   var origNm = obj.origNm.substring(0,6);
+               	   PaliamentDiv += '<span>지역구 : '+origNm+'</span><br/>';   
+                  }else{
+               	   PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
+                  }
+                  /* PaliamentDiv += '<span>생활 포인트 : '+obj.point+'</span><br/><br/>'; */
+                  PaliamentDiv += '<span>당선 회수 : '+obj.reeleGbnNm+'</span><br/><br/>';
+                  PaliamentDiv += '<input type="button" class="btn" style="color:white; background-color:'+wellColor+'" onclick="detailPaliament(this)" value=상세보기>';
+                  PaliamentDiv+= '</div>';
+                  PaliamentDiv+= '</div>';
+
+               });
+               
+               $('#resultDiv').html(PaliamentDiv);
+            }
+         });
+
+/* 
          //div 영역 담당
          var searchDiv = '';
          
@@ -652,7 +632,7 @@
          if(empNm != '' && polyNm != '전체' && orignm != '전체'){
             allSearchTree(empNm, polyNm, orignm);
          }
-         
+          */
       }); 
    });
     
