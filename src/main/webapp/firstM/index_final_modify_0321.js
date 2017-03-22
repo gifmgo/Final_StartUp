@@ -1,5 +1,5 @@
 //이메일 정규식 함수
-function emailcheck(strValue)
+/*function emailcheck(strValue)
 {
 	
 	var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
@@ -219,11 +219,11 @@ $(document).ready(function(e) {
 					
 					
 					//초기화 부분
-					/*$('#member_nickName').val('');
+					$('#member_nickName').val('');
 					$('#member_Id').val('');
 					$('#member_Pw').val('');
 					$('#member_Repw').val('');
-					$('#member_Birth').val('');*/
+					$('#member_Birth').val('');
 					//성별 문제 색상 변경 
 					
 					
@@ -572,7 +572,7 @@ function check_birth(birth){
     }
     return result;
 }
-
+*/
 
 $(document).ready(function(){
 	var topBar = $('#header-navBar').offset();

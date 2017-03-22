@@ -45,9 +45,15 @@ public class DebateController {
 		List<debateDTO> blist =new ArrayList<debateDTO>();
 		
 		admin_DebateDTO link=null;
+		String keyWord = "";
 		try{	
-			 //리스트 담아둠
-			 list = service.list();
+			
+			//키워드, 링크 담아둠  영상 부분
+			link = service.videosrc();
+			
+			keyWord = service.debateKeyWord(); 
+			//리스트 담아둠
+			list = service.detaillist(keyWord);
 			 for(int i=0; i<list.size(); i++){
 				 if(list.get(i).getChoose().equals("진보")){
 					 jlist.add(list.get(i));
@@ -56,8 +62,7 @@ public class DebateController {
 					 blist.add(list.get(i));
 				 }
 			 }
-			 //키워드, 링크 담아둠
-			 link = service.videosrc();
+			 
 		}catch(Exception e){
 			e.printStackTrace();
 		}

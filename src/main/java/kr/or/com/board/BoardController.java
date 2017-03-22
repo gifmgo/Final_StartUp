@@ -53,17 +53,23 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		//토론 부분
-		List<debateDTO> debate_dto = null;	
+		List<debateDTO> debate_dto = null;
+		
 		//토론 키워드
 		String keyWord = null;
 		try{
-			debate_dto = debate_Service.list();
+			
 			keyWord = debate_Service.debateKeyWord();
-
-			for(int i = 0; i < debate_dto.size(); i++){
-				Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
-				String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
-				debate_dto.get(i).setWriteDate(newstring);
+			System.out.println("키워드 확인좀 할께요 보드 컨트롤러 입니다. "+keyWord);
+			
+			debate_dto = debate_Service.list(keyWord);
+			
+			if(debate_dto != null){
+				for(int i = 0; i < debate_dto.size(); i++){
+					Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
+					String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
+					debate_dto.get(i).setWriteDate(newstring);
+				}
 			}
 
 		}catch(Exception e){

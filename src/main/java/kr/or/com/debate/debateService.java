@@ -13,12 +13,12 @@ public class debateService {
 	private SqlSession sqlSession;
 	
 	//토론 리스트 뽑아오기
-	public List<debateDTO> list(){
+	public List<debateDTO> list(String keyword){
 		
 		List<debateDTO> dto = null;
 		try{
 			debateDAO dao = sqlSession.getMapper(debateDAO.class);
-			dto = dao.listdebateDTO();
+			dto = dao.listdebateDTO(keyword);
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -71,9 +71,11 @@ public class debateService {
    
 	//비디오 링크 가져오기
 	public admin_DebateDTO videosrc() {
-		debateDAO dao = sqlSession.getMapper(debateDAO.class);
-		admin_DebateDTO dto=null;
+		
+	  admin_DebateDTO dto=null;
+	  
 	  try{
+		  debateDAO dao = sqlSession.getMapper(debateDAO.class);
 		  dto =  dao.videosrc();
 		  System.out.println(" 서비스=========="+dto.toString());
 	  }catch (Exception e) {
@@ -81,6 +83,20 @@ public class debateService {
 	}
 		
 		return dto;
+	}
+	
+	//토론 >>  moreCommunityTalk.do  >> 영상 이랑 글 보여주는 부분
+	public List<debateDTO> detaillist(String keyWord) {
+		List<debateDTO> list = null;
+		try{
+		
+			debateDAO dao = sqlSession.getMapper(debateDAO.class);
+			list = dao.detaillist(keyWord);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 }
