@@ -96,7 +96,7 @@ public class PaliamentController {
 	   model.addAttribute("now", strDate);
 	   model.addAttribute("RPComment", clist);
 	   
-	   return "parliament_List.ParliamentList";
+	   return "parliament_List.ParliamentList2";
    }
    
    //말말말!!  >> View 페이지 보여줌
@@ -346,10 +346,38 @@ public class PaliamentController {
    //국회의원 리스트 뿌려주는 부분
    @RequestMapping("/ListPaliament.do")
    public View paliamentList(Model model){
-      System.out.println("컨트롤러 리스트 호출합니다.");
+
       List<PaliamentList_DTO> list = service.selectPaliamentList();
       model.addAttribute("xml", list);
+      
       return jsonView;
+   }
+   
+   //국회의원 리스트 뿌려주는 부분
+   @RequestMapping("/selectPaliament.do")
+   public View paliamentList(Model model,String polyNm,String orignm,String empnm){
+
+	   if(polyNm==null || polyNm.equals("")){
+		   polyNm="%%";
+	   }else if(polyNm.equals("전체")){
+		   polyNm="%%";		   
+	   }
+	   
+	   if(orignm==null || orignm.equals("")){
+		   orignm="%%";
+	   }else if(orignm.equals("전체")){
+		   orignm="%%";		   
+	   }
+	   
+	   if(empnm==null || empnm.equals("")){
+		   empnm="%%";
+	   }
+	   List<PaliamentList_DTO> list = service.selectPaliament(polyNm,orignm,empnm);
+
+	   model.addAttribute("xml", list);
+	   model.addAttribute("size", list.size());
+	   
+	   return jsonView;
    }
    
    //국회의원 전체 리스트 뿌려주는 컨트롤러 >> 스케쥴러에서 써야함....

@@ -4,25 +4,27 @@
 <script src="paliament/pal-list.js"></script>
 <div class="container recent">
 	<div class="row">
-		<h2>최근 달린 댓글</h2>
-		<ul class= "col-sm-6">
-		<c:forEach var="list" items="${RPComment}">
-			<li data-pno="${list.no}">
-				<div class="col-xs-3 inf">
-					<a href="paliamentDetail.do?num=${list.no}&dept_cd=${list.deptcd}&img=${list.img}&name=${list.name}">
-						<img class="pal-img img-responsive img-circle" src="${list.img}">
-						<span class="pal-name">${list.orignm}<br/>${list.name}</span>
-					</a>
-				</div>
-				<div class="col-xs-9">
-					<p class= "pal-title">${list.writer}</p>
-					<p class= "pal-p">${list.content}</p>
-				</div>
-			</li>
-		</c:forEach>
-		</ul>
+		<div class= "col-sm-7">
+			<span style="font-size: 23px; font-weight: bold;">최근 달린 댓글</span> <span id="dashBoardTalkBtn">더 보러가기<span class="glyphicon glyphicon-menu-right"></span></span>
+			<ul>
+			<c:forEach var="list" items="${RPComment}">
+				<li data-pno="${list.no}" style="border-top:1px solid gray;">
+					<div class="inf pal-click" data-num="${list.no}" data-deptcd="${list.deptcd}" data-img="${list.img}" data-name="${list.name}">
+						<img class="pal-img" src="${list.img}">
+					</div>
+					<div class="orignm pal-click" data-num="${list.no}" data-deptcd="${list.deptcd}" data-img="${list.img}" data-name="${list.name}">
+						<span>${list.orignm}<br/>${list.name}</span>
+					</div>
+					<div class="comment col-xs-7">
+						<p class= "pal-title"><span class="glyphicon glyphicon-user"></span>${list.writer}</p>
+						<p class= "pal-p">${list.content}</p>
+					</div>
+				</li>
+			</c:forEach>
+			</ul>
+		</div>
 	
-		<div class= "col-sm-6" id="paliamentD">
+		<div class= "col-sm-5" id="paliamentD">
 			<!--도표들어가는 부분-->
 			<div id="piechart"></div>
 		</div>
@@ -32,7 +34,7 @@
 <div class="container">
 	<div class="row" style="margin-bottom:10px;">
 		<h2>의원검색</h2>			 
-		<form action="" class="form-inline">
+		<form onsubmit="return false;" class="form-inline">
 			 <div class="form-group">
     			<label class="control-label" for="polyNm">정당</label>
       			<select class="form-control" id="polyNm">
@@ -76,17 +78,9 @@
       			<input type="text" class="form-control" id="empNm" placeholder="이름을 입력하세요">
  			 </div>
  			 
- 			 <div class="form-group">
-   				<input type="button" id="searchBtn" class="btn" value="검색" style="background:black; color:white; border:0;">
-	 			 <div class="form-group text-center">
-	   				<div class="btn-group customBtnGroup">
-					  <button type="button" id="dashBoardTalkBtn" class="btn btn-success">의원 글보기</button>
-					  <button type="button" id="searchBtn" class="btn btn-info">검색</button>
-					</div>
-	   				<!-- <input type="button" id="searchBtn" class="btn col-sm-offset-8 col-sm-3" value="검색" style="background:black; color:white; border:0;"> -->
-
- 				 </div>
- 			</div>
+ 			<div class="form-group text-center">
+				<button type="button" id="searchBtn" class="btn btn-info">검색</button>
+			</div>
 		</form>
 	</div>
 

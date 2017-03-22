@@ -2,6 +2,10 @@
 /* CSS Document */
 @import url(dashcore.css);
 
+.sub>li {
+    float: inherit;
+}
+
 /*대시보드*/
 #dashboard {
 	position:relative;
