@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
@@ -18,7 +19,7 @@
 <script src="sweet/sweetalert.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
-<link rel="stylesheet" type="text/css" href="firstM/index_0322_03.css">
+<link rel="stylesheet" type="text/css" href="firstM/index_0323.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 
 <link rel="stylesheet" type="text/css" href="css/icon.css">
@@ -143,7 +144,7 @@
 </div> 
 <!-- 메인 컨텐츠 상단 부분 -->    
 
-<div class="container text-center">
+<div class="container">
 	<div class="row">
 		<div class="col-sm-12 boradListDiv">
 		    <div class="row">
@@ -162,33 +163,57 @@
 				        </ul>
 				      </div>
 		          </div>
-		          <div class="col-sm-4">
+				  <div class="col-sm-4">
 		          	  <div class="well indexWell">
-				        <span class="pull-left"><a href="#">대선 후보</a></span>
-				        <span class="pull-right"><span class="glyphicon glyphicon-plus"></span>더보기</span>
+				        <span class="pull-left"><strong><a class="titleAtag">대선 후보</a></strong></span>
+				        <span class="pull-right"><a href="PresidentTalk.do" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				        <div style="padding: 3px;"></div>
 				        <hr class="customHr"/>
 				          <ul class="boardUl">
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
+				          	<c:choose>
+				          		<c:when test="${president_list != null}">
+				          			<c:forEach var="president_list" items="${president_list}">
+				          				<li>
+				          					<span><a href="PresidentTalk.do" class="jstlAtag" style="text-decoration: none; color: black;">${president_list.title}</a></span>
+				          					<span class="pull-right">${president_list.writeDate}</span>
+				          				</li>
+				          			</c:forEach>
+				          		</c:when>
+				          		<c:otherwise>
+				          			<li>글이 없습니다 !<li>
+				          			<li><a href="#">글쓰러 가기</a></li>
+				          		</c:otherwise>
+				          	</c:choose>
 				          </ul>     
 				      </div>
 			      </div>
 			      <div class="col-sm-4">
 		          	  <div class="well indexWell">
-				         <span class="pull-left"><a href="#">생활 포인트</a></span>
-				         <span class="pull-right"><span class="glyphicon glyphicon-plus"></span>더보기</span>
+				         <span class="pull-left"><strong><a class="titleAtag">토론 하기</a></strong></span>
+				         <span class="pull-right"><a href="moreCommunityTalk.do" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div> 
 				          <hr class="customHr"/> 
 				          <ul class="boardUl">
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
+				          	<c:choose>
+				          		<c:when test="${debate_list != null}">
+				          			<c:forEach var="debate_list" items="${debate_list}">
+				          				<li>
+				          					<span>
+				          						<a href="moreCommunityTalk.do" class="jstlAtag">
+				          						[${debate_list.choose}] 
+				          						${fn:substring(debate_list.title,0,10)}
+				          						</a>
+				          					</span>
+				          					<span class="pull-right">${debate_list.writeDate}</span>
+				          				</li>
+				          			</c:forEach>
+				          		</c:when>
+				          		<c:otherwise>
+				          			<li class="text-center">글이 없습니다 !<li>
+				          			<br/>
+				          			<li class="text-center"><a href="moreCommunityTalk.do" class="btn btn-default">글쓰러 가기</a></li>
+				          		</c:otherwise>
+				          	</c:choose>
 				          </ul>     
 				      </div>
 			      </div>
@@ -196,50 +221,95 @@
 			      
 			      <div class="col-sm-4">
 		          	<div class="well indexWell">
-				         <span class="pull-left"><a href="#">토론 하기</a></span>
-				         <span class="pull-right"><span class="glyphicon glyphicon-plus"></span>더보기</span>
+				         <span class="pull-left"><strong><a class="titleAtag">오늘의 이슈</a></strong></span>
+				         <span class="pull-right"><a href="#" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div>
 				        <hr class="customHr"/>
 				        <ul class="boardUl">
-				        	<li>[토론]사드</li>
-				        	<li>[토론]우리나라 정부는..</li>
-				        	<li>[토론]동남아로...</li>
-				        	<li>[토론]중국은진짜...</li>
-				        	<li>[토론]우리나라 정부는..</li>
+				        	<c:choose>
+				        		<c:when test="${todayIssue_list != null}">
+				        			<c:forEach var="todayIssue_list" items="${todayIssue_list}">
+				        			<li>
+				        				<span>
+				        					<a href="#" class="jstlAtag">
+				        					${fn:substring(todayIssue_list.title,0,10)} 
+				        					</a>
+				        				</span>
+				          				<span class="pull-right">${todayIssue_list.regdate}</span>
+				          			</li>
+				          			</c:forEach>
+				        		</c:when>
+				        		<c:otherwise>
+				        			<li class="text-center">글이 없습니다 !<li>
+				        			<br/>
+				          			<li class="text-center"><a href="#" class="btn btn-default">글쓰러 가기</a></li>
+				        		</c:otherwise>
+				        	</c:choose>
 				        </ul>
 				      </div>
 		          </div>
+		          
 		          <div class="col-sm-4">
-		          	  <div class="well indexWell">
-				         <span class="pull-left"><a href="#">생활 이야기</a></span>
-				         <span class="pull-right"><span class="glyphicon glyphicon-plus"></span>더보기</span>
+		          	<div class="well indexWell">
+				         <span class="pull-left"><strong><a class="titleAtag">정치 게시판</a></strong></span>
+				         <span class="pull-right"><a href="#" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div>
-				          <hr class="customHr"/>  
-				          <ul class="boardUl">
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          </ul>     
+				        <hr class="customHr"/>
+				        <ul class="boardUl">
+				        	<c:choose>
+				        		<c:when test="${jungChi_list != null}">
+				        			<c:forEach var="jungChi_list" items="${jungChi_list}">
+				        			<li>
+				        				<span>
+				        					<a href="#" class="jstlAtag">
+				        					${fn:substring(jungChi_list.title,0,10)} 
+				        					</a>
+				        				</span>
+				          				<span class="pull-right">${jungChi_list.regdate}</span>
+				          			</li>
+				          			</c:forEach>
+				        		</c:when>
+				        		<c:otherwise>
+				        			<li class="text-center">글이 없습니다 !<li>
+				        			<br/>
+				          			<li class="text-center"><a href="#" class="btn btn-default">글쓰러 가기</a></li>
+				        		</c:otherwise>
+				        	</c:choose>
+				        </ul>
 				      </div>
-			      </div>
-			      <div class="col-sm-4">
-		          	  <div class="well indexWell">
-				         <span class="pull-left"><a href="#">정치 이야기</a></span>
-				         <span class="pull-right"><span class="glyphicon glyphicon-plus"></span>더보기</span>
+		          </div>
+		          
+		          <div class="col-sm-4">
+		          	<div class="well indexWell">
+				         <span class="pull-left"><strong><a class="titleAtag">공지사항</a></strong></span>
+				         <span class="pull-right"><a href="#" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div>
-				         <hr class="customHr"/>
-				          <ul class="boardUl">
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          	<li>[대선]대선후보</li>
-				          </ul>     
+				        <hr class="customHr"/>
+				        <ul class="boardUl">
+				        	<c:choose>
+				        		<c:when test="${notice_list != null}">
+				        			<c:forEach var="notice_list" items="${notice_list}">
+				        			<li>
+				        				<span>
+				        					<a href="#" class="jstlAtag">
+				        					${fn:substring(notice_list.title,0,10)} 
+				        					</a>
+				        				</span>
+				          				<span class="pull-right">${notice_list.regdate}</span>
+				          			</li>
+				          			</c:forEach>
+				        		</c:when>
+				        		<c:otherwise>
+				        			<li class="text-center">글이 없습니다 !<li>
+				        			<br/>
+				          			<li class="text-center"><a href="#" class="btn btn-default">글쓰러 가기</a></li>
+				        		</c:otherwise>
+				        	</c:choose>
+				        </ul>
 				      </div>
-			      </div>
-		     </div>
+		          </div>
+		          
+		    </div>
 		</div>
  	</div>
 </div>
@@ -256,11 +326,16 @@
 								<div class="alert alert-info fade in">
 							        <p><strong>베스트 포인터</strong></p>
 							        <div class="well indexWell2">
-							          <p><a href="#"><span style="font-family:sans-serif;">1.자이하</span></a></p>
-								      <p><a href="#">2.서짱</a></p>
-								      <p><a href="#">3.성준</a></p>
-								      <p><a href="#">4.재현</a></p>
-								      <p><a href="#">5.기성</a></p>
+							          <c:choose>
+							          	<c:when test="${point_list != null}">
+							          		<c:forEach var="point_list" items="${point_list}" varStatus="p_Status">
+							          			<p><a href="#"><span style="font-family:sans-serif;">${p_Status.count}.${point_list.nickName}</span></a></p>			
+							          		</c:forEach>	
+							          	</c:when>
+							          	<c:otherwise>
+							          		<p>죄송합니다 잠시후 다시 이용해주세요</p>
+							          	</c:otherwise>
+							          </c:choose>
 							        </div>
 							    </div>
 					        </div>
@@ -268,11 +343,17 @@
 								<div class="alert alert-info fade in">
 							        <p><strong>베스트 국회의원</strong></p>
 							        <div class="well indexWell2">
-							          <p><a href="#">1.김경진</a></p>
-								      <p><a href="#">2.안철수</a></p>
-								      <p><a href="#">3.Luffy</a></p>
-								      <p><a href="#">4.SangDi</a></p>
-								      <p><a href="#">5.Luffy</a></p>
+							          <c:choose>
+							          	  <c:when test="${pal_list != null}">
+							          			<c:forEach var="pal_list" items="${pal_list}">
+							          				<p><a href="PaliamentDetail.do?num=${pal_list.num2}&dept_cd=${pal_list.deptCd}&img=${pal_list.jpgLink}&name=${pal_list.empNm}">${pal_list.empNm}</a></p>
+							          			</c:forEach>	  
+							          	  </c:when>
+							          	  <c:otherwise>
+							          	  	<p>죄송합니다. 잠시후 다시 이용해주세요</p>
+							          	  </c:otherwise>
+							          </c:choose>
+							          
 							        </div>
 							    </div>
 					        </div>

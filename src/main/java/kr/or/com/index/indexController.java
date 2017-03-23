@@ -1,5 +1,7 @@
 package kr.or.com.index;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,11 +14,20 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.FreeBoard.FreeBoardDTO;
+import kr.or.com.Member.MemberDTO;
+import kr.or.com.Paliament_DTO.PaliamentList_DTO;
+import kr.or.com.President.PresidentTalk_DTO;
+import kr.or.com.debate.debateDTO;
+
 @Controller
 public class indexController {
 
 	@Autowired
 	private View jsonview;
+	
+	@Autowired
+	private IndexService service;
 	
 	//접속자 확인
 	@RequestMapping(value="/", method=RequestMethod.GET)
@@ -63,8 +74,38 @@ public class indexController {
 	}
 	
 	@RequestMapping("/index.do")
-	public String index(){
-		System.out.println("인덱스 . do ");
+	public String index(Model model){
+		
+		//대선후보 토크 보는 것
+		List<PresidentTalk_DTO> president_list = service.PresidentTalk();
+		//토론 - 키워드
+		List<debateDTO> debate_list = service.selectKeyWord();
+		//오늘의 이슈
+		List<FreeBoardDTO> todayIssue_list = service.selectIssue();
+		//정치 게시판 글
+		List<FreeBoardDTO> jungChi_list = service.selectJungChi();
+		//공지사항
+		List<FreeBoardDTO> notice = service.selectNotice();
+		
+		////////////////////////////////////////////////////////
+		
+		//포인트
+		List<MemberDTO> point_list = service.selectPointList();
+		
+		//인기 국회의원 
+		List<PaliamentList_DTO> pal_list = service.selectPaliamentList();
+		
+		model.addAttribute("president_list", president_list);
+		model.addAttribute("debate_list", debate_list);
+		model.addAttribute("todayIssue_list",todayIssue_list);
+		model.addAttribute("jungChi_list",jungChi_list);
+		model.addAttribute("notice_list", notice);
+		
+		//포인트
+		model.addAttribute("point_list", point_list);
+		//인기 국회의원
+		model.addAttribute("pal_list", pal_list);
+		
 		return "index";
 	}
 	
