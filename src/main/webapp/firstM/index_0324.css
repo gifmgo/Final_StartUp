@@ -119,3 +119,81 @@ body{
 	font-family: Nanum !important;
 }
 
+.jstlAtag{
+	text-decoration: none !important;
+	color: black !important;
+}
+
+
+.videoP{
+	position:absolute; 
+	background-color: black;
+	opacity:0.8; 
+	width: 100%;
+	height:80px;
+	z-index:999; 
+	margin-top: 40%;"	
+}
+
+/* 비디오  영상 뿌려주는 부분 */
+.videoTitleSpan{
+	color: #fff; 
+	font-size: 15px;
+	margin-top : 30px !important;
+	margin-bottom: 3px !important;
+}
+.videoContentSpan{
+	color: #fff; 
+	font-size:12px;
+}
+
+.customPanel-heading{
+	border-color: #fff !important;
+	background-color : #fff !important;	
+	border: #fff !important;
+}
+
+
+@media only screen and (max-width:900px) {
+	
+	.videoP{
+	position:absolute; 
+	background-color: black;
+	opacity:0.8; 
+	width: 100%;
+	height:80px;
+	z-index:999; 
+	margin-top: 35%;
+	}
+		
+}
+
+
+@media only screen and (max-width:768px) {
+
+.customVideoDiv{
+	margin: 10px !important;
+}
+	
+.videoP{
+	position:absolute; 
+	background-color: black;
+	opacity:0.8; 
+	width: 100%;
+	height:80px;
+	z-index:999; 
+	margin-top: 38%;
+}
+
+/* 비디오  영상 뿌려주는 부분 */
+.videoTitleSpan{
+	color: #fff; 
+	font-size: 15px;
+}
+.videoContentSpan{
+	color: #fff; 
+	font-size:12px;
+}
+	
+	
+}

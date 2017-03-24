@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.com.index.IndexDAO">
+	<select id="index_selectPresidentTalk" resultType="kr.or.com.President.PresidentTalk_DTO">
+		<![CDATA[
+			select PresidentTalk_seq, empNm, polyNm, color, nickName, title, comments, to_char(writeDate, 'YYYY/MM/DD') as writeDate, pw, loginPw, rownum 
+			from tbl_presidentTalk 
+	    	where rownum <=5
+			order by PresidentTalk_seq desc
+		]]>
+	</select>
+	
+	<!--토론하기 리스트 가져오는 것 -->
+	<select id="index_listdebateDTO" resultType="kr.or.com.debate.debateDTO">
+		<![CDATA[
+			select choose, nickName, title, to_char(writeDate, 'YYYY/MM/DD') as writeDate, rownum
+			from debate
+			where Debateword = #{keyword} and rownum<=5
+		]]>
+	</select>
+	
+	<!-- 토론하기 키워드 가져옴 -->
+	<select id="index_selectKeyWord" resultType="String">
+		select admin_debate_debateword from adminDebate a where a.no=(select max(no) from adminDebate b)
+	</select>
+
+	<!-- 오늘의 이슈 -->
+	<select id="index_selectIssue" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
+		<![CDATA[
+		select*
+		from (select no, title,  to_char(regdate, 'YYYY/MM/DD') as regdate, rownum from tbl_board where category = '오늘의 이슈')
+		where rownum <= 5
+  		]]>
+	</select>
+	
+	<!-- 정치 -->
+	<select id="index_selectJungChi" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
+		<![CDATA[
+  		select*
+		from (select no, title,  to_char(regdate, 'YYYY/MM/DD') as regdate, rownum from tbl_board where category = '정치게시판')
+		where rownum <= 5
+		]]>
+	</select>
+	
+	<!-- 공지사항 글 개수 확인 -->
+	<select id="index_selectCheckList" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
+		select * from tbl_board where category = '공지사항'
+	</select>
+	
+	<!-- 공지사항 -->	
+	<select id="index_selectNotice" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
+		<![CDATA[
+		select no, title,  to_char(regdate, 'YYYY/MM/DD') as regdate, rownum
+  		from (select no, title,  to_char(regdate, 'YYYY/MM/DD') as regdate, rownum from tbl_board where category = '공지사항')
+  		where rownum <= 5
+		]]>
+	</select>
+	
+	<!-- 베스트 포인트 유저 -->
+	<select id="index_selectPoint" resultType="kr.or.com.Member.MemberDTO">
+		<![CDATA[
+		select id, nickName, point
+		from (select  id, nickName, point,  RANK() OVER(ORDER BY point desc) as rank from member)
+		where rownum <= 5
+		]]>
+	</select>
+	
+	<!-- 의원 >> -->
+	<select id="index_selectPaliament" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		<![CDATA[
+		select *
+		from (select deptcd, num2,jpgLink, empnm,pointCount, RANK() OVER(ORDER BY pointCount desc) as rank from tbl_paliament)
+		where rownum <= 5
+		]]>
+	</select>
+	
+	<!-- 블로거 리스트 -->
+	<select id="index_selectBlogerList" resultType="kr.or.com.blog.BlogList_DTO">
+		select bloger_id,bloger_img,bloger_mainUrl from tbl_bloger
+	</select>
+	
+	<!-- 접속자 수 확인 -->
+	<select id="index_selectTodayUser" resultType="kr.or.com.Data.TodayUserDTO">
+		select adate, todaytotaluser, totaluser from(select adate, todaytotaluser, totaluser from Todayuser order by totaluser desc)
+		where rownum = 1
+	</select>
+	
+	<!-- 문의 하기 -->
+	<insert id="index_insertConCat" parameterType="kr.or.com.index.ConcatDTO">
+		insert into tbl_concat (concatSeq,concatName,concatEmail,concatComments) values(concatSeq.nextval, #{concatName}, #{concatEmail}, #{concatComments})
+	</insert>
+	
+</mapper>

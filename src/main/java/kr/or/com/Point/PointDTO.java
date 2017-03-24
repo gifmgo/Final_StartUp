@@ -84,13 +84,14 @@ public class PointDTO {
 	public void setPolyNm(String polyNm) {
 		this.polyNm = polyNm;
 	}
-	
 	@Override
 	public String toString() {
 		return "PointDTO [potinSeq=" + potinSeq + ", userId=" + userId + ", deptCd=" + deptCd + ", empNm=" + empNm
 				+ ", point=" + point + ", buyDate=" + buyDate + ", updatePoint=" + updatePoint + ", totalCount="
 				+ totalCount + ", polyNm=" + polyNm + "]";
 	}
+	
+	
 	
 	
 }
