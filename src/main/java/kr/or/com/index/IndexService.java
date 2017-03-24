@@ -6,11 +6,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.com.Data.TodayUserDTO;
 import kr.or.com.FreeBoard.FreeBoardDTO;
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 import kr.or.com.Point.PointDTO;
 import kr.or.com.President.PresidentTalk_DTO;
+import kr.or.com.blog.BlogList_DTO;
 import kr.or.com.debate.debateDTO;
 
 @Service
@@ -81,7 +83,10 @@ public class IndexService {
 		List<FreeBoardDTO> list = null;
 		try{
 			IndexDAO dao = sqlSession.getMapper(IndexDAO.class);
-			list = dao.index_selectNotice();
+			list = dao.index_selectCheckList();
+			if(list.size() > 5){
+				list = dao.index_selectNotice();
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -116,6 +121,45 @@ public class IndexService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	//블로거 리스트 
+	public List<BlogList_DTO> selectBlogerList() {
+		List<BlogList_DTO> list = null;
+		try{
+			IndexDAO dao = sqlSession.getMapper(IndexDAO.class);
+			list = dao.index_selectBlogerList();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	//접속자 수 확인 
+	public TodayUserDTO selectTodayUserDTO() {
+		TodayUserDTO dto = null;
+		try{
+			IndexDAO dao = sqlSession.getMapper(IndexDAO.class);
+			dto = dao.index_selectTodayUser();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	//index 페이지에서 문의하기 
+	public int insertConCat(ConcatDTO dto) {
+		
+		int result = 0;
+		
+		try{
+			IndexDAO dao = sqlSession.getMapper(IndexDAO.class);
+			result = dao.index_insertConCat(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 

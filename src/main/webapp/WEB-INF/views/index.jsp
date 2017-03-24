@@ -19,7 +19,7 @@
 <script src="sweet/sweetalert.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
-<link rel="stylesheet" type="text/css" href="firstM/index_0323.css">
+<link rel="stylesheet" type="text/css" href="firstM/index_0324.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 
 <link rel="stylesheet" type="text/css" href="css/icon.css">
@@ -131,13 +131,11 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="jumbotron customJumboTron">
-				<label>어서오세요 생활정치입니다. 대문 작업중입니다.
-				</label>
-				<div class="row">
-					<div class="col-sm-offset-4 col-sm-4">
-						<input type="text" class="form-control">
-					</div>
-				</div>
+				<div class="center-block" style="width:80px;">
+			  		<img class="img-responsive" src="img/logo2.png" id="logo" style="width:80px;">
+	    		</div>
+				<h3>어서오세요 생활정치입니다.</h3><br/>
+				<label>다양한 컨텐츠를 즐겨보세요 !</label>
 			</div>
 		</div>
 	</div>
@@ -222,7 +220,7 @@
 			      <div class="col-sm-4">
 		          	<div class="well indexWell">
 				         <span class="pull-left"><strong><a class="titleAtag">오늘의 이슈</a></strong></span>
-				         <span class="pull-right"><a href="#" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
+				         <span class="pull-right"><a href="board.do?category=issue" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div>
 				        <hr class="customHr"/>
 				        <ul class="boardUl">
@@ -231,7 +229,7 @@
 				        			<c:forEach var="todayIssue_list" items="${todayIssue_list}">
 				        			<li>
 				        				<span>
-				        					<a href="#" class="jstlAtag">
+				        					<a href="boardDetail.do?no=${todayIssue_list.no}&currentpage=1" class="jstlAtag">
 				        					${fn:substring(todayIssue_list.title,0,10)} 
 				        					</a>
 				        				</span>
@@ -252,7 +250,7 @@
 		          <div class="col-sm-4">
 		          	<div class="well indexWell">
 				         <span class="pull-left"><strong><a class="titleAtag">정치 게시판</a></strong></span>
-				         <span class="pull-right"><a href="#" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
+				         <span class="pull-right"><a href="board.do?category=politics" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div>
 				        <hr class="customHr"/>
 				        <ul class="boardUl">
@@ -261,7 +259,7 @@
 				        			<c:forEach var="jungChi_list" items="${jungChi_list}">
 				        			<li>
 				        				<span>
-				        					<a href="#" class="jstlAtag">
+				        					<a href="boardDetail.do?no=${jungChi_list.no}&currentpage=1" class="jstlAtag">
 				        					${fn:substring(jungChi_list.title,0,10)} 
 				        					</a>
 				        				</span>
@@ -282,7 +280,7 @@
 		          <div class="col-sm-4">
 		          	<div class="well indexWell">
 				         <span class="pull-left"><strong><a class="titleAtag">공지사항</a></strong></span>
-				         <span class="pull-right"><a href="#" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
+				         <span class="pull-right"><a href="board.do?category=qa" class="jstlAtag"><span class="glyphicon glyphicon-plus"></span>더보기</a></span>
 				         <div style="padding: 3px;"></div>
 				        <hr class="customHr"/>
 				        <ul class="boardUl">
@@ -291,7 +289,7 @@
 				        			<c:forEach var="notice_list" items="${notice_list}">
 				        			<li>
 				        				<span>
-				        					<a href="#" class="jstlAtag">
+				        					<a href="boardDetail.do?no=${notice_list.no}&currentpage=1" class="jstlAtag">
 				        					${fn:substring(notice_list.title,0,10)} 
 				        					</a>
 				        				</span>
@@ -316,6 +314,37 @@
 
 <br/><br/>
 <div class="container text-center">
+	<div class="row">
+		<div class="col-sm-12">
+			 <div class="panel panel-success">
+			 	<div class="panel-heading customPanel-heading">킬링 타임</div>
+			 	<div class="panel-body">	
+					 <div class="col-sm-4 customVideoDiv">
+					   <div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DLgeIw74Ktg" frameborder="0" allowfullscreen></iframe>
+					   		<p class="videoP"><span class="videoTitleSpan">종꾹형한테 맞으면</span><br/><span class="videoContentSpan">골로간다.</span></p>
+					   </div>
+			      	</div>
+			      	
+		      	    <div class="col-sm-4 customVideoDiv">
+				      <div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DLgeIw74Ktg" frameborder="0" allowfullscreen></iframe>
+				        <p class="videoP"><span class="videoTitleSpan">종꾹형한테 맞으면</span><br/><span class="videoContentSpan">골로간다.</span></p>
+				     </div>
+		      	   </div>
+		      	   
+		      	    <div class="col-sm-4 customVideoDiv">
+					   <div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DLgeIw74Ktg" frameborder="0" allowfullscreen></iframe>
+							<p class="videoP"><span class="videoTitleSpan">종꾹형한테 맞으면</span><br/><span class="videoContentSpan">골로간다.</span></p>
+					   </div>
+			      	</div>
+		      	   
+		       </div>
+	      	</div>
+		</div>
+	</div>
+	
 	<div class="row">
 		<div class="col-sm-12">
 		    <div class="panel panel-success">
@@ -345,39 +374,52 @@
 							        <div class="well indexWell2">
 							          <c:choose>
 							          	  <c:when test="${pal_list != null}">
-							          			<c:forEach var="pal_list" items="${pal_list}">
-							          				<p><a href="PaliamentDetail.do?num=${pal_list.num2}&dept_cd=${pal_list.deptCd}&img=${pal_list.jpgLink}&name=${pal_list.empNm}">${pal_list.empNm}</a></p>
+							          			<c:forEach var="pal_list" items="${pal_list}" varStatus="Paliament">
+						          				<p>
+						          				<a href="PaliamentDetail.do?num=${pal_list.num2}&dept_cd=${pal_list.deptCd}&img=${pal_list.jpgLink}&name=${pal_list.empNm}">${Paliament.count}.${pal_list.empNm}</a>
+						          				</p>
 							          			</c:forEach>	  
 							          	  </c:when>
 							          	  <c:otherwise>
 							          	  	<p>죄송합니다. 잠시후 다시 이용해주세요</p>
 							          	  </c:otherwise>
 							          </c:choose>
-							          
 							        </div>
 							    </div>
 					        </div>
-					        <div class="col-sm-3">
-						      <div class="alert alert-info fade in">
-							      <p><strong>기재중인 블로거</strong></p>
-							      <div class="well indexWell2">
-								      <p><a href="#">1.Dean</a></p>
-								      <p><a href="#">2.성준</a></p>
-								      <p><a href="#">3.Luffy</a></p>
-								      <p><a href="#">4.SangDi</a></p>
-								      <p><a href="#">5.Luffy</a></p>
-							      </div>
-						      </div>
-					      	</div>
-					      	<div class="col-sm-3">
-					      		<div class="alert alert-info fade in">
-							        <p><strong>접속자 보기</strong></p>
+					        
+					          <div class="col-sm-3">
+									<div class="alert alert-info fade in">							
+							        <p><strong>기재중인 블로거</strong></p>
 							        <div class="well indexWell2">
-							        	<p style="margin-top:20%; margin-bottom:20%;"><span>오늘 접속자 : 39 명</span></p>
-							        	<p><span>누적 접속자 : 2030 명</span></p>
+							          <c:choose>
+							          	  <c:when test="${bloger_list != null}">
+							          			<c:forEach var="bloger_list" items="${bloger_list}" varStatus="Paliament">
+						          				<p>
+						          				<span class="pull-left"><img src="blog/${bloger_list.bloger_img}" alt="${bloger_list.bloger_id} 님" class="img-circle" width="30px;" height="30px;"/></span>
+						          				<span class="pull-right"><a href="${bloger_list.bloger_mainUrl }" target="_blank">${bloger_list.bloger_id} 님</a></span>
+							          			</p>
+							          			<br/><br/>
+							          			</c:forEach>	  
+							          	  </c:when>
+							          	  <c:otherwise>
+							          	  	<p>죄송합니다. 잠시후 다시 이용해주세요</p>
+							          	  </c:otherwise>
+							          </c:choose>
+							    	</div>
+							    </div>
+					        </div>
+					        
+					          <div class="col-sm-3">
+								<div class="alert alert-info fade in">
+							        <p><strong>접속자 현황</strong></p>
+							        <div class="well indexWell2">
+							          	<p>오늘 접속자 : ${todayUser_dto.todayTotalUser}</p>
+							          	<p>누적 접속 : ${todayUser_dto.totalUser}</p>
 							        </div>
 							    </div>
-					      	</div>
+					        </div>
+					        
 			      		</div>
 		      		</div>
 			  </div>
@@ -398,28 +440,28 @@
 	      				<div class="well indexWell">
 			          	 	<i class="fa fa-bar-chart-o" style="font-size:80px"></i><br/><br/>
 			          	 	<p>20대 대통령은 누구?</p>
-			          	 	<label class="btn btn-default">대선 후보 보기</label>
+			          	 	<a href="PresidentMember.do" class="btn btn-default">대선 후보 보기</a>
 			          	 </div>				
 	      			</div>
 	      			<div class="col-sm-4">
 	      				<div class="well indexWell">
 		          	    	<i class="material-icons" style="font-size:80px">record_voice_over</i><br/><br/>
 		          	 	    <p>나의 생각을 말해봐</p>
-		          	 	    <label class="btn btn-default">토론 하기</label>
+		          	 	    <a href="moreCommunityTalk.do" class="btn btn-default">토론 하기</a>
 		          	    </div>
 	      			</div>
 	      			<div class="col-sm-4">
 	      				<div class="well indexWell">
 			          	 	<i class="fa fa-dollar" style="font-size:80px"></i><br/><br/>
 			          	 	<p>주식과 비슷하지만 모든것이 공짜</p>
-			          	 	<label class="btn btn-default">생활 포인트</label>
+			          	 	<a href="point.do" class="btn btn-default">생활 포인트</a>
 			          	 </div>	
 	      			</div>
 	      			<div class="col-sm-4">
 	      				<div class="well indexWell">
 			          	 	<i class="fa fa-institution" style="font-size:80px"></i><br/><br/>
 			          	 	<p>국회 의원 및 법안을 한눈에</p>
-			          	 	<label class="btn btn-default">국회</label>
+			          	 	<a href="Member_Parliament.do" class="btn btn-default">국회</a>
 			          	 </div>			
 	      			</div>
 	      			
@@ -428,7 +470,7 @@
 	      				<div class="well indexWell">
 			          	 	<i class="fa fa-smile-o" style="font-size:80px"></i><br/><br/>
 			          	 	<p>#일상#소통#웃긴영상</p>
-			          	 	<label class="btn btn-default">국회</label>
+			          	 	<a href="#" class="btn btn-default">생활 이야기</a>
 			          	 </div>			
 	      			</div>
 	      			
@@ -436,7 +478,7 @@
 	      				<div class="well indexWell">
 			          	 	<i class="fa fa-book" style="font-size:80px"></i><br/><br/>
 			          	 	<p>정치에 관심이 많아요!!</p>
-			          	 	<label class="btn btn-default">국회</label>
+			          	 	<a href="CommunityIndex.do" class="btn btn-default">정치 이야기</a>
 			          	 </div>			
 	      			</div>
 	      			
@@ -455,10 +497,10 @@
 			        <label>추천 컨텐츠!</label>
 			        <hr/>
 			        <ul>
-			        	<li class="recoment"><span class="label label-default">대선후보</span></li>
-			        	<li class="recoment"><span class="label label-primary">생활포인트</span></li>
-			        	<li class="recoment"><span class="label label-success">토론하기</span></li>
-			        	<li class="recoment"><span class="label label-warning">블로거보기</span></li>
+			        	<li class="recoment"><a href="PresidentMember.do" class="label label-default">대선후보</a></li>
+			        	<li class="recoment"><a href="point.do" class="label label-primary">생활포인트</a></li>
+			        	<li class="recoment"><a href="moreCommunityTalk.do" class="label label-success">토론하기</a></li>
+			        	<li class="recoment"><a href="blogerPosting.do" class="label label-warning">블로거보기</a></li>
 			        </ul> 
 	    		</div>
     		</div>
@@ -467,12 +509,12 @@
 			        <label>인기 메뉴</label>
 			        <hr/>
 			        <p id="favoritP">
-			          <span class="label label-default">대선후보</span>
-			          <span class="label label-primary">생활포인트</span>
-			          <span class="label label-success">토론하기</span>
-			          <span class="label label-info">웃긴영상</span>
-			          <span class="label label-warning">게임영상</span>
-			          <span class="label label-danger">고민있어요</span>
+			          <a href="PresidentMember.do" class="label label-default">대선후보</a>
+			          <a href="point.do" class="label label-primary">생활포인트</a>
+			          <a href="moreCommunityTalk.do" class="label label-success">토론하기</a>
+			          <a href="" class="label label-info">웃긴영상</a>
+			          <a href="" class="label label-warning">게임영상</a>
+			          <a href="" class="label label-danger">고민있어요</a>
 			        </p>
 	    		</div>
     		</div>
@@ -487,30 +529,32 @@
 <div class="container">
   <h3 class="text-center">문의하기</h3>
   <div class="jumbotron concatJumbo">	
-	  <div class="row">
-	    <div class="col-md-4">
-	      <p><span class="glyphicon glyphicon-map-marker"></span>Gss : 판교</p>
-	      <p><span class="glyphicon glyphicon-phone"></span>Phone : 010-9590-3710</p>
-	      <p><span class="glyphicon glyphicon-envelope"></span>Email : stpark89@gmail.com</p>
-	    </div>
-	    <div class="col-md-8">
-	      <div class="row">
-	        <div class="col-sm-6 form-group">
-	          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-	        </div>
-	        <div class="col-sm-6 form-group">
-	          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-	        </div>
-	      </div>
-	      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
-	      <br>
-	      <div class="row">
-	        <div class="col-md-12 form-group">
-	          <button class="btn btn-default pull-right" type="submit">문의하기</button>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
+  	 <form action="indexConcat.do" method="POST">
+		  <div class="row">
+		    <div class="col-md-4">
+		      <p><span class="glyphicon glyphicon-map-marker"></span>Gss : 판교</p>
+		      <p><span class="glyphicon glyphicon-phone"></span>Phone : 010-9590-3710</p>
+		      <p><span class="glyphicon glyphicon-envelope"></span>Email : stpark89@gmail.com</p>
+		    </div>
+		    <div class="col-md-8">
+		      <div class="row">
+		        <div class="col-sm-6 form-group">
+		          <input class="form-control" id="name" name="concatName" placeholder="Name" type="text" required>
+		        </div>
+		        <div class="col-sm-6 form-group">
+		          <input class="form-control" id="email" name="concatEmail" placeholder="Email" type="email" required>
+		        </div>
+		      </div>
+		      <textarea class="form-control" id="comments" name="concatComments" placeholder="Comment" rows="5"></textarea>
+		      <br>
+		      <div class="row">
+		        <div class="col-md-12 form-group">
+		          <button class="btn btn-default pull-right" type="submit">문의하기</button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+	  </form>
   </div>
 </div>
     

@@ -14,10 +14,12 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.View;
 
+import kr.or.com.Data.TodayUserDTO;
 import kr.or.com.FreeBoard.FreeBoardDTO;
 import kr.or.com.Member.MemberDTO;
 import kr.or.com.Paliament_DTO.PaliamentList_DTO;
 import kr.or.com.President.PresidentTalk_DTO;
+import kr.or.com.blog.BlogList_DTO;
 import kr.or.com.debate.debateDTO;
 
 @Controller
@@ -86,7 +88,6 @@ public class indexController {
 		List<FreeBoardDTO> jungChi_list = service.selectJungChi();
 		//공지사항
 		List<FreeBoardDTO> notice = service.selectNotice();
-		
 		////////////////////////////////////////////////////////
 		
 		//포인트
@@ -94,6 +95,12 @@ public class indexController {
 		
 		//인기 국회의원 
 		List<PaliamentList_DTO> pal_list = service.selectPaliamentList();
+		
+		//블로거
+		List<BlogList_DTO> bloger_list = service.selectBlogerList();
+		
+		//접속자 확인
+		TodayUserDTO todayUser_dto = service.selectTodayUserDTO();
 		
 		model.addAttribute("president_list", president_list);
 		model.addAttribute("debate_list", debate_list);
@@ -105,12 +112,34 @@ public class indexController {
 		model.addAttribute("point_list", point_list);
 		//인기 국회의원
 		model.addAttribute("pal_list", pal_list);
-		
+		//블로거
+		model.addAttribute("bloger_list", bloger_list);
+		//접속자
+		model.addAttribute("todayUser_dto",todayUser_dto);
 		return "index";
 	}
 	
+	@RequestMapping(value="/indexConcat.do", method=RequestMethod.POST)
+	public String indexConcat(ConcatDTO dto,Model model){
+		System.out.println("확인좀 해볼께요 : "+dto.toString());
+		
+		String msg,link = "";
+		
+		int result = service.insertConCat(dto);
+		if(result > 0){
+			msg = "문의하기 성공!";
+			link = "index.do";
+		}else{
+			msg = "잠시후 다시 이용해주세요";
+			link = "index.do";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("link", link);
+		return "dbResult";
+	}
 	
-
+	
 	//페이지 소개
 	@RequestMapping("/explanation.do")
 	public String explanation(){
