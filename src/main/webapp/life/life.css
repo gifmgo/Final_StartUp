@@ -2,6 +2,11 @@
 /* CSS Document */
 
 /* 최신글 5개 목록 */
+
+h3{
+	text-align: center;
+}
+
 .boardBox{
 	position:relative;
 	padding: 15px;
@@ -26,6 +31,8 @@
 .boardBox .more{
 	position: absolute;
 	right: 10px;
+	color:#333;
+	text-decoration: none;
 }
 .boardBox ul li {
 	position: relative;
