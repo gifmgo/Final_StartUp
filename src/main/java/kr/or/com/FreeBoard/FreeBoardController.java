@@ -43,7 +43,6 @@ public class FreeBoardController {
 		Converter cvt = new Converter();
 		category= cvt.engToKor(category);
 		
-		System.out.println(category);
 		if(category == null || category.trim().equals("")){
 			category = "자유게시판"; 			// default 10건씩 
         }else{
@@ -51,8 +50,12 @@ public class FreeBoardController {
         	}else if(category.equals("오늘의 이슈")){
         	}else if(category.equals("정치게시판")){
         	}else if(category.equals("공지사항")){
+//        	life
+        	}else if(category.equals("일상")){
+        	}else if(category.equals("연예")){
+        	}else if(category.equals("고민")){
+        	}else if(category.equals("영상")){
         	}else{
-        		category="자유게시판";
         		return null;
         	}
         }
@@ -76,12 +79,11 @@ public class FreeBoardController {
 		if(q != null && !q.equals("")){
 			query = q;
 		}
-        
+		
 		totalcount = free_Service.boardCount(field, query, category);
 		
         int pgsize = Integer.parseInt(pagesize);  		// 10
         int cpage = Integer.parseInt(currentpage);     //1
-                               
         
         if(totalcount % pgsize==0){        //전체 건수 , pagesize 
             pagecount = totalcount/pgsize;
@@ -107,7 +109,6 @@ public class FreeBoardController {
 			model.addAttribute("pgsize", pgsize);
 			model.addAttribute("pagecount", pagecount);
 			model.addAttribute("totalcount", totalcount);
-			
 		}
 
 		return "board.boardIndex";
@@ -177,7 +178,6 @@ public class FreeBoardController {
 			}else{
 				String fileName = file.getOriginalFilename();
 				String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
-				
 				
 				@SuppressWarnings("deprecation")
 				String path = request.getRealPath("/upload/"+dto.getId());

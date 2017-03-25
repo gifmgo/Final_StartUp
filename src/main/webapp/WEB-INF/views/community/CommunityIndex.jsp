@@ -30,7 +30,7 @@
                <h1 class="dashH">자유게시판<span onclick="location.href='board.do?category=free'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
                <hr class="titleHr"/>
                <ul class="dashList">
-               		<c:forEach var="list" items="${free}">
+               		<c:forEach var="list" items="${free}">	
 					<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 						<div>
 							<p class="dashtitle">${list.title}</p>
@@ -53,6 +53,14 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
+<<<<<<< HEAD
+							<%-- <c:set var="str1" value="${list.content }"/>
+							<c:set var="str2" value='src="upload/' />
+ 							<c:if test="${ fn:contains(str1, str2) }">
+								<i class="fa fa-picture-o" aria-hidden="true"></i>
+							</c:if> --%>
+=======
+>>>>>>> 15f5e2e92cd7094a74584bfbfe3d161db0716022
 						</div>
 					</li>
 					</c:forEach>

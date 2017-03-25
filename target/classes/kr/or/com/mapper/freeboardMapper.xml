@@ -29,6 +29,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rownum &lt;= ${param2}
 	</select>
 	
+	<!-- 최신글에서  -> 나중에 베스트 리스트 뽑기 -->
+	<select id="bestLife" resultType="kr.or.com.FreeBoard.FreeBoardDTO">
+		select no, category, title, content, writer, id, to_char(regdate+1,'YYYYMMDDHH24MI') as regdatePO, to_char(regdate,'YYYY/MM/DD HH24:MI') as regdate, filename, good, viewcnt
+		from (select rownum rn, no, category, title, content, writer, id, regdate, filename, good, viewcnt
+		      from tbl_board
+		      where category in ('일상','영상','고민','연예')
+		      order by no desc)
+		where rn between #{param1} and #{param2}
+	</select>
+	
 	<!-- 총게시글수 -->
 	<select id="boardCount" resultType="int">
 		select count(*) from tbl_board

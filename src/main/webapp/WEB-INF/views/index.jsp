@@ -127,15 +127,30 @@
        <div></div>
     </section>
     <br/><br/>
-<div class="container text-center">
+<div class="container">
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="jumbotron customJumboTron">
-				<div class="center-block" style="width:80px;">
-			  		<img class="img-responsive" src="img/logo2.png" id="logo" style="width:80px;">
-	    		</div>
-				<h3>어서오세요 생활정치입니다.</h3><br/>
-				<label>다양한 컨텐츠를 즐겨보세요 !</label>
+				
+				<div class="left_jumbotron">
+					<div class="center_block">
+			  			<img class="img-responsive" src="img/logo2.png" id="logo" style="height:200px;">
+	    			</div>
+	    			<div class="title_text">
+		    			<h3 style="margin-bottom:30px;font-weight:bold;">어서오세요 생활정치입니다.</h3>
+						<p><i class="fa fa-check" style="font-size:20px"></i> 정치 관련 이야기는  <span class="btn btn-info ">정치 이야기</span></p>
+						<p><i class="fa fa-check" style="font-size:20px"></i> 일상, 웃긴 이야기는   <span class="btn btn-info ">생활 이야기</span></p>
+	    			</div>
+					
+				</div>
+				<div class="right_jumbotron text-center">
+					<div class="well indexWell2 indexwell_top">
+					 	<p style="font-weight:bold;font-size:25px;"><i class="fa fa-thumbs-o-up" style="font-size:30px"></i> <label style="vertical-align:middle;">접속자 현황</label></p>
+					 	<hr class="customHr_two"/>
+			          	<p style="font-size:20px !important;">오늘 접속자 : <span style="color:#f44336;">${todayUser_dto.todayTotalUser}</span> 명</p>
+			          	<p style="font-size:20px !important;">누적 접속 : <span style="color:#4CAF50;">${todayUser_dto.totalUser}</span> 명</p>
+			        </div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -388,38 +403,30 @@
 							    </div>
 					        </div>
 					        
-					          <div class="col-sm-3">
-									<div class="alert alert-info fade in">							
+				          	<div class="col-sm-6">
+								<div class="alert alert-info fade in">							
 							        <p><strong>기재중인 블로거</strong></p>
-							        <div class="well indexWell2">
+							        <div class="well indexWell2 bloger">
 							          <c:choose>
 							          	  <c:when test="${bloger_list != null}">
 							          			<c:forEach var="bloger_list" items="${bloger_list}" varStatus="Paliament">
-						          				<p>
-						          				<span class="pull-left"><img src="blog/${bloger_list.bloger_img}" alt="${bloger_list.bloger_id} 님" class="img-circle" width="30px;" height="30px;"/></span>
-						          				<span class="pull-right"><a href="${bloger_list.bloger_mainUrl }" target="_blank">${bloger_list.bloger_id} 님</a></span>
-							          			</p>
-							          			<br/><br/>
+							          				<p>
+								          				<img src="blog/${bloger_list.bloger_img}" alt="${bloger_list.bloger_id} 님" class="img-circle" width="30px;" height="30px;"/>
+								          				<a href="${bloger_list.bloger_mainUrl }" target="_blank">${bloger_list.bloger_id} 님</a>
+								          			</p>
+								          			
 							          			</c:forEach>	  
 							          	  </c:when>
 							          	  <c:otherwise>
 							          	  	<p>죄송합니다. 잠시후 다시 이용해주세요</p>
 							          	  </c:otherwise>
 							          </c:choose>
+							          <div style="clear:both;"></div>
 							    	</div>
 							    </div>
 					        </div>
 					        
-					          <div class="col-sm-3">
-								<div class="alert alert-info fade in">
-							        <p><strong>접속자 현황</strong></p>
-							        <div class="well indexWell2">
-							          	<p>오늘 접속자 : ${todayUser_dto.todayTotalUser}</p>
-							          	<p>누적 접속 : ${todayUser_dto.totalUser}</p>
-							        </div>
-							    </div>
-					        </div>
-					        
+					         
 			      		</div>
 		      		</div>
 			  </div>

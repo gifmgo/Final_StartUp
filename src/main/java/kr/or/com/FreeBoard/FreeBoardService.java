@@ -23,6 +23,17 @@ public class FreeBoardService {
 		List<FreeBoardDTO> list = dao.selectBestBoard(category,number);
 		return list;
 	}
+	
+	//life 베스트 리스트 뿌려주는 메서드
+	public List<FreeBoardDTO> bestLife(int cpage, int pgsize){
+		int start = cpage * pgsize - (pgsize - 1);
+		int end = cpage * pgsize;
+
+		FreeBoardDAO dao = sqlSession.getMapper(FreeBoardDAO.class);
+		List<FreeBoardDTO> list = dao.bestLife(start,end);
+		
+		return list;
+	}
 
 	//자유게시판 글쓰기
 	public int writeBoard(FreeBoardDTO dto){
