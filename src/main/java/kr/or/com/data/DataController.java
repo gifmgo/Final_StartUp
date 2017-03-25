@@ -23,7 +23,7 @@ public class DataController {
 	@Autowired
 	private View jsonView;
 	
-	// 게시판 커뮤니티 메인 페이지
+	/*// 게시판 커뮤니티 메인 페이지
 	@RequestMapping("/CommunityIndex.do")
 	public String Community(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -38,5 +38,5 @@ public class DataController {
 
 		return "community.CommunityIndex";
 	}
-	
+	*/
 }
