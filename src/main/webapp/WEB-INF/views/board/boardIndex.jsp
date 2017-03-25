@@ -108,7 +108,7 @@
                     	<c:if test="${id != null}">
                     		<c:choose>
                     		<c:when test='${title == "공지사항" }'>
-                    			<c:if test='${id == "admin@admin.com"}'> <!-- 운영자일때 -->
+                    			<c:if test='${admin == "superAdmin"}'> <!-- 운영자일때 -->
 	                        		<button onclick="writeContentView()">글쓰기</button>
 	                        	</c:if>
 	                        </c:when>

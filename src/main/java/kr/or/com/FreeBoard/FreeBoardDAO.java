@@ -2,10 +2,15 @@ package kr.or.com.FreeBoard;
 
 import java.util.List;
 
+import kr.or.com.blog.BlogList_DTO;
+
 public interface FreeBoardDAO {
 	
 	//베스트 글 뽑기
 	public List<FreeBoardDTO> selectBestBoard(String category, int num);
+
+	//생활부분 베스트
+	public List<FreeBoardDTO> bestLife(int start, int end);
 	
 	//자유게시판 list 불러오기
 	public List<FreeBoardDTO> selectAllFreeBoard(String field, String query, String category,int start, int end);
@@ -48,4 +53,7 @@ public interface FreeBoardDAO {
 	
 	//관심사 뽑아오기
 	public String selectFavorit(String id);
+	
+	//커뮤니티 >> 블로거 정보 뽑아오기
+	public List<BlogList_DTO> selectBloger();
 }

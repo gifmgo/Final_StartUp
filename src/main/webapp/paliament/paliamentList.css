@@ -1,0 +1,152 @@
+@CHARSET "UTF-8";
+
+/* 도표 */
+#info {
+   width:100%;
+   height:500px;
+   background-color:#ccc;   
+}
+
+#piechart {
+   position:relative;
+   width:100%;
+   height:500px;
+}
+
+
+.customWell1{
+   background-color: #27ae60 !important;
+}
+
+.customWell2{
+	background-color: #2980b9 !important;
+}
+
+.customWell3{
+	background-color: #3498db !important;
+}
+
+.customWell4{
+	background-color: #e74c3c !important;
+}
+
+.customWell5{
+	background-color: #f1c40f !important;
+}
+
+.customWell6{
+	background-color: #95a5a6 !important;
+}
+
+.listRow{
+  margin-top: 3%;
+  min-height : 400px;
+}
+ 
+.customP{
+	font-size : 32px !important;
+}
+
+.nameJung{
+	font-size : 20px !important;
+	margin-top : 5%;
+}
+
+@media only screen and (max-width:990px) {
+   
+   #piechart {
+      left:10%;
+   }
+}
+
+
+/* 댓글 */
+.container{
+	margin-top:20px !important;
+}
+
+.recent ul li{
+	display: inline-block;
+	width: 100%;
+	margin-top: 5px;
+	padding: 3px;
+	padding-left: 20px;
+}
+
+.recent #dashBoardTalkBtn{
+	position: absolute;
+	right: 0;
+	padding: 10px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.recent ul li> div{
+	float:left;
+}
+.recent .inf{
+	padding : 0;
+}
+
+.recent .pal-click{
+	cursor: pointer;
+}
+
+.recent .comment{
+	padding: 0;
+}
+
+.recent .pal-img{
+	display:inline-block;
+	width:40px;
+	height: 60px;
+	margin: 0 0 0 5px;
+}
+
+.recent .orignm{
+	padding:0;
+}
+
+.recent .orignm > span{
+	display: inline-block;
+	text-align: center;
+	width:100px;
+	padding-top:10px;
+}
+
+
+.recent a{
+	color: #000;
+}
+
+.recent .pal-title{
+	text-align: left;
+	font-size: 15px;
+	margin: 5px 0;
+}
+.recent .pal-p{
+	text-align: left;
+	word-break:break-all;
+	word-wrap:break-word;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.displayNone{
+	display: none !important;
+}
+
+.widthauto{
+	width: auto !important;
+}
+
+.pheight{
+	height: auto;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
+.form-group{
+	padding: 0 10px;
+}

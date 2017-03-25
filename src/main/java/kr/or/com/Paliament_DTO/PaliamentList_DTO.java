@@ -24,8 +24,8 @@ public class PaliamentList_DTO {
    private String assemEmail;
    private String assemHomep;
    private String assemTel;
-   
-   
+   private int point;
+   private int pointCount;
      
    public PaliamentList_DTO() {
    }
@@ -33,7 +33,7 @@ public class PaliamentList_DTO {
 
 
    //처음 리스트 뿌릴때 
-   public PaliamentList_DTO(String deptCd, String num2, String jpgLink, String empNm, String origNm, String reeleGbnNm, String polyNm) {
+   public PaliamentList_DTO(String deptCd, String num2, String jpgLink, String empNm, String origNm, String reeleGbnNm, String polyNm, int point, int pointCount) {
       this.deptCd = deptCd;
       this.num2 = num2;
       this.jpgLink = jpgLink;
@@ -41,9 +41,11 @@ public class PaliamentList_DTO {
       this.origNm = origNm;
       this.reeleGbnNm = reeleGbnNm;
       this.polyNm = polyNm;
+      this.point = point;
+      this.pointCount = pointCount;
    } 
     
-    
+   
     
    public PaliamentList_DTO(String deptCd, String num2, String jpgLink, String empNm, String origNm, String reeleGbnNm) {
       this.deptCd = deptCd;
@@ -118,7 +120,19 @@ public class PaliamentList_DTO {
 
 
 
-   public String getOrigNm() {
+   public int getPoint() {
+	return point;
+}
+
+
+
+public void setPoint(int point) {
+	this.point = point;
+}
+
+
+
+public String getOrigNm() {
       return origNm;
    }
 
@@ -212,12 +226,27 @@ public class PaliamentList_DTO {
       this.assemTel = assemTel;
    }
 
-   @Override
-   public String toString() {
-      return "PaliamentList_DTO [deptCd=" + deptCd + ", num2=" + num2 + ", jpgLink=" + jpgLink + ", empNm=" + empNm
-            + ", origNm=" + origNm + ", reeleGbnNm=" + reeleGbnNm + ", memTitle=" + memTitle + ", polyNm=" + polyNm
-            + ", shrtNm=" + shrtNm + ", assemEmail=" + assemEmail + ", assemHomep=" + assemHomep + ", assemTel="
-            + assemTel + "]";
-   }
-      
+	public int getPointCount() {
+		return pointCount;
+	}
+	
+	
+	
+	public void setPointCount(int pointCount) {
+		this.pointCount = pointCount;
+	}
+	
+	
+
+@Override
+public String toString() {
+	return "PaliamentList_DTO [deptCd=" + deptCd + ", num2=" + num2 + ", jpgLink=" + jpgLink + ", empNm=" + empNm
+			+ ", origNm=" + origNm + ", reeleGbnNm=" + reeleGbnNm + ", memTitle=" + memTitle + ", polyNm=" + polyNm
+			+ ", shrtNm=" + shrtNm + ", assemEmail=" + assemEmail + ", assemHomep=" + assemHomep + ", assemTel="
+			+ assemTel + ", point=" + point + ", pointCount=" + pointCount + "]";
+}
+
+   
+   
+   
 }

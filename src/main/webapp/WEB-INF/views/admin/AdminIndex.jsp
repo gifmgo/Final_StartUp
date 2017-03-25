@@ -44,7 +44,40 @@
 	                <button class="btn btn-primary btn-large btn-block">메뉴보기</button>
 	              </div>
 	            </div>
+
     		</div>
     	</div>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+           	  <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+	              <div class="tile">
+	              	<span class="fui-gear" style="font-size: 60px;"></span>
+	                <h3 class="tile-title">접속자 수</h3>
+	                <p></p>
+	              	<button class="btn btn-primary btn-large btn-block" onclick="UserCount();">메뉴보기</button>
+	              </div>
+	          </div>
+	          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+	              <div class="tile">
+	              	<span class="fui-new" style="font-size: 60px;"></span>
+	                <h3 class="tile-title">포인트 메뉴</h3>
+	                <p></p>
+	              	<button class="btn btn-primary btn-large btn-block" onclick="PointQuiz();">메뉴보기</button>
+	              </div>
+	          </div>
+	          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+	              <div class="tile">
+	              	<span class="fui-twitter" style="font-size: 60px;"></span>
+	                <h3 class="tile-title">블로거 확인</h3>
+	                <p></p>
+	              	<button class="btn btn-primary btn-large btn-block" onclick="Bloger();">메뉴보기</button>
+	              </div>
+	          </div>
+	 		</div>
+	 	</div>
     </div>
 </div>

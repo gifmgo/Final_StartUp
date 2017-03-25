@@ -20,7 +20,7 @@ public class StatuteController {
 	
 	@RequestMapping("/statute.do")
 	public String statute(){
-		System.out.println("법률");
+		//System.out.println("법률");
 		return "statute.statute";
 	}
 	
@@ -31,18 +31,18 @@ public class StatuteController {
         try{ 
         SAXBuilder builder = new SAXBuilder(); 
         //url에 xml이 있는경우
-        Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentPasageList?numOfRows=15&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
+        Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentPasageList?numOfRows=50&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
         
         //response 
         Element root= jdomdoc.getRootElement();
-        System.out.println("처음 : "+root.getName());
+        //System.out.println("처음 : "+root.getName());
         
         Element second =root.getChild("body");
-        System.out.println("두번째 : "+second.getName());
+        //System.out.println("두번째 : "+second.getName());
         Element third = second.getChild("items");
         
         List<Element> items =	third.getChildren("item");
-        System.out.println("세번째 : "+items.size() + " /  제발 ? : "+items.toString());
+        //System.out.println("세번째 : "+items.size() + " /  제발 ? : "+items.toString());
         
    
         for(int i=0;i<items.size(); i++){
@@ -72,7 +72,7 @@ public class StatuteController {
         try{ 
         SAXBuilder builder = new SAXBuilder(); 
         //url에 xml이 있는경우
-        Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentRceptList?numOfRows=15&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
+        Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentRceptList?numOfRows=50&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
         
         //response 
         Element root= jdomdoc.getRootElement();
@@ -103,7 +103,7 @@ public class StatuteController {
         }catch(Exception e){
             e.printStackTrace();
          }
-        System.out.println(" 마지막 =============: "+dto_list.toString());
+        System.out.println(" 마지막 최근 접수의안=============: "+dto_list.toString());
 		model.addAttribute("statutelist", dto_list);
 		
 		return jsonview;
@@ -118,7 +118,7 @@ public View getJsictionComiteProcessList(Model model){
     try{ 
     SAXBuilder builder = new SAXBuilder(); 
     //url에 xml이 있는경우
-    Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getJsictionComiteProcessList?numOfRows=15&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
+    Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getJsictionComiteProcessList?numOfRows=50&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
     
     //response 
     Element root= jdomdoc.getRootElement();
@@ -144,7 +144,7 @@ public View getJsictionComiteProcessList(Model model){
     }catch(Exception e){
         e.printStackTrace();
      }
-   
+    System.out.println("  처리의안 =============: "+dto_list.toString());
 	model.addAttribute("statutelist", dto_list);
 	return jsonview;
  }
@@ -157,7 +157,7 @@ List<statuteDTO> dto_list = new ArrayList<statuteDTO>();
   try{ 
   SAXBuilder builder = new SAXBuilder(); 
   //url에 xml이 있는경우
-  Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentMoorList?numOfRows=15&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
+  Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentMoorList?numOfRows=50&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
   
   //response 
   Element root= jdomdoc.getRootElement();
@@ -173,7 +173,7 @@ List<statuteDTO> dto_list = new ArrayList<statuteDTO>();
   	 String committeeName="";
   	
        if(person_E.getChild("committeeName")==null){
-       	committeeName= "";
+       	committeeName= " ";
        }else{
        	committeeName=person_E.getChild("committeeName").getValue();
        }
@@ -185,7 +185,7 @@ List<statuteDTO> dto_list = new ArrayList<statuteDTO>();
   }catch(Exception e){
       e.printStackTrace();
    }
- 
+  	System.out.println(" 계류의안: "+dto_list.toString());
 	model.addAttribute("statutelist", dto_list);
 	return jsonview;
 }

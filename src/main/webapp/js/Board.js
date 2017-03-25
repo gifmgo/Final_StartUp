@@ -3,7 +3,9 @@ $(document).ready(function(e) {
 	$("#pagesize").change(function(){
 		var pagesize = ($(this).val()).substring(0,2);
 		var category = $('#category').text();
-		location.href='board.do?category='+category+'&currentpage=1&pagesize='+pagesize;
+		var url = 'board.do?category='+category+'&currentpage=1&pagesize='+pagesize;
+		url = encodeURI(url);
+		location.href = url;
 	});
 	
 	//댓글 쓰기 관련
@@ -167,6 +169,9 @@ function contentDel(){
 	if(confirm('삭제하시겠습니까?')){
 		var no = $("#contentNo").val();
 		var category = $('#category').text();
+		
+		category=encodeURIComponent(category);
+		
 		$.ajax({
 			url: 'removeContent.do?no='+no+'&category='+category,
 			success : function(data){
@@ -183,6 +188,7 @@ function contentDel(){
 		});
 	}
 }
+
 
 //글 수정 뷰
 function contentModView(){

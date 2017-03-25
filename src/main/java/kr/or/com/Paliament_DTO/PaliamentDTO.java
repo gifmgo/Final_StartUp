@@ -16,6 +16,10 @@ public class PaliamentDTO {
 	//선거구
 	private String origNm;
 	
+	private int point;
+	
+	private int pointcount;
+	
 	public String getEmpNm() {
 		return empNm;
 	}
@@ -50,6 +54,18 @@ public class PaliamentDTO {
 	public String toString() {
 		return "PaliamentDTO [empNm=" + empNm + ", polyNm=" + polyNm + ", sharNm=" + sharNm + ", reeleGbnNm="
 				+ reeleGbnNm + ", origNm=" + origNm + "]";
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public int getPointcount() {
+		return pointcount;
+	}
+	public void setPointcount(int pointcount) {
+		this.pointcount = pointcount;
 	}
 	
 	

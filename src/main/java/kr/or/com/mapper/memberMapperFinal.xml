@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="kr.or.com.Member.MemberDAO">
     
  	 <select id="login" resultType="kr.or.com.Member.MemberDTO" parameterType="kr.or.com.Member.MemberDTO">
- 		select id, pw, nickName from member where id = #{id}
+ 		select id, pw, nickName, point from member where id = #{id}
  	</select>
  	
  	
@@ -45,4 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where id = #{id}
  	</update>
  	
+ 	<!-- 밴유저 리스트 읽어오는것 -->
+ 	<select id="banUser" resultType="kr.or.com.admin.BanUserDTO">
+ 		select banUserId from banuser where banUserId = #{id}
+ 	</select>
+ 	
+ 	<!-- 밴유저가 메일 보내기  -->
+ 	<insert id="banUserMail" parameterType="kr.or.com.admin.banUserMailDTO">
+ 		insert into banUserMail(banUserMailSeq, banUserId,realId,banContent,mailDay) values(banUserMailSeq.nextval, #{banUserId}, #{realId}, #{banContent}, sysdate)
+ 	</insert>
 </mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.or.com.President.PresidentDAO">
+
+	<select id="list" resultType="kr.or.com.President.PresidentDTO">
+		select * from tbl_president
+	</select>
+	
+	<!-- 대선주자 지지율 퍼센트 뽑기 -->
+	<select id="poll" resultType="kr.or.com.President.PresidentDTO">
+		select name, jungdang, pools from tbl_president order by pools desc
+	</select>
+	
+	<!-- 대선주자 임시 투표 >> 대선주자 리스트 뿌려줌  -->
+	<select id="vote" resultType="kr.or.com.President.PresidentDTO">
+		select name, jungdang from tbl_president
+	</select>
+	
+	<!-- 투표 했는지 체크하는 부분 -->
+	<select id="checkVote" resultType="kr.or.com.President.PresidentVote_DTO">
+		select id from tbl_vote where id = #{id}
+	</select>
+	
+	<!-- 투표하기 -->
+	<insert id="updateVote" parameterType="kr.or.com.President.PresidentVote_DTO">
+		insert into tbl_vote values(#{id},#{president}, 1)
+	</insert>
+	
+	<!-- 임시 투표하기 -->
+	<select id="voteDetail" resultType="kr.or.com.President.PresidentDTO">
+		select distinct p.name,p.jungdang,count(v.presidentCount) as presidentCount
+		from tbl_president p, tbl_vote v
+		WHERE p.NAME = v.president
+		group by p.name, v.presidentCount, p.jungdang
+		order by presidentCount desc
+	</select>
+	
+	<!-- 대선 토크 >> 후보 리스트 드래그앤 드랍 버튼 뿌려주기 -->
+	<select id="presidentTalk" resultType="kr.or.com.President.PresidentDTO">
+		select name, jungdang from tbl_president
+	</select>
+	
+	<!-- 대선 토크 유저들이 쓴 글 뿌려주기 -->
+	<select id="selectPresidentTalk_list" resultType="kr.or.com.President.PresidentTalk_DTO">
+		<![CDATA[
+		select PresidentTalk_seq, empNm, polyNm, color, nickName, title, comments, to_char(writeDate, 'YYYY/MM/DD') as writeDate, pw, loginPw, rownum 
+		from tbl_presidentTalk 
+		where rownum <= #{count}
+		order by PresidentTalk_seq desc
+		]]>
+	</select>
+	
+	<!-- 대선토크 더보기 버튼 클릭시 -->
+	<select id="selectPresidentTalk_list2" parameterType="kr.or.com.President.PresidentTalk_PagingDTO" resultType="kr.or.com.President.PresidentTalk_DTO">
+		select PresidentTalk_seq, empNm, polyNm, color, nickName, title, comments, to_char(writeDate, 'YYYY/MM/DD') as writeDate, pw, loginPw, rownum 
+		from tbl_presidentTalk 
+		where presidenttalk_seq between #{count} and #{count2}
+    	order by PresidentTalk_seq desc
+	</select>
+	
+	<!-- 비회원 대선토크 글쓰기 -->
+	<insert id="notLoginUserTalk" parameterType="kr.or.com.President.PresidentTalk_DTO">
+		insert into tbl_PresidentTalk (PresidentTalk_seq, empNm, polyNm, color, nickName, title, comments,writeDate,pw) values(PresidentTalk_seq.nextval, #{empNm}, #{polyNm}, #{color}, #{nickName}, #{title}, #{comments},sysdate,#{pw}) 
+	</insert>
+	
+	<!-- 회원 대선토크 글쓰기 -->
+	<insert id="loginUserTalk" parameterType="kr.or.com.President.PresidentTalk_DTO">
+		insert into tbl_PresidentTalk (PresidentTalk_seq, empNm, polyNm, color, nickName, title, comments,writeDate,loginPw) values(PresidentTalk_seq.nextval, #{empNm}, #{polyNm}, #{color}, #{nickName}, #{title}, #{comments},sysdate,#{loginPw})
+	</insert>
+	
+	<!-- 삭제 아이콘 클릭시 -->
+	<select id="selectPresidentTalk" resultType="kr.or.com.President.PresidentTalk_DTO">
+		select * from tbl_presidentTalk where PresidentTalk_seq = #{presidentTalk_seq} 
+	</select>
+	
+	<!-- 실제 데이터 삭제 >> 비회원 삭제버튼(모달에서) 클릭시  -->
+	<delete id="deletePresidentTalk">
+		delete tbl_presidentTalk where PresidentTalk_seq=#{presidentTalk_seq}
+	</delete>
+		
+</mapper>

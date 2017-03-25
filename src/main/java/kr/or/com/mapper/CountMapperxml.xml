@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.com.Data.TodayUserDAO">
+	<select id="todayList" resultType="kr.or.com.Data.TodayUserDTO">
+		select no, adate, todaytotaluser, totaluser from todayuser order by no desc
+	</select>
+
+	<select id="selectTodayUser" parameterType="kr.or.com.Data.TodayUserDTO" resultType="kr.or.com.Data.TodayUserDTO">
+		select no, adate, todaytotaluser, totaluser from todayuser where adate = #{adate}
+	</select>
+	
+	<select id="lastTodayUserNo" resultType="kr.or.com.Data.TodayUserDTO">
+		select no, adate, todaytotaluser, totaluser from (select * from todayuser order by adate desc) where rownum = 1
+	</select>
+	
+	<insert id="insertTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
+		insert into todayuser(no, adate, todaytotaluser, totaluser) 
+		values(todayuser_seq.nextval, #{adate}, 1, (select totaluser from todayuser where no=(select no from (select no from todayuser order by adate desc) where rownum = 1))+1)
+	</insert>
+	
+	<update id="updateTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
+		update todayuser 
+		set todayTotalUser= NVL(todayTotalUser, 0)+1 
+		where adate = #{adate}
+	</update>
+
+	<update id="updateTotalUser" parameterType="kr.or.com.Data.TodayUserDTO">
+		update todayuser 
+		set totalUser= NVL(totalUser, 0)+1
+		where adate = #{adate}
+	</update>
+	
+	<delete id="deleteTodayUser" parameterType="kr.or.com.Data.TodayUserDTO">
+		delete todayuser where adate = #{adate}
+	</delete>
+
+</mapper>	

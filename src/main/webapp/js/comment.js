@@ -1,14 +1,13 @@
 $(document).ready(function(e) {
 	//댓글 쓰기 관련
-	$("#talkWrite").hide();
 	$(".double_comm").hide();
-	$("#commButton").click(function() {
-		if($(this).attr("data-id")==null || $(this).attr("data-id")==""){
+	$("#talkWrite > textarea").focus(function() {
+		if($("#commButton").attr("data-id")==null || $("#commButton").attr("data-id")==""){
 			//로그인 연결
-			$("#s_loginDiv").click();
+			location.href="LoginP.do";
 		}else{
-			$("#talkWrite").show();
-		}	
+			
+		}
 	});
 	
 	//답글 펼치기
@@ -38,7 +37,7 @@ $(document).ready(function(e) {
 		li.append(div);
 	});
 	
-	//답글 수정 뷰
+	//답글 수정
 	$("#commList").on("click",".commmodButton",function(){
 		var dept_cd = $("#detailHiden_dept_cd").val();
 		var img = $("#detail_img").val();

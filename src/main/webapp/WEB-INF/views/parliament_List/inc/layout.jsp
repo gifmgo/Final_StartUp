@@ -7,54 +7,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="css/core2.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="paliament/paliament_final_header0130.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="paliament/custom.css">
+<link rel="stylesheet" type="text/css" href="css/header.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
+<script src="js/main_header.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="css/main_header_modify0213.js"></script>
 <title>의원정보</title>
-<style>
-   #info {
-      width:100%;
-      height:500px;
-      background-color:#ccc;   
-   }
-   
-   #piechart {
-      position:relative;
-      width:100%;
-      height:500px;
-   }
-   
-   
-   @media only screen and (max-width:990px) {
-      
-      #piechart {
-         
-         left:10%;
-      }
-   }
-   
-</style>
+
 </head>
 <body>
-   <div id="loading_form">
-        <div id="loading"></div>
-        <p>Loading...</p>  
-    </div> 
-   
+
    <!-- Header -->
    <tiles:insertAttribute name="header" />
    
    <!-- Main Wrapper -->
    <tiles:insertAttribute name="content" />
    
-<!--풋터-->
+	<!--풋터-->
    <tiles:insertAttribute name="footer" />
 
 <script>
@@ -114,14 +94,23 @@
       searchDiv += '</div>';
       return searchDiv;
    }
+   	
+    //UTF-8 변경
+    function encodeUTF8(str){
+     return encodeURIComponent(str);
+	}
+
    
-   
-   //국회의원 상세보기
+    //국회의원 상세보기
     function detailPaliament($obj){
       var img = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().children().attr("src");
+      img = encodeUTF8(img);
       var num = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      num = encodeUTF8(num);
       var deptCd = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      deptCd = encodeUTF8(deptCd);
       var name = $($obj).prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().prev().attr("id");
+      name = encodeUTF8(name);
       location.href="PaliamentDetail.do?num="+num+"&dept_cd="+deptCd+"&img="+img+"&name="+name;
    }
 
@@ -395,7 +384,7 @@
         	    	   wellColor = '#01B1EC';
         	    	   ba += 1;
         	    	   break;
-           case '새누리당': 
+           case '자유한국당': 
                       wellColor = '#dc5356';
                        sae += 1;
                        break;
@@ -429,7 +418,7 @@
          case '바른정당':
          			 wellColor = '#01B1EC';
          			 break;
-         case '새누리당': 
+         case '자유한국당': 
                      wellColor = '#dc5356';
                      break;
          case '정의당': 
@@ -474,17 +463,14 @@
                PaliamentArray.push(new PaliamentDTO(obj.empNm,obj.deptCd,obj.num2,obj.polyNm, obj.jpgLink, obj.origNm, obj.reeleGbnNm));
             });
             
-            $('#resultDiv').html(PaliamentDiv);
+            //$('#resultDiv').html(PaliamentDiv);
             google.charts.load('current', {'packages':['corechart']});
              google.charts.setOnLoadCallback(drawChart);
              
          },beforeSend:function(){
-            $('#loading_form').css("display","block");
          },complete:function(){
-            $('#loading_form').css("display","none");
          },timeout : 100000
       });
-      
       
       //의원 검색 클릭시
       $("#searchBtn").click(function() {
@@ -492,14 +478,65 @@
          //국회의원 객체                이미지   이름       정당          지역구    당선횟수
          //  empnm,deptCd,num, img, name, jungDang, orignm, reelegbnnm
          
-         //이름
          var empNm = $('#empNm').val();
-         //정당
          var polyNm =$('#polyNm').val();
-         
-         //지역구 
          var orignm = $('#orignm').val();
-         
+
+         $.ajax({
+            url:"selectPaliament.do",
+            data:{
+            	empnm: $('#empNm').val(),
+            	polyNm:$('#polyNm').val(),
+            	orignm: $('#orignm').val()
+            },
+            success : function(data){   
+               var PaliamentDiv = '';
+               $('#resultDiv').empty();
+               $(data).each(function(index,item){
+            	   with(item){
+            		   if(size==0){
+            			   PaliamentDiv += '<div class="col-md-offset-4 col-md-4">';
+            			   PaliamentDiv += '<div class="well customWell text-center">';
+            			   PaliamentDiv += '<span class="text-center"><i class="fa fa-meh-o" style="font-size:48px;color:red"></i></span><br/><br/>';
+            			   PaliamentDiv += '<p>검색한 의원이 없습니다.</p>';
+            			   PaliamentDiv += '</div>';
+            			   PaliamentDiv += '</div>';
+            			   $('#resultDiv').html(PaliamentDiv);
+            			   return false;
+            		   }
+            	   }
+               });
+               //var resultJung = jungDang2(data.xml);
+               //xml 데이터 담겨져있음\
+               $.each(data.xml, function(index, obj){
+                  var wellColor = f_wellColor(obj.polyNm);      
+                  PaliamentDiv += '<div class="col-sm-3">';
+                  PaliamentDiv += '<div class="well text-center" style="background-color:white; border-top:10px solid '+wellColor+'">';
+                  PaliamentDiv += '<input type="hidden" id='+obj.empNm+'>';
+                  PaliamentDiv += '<input type="hidden" id='+obj.deptCd+'>';
+                  PaliamentDiv += '<input type="hidden" id='+obj.num2+'>';
+                  PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+'></span><br/><br/>';
+                  PaliamentDiv += '<span>이름 : '+obj.empNm+'</span><br/>';
+                  PaliamentDiv += '<span>정당 : '+obj.polyNm+'</span><br/>';
+                  if(obj.origNm != '비례대표'){
+               	   var origNm = obj.origNm.substring(0,6);
+               	   PaliamentDiv += '<span>지역구 : '+origNm+'</span><br/>';   
+                  }else{
+               	   PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
+                  }
+                  /* PaliamentDiv += '<span>생활 포인트 : '+obj.point+'</span><br/><br/>'; */
+                  PaliamentDiv += '<span>당선 회수 : '+obj.reeleGbnNm+'</span><br/><br/>';
+                  PaliamentDiv += '<input type="button" class="btn" style="color:white; background-color:'+wellColor+'" onclick="detailPaliament(this)" value=상세보기>';
+                  PaliamentDiv+= '</div>';
+                  PaliamentDiv+= '</div>';
+
+               });
+               
+               $('#resultDiv').html(PaliamentDiv);
+            }
+         });
+
+/* 
          //div 영역 담당
          var searchDiv = '';
          
@@ -538,7 +575,7 @@
                  noNameJustPolyNm(polyNm);
                  break;
                  
-            case '새누리당':
+            case '자유한국당':
                  $('#resultDiv').empty(); 
                  noNameJustPolyNm(polyNm);
                  break;        
@@ -595,7 +632,7 @@
          if(empNm != '' && polyNm != '전체' && orignm != '전체'){
             allSearchTree(empNm, polyNm, orignm);
          }
-         
+          */
       }); 
    });
     
@@ -607,15 +644,15 @@
         ['국민의당',     guck],
         ['더불어 민주당',      doub],
         ['바른 정당',      ba],
-        ['새누리당',  sae],
+        ['자유한국당',  sae],
         ['정의당', jung],
         ['무소속',    muso]
       ]);
 
       var options = {
         title: '국회의원 현황',
-        is3D: true,
-          slices: {
+        sliceVisibilityThreshold: .0,
+        slices: {
            0: { color: '#79b394' },
            1: { color: '#1870b9' },
            2: { color: '#01B1EC' },
@@ -631,6 +668,6 @@
       chart.draw(data, options);
     }   
    
-</script>   
+</script>
 </body>
 </html>

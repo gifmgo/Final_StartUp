@@ -2,6 +2,53 @@
 /* CSS Document */
 @import url(core.css);
 
+/* header */
+.header-navBar{
+	min-height: 45px !important;	
+}
+#main-header{
+	background-color: #222;
+	padding:8px 0 16px 0;
+	border: 0;
+}
+#main-header > img{
+	width: 80px;
+}
+#main-header > ul{
+	position: absolute;
+    top: 30px;
+    right: 30px;
+	float:right !important;
+	color:#fff;
+}
+#main-header > ul > li{
+	margin:20px;
+}
+#main-header > ul > li > a{
+	color:#fff;
+}
+
+/* nav */
+#header-navBar{
+	margin:0;
+	border: #222;
+	/* border-color: #fff; */
+}
+
+/* #header-navi ul{
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+} */
+
+#header-navi>ul>li>a{
+	font-size: 16px;
+	color: #fff;
+	padding-right: 25px;
+	padding-left: 25px;
+}
+/* 
+
 #nav {
 	position:fixed;
 	width:100%;
@@ -33,22 +80,23 @@
 }
 
 
-/******************** 변경이 있는 부분   **************/
+******************* 변경이 있는 부분   *************
 #mainMenu {
-	position:absolute;
-	width: auto;
+	position:relative;
+	width: 62%;
 	height:25px;
 	top:45px;
-	display:inline-block;
-	left:50%;
-	transform:translateX(-50%);
+	margin: 0 auto;
 }
 
 #mainMenu>li {
-	margin-right:70px;
+	margin:0 4%;
 	height:100%;
 	box-sizing:border-box;
 }
+
+#mainMenu>li:first-of-type {margin-left:6%;}
+
 #mainMenu>li:last-of-type {margin-right:0;}
 
 
@@ -108,7 +156,7 @@
 	
 }
 
-/**********************************************/
+********************************************
 
 #menu_bg {
 	position:absolute;
@@ -121,7 +169,7 @@
 }
 
 #side_menu {
-	position:absolute;
+	position:fixed;
 	top:0;
 	left:-80%;
 	width:80%;
@@ -168,7 +216,7 @@
 	font-size:30px;
 	font-weight:bold;
 } 
-
+ */
 /*배너*/
 
 #banner {
@@ -258,7 +306,7 @@
 
 }
 
-.btn {
+.banner-btn {
 	position:absolute;
 	bottom:30px;
 	right:30px;
@@ -627,7 +675,7 @@
 		font-size:25px;
 	}
 	
-	.btn {
+	.banner-btn {
 		right:50%;
 		transform:translateX(50%);
 	}
@@ -662,7 +710,7 @@
 }
 
 @media only screen and (max-width:768px) {
-	.btn {
+	.banner-btn {
 		width:80px;
 		font-size:12px;	
 	}
@@ -688,25 +736,6 @@
 		height:150px;
 		bottom:-150px;
 	}
-	
-		
-/*	
-	#loginForm input {
-		margin-top:20px;
-		
-	}
-		
-		
-	#loginForm button {	
-		height:50px;
-
-	}
-	
-	#loginForm>h1 {
-		height:100px;
-		line-height:150px;	
-	}
-}*/
 }
 
 @media only screen and (max-width:400px) {

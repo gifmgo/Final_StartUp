@@ -20,7 +20,7 @@
                      http://www.springframework.org/schema/tx/spring-tx.xsd">
    
    <mvc:annotation-driven />
-
+  
    <!-- 스케쥴러는 별루.. 
    	  <context:component-scan base-package="kr.or.com.schedule"/>
       <task:scheduler id="Schedule" pool-size="10" />
@@ -94,15 +94,30 @@
 	 <bean id="email" class="kr.or.com.email.EmailDTO"></bean>
     
     <bean id="emailSender" class="kr.or.com.email.EmailSender"></bean>
-
-
+	
 	
 	<mvc:resources location="/WEB-INF/resource/js/" mapping="/js/**" />
 	 <bean name="jsonview" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
   	
-  
-
-
-  	
-  	
+  	 <!-- <mvc:interceptors>
+	   <mvc:interceptor>
+	       <mvc:mapping path="/*" /> 모든 URL 에 대해 Interceptor 를 적용하고자 한다면 /**
+	       <bean class="kr.or.com.intercepter.AccessIntercepter"/> HandlerInterceptor 인터페이스를 구현한 클래스
+	   </mvc:interceptor>
+	   추가로 여러개의 인터셉터 설정 가능 
+       <mvc:interceptor> 
+           <mvc:mapping path="/admin/board_write"/> 
+           <bean class="com.spring.interceptor.AdminInterCeptor"/> 
+       </mvc:interceptor> 
+   </mvc:interceptors> -->
+	
+	<!-- 모든 요청에 적용하는 Interceptor 설정 -->
+	
+	<mvc:interceptors>
+	    <bean id="AccessIntercepter" class="kr.or.com.intercepter.AccessIntercepter">
+	    	<property name="sqlSession">
+	    		<ref bean="sqlSession"/>
+	    	</property>
+	    </bean>
+	</mvc:interceptors>
 </beans>

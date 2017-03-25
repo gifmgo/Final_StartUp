@@ -16,18 +16,19 @@
         	관심을 갖고, 우리가 주인이라는 생각을 가지고 참여한다면<br/>
         	꿈이 현실로 이루어지지 않을까요?<br/>   
         </p>
+		
         <ul>
         	<li>
-            	<img src="img/exam.png" alt="아이콘1" />
-                <p>Name</p>
+            	<i class="fa fa-balance-scale" style="font-size:100px"></i>
+                <p class="attrP">중립</p>
             </li>
             <li>
-            	<img src="img/exam.png" alt="아이콘1" />
-                <p>Name</p>
+				<i class="fa fa-twitch" style="font-size:100px;"></i>
+                <p class="attrP">소통</p>
             </li>
             <li>
-            	<img src="img/exam.png" alt="아이콘1" />
-                <p>Name</p>
+            	<i class="fa fa-eye" style="font-size:100px"></i>
+                <p>관심</p>
             </li>
         </ul>
     </section>

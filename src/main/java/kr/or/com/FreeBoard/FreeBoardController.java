@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 
-import kr.or.com.FreeBoard.FreeBoardDTO;
-import kr.or.com.FreeBoard.FreeBoardService;
+import kr.or.com.Util.Converter;
 
 @Controller
 public class FreeBoardController {
@@ -41,6 +40,9 @@ public class FreeBoardController {
 		String pagesize = request.getParameter("pagesize");
 		String currentpage = request.getParameter("currentpage");
 		
+		Converter cvt = new Converter();
+		category= cvt.engToKor(category);
+		
 		if(category == null || category.trim().equals("")){
 			category = "자유게시판"; 			// default 10건씩 
         }else{
@@ -48,8 +50,12 @@ public class FreeBoardController {
         	}else if(category.equals("오늘의 이슈")){
         	}else if(category.equals("정치게시판")){
         	}else if(category.equals("공지사항")){
+//        	life
+        	}else if(category.equals("일상")){
+        	}else if(category.equals("연예")){
+        	}else if(category.equals("고민")){
+        	}else if(category.equals("영상")){
         	}else{
-        		category="자유게시판";
         		return null;
         	}
         }
@@ -73,12 +79,11 @@ public class FreeBoardController {
 		if(q != null && !q.equals("")){
 			query = q;
 		}
-        
+		
 		totalcount = free_Service.boardCount(field, query, category);
 		
         int pgsize = Integer.parseInt(pagesize);  		// 10
         int cpage = Integer.parseInt(currentpage);     //1
-                               
         
         if(totalcount % pgsize==0){        //전체 건수 , pagesize 
             pagecount = totalcount/pgsize;
@@ -104,7 +109,6 @@ public class FreeBoardController {
 			model.addAttribute("pgsize", pgsize);
 			model.addAttribute("pagecount", pagecount);
 			model.addAttribute("totalcount", totalcount);
-			
 		}
 
 		return "board.boardIndex";
@@ -130,10 +134,13 @@ public class FreeBoardController {
 		
 		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	    String strDate = fm.format(new Date());
-	    System.out.println(strDate);
+	    
+	    Converter cvt = new Converter();
+	    String category = cvt.korToEng(dto.getCategory());
 		
 	    model.addAttribute("now", strDate);
 		model.addAttribute("dto", dto);
+		model.addAttribute("category", category);
 		model.addAttribute("currentpage", currentpage);
 		model.addAttribute("comment", comment);
 		model.addAttribute("list", list);
@@ -172,7 +179,6 @@ public class FreeBoardController {
 				String fileName = file.getOriginalFilename();
 				String fileNameExt = fileName.substring(fileName.indexOf(".")+1);
 				
-				
 				@SuppressWarnings("deprecation")
 				String path = request.getRealPath("/upload/"+dto.getId());
 				File destD = new File(path);
@@ -192,9 +198,12 @@ public class FreeBoardController {
 		
 		int result = free_Service.writeBoard(dto);
 		
+		Converter cvt = new Converter();
+		dto.setCategory(cvt.korToEng(dto.getCategory()));
+		
 		model.addAttribute("category", dto.getCategory());
 		model.addAttribute("result", result);
-
+		
 		return "board.FreeBoardpointer";
 	}
 	
@@ -238,6 +247,9 @@ public class FreeBoardController {
 		String s = request.getParameter("ckeditor");
 		dto.setContent(s);
 		int result = free_Service.updateContent(dto);
+		
+		Converter cvt = new Converter();
+		dto.setCategory(cvt.korToEng(dto.getCategory()));
 		
 		model.addAttribute("category", dto.getCategory());
 		model.addAttribute("result", result);
@@ -308,9 +320,11 @@ public class FreeBoardController {
 	public View deleteContent(String no,String category, Model model){
 		
 		int result = free_Service.deleteContent(no);
-
+		
+		Converter cvt = new Converter();
+		
 		model.addAttribute("result", result);
-		model.addAttribute("category", category);
+		model.addAttribute("category", cvt.korToEng(category));
 		return jsonView;
 	}
 	

@@ -1,9 +1,14 @@
 package kr.or.com.Member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import kr.or.com.admin.BanUserDTO;
+import kr.or.com.admin.banUserMailDTO;
 
 @Service
 public class MemberService {
@@ -16,7 +21,6 @@ public class MemberService {
 	
 	//로그인 시 사용
 	public MemberDTO Login(MemberDTO dto){
-		String resultDB = "";
 		MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
 		MemberDTO dbdto = null;
 		try{
@@ -124,6 +128,35 @@ public class MemberService {
 			
 			MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
 			result = dao.UpdateMyInfo(dto);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	//밴유저 확인
+	public boolean CheckBanUser(String id) {
+		boolean chk = true;
+		try{
+			MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
+			BanUserDTO dto = dao.banUser(id);
+			if(dto != null){
+				chk = false;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return chk;
+	}
+	
+	//밴유저가 메일 보내는 것...
+	public int BanUserMail(banUserMailDTO dto) {
+		int result = 0;
+		
+		try{
+			MemberDAO dao = sqlSession.getMapper(MemberDAO.class);
+			result = dao.banUserMail(dto);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

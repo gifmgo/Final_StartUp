@@ -11,6 +11,7 @@
 <link href="flatUi/dist/css/flat-ui.min.css" rel="stylesheet">
 <link href="css/poll/Poll_0218_02.css" rel="stylesheet">
 <link rel="shortcut icon" href="flatUi/dist/img/favicon.ico">
+<link href="admin/AdminUi_0320.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
@@ -27,7 +28,7 @@
     <script src="flatUi/dist/js/vendor/video.js"></script>
     <script src="flatUi/dist/js/flat-ui.min.js"></script>
     <script src="flatUi/assets/js/application.js"></script>
-	<script src="admin/Admin_0216.js"></script>
-	<script src="admin/Admin_Poll_Notice_0219.js"></script>
+	<script src="admin/Admin_0320_02.js"></script>
+	<script src="admin/Admin_Poll_Notice_0220.js"></script>
 </body>
 </html>

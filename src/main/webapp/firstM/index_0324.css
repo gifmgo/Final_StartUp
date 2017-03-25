@@ -1,0 +1,199 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+/* 배너 */
+#banner {
+	position:relative;
+	width:100%;
+	height:100%;
+	background:url(../img/banner00.jpg) no-repeat top/cover;
+	overflow: hidden;
+}
+
+#main-header{
+	background-color: rgba(2,2,2,0.8);
+}
+
+#header-navBar{
+	background-color: rgba(2,2,2,0.8);
+}
+
+#banner>#posts {
+	position:absolute;
+	top:200px;
+	left:50%;
+	width:100%;
+	transform:translateX(-50%);
+	text-align:center;	
+	color:#fff;
+	line-height:80px;
+}
+
+#banner>#posts h2 {
+	position:relative;
+	top:50px;
+	width:100%;
+	font-weight:bold;
+	font-size:40px;	
+	opacity:0;
+}
+
+#banner>#posts p {
+	position:relative;	
+	top:50px;
+	opacity:0;
+	font-size:20px;	
+}
+#banner>div:last-of-type {
+	position:absolute;
+	width:100%;
+	height:200px;
+	bottom:-200px;
+	left:0;
+	background-color:#C96;	
+}
+
+.indexWell{
+	-moz-box-shadow:3px 3px grey !important;
+	-webkit-box-shadow:3px 3px grey !important;
+	box-shadow: 3px 3px grey !important;
+	background-color: #fff !important;
+	height: 210px;
+}
+
+.indexWell2{
+	background-color: #fff !important;
+	height: 210px;
+}
+
+.indexWell2 p{
+	line-height: 20px !important;
+}
+
+.indexWell2 p a{
+	color: black;
+	text-decoration: none;
+}
+
+
+.sideWell{
+	background-color: #fff !important;
+	height: 210px;
+}
+
+
+#favoritP .label{
+	line-height: 30px !important;
+	margin:22px !important;
+}
+
+.recoment{
+	margin:10px !important;
+}
+
+.boradListDiv{
+	margin-top: 3% !important;
+}
+
+
+.boardUl li{
+	margin: 5px;
+}
+
+.customHr{
+	border: 2px solid #323232;
+}
+
+.blogerStatus{
+	font-family:Nanum;	
+}
+
+.customJumboTron{
+	background-color:#ecf0f1 !important;
+}
+
+.jumbotron p{
+	font-size: 15px !important;
+	font-family: Nanum !important;
+}
+
+.jstlAtag{
+	text-decoration: none !important;
+	color: black !important;
+}
+
+
+.videoP{
+	position:absolute; 
+	background-color: black;
+	opacity:0.8; 
+	width: 100%;
+	height:80px;
+	z-index:999; 
+	margin-top: 40%;"	
+}
+
+/* 비디오  영상 뿌려주는 부분 */
+.videoTitleSpan{
+	color: #fff; 
+	font-size: 15px;
+	margin-top : 30px !important;
+	margin-bottom: 3px !important;
+}
+.videoContentSpan{
+	color: #fff; 
+	font-size:12px;
+}
+
+.customPanel-heading{
+	border-color: #fff !important;
+	background-color : #fff !important;	
+	border: #fff !important;
+}
+
+
+@media only screen and (max-width:900px) {
+	
+	.videoP{
+	position:absolute; 
+	background-color: black;
+	opacity:0.8; 
+	width: 100%;
+	height:80px;
+	z-index:999; 
+	margin-top: 35%;
+	}
+		
+}
+
+
+@media only screen and (max-width:768px) {
+
+.customVideoDiv{
+	margin: 10px !important;
+}
+	
+.videoP{
+	position:absolute; 
+	background-color: black;
+	opacity:0.8; 
+	width: 100%;
+	height:80px;
+	z-index:999; 
+	margin-top: 38%;
+}
+
+/* 비디오  영상 뿌려주는 부분 */
+.videoTitleSpan{
+	color: #fff; 
+	font-size: 15px;
+}
+.videoContentSpan{
+	color: #fff; 
+	font-size:12px;
+}
+	
+	
+}

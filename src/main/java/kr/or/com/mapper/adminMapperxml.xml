@@ -40,4 +40,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where d.debateWord = #{keyword}
 		order by d.debateNo desc
  </select>
+ 
+ <insert id="quiz" parameterType="kr.or.com.admin.QuizDTO">
+    insert into tbl_quiz(quiz_no, question, option1, option2, option3, answer) values(quiz_no_Seq.nextval, #{question}, #{option1}, #{option2}, #{option3}, #{answer})
+ </insert>
+ 
+ <!-- 차단유저들이 보낸 메일함 -->
+ <select id="banUserMailList" resultType="kr.or.com.admin.banUserMailDTO">
+ 	select * from banUserMail
+ </select>
+ 
+ <select id="banuserMailDTO" parameterType="int" resultType="kr.or.com.admin.banUserMailDTO">
+ 	select * from banUserMail where banUserMailSeq = #{param1}
+ </select>
+ <!-- 유저 포인트 업뎃 하기위해 리스트 뿌려주는 부분 -->
+ <select id="userList2" resultType="kr.or.com.Member.MemberDTO">
+ 	select id, nickname, point from member order by point desc
+ </select>
+ 
+ <!-- 유저 전체 포인트 업데이트 -->
+ <update id="updateMemberPoint" parameterType="kr.or.com.Member.MemberDTO">
+ 	update member set point=(point+1) where id=#{id}
+ </update>
+ 
+ <!-- 블로거 신청 리스트 확인 -->
+ <select id="selectBlogerList" resultType="kr.or.com.blog.BlogerApply_DTO">
+ 	 select applyUser_seq, applyUser_email, applyUser_page, to_char(applyUser_date,'YYYY/MM/DD') as applyUser_date from tbl_applyUser order by applyUser_seq asc
+ </select>
+
+ <select id="selectBlogerInfo" resultType="kr.or.com.blog.BlogerApply_DTO">
+ 	select applyUser_seq,applyUser_email,applyUser_page,applyUser_NickName, to_char(applyUser_date,'YYYY/MM/DD') as applyUser_date from tbl_applyUser where applyuser_seq = #{i_seq}
+ </select>
+ 
+ <!-- 블로거 이미지 까지 등록하는 부분 -->
+ <update id="insertBlogerInfo" parameterType="kr.or.com.blog.BlogerApply_DTO">
+ 	update tbl_applyUser
+ 	set filename = #{filename}, filepath = #{filepath}
+ 	where applyUser_seq = #{applyUser_seq}
+ </update>
+ 
+ <!-- 블로거 테이블  등록  리스트 뿌려줄때 쓰는 테이블 -->
+  <insert id="insertBloger" parameterType="kr.or.com.blog.BlogerApply_DTO">
+ 	  insert into tbl_bloger(bloger_id, bloger_img, bloger_mainUrl) values(#{applyUser_NickName},#{filename},#{applyUser_page})
+  </insert> 
+ 
+ <delete id="AdminWaitBloger_Delete" parameterType="kr.or.com.blog.BlogerApply_DTO">
+ 	delete tbl_applyUser where applyUser_seq = #{applyUser_seq}
+ </delete>
+	 
 </mapper>

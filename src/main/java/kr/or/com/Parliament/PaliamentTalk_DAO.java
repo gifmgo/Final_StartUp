@@ -38,6 +38,8 @@ public interface PaliamentTalk_DAO {
    //API >  디비에 있는 데이터 뽑아옴
    public List<PaliamentList_DTO> selectPaliamentList_DTO();
    
+   public List<PaliamentList_DTO> selectPaliamentList(String polyNm,String orignm,String empnm);
+   
    
    //댓글
    //댓글 쓰기
@@ -56,5 +58,12 @@ public interface PaliamentTalk_DAO {
  	public int deleteAllComment(int co_no);
  	
  	public int updateComment(CommentDTO dto);
+ 	
+ 	//최근 국회의원 최신댓글
+	public List<PCommentDTO> rPCommentList();
+	// 국회의원 댓글
+	public List<PCommentDTO> pCommentList();
+	//선택된 국회의원 댓글
+	public List<PCommentDTO> sCommentList(String polyNm,String orignm, String name);
    
 }

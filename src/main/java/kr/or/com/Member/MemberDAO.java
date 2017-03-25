@@ -1,5 +1,8 @@
 package kr.or.com.Member;
 
+import kr.or.com.admin.BanUserDTO;
+import kr.or.com.admin.banUserMailDTO;
+
 public interface MemberDAO {
 
 	//로그인
@@ -22,5 +25,11 @@ public interface MemberDAO {
 	
 	//개인정보 업데이트 !!
 	public int UpdateMyInfo(MemberDTO dto);
+	
+	//밴유저 확인
+	public BanUserDTO banUser(String id);
+	
+	//밴유저 메일 보내기
+	public int banUserMail(banUserMailDTO dto);
 	
 }

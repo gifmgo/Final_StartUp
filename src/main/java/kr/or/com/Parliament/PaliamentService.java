@@ -24,17 +24,25 @@ public class PaliamentService {
    
    //국회의원 전체 리스트 디비에서 가져오는 부분
    public List<PaliamentList_DTO> selectPaliamentList(){
-      System.out.println("서비스");
       List<PaliamentList_DTO> list = new ArrayList<PaliamentList_DTO>();
       try{
-         System.out.println("try");
          PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
          list = dao.selectPaliamentList_DTO();
-         System.out.println("리스트 싸이즈 : "+list.size());
       }catch(Exception e){
          e.printStackTrace();
       }
       return list;
+   }
+   
+   public List<PaliamentList_DTO> selectPaliament(String polyNm,String orignm,String empnm){
+	   List<PaliamentList_DTO> list = new ArrayList<PaliamentList_DTO>();
+	   try{
+		   PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+		   list = dao.selectPaliamentList(polyNm,orignm,empnm);
+	   }catch(Exception e){
+		   e.printStackTrace();
+	   }
+	   return list;
    }
    
    
@@ -214,7 +222,6 @@ public class PaliamentService {
         return list;
  	}
  	
- 	
  	//댓글 list 뽑기
  	public List<CommentDTO> commSelect(String no) {
  		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
@@ -222,6 +229,28 @@ public class PaliamentService {
  		
  		return list;
  	}
+ 	
+ 	//최근 국회의원 최신댓글
+ 	public List<PCommentDTO> rPCommentList() {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		List<PCommentDTO> list = dao.rPCommentList();
+ 		return list;
+ 	}
+ 	
+	//최근 국회의원 댓글
+ 	public List<PCommentDTO> PCommentList() {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		List<PCommentDTO> list = dao.pCommentList();
+ 		return list;
+ 	}
+ 	
+ 	//선택된 국회의원 댓글
+ 	public List<PCommentDTO> sCommentList(String polyNm,String orignm, String name) {
+ 		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+ 		List<PCommentDTO> list = dao.sCommentList(polyNm,orignm,name);
+ 		return list;
+ 	}
+ 	
  	//쓰기
  	public int writeComment(CommentDTO cdto) {
  		PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);

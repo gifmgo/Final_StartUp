@@ -22,6 +22,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.FreeBoard.FreeBoardDTO;
 import kr.or.com.FreeBoard.FreeBoardService;
+import kr.or.com.blog.BlogList_DTO;
 import kr.or.com.debate.debateDTO;
 import kr.or.com.debate.debateService;
 import net.sf.json.JSONArray;
@@ -52,20 +53,23 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		//토론 부분
-		List<debateDTO> debate_dto = null;	
+		List<debateDTO> debate_dto = null;
+		
 		//토론 키워드
 		String keyWord = null;
 		try{
-					
-			debate_dto = debate_Service.list();
+			
 			keyWord = debate_Service.debateKeyWord();
+			System.out.println("키워드 확인좀 할께요 보드 컨트롤러 입니다. "+keyWord);
 			
+			debate_dto = debate_Service.list(keyWord);
 			
-			for(int i = 0; i < debate_dto.size(); i++){
-				Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
-				String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
-				debate_dto.get(i).setWriteDate(newstring);
-				System.out.println("날짜 확인좀 : "+debate_dto.get(i).getWriteDate());
+			if(debate_dto != null){
+				for(int i = 0; i < debate_dto.size(); i++){
+					Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
+					String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
+					debate_dto.get(i).setWriteDate(newstring);
+				}
 			}
 
 		}catch(Exception e){
@@ -95,6 +99,9 @@ public class BoardController {
 		SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
 	    String strDate = fm.format(new Date());
 		
+	    List<BlogList_DTO> blogList = free_Service.selectBloger();
+	    
+	    model.addAttribute("blog", blogList);
 	    model.addAttribute("now", strDate);
 	    model.addAttribute("imgsrc", "img alt src=");
 		model.addAttribute("id", id);
@@ -107,7 +114,7 @@ public class BoardController {
 	}
 	
 	// 고용 노동부
-	@RequestMapping("/CommunityNews_1.do")
+/*	@RequestMapping("/CommunityNews_1.do")
 	public View News1(Model model) {
 
 		List<DashBoard_Goyoung_DTO> dto_list = new ArrayList<DashBoard_Goyoung_DTO>();
@@ -142,10 +149,10 @@ public class BoardController {
 		model.addAttribute("goyoung", dto_list);
 		return jsonView;
 
-	}
+	}*/
 
 	// 교육부
-	@RequestMapping("/education.do")
+/*	@RequestMapping("/education.do")
 	public View education(Model model) {
 
 		List<DashBoard_education_DTO> dto_list = new ArrayList<DashBoard_education_DTO>();
@@ -176,5 +183,5 @@ public class BoardController {
 			model.addAttribute("education", dto_list);
 		}
 		return jsonView;
-	}
+	}*/
 }

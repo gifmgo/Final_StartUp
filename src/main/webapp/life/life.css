@@ -1,0 +1,133 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 최신글 5개 목록 */
+
+h3{
+	text-align: center;
+}
+
+.boardBox{
+	position:relative;
+	padding: 15px;
+}
+
+.boardBox ul{
+	padding: 5px 10px 5px 0;
+
+}
+.boardBox ul li{
+	font-size:17px;
+	padding-bottom:2px;
+}
+
+.boardBox hr{
+	margin: 3px 0 3px 0;
+    border: 1px solid black;
+}
+.boardBox .top{
+	font-size:16px;
+}
+.boardBox .more{
+	position: absolute;
+	right: 10px;
+	color:#333;
+	text-decoration: none;
+}
+.boardBox ul li {
+	position: relative;
+	font-size:15px;
+}
+.boardBox ul li .rank{
+	display: inline-block;
+	overflow: hidden;
+	padding-right: 10px;
+}
+.boardBox ul li .title{
+	display: inline-block;
+	width: 77%;
+	/* word-break:break-all;
+	word-wrap:break-word; */
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.boardBox ul li .num{
+	display: inline-block;
+	overflow: hidden;
+	color: #e9281d;
+}
+.boardBox ul li .new{
+	display: inline-block;
+	position: absolute;
+	margin-top: 4px;
+	margin-left: 2px;
+}
+
+/* 리스트 */
+.list{
+	position: relative;
+	height:100px;
+	padding:10px 0 10px 30px;
+	margin:5px 0;
+	border-bottom:1px solid black;
+}
+
+.content .list > .img{
+	display: block;
+}
+
+.content .list > .title{
+	display: block;
+    position: absolute;
+    top: 30px;
+    left: 140px;
+}
+.content .list > .wt{
+	display: block;
+    position: absolute;
+    top: 60px;
+    left: 140px;
+}
+.content .list .wt li{
+	float:left;
+    padding-right: 10px;
+}
+.content .list > .gb{
+	display: block;
+    position: absolute;
+    top: 60px;
+    right: 50px;
+}
+
+.content .list > .gb> li{
+	float: left;
+	padding-right: 20px;
+}
+
+@media only screen and (max-width:768px) {
+	.content .list > .gb{
+		right: 0;
+	}
+}
+
+@media only screen and (max-width:414px) {
+	.list{
+		padding:0 !important;
+	}
+	.content .list .img{
+		padding:10px !important;
+	}
+	.content .list .title{
+		top: 20px !important;
+		left: 110px !important;
+	}
+	.content .list .wt{
+		top: 43px !important;
+		left: 110px !important;
+	}
+	.content .list > .gb{
+		top: 66px !important;
+		left: 110px !important;
+	}
+}
