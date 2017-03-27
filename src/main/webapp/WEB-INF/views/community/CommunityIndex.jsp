@@ -43,7 +43,7 @@
                </ul>
            </div>
            <div>
-           	   <h1 class="dashH">오늘의 이슈<span onclick="location.href='board.do?category=issue'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
+           	   <h1 class="dashH">오늘의 이슈 <span onclick="location.href='board.do?category=issue'"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span></h1>
           	   <hr class="titleHr"/>
                <ul class="dashList">
                    <c:forEach var="list" items="${issue}">
@@ -53,14 +53,11 @@
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
-<<<<<<< HEAD
 							<%-- <c:set var="str1" value="${list.content }"/>
 							<c:set var="str2" value='src="upload/' />
  							<c:if test="${ fn:contains(str1, str2) }">
 								<i class="fa fa-picture-o" aria-hidden="true"></i>
 							</c:if> --%>
-=======
->>>>>>> 15f5e2e92cd7094a74584bfbfe3d161db0716022
 						</div>
 					</li>
 					</c:forEach>

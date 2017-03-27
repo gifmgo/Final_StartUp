@@ -32,19 +32,14 @@ public class StatuteController {
         SAXBuilder builder = new SAXBuilder(); 
         //url에 xml이 있는경우
         Document jdomdoc = builder.build(new java.net.URL("http://apis.data.go.kr/9710000/BillInfoService/getRecentPasageList?numOfRows=50&ServiceKey=cuzCdknQ8EpFjg0Rw%2Fgd%2Br2TesHVExB8p3Pa5Rr0kgJUAhEyxcf9egVBUX29QGWrcq9ofcWuxOsECDRwsJXiSg%3D%3D"));
-        
         //response 
         Element root= jdomdoc.getRootElement();
         //System.out.println("처음 : "+root.getName());
-        
         Element second =root.getChild("body");
         //System.out.println("두번째 : "+second.getName());
         Element third = second.getChild("items");
-        
         List<Element> items =	third.getChildren("item");
         //System.out.println("세번째 : "+items.size() + " /  제발 ? : "+items.toString());
-        
-   
         for(int i=0;i<items.size(); i++){
         	 Element person_E=items.get(i);
         	 String committeeName=null;

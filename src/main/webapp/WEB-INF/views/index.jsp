@@ -19,7 +19,7 @@
 <script src="sweet/sweetalert.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/header.css">
-<link rel="stylesheet" type="text/css" href="firstM/index_0324.css">
+<link rel="stylesheet" type="text/css" href="firstM/index_0325.css?v=0325">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 
 <link rel="stylesheet" type="text/css" href="css/icon.css">
@@ -92,7 +92,8 @@
 		    </div>
 		    <div class="collapse navbar-collapse" id="header-navi">
 		      <ul class="nav navbar-nav" id="header-menu">
-		      	<li><a href="explanation.do">소개</a></li>
+		      	<!-- <li><a href="explanation.do">소개</a></li> -->
+		      	<li><a href="Assembly.do">국회</a></li>
 	            <li><a href="statute.do">의안</a></li>
 	            <li><a href="Member_Parliament.do">국회의원</a></li>
 		        <li><a href="PresidentMember.do">대선후보</a></li>
