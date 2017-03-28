@@ -2,35 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="paliament/paliamentList.css">
 <script src="paliament/pal-list.js"></script>
-<div class="container recent">
-	<div class="row">
-		<div class= "col-sm-7">
-			<span style="font-size: 23px; font-weight: bold;">최근 달린 댓글</span> <span id="dashBoardTalkBtn">더 보러가기<span class="glyphicon glyphicon-menu-right"></span></span>
-			<ul>
-			<c:forEach var="list" items="${RPComment}">
-				<li data-pno="${list.no}" style="border-top:1px solid gray;">
-					<div class="inf pal-click" data-num="${list.no}" data-deptcd="${list.deptcd}" data-img="${list.img}" data-name="${list.name}">
-						<img class="pal-img" src="${list.img}">
-					</div>
-					<div class="orignm pal-click" data-num="${list.no}" data-deptcd="${list.deptcd}" data-img="${list.img}" data-name="${list.name}">
-						<span>${list.orignm}<br/>${list.name}</span>
-					</div>
-					<div class="comment col-xs-7">
-						<p class= "pal-title"><span class="glyphicon glyphicon-user"></span>${list.writer}</p>
-						<p class= "pal-p">${list.content}</p>
-					</div>
-				</li>
-			</c:forEach>
-			</ul>
-		</div>
-	
-		<div class= "col-sm-5" id="paliamentD">
-			<!--도표들어가는 부분-->
-			<div id="piechart"></div>
-		</div>
-	</div>
-</div>
-
 <div class="container">
 	<div class="row" style="margin-bottom:10px;">
 		<h2>의원검색</h2>			 

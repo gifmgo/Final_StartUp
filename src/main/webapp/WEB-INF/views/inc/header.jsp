@@ -29,12 +29,11 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="header-navi">
 	      <ul class="nav navbar-nav" id="header-menu">
-	      	<li><a href="Assembly.do">국회</a></li>
-            <li><a href="statute.do">의안</a></li>
-            <li><a href="Member_Parliament.do">국회의원</a></li>
+	      	<li><a href="point.do">생활 이야기</a></li>
+	      	<li><a href="point.do">생활 포인트</a></li>
 	        <li><a href="PresidentMember.do">대선후보</a></li>
-          	<li><a href="point.do">생활 포인트</a></li>
-          	<li id="community"><a href="CommunityIndex.do">커뮤니티</a>
+          	<li><a href="Assembly.do">국회</a></li>
+          	<li id="community"><a href="CommunityIndex.do">정치 이야기</a>
 	        </li>
 	        <li class="dropdown" id="sub-navi">
 	          	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
