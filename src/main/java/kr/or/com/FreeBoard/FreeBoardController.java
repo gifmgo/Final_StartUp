@@ -111,7 +111,7 @@ public class FreeBoardController {
 			model.addAttribute("totalcount", totalcount);
 		}
 
-		return "board.boardIndex";
+		return "life.boardIndex";
 	}
 	
 	//게시판 상세보기

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.View;
 
 import kr.or.com.FreeBoard.FreeBoardDTO;
 import kr.or.com.FreeBoard.FreeBoardService;
+import kr.or.com.Util.Converter;
 
 
 @Controller
@@ -51,10 +52,83 @@ public class LifeController {
 	
 	//boardDetail
 	@RequestMapping("/lifeBoard.do")
-	public String lifeBoard(HttpServletRequest request, Model model, String category){
+	public String lifeBoard(Model model,HttpServletRequest request, String f, String q){
 		
-		model.addAttribute("category", category);
+		String category = request.getParameter("category");
+		String pagesize = request.getParameter("pagesize");
+		String currentpage = request.getParameter("currentpage");
 		
-		return "board.boardIndex";
+		Converter cvt = new Converter();
+		category= cvt.engToKor(category);
+		
+		if(category == null || category.trim().equals("")){
+			category = "자유게시판"; 			// default 10건씩 
+        }else{
+        	if(category.equals("자유게시판")){
+        	}else if(category.equals("오늘의 이슈")){
+        	}else if(category.equals("정치게시판")){
+        	}else if(category.equals("공지사항")){
+//        	life
+        	}else if(category.equals("일상")){
+        	}else if(category.equals("연예")){
+        	}else if(category.equals("고민")){
+        	}else if(category.equals("영상")){
+        	}else{
+        		return null;
+        	}
+        }
+		
+		int totalcount = 0;
+		int pagecount = 0;
+		
+		String field = "title";
+		String query ="%%";
+		
+        if(pagesize == null || pagesize.trim().equals("")){
+            pagesize = "15"; 			// default 10건씩 
+        }
+        
+        if(currentpage == null || currentpage.trim().equals("")){
+            currentpage = "1";        //default 1 page
+        }
+        if(f != null && !f.equals("")){
+			field = f;
+		}
+		if(q != null && !q.equals("")){
+			query = q;
+		}
+		
+		totalcount = free_Service.boardCount(field, query, category);
+		
+        int pgsize = Integer.parseInt(pagesize);  		// 10
+        int cpage = Integer.parseInt(currentpage);     //1
+        
+        if(totalcount % pgsize==0){        //전체 건수 , pagesize 
+            pagecount = totalcount/pgsize;
+        }else{
+            pagecount = (totalcount/pgsize) + 1;
+        }
+		
+		List<FreeBoardDTO> list = null;
+
+		try{
+			 list = free_Service.selectAllFreeBoard(cpage,pgsize,field,query,category);         
+		}catch(Exception e){
+			e.getMessage();
+		}finally{
+			
+			SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
+		    String strDate = fm.format(new Date());
+		    model.addAttribute("now", strDate);
+			
+			model.addAttribute("title", category);
+			model.addAttribute("list", list);
+			model.addAttribute("cpage", cpage);
+			model.addAttribute("pgsize", pgsize);
+			model.addAttribute("pagecount", pagecount);
+			model.addAttribute("totalcount", totalcount);
+		}
+		
+		return "life.boardIndex";
 	}
 }

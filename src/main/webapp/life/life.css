@@ -10,6 +10,7 @@ h3{
 .boardBox{
 	position:relative;
 	padding: 15px;
+	min-height: 250px;
 }
 
 .boardBox ul{
@@ -70,7 +71,7 @@ h3{
 	height:100px;
 	padding:10px 0 10px 30px;
 	margin:5px 0;
-	border-bottom:1px solid black;
+	border-top:1px solid black;
 }
 
 .content .list > .img{
