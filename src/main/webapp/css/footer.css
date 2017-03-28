@@ -8,10 +8,25 @@
    background-color:#333;   
 }
 
+#footer ul{
+	position:relative;
+	display:inline-block;
+	margin: 20px 0 0 0;
+	color:#eee;
+    font:14px/30px Nanum;
+}
+#footer ul li{
+	float: left;
+	margin: 0 25px;
+	padding:0;
+}
+
+#footer ul li:hover{
+	cursor: pointer;
+}
+
 #footer p {
    position:relative;
-   top:50%;
-   transform:translateY(-50%);
    width:100%;
    text-align:center;
    color:#ccc;

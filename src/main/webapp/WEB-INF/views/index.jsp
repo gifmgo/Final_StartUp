@@ -93,7 +93,7 @@
 		    <div class="collapse navbar-collapse" id="header-navi">
 		      <ul class="nav navbar-nav" id="header-menu">
 		      	<!-- <li><a href="explanation.do">소개</a></li> -->
-		      	<li><a href="point.do">생활 이야기</a></li>
+		      	<li><a href="life.do">생활 이야기</a></li>
 		      	<li><a href="point.do">생활 포인트</a></li>
 	            <!-- <li><a href="statute.do">의안</a></li>
 	            <li><a href="Member_Parliament.do">국회의원</a></li> -->
@@ -104,7 +104,6 @@
 		        <li class="dropdown" id="sub-navi">
 		          	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
 		          	<ul class="dropdown-menu">
-		            	<li><a href="board.do?category=qa">공지사항</a></li>
 			           	<li><a href="board.do?category=issue">오늘의 이슈</a></li>
 			           	<li><a href="board.do?category=free">자유게시판</a></li>
 			            <li><a href="board.do?category=politics">정치게시판</a></li>
@@ -570,7 +569,14 @@
     
     
     <footer id="footer">
-       <p>(주)GSS&nbsp;|&nbsp;대표이사 : 박성준&nbsp;|&nbsp;주소 : 경기도 용인시 수지구 죽전동&nbsp;|&nbsp;연락처 : 010-9590-3710&nbsp;|&nbsp;이메일 : stpark89@gmail.com<br>
+    	<div style="text-align:center;">
+	    	<ul>
+	    		<li onclick="location.href='explanation.do'">소개</li>
+	    		<li onclick="location.href='board.do?category=qa'">공지사항</li>
+	    		<li>광고문의</li>
+	    	</ul>
+    	</div>
+       <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대표이사 : 박성준&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주소 : 경기도 용인시 수지구 죽전동&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;연락처 : 010-9590-3710&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이메일 : stpark89@gmail.com<br>
            Copyright by GSS, Ltd. All Rights Reserved.
         </p>
     </footer>

@@ -29,7 +29,7 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="header-navi">
 	      <ul class="nav navbar-nav" id="header-menu">
-	      	<li><a href="point.do">생활 이야기</a></li>
+	      	<li><a href="life.do">생활 이야기</a></li>
 	      	<li><a href="point.do">생활 포인트</a></li>
 	        <li><a href="PresidentMember.do">대선후보</a></li>
           	<li><a href="Assembly.do">국회</a></li>
@@ -38,7 +38,6 @@
 	        <li class="dropdown" id="sub-navi">
 	          	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
 	          	<ul class="dropdown-menu">
-	            	<li><a href="board.do?category=qa">공지사항</a></li>
 		           	<li><a href="board.do?category=issue">오늘의 이슈</a></li>
 		           	<li><a href="board.do?category=free">자유게시판</a></li>
 		            <li><a href="board.do?category=politics">정치게시판</a></li>

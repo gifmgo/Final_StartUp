@@ -28,9 +28,9 @@ public class LifeController {
 	
 	//관리자 메인페이지
 	@RequestMapping("/life.do")
-	public String lifeIndex(Model model){
+	public String lifeIndex(Model model,HttpServletRequest request, String f, String q){
 		
-		List<FreeBoardDTO> popLife = free_Service.bestLife(1, 10);
+		List<FreeBoardDTO> popLife = free_Service.bestLife(1, 15);
 		List<FreeBoardDTO> fun = free_Service.selectBestBoard("영상", 10);
 		List<FreeBoardDTO> wor = free_Service.selectBestBoard("고민", 10);
 		List<FreeBoardDTO> life = free_Service.selectBestBoard("일상", 10);
@@ -41,35 +41,25 @@ public class LifeController {
 	    String strDate = fm.format(new Date());
 	    
 	    model.addAttribute("now", strDate);
-		model.addAttribute("popLife", popLife);
 		model.addAttribute("fun", fun);
 		model.addAttribute("wor", wor);
 		model.addAttribute("life", life);
 		model.addAttribute("star", star);
-		
-		return "life.life";
-	}
-	
-	//boardDetail
-	@RequestMapping("/lifeBoard.do")
-	public String lifeBoard(Model model,HttpServletRequest request, String f, String q){
 		
 		String category = request.getParameter("category");
 		String pagesize = request.getParameter("pagesize");
 		String currentpage = request.getParameter("currentpage");
 		
 		Converter cvt = new Converter();
-		category= cvt.engToKor(category);
+		if(category==null || !category.equals("")){
+		}else{
+			category= cvt.engToKor(category);
+		}
 		
 		if(category == null || category.trim().equals("")){
-			category = "자유게시판"; 			// default 10건씩 
+			category = ""; 			// default 15건씩 
         }else{
-        	if(category.equals("자유게시판")){
-        	}else if(category.equals("오늘의 이슈")){
-        	}else if(category.equals("정치게시판")){
-        	}else if(category.equals("공지사항")){
-//        	life
-        	}else if(category.equals("일상")){
+        	if(category.equals("일상")){
         	}else if(category.equals("연예")){
         	}else if(category.equals("고민")){
         	}else if(category.equals("영상")){
@@ -85,7 +75,7 @@ public class LifeController {
 		String query ="%%";
 		
         if(pagesize == null || pagesize.trim().equals("")){
-            pagesize = "15"; 			// default 10건씩 
+            pagesize = "15"; 			// default 15건씩 
         }
         
         if(currentpage == null || currentpage.trim().equals("")){
@@ -100,7 +90,7 @@ public class LifeController {
 		
 		totalcount = free_Service.boardCount(field, query, category);
 		
-        int pgsize = Integer.parseInt(pagesize);  		// 10
+        int pgsize = Integer.parseInt(pagesize);  		// 15
         int cpage = Integer.parseInt(currentpage);     //1
         
         if(totalcount % pgsize==0){        //전체 건수 , pagesize 
@@ -116,11 +106,7 @@ public class LifeController {
 		}catch(Exception e){
 			e.getMessage();
 		}finally{
-			
-			SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
-		    String strDate = fm.format(new Date());
 		    model.addAttribute("now", strDate);
-			
 			model.addAttribute("title", category);
 			model.addAttribute("list", list);
 			model.addAttribute("cpage", cpage);
@@ -129,6 +115,7 @@ public class LifeController {
 			model.addAttribute("totalcount", totalcount);
 		}
 		
-		return "life.boardIndex";
+		return "life.life";
 	}
+	
 }
