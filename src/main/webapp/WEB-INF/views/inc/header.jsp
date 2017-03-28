@@ -29,7 +29,7 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="header-navi">
 	      <ul class="nav navbar-nav" id="header-menu">
-	      	<li><a href="explanation.do">소개</a></li>
+	      	<li><a href="Assembly.do">국회</a></li>
             <li><a href="statute.do">의안</a></li>
             <li><a href="Member_Parliament.do">국회의원</a></li>
 	        <li><a href="PresidentMember.do">대선후보</a></li>

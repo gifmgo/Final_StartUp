@@ -131,7 +131,7 @@
 	padding:10px 0; 
 }
 
-.dashList li .dashtitle {display:inline-block;width:calc(100% - 20px);overflow:hidden;
+.dashList li .dashtitle {display:inline-block;width:calc(100% - 15px);overflow:hidden;
 							white-space:nowrap;text-overflow:ellipsis;vertical-align:middle;}
 
 .dashList li .listHr {
@@ -515,6 +515,7 @@
 	overflow: hidden;
 	white-space:nowrap;
 	text-overflow:ellipsis;
+	display:inline-block;
 } 
 
 #news .dashList li span {

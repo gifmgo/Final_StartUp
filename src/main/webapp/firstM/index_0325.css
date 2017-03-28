@@ -66,7 +66,10 @@ body{
 .indexWell2{
 	background-color: #fff !important;
 	height: 210px;
+	
 }
+
+.indexwell_top {margin-bottom:0 !important;padding:40px 0 !important;}
 
 .indexWell2 p{
 	line-height: 20px !important;
@@ -106,6 +109,8 @@ body{
 	border: 2px solid #323232;
 }
 
+.customHr_two {width:130px;margin:20px auto;border-top:3px solid #f44336;}
+
 .blogerStatus{
 	font-family:Nanum;	
 }
@@ -113,9 +118,17 @@ body{
 .customJumboTron{
 	background-color:#ecf0f1 !important;
 }
+.customJumboTron {padding:20px !important;}
+.customJumboTron::after {content:"";display:block;clear:both;}
+.customJumboTron .left_jumbotron {width:66%;float:left;}
+.customJumboTron .left_jumbotron .title_text {width:calc(100% - 300px);float:left;margin-left:30px;padding:20px 0 0;}
+.customJumboTron .left_jumbotron .title_text p {}
+.customJumboTron .left_jumbotron .title_text p span {float:right;}
+.customJumboTron .left_jumbotron .center_block {float:left;height:100%;}
+.customJumboTron .right_jumbotron {width:33%;float:right}
+
 
 .jumbotron p{
-	font-size: 15px !important;
 	font-family: Nanum !important;
 }
 
@@ -153,6 +166,15 @@ body{
 	border: #fff !important;
 }
 
+.bloger p {text-align:left;width:50%;float:left;margin-bottom:15px;}
+.bloger p img {margin-right:10px;}
+
+@media only screen and (max-width:1000px) {
+		
+	.customJumboTron .left_jumbotron {width:100%;margin-bottom:30px;}
+	.customJumboTron .right_jumbotron {width:100%;}
+}
+
 
 @media only screen and (max-width:900px) {
 	
@@ -165,6 +187,7 @@ body{
 	z-index:999; 
 	margin-top: 35%;
 	}
+
 		
 }
 
@@ -194,6 +217,19 @@ body{
 	color: #fff; 
 	font-size:12px;
 }
+
+.customJumboTron .left_jumbotron .center_block {width:100%;text-align:center;}
+.customJumboTron .left_jumbotron .center_block img {display:inline-block;}
+.customJumboTron .left_jumbotron .title_text {width:100%;margin-left:0;}
 	
+	
+}
+
+@media only screen and (max-width:320px) {
+	
+	.customJumboTron .left_jumbotron .title_text h3  {font-size:18px;}
+	.customJumboTron .left_jumbotron .title_text p {font-size:15px;}
+	.bloger p {width:100%;}
+	.indexWell2 {height:auto;}
 	
 }

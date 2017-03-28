@@ -31,6 +31,7 @@ public class indexController {
 	@Autowired
 	private IndexService service;
 	
+	
 	//접속자 확인
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public void checkIp(){
