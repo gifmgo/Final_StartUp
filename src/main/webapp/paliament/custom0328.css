@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+.customWell{
+	border: 4px solid #ecf0f1 !important;
+	background-color: #fff !important;
+}
+
+.customBtnGroup > button{
+	margin:5px !important;
+}
+
+/* 국민의당 */
+.jstlGuck{
+	background-color:#fff !important; 
+	border-top:10px solid #79b394 !important;
+}
+/* 더불어 민주당 */
+.jstlDouble{
+	background-color:#fff !important; 
+	border-top:10px solid #1870b9 !important;
+}
+/* 바른 정당 */
+.jstlBa{
+	background-color:#fff !important; 
+	border-top:10px solid #01B1EC !important;
+}
+
+/* 자유 한국당 */
+.jstlJa{
+	background-color:#fff !important; 
+	border-top:10px solid #dc5356 !important;
+}
+
+/* 정의당 */
+.jstlJung{
+	background-color:#fff !important; 
+	border-top:10px solid #f2c755 !important;
+}
+
+/* 무소속 */
+.jstlMu{
+	background-color:#fff !important; 
+	border-top:10px solid #a6a6a6 !important;
+}

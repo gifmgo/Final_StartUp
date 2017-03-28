@@ -88,56 +88,98 @@
 
 	
 $(document).ready(function(){
-	//국민의당
+	//*****************국민의당
 	$('#guckDiv').hover(function(){
 		$(this).contents().css("font-size","18px");
 	});
-	
 	$('#guckDiv').mouseleave(function(){
 		$(this).contents().css("font-size","15px");
 	});
-	//더불어 민주당
+	$('#guckDiv').click(function(){
+		var url = "Member_Parliament.do?polyNm=국민의당";
+			url = encodeURI(url);
+			location.href=url;
+	});
+	///////////////////////////////////////////
+	
+	//****************더불어 민주당
 	$('#doubDiv').hover(function(){
 		$(this).contents().css("font-size","18px");
 	});
 	$('#doubDiv').mouseleave(function(){
 		$(this).contents().css("font-size","15px");
 	});
-	//바른 정당
+	$('#doubDiv').click(function(){
+		var url = "Member_Parliament.do?polyNm=더불어민주당";
+		url = encodeURI(url);
+		location.href=url;
+	});
+	////////////////////////////
+	
+	//************바른 정당
 	$('#baDiv').hover(function(){
 		$(this).contents().css("font-size","18px");
 	});
-	
 	$('#baDiv').mouseleave(function(){
 		$(this).contents().css("font-size","15px");
 	});
+	$('#baDiv').click(function(){
+		var url = "Member_Parliament.do?polyNm=바른정당";
+		url = encodeURI(url);
+		location.href=url;
+	});
+	/////////////////////////////
 	
-	//무소속
+	//********************무소속
 	$('#muDiv').hover(function(){
 		$(this).contents().css("font-size","18px");
 	});
 	$('#muDiv').mouseleave(function(){
 		$(this).contents().css("font-size","15px");
 	});
-	//정의당
+	$('#muDiv').click(function(){
+		var url = "Member_Parliament.do?polyNm=무소속";
+		url = encodeURI(url);
+		location.href=url;
+	});
+	
+	//*******************정의당
 	$('#jungDiv').hover(function(){
 		$(this).contents().css("font-size","18px");
 	});
 	$('#jungDiv').mouseleave(function(){
 		$(this).contents().css("font-size","15px");
 	});
-	//자유 한국당
+	$('#jungDiv').click(function(){
+		var url = "Member_Parliament.do?polyNm=정의당";
+		url = encodeURI(url);
+		location.href=url;
+	});
+	/////////////////////////////////////
+	
+	//*****************자유 한국당
 	$('#freeDiv').hover(function(){
 		$(this).contents().css("font-size","18px");
 	});
 	$('#freeDiv').mouseleave(function(){
 		$(this).contents().css("font-size","15px");
 	});
+	$('#freeDiv').click(function(){
+		var url = "Member_Parliament.do?polyNm=자유한국당";
+		url = encodeURI(url);
+		location.href=url;
+	});
+	//////////////////////
 	
+	//의안 더보기 클릭시
 	$('#moreStatueBtn').click(function(){
 		location.href="statute.do";
 	});
-	
+
+	//의원 댓글 더보기 클릭시
+	$('#morePaliamentComment').click(function(){
+		location.href="Paliament_DashBoard.do";
+	});
 	
 });	
 	

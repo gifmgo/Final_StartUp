@@ -65,5 +65,8 @@ public interface PaliamentTalk_DAO {
 	public List<PCommentDTO> pCommentList();
 	//선택된 국회의원 댓글
 	public List<PCommentDTO> sCommentList(String polyNm,String orignm, String name);
+	
+	//정당 아이콘 클릭해서 정당별 의원만 뿌려주는 것
+	public List<PaliamentList_DTO> selectPolyName_PaliamentList(String polyNm);
    
 }

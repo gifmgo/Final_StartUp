@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="paliament/custom.css">
+<link rel="stylesheet" type="text/css" href="paliament/custom0328.css">
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 <script src="js/main_header.js"></script>
@@ -432,45 +432,6 @@
     }
 
    $(function(){
-      //국회의원 리스트 뽑아줌
-      $.ajax({
-         url:"ListPaliament.do", 
-         success : function(data){   
-            var PaliamentDiv = '';
-            //var resultJung = jungDang2(data.xml);
-            //xml 데이터 담겨져있음\
-            $.each(data.xml, function(index, obj){
-               var wellColor = f_wellColor(obj.polyNm);      
-               PaliamentDiv += '<div class="col-sm-3">';
-               PaliamentDiv += '<div class="well text-center" style="background-color:white; border-top:10px solid '+wellColor+'">';
-               PaliamentDiv += '<input type="hidden" id='+obj.empNm+'>';
-               PaliamentDiv += '<input type="hidden" id='+obj.deptCd+'>';
-               PaliamentDiv += '<input type="hidden" id='+obj.num2+'>';
-               PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+'></span><br/><br/>';
-               PaliamentDiv += '<span>이름 : '+obj.empNm+'</span><br/>';
-               PaliamentDiv += '<span>정당 : '+obj.polyNm+'</span><br/>';
-               if(obj.origNm != '비례대표'){
-            	   var origNm = obj.origNm.substring(0,6);
-            	   PaliamentDiv += '<span>지역구 : '+origNm+'</span><br/>';   
-               }else{
-            	   PaliamentDiv += '<span>지역구 : '+obj.origNm+'</span><br/>';
-               }
-               PaliamentDiv += '<span>당선 회수 : '+obj.reeleGbnNm+'</span><br/><br/>';
-               PaliamentDiv += '<input type="button" class="btn" style="color:white; background-color:'+wellColor+'" onclick="detailPaliament(this)" value=상세보기>';
-               PaliamentDiv+= '</div>';
-               PaliamentDiv+= '</div>';
-               console.log("데이터 확인 empNm : "+obj.empNm+ " / dept : "+obj.deptCd+ " / num2 : "+obj.num2 + " / obj.polyNm : "+obj.polyNm);
-               PaliamentArray.push(new PaliamentDTO(obj.empNm,obj.deptCd,obj.num2,obj.polyNm, obj.jpgLink, obj.origNm, obj.reeleGbnNm));
-            });
-            
-            //$('#resultDiv').html(PaliamentDiv);
-            google.charts.load('current', {'packages':['corechart']});
-             google.charts.setOnLoadCallback(drawChart);
-             
-         },beforeSend:function(){
-         },complete:function(){
-         },timeout : 100000
-      });
       
       //의원 검색 클릭시
       $("#searchBtn").click(function() {
@@ -638,7 +599,7 @@
     
 
    
-    function drawChart() {
+    /* function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['Task', 'Hours per Day'],
         ['국민의당',     guck],
@@ -667,7 +628,7 @@
 
       chart.draw(data, options);
     }   
-   
+ */   
 </script>
 </body>
 </html>

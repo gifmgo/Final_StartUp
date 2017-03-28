@@ -159,5 +159,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where ptc.no = p.deptcd
 		order by no, co_no asc
 	</select>
-
+	
+	<select id="selectPolyName_PaliamentList" resultType="kr.or.com.Paliament_DTO.PaliamentList_DTO">
+		select * from tbl_paliament where polyNm=#{polyNm}
+	</select>
+	
 </mapper>

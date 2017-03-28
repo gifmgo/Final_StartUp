@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="assembly/assembly_0327.css">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
-<script src="assembly/assembly_0327.js"></script>
+<script src="assembly/assembly_0328.js"></script>
 <title>국 회</title>
 </head>
 <body>

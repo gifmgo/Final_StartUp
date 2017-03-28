@@ -283,5 +283,17 @@ public class PaliamentService {
  		result = dao.updateComment(dto);
  		return result;
  	}
+ 	
+ 	//정당 >> 아이콘 클릭해서 뿌려줄때 	
+	public List<PaliamentList_DTO> selectPaliamentList(String polyNm) {
+		List<PaliamentList_DTO> list = null;
+		try{
+			PaliamentTalk_DAO dao = sqlSession.getMapper(PaliamentTalk_DAO.class);
+			list = dao.selectPolyName_PaliamentList(polyNm);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
    
 }
