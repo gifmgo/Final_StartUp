@@ -18,7 +18,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel panel-info">
-			      <div class="panel-heading"><span>원별 댓글 현황  <i class="fa fa-plus-circle" style="font-size:20px"></i></span></div>
+			      <div class="panel-heading"><span id="morePaliamentComment">의원별 댓글 현황  <i class="fa fa-plus-circle" style="font-size:20px"></i></span></div>
 			      <div class="panel-body">
 				<c:choose>
 					<c:when test="${clist != null}">
@@ -55,7 +55,7 @@
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<h4>아더와이즈 입니다.??</h4>
+						
 					</c:otherwise>
 				</c:choose>
 				</div>

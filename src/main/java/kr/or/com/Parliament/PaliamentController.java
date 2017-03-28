@@ -85,17 +85,10 @@ public class PaliamentController {
    
    //국회의원 헤더부분 클릭시 이동하는 페이지
    @RequestMapping("/Member_Parliament.do")
-   public String parliament_List(Model model){
-	   
-	   //최근 써진 댓글 뽑아오기
-	   List<PCommentDTO> clist = service.rPCommentList();
-   
-	   SimpleDateFormat fm = new SimpleDateFormat("yyyyMMddHHmm");
-	   String strDate = fm.format(new Date());
-	   
-	   model.addAttribute("now", strDate);
-	   model.addAttribute("RPComment", clist);
-	   
+   public String parliament_List(String polyNm, Model model){
+	   List<PaliamentList_DTO> list = service.selectPaliamentList(polyNm);
+	   model.addAttribute("jungDang", polyNm);
+	   model.addAttribute("list", list);
 	   return "parliament_List.ParliamentList2";
    }
    
