@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 리스트 가져오는 것 -->
 	<select id="listdebateDTO" resultType="kr.or.com.debate.debateDTO">
-		select choose, nickName, title, writeDate
+		select choose, nickName, title, to_char(writeDate, 'YYYY/MM/DD') as writeDate 
 		from debate
 		where Debateword = #{keyword}
 	</select>
@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="detaillist" resultType="kr.or.com.debate.debateDTO">
-		select d.debateNo, d.Debateword, d.choose, d.nickName, d.title, d.content, d.viewcount, d.writeDate 
+		select d.debateNo, d.Debateword, d.choose, d.nickName, d.title, d.content, d.viewcount, to_char(writeDate, 'YYYY/MM/DD') as writeDate  
 		from debate d join adminDebate a
 		on d.Debateword = a.admin_debate_debateword and A.Admin_Debate_Debateword = #{keyWord}
 	</select>

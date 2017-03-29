@@ -42,8 +42,7 @@ public class PresidentController {
 	//대선후보 투표 하기 페이지
 	@RequestMapping("/PresidentVote.do")
 	public String PresidentVote(Model model){
-		List<PresidentDTO> list = service.presidentVote();
-		model.addAttribute("list", list);
+		
 		return "president.PresidentVote";
 	}
 	
