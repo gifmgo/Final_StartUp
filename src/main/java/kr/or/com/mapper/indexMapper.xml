@@ -61,11 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 베스트 포인트 유저 -->
 	<select id="index_selectPoint" resultType="kr.or.com.Member.MemberDTO">
-		<![CDATA[
-		select id, nickName, point
-		from (select  id, nickName, point,  RANK() OVER(ORDER BY point desc) as rank from member)
-		where rownum <= 5
-		]]>
+		select id, nickName, point, RANK() OVER(ORDER BY point desc) as rank from member
 	</select>
 	
 	<!-- 의원 >> -->

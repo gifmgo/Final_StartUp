@@ -33,24 +33,6 @@
 									    <span style="font-size: 12px;">${clist.name}</span>
 								    </div>
 							    </div>
-							    <div class="col-sm-3 col-xs-6">
-									<div class="well whiteWell text-center">
-										<span>
-										 	<img src="${clist.img}" class="img-circle" style="width:40px; height: 60px;">
-										</span><br/><br/>
-										<span style="font-size: 12px;">${clist.orignm}</span><br/>
-									    <span style="font-size: 12px;">${clist.name}</span>
-								    </div>
-							    </div>
-							    <div class="col-sm-3 col-xs-6">
-									<div class="well whiteWell text-center">
-										<span>
-										 	<img src="${clist.img}" class="img-circle" style="width:40px; height: 60px;">
-										</span><br/><br/>
-										<span style="font-size: 12px;">${clist.orignm}</span><br/>
-									    <span style="font-size: 12px;">${clist.name}</span>
-								    </div>
-							    </div>
 					    	</c:if>
 						</c:forEach>
 					</c:when>

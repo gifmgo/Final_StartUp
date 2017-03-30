@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="president/presidentCss_0313.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-
+<!-- <link rel="shortcut icon" type="image/x-icon" href="http://static.news.naver.net/image/news/election2014/favicon/favicon.ico"> -->
 <link rel="stylesheet" type="text/css" href="point/Point_03020.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->

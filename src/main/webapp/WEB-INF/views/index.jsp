@@ -139,8 +139,8 @@
 	    			</div>
 	    			<div class="title_text">
 		    			<h3 style="margin-bottom:30px;font-weight:bold;">어서오세요 생활정치입니다.</h3>
-						<p><i class="fa fa-check" style="font-size:20px"></i> 정치 관련 이야기는  <span class="btn btn-info ">정치 이야기</span></p>
-						<p><i class="fa fa-check" style="font-size:20px"></i> 일상, 웃긴 이야기는   <span class="btn btn-info ">생활 이야기</span></p>
+						<p><i class="fa fa-check" style="font-size:20px"></i> 정치 관련 이야기는  <span><a href="CommunityIndex.do" class="btn btn-info ">정치 이야기</a></span></p>
+						<p><i class="fa fa-check" style="font-size:20px"></i> 일상, 웃긴 이야기는   <span><a href="life.do" class="btn btn-info">생활 이야기</a></span></p>
 	    			</div>
 					
 				</div>
@@ -337,22 +337,22 @@
 			 	<div class="panel-body">	
 					 <div class="col-sm-4 customVideoDiv">
 					   <div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DLgeIw74Ktg" frameborder="0" allowfullscreen></iframe>
-					   		<p class="videoP"><span class="videoTitleSpan">종꾹형한테 맞으면</span><br/><span class="videoContentSpan">골로간다.</span></p>
+					   		<iframe width="560" height="315" src="https://www.youtube.com/embed/UOr_M2B0J80" frameborder="0" allowfullscreen></iframe>
+					   		<p class="videoP"><span class="videoTitleSpan">1박 2일</span><br/><span class="videoContentSpan">레전드</span></p>
 					   </div>
 			      	</div>
 			      	
 		      	    <div class="col-sm-4 customVideoDiv">
 				      <div class="embed-responsive embed-responsive-16by9">
-						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DLgeIw74Ktg" frameborder="0" allowfullscreen></iframe>
-				        <p class="videoP"><span class="videoTitleSpan">종꾹형한테 맞으면</span><br/><span class="videoContentSpan">골로간다.</span></p>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/f7rn_2-r5Hg" frameborder="0" allowfullscreen></iframe>
+				        <p class="videoP"><span class="videoTitleSpan">무한도전</span><br/><span class="videoContentSpan">몸개그 특집</span></p>
 				     </div>
 		      	   </div>
 		      	   
 		      	    <div class="col-sm-4 customVideoDiv">
 					   <div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DLgeIw74Ktg" frameborder="0" allowfullscreen></iframe>
-							<p class="videoP"><span class="videoTitleSpan">종꾹형한테 맞으면</span><br/><span class="videoContentSpan">골로간다.</span></p>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/-zo6_e0mCmM" frameborder="0" allowfullscreen></iframe>
+							<p class="videoP"><span class="videoTitleSpan">무한도전</span><br/><span class="videoContentSpan">N행시.</span></p>
 					   </div>
 			      	</div>
 		      	   
@@ -369,12 +369,14 @@
 			      		<div class="row">
 							<div class="col-sm-3">
 								<div class="alert alert-info fade in">
-							        <p><strong>베스트 포인터</strong></p>
+							        <p><strong>포인트 대장</strong></p>
 							        <div class="well indexWell2">
 							          <c:choose>
 							          	<c:when test="${point_list != null}">
 							          		<c:forEach var="point_list" items="${point_list}" varStatus="p_Status">
-							          			<p><a href="#"><span style="font-family:sans-serif;">${p_Status.count}.${point_list.nickName}</span></a></p>			
+							          			<c:if test="${p_Status.count <= 5}">
+							          			<p><a href="#"><span style="font-family:sans-serif;">${p_Status.count}.${point_list.nickName}</span></a></p>
+							          			</c:if>			
 							          		</c:forEach>	
 							          	</c:when>
 							          	<c:otherwise>

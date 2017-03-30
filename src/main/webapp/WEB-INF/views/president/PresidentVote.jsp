@@ -6,7 +6,7 @@
 	<div class="row">
   	  <div class="col-md-12">
   		<div class="form-group">
-  			<h2 class="text-center" style="font-size: 22px;"><i class="material-icons"></i>지지율 현황</h2>
+  			<h2 class="text-center" style="font-size: 22px;"><i class="material-icons"></i>대통령 선거 안내</h2>
   		</div>
   		<br/>
   		<div class="form-group">
