@@ -7,7 +7,15 @@
     <input type="hidden" id="hidden_favorit" value='${favorit}'>
     
     <section id="dashboard">
-       <h1>커뮤니티</h1>
+       
+       <div class="row">
+			<div class="col-sm-12 text-center" id="jumDiv">
+				<p id="community_fPtag">정치 이야기</p>
+				<p id="community_sPtag">정치에 관한 이야기는 이곳에서 하시면 됩니다.</p><br/>
+				<p>토론, 이슈, 블로거 이야기 등 다양한 컨텐츠를 즐겨보세요</p>
+			</div>
+	   </div>
+       
        <!-- <p>이 주 </p> -->
        <article>
        	   <div>

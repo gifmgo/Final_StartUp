@@ -2,6 +2,22 @@
 /* CSS Document */
 @import url(dashcore.css);
 
+#community_fPtag{
+	display: inline-block !important; 
+	border-top:2px solid !important; 
+	border-bottom: 2px solid !important; 
+	font-size: 32px !important;
+	margin-top:2% !important;
+}
+#community_sPtag{
+	margin-top: 2% !important;
+}
+
+#jumDiv{
+	height: 200px;
+}
+	
+
 .sub>li {
     float: inherit;
 }
@@ -580,6 +596,13 @@
 }
 
 @media only screen and (max-width:640px) {
+	#community_sPtag{
+		margin-top: 5% !important;
+	}
+	
+	#jumDiv{
+		height: 180px;
+	}
 	
 	#moreBlogerDiv{
 		padding:0px !important;
