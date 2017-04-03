@@ -49,11 +49,11 @@
 
 <div class="container">
 	<div class="panel panel-default">
-	  <div class="panel-heading">Best 게시글 <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></div>
+	  <div class="panel-heading">Best 게시글</div>
 	   <div class="panel-body">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">일상</span>
+					<span class="top">일상  <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${life}" varStatus="status">
@@ -71,7 +71,7 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">연예</span>
+					<span class="top">연예  <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${star}" varStatus="status">
@@ -89,7 +89,7 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">고민</span>
+					<span class="top">고민  <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${wor}" varStatus="status">
