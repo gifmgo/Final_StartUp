@@ -1,86 +1,117 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!-- <link rel="stylesheet" type="text/css" href="css/sub04_0124.css"> -->
-<link rel="stylesheet" type="text/css" href="life/life.css">
+<link rel="stylesheet" type="text/css" href="life/life0403.css">
 <script type="text/javascript" src="life/life.js"></script>
 
 <div class="container" style="margin-top:20px;">
 	<div class="row">
-		<div class="col-sm-6 col-md-3 boardBox">
-			<span class="top">일상</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
+		<div class="col-sm-12 text-center" id="lifeJdiv">
+			<p id="lifePtitleTag">생활 이야기</p>
+			<p id="lifePsecondTag">가벼운 마음으로.</p>
+			<p>일상, 연애 고민 등 다양한 컨텐츠를 즐겨보세요</p>
 		</div>
-		<div class="col-sm-6 col-md-3 boardBox">
-			<span class="top">연예</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${star}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
+	</div>
+	<div class="panel panel-default">
+	  	<div class="panel-heading">영상보기 <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></div>
+	  	  <div class="panel-body">	
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="well customWell">
+						<div class="embed-responsive embed-responsive-16by9">
+					   		<iframe width="560" height="315" src="https://www.youtube.com/embed/UOr_M2B0J80" frameborder="0" allowfullscreen></iframe>
+					   		<p class="videoP"><span class="videoTitleSpan">1박 2일</span><br/><span class="videoContentSpan">레전드</span></p>
+					   </div>
+				   </div>	
+				</div>
+				<div class="col-sm-4">
+					<div class="well customWell">
+						<div class="embed-responsive embed-responsive-16by9">
+					   		<iframe width="560" height="315" src="https://www.youtube.com/embed/UOr_M2B0J80" frameborder="0" allowfullscreen></iframe>
+					   		<p class="videoP"><span class="videoTitleSpan">1박 2일</span><br/><span class="videoContentSpan">레전드</span></p>
+					   </div>
+				   </div>
+				</div>
+				<div class="col-sm-4">
+					<div class="well customWell">
+						<div class="embed-responsive embed-responsive-16by9">
+					   		<iframe width="560" height="315" src="https://www.youtube.com/embed/UOr_M2B0J80" frameborder="0" allowfullscreen></iframe>
+					   		<p class="videoP"><span class="videoTitleSpan">1박 2일</span><br/><span class="videoContentSpan">레전드</span></p>
+					   </div>	
+				   </div>
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-6 col-md-3 boardBox">
-			<span class="top">고민</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${wor}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="col-sm-6 col-md-3 boardBox">
-			<span class="top">영상</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${fun}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>	
+	</div>
+</div>
+
+<div class="container">
+	<div class="panel panel-default">
+	  <div class="panel-heading">Best 게시글 <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></div>
+	   <div class="panel-body">
+			<div class="row">
+				<div class="col-sm-6 col-md-4 boardBox">
+					<span class="top">일상</span>
+					<hr/>
+					<ul>
+						<c:forEach var="list" items="${life}" varStatus="status">
+						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+							<span class="rank">${status.count }</span>
+							<span class="title">${list.title }</span>
+							<%-- <c:if test="${list.regdatePO > now }">
+								<span class="num">(1)</span>
+							</c:if> --%>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+						</li>
+						</c:forEach>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-4 boardBox">
+					<span class="top">연예</span>
+					<hr/>
+					<ul>
+						<c:forEach var="list" items="${star}" varStatus="status">
+						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+							<span class="rank">${status.count }</span>
+							<span class="title">${list.title }</span>
+							<%-- <c:if test="${list.regdatePO > now }">
+								<span class="num">(1)</span>
+							</c:if> --%>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+						</li>
+						</c:forEach>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-4 boardBox">
+					<span class="top">고민</span>
+					<hr/>
+					<ul>
+						<c:forEach var="list" items="${wor}" varStatus="status">
+						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+							<span class="rank">${status.count }</span>
+							<span class="title">${list.title }</span>
+							<%-- <c:if test="${list.regdatePO > now }">
+								<span class="num">(1)</span>
+							</c:if> --%>
+							<c:if test="${list.regdatePO > now }">
+								<span class="new">N</span>
+							</c:if>
+						</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+	   </div>	
+	</div>
 </div>	
+
+<%-- 
 <div class="container" style="margin-top: 20px; margin-bottom:20px">
 
 	<input type="hidden" id="category" value="${title }">
@@ -126,7 +157,7 @@
 							<li class="viewcnt">조회수 : ${list.viewcnt }</li>
 						</ul>
 						<ul class= "gb">
-							<li class="glyphicon glyphicon-thumbs-up">${list.good }</li>
+							<li class="glyphicon glyphicon-thumbs-up">&nbsp;${list.good}</li>
 						</ul>
 					</li>
 					</c:forEach>
@@ -166,4 +197,4 @@
 	        </ul>
         </div>
     </div>
-</div>
+</div> --%>
