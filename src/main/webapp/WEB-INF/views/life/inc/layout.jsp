@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="loading/loading.css">
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="life/Board.js"></script>
 <title>커뮤니티</title>
 <script>
 </script>

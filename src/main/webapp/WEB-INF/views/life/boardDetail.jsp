@@ -5,7 +5,6 @@
 
 <div id="wrap">
    	<h1 id="category">${dto.category }</h1>
-    <hr/>
     
     	<input type="hidden" value="${dto.no}" id="contentNo">
     	<input type="hidden" value="${currentpage}" id="currentpage">
@@ -26,7 +25,7 @@
     
     <div id="comm">
     	<div>
-    		<span id="commButton" data-id="${id }">댓글 쓰기</span>
+    		<span id="commButton" data-id="${id }" style="cursor: pointer;">댓글 쓰기</span>
     		<div>
     		<c:if test="${id != null}">
 		        <textarea name="content" style="resize:none;" placeholder="댓글을 적어주세요" maxlength="500"></textarea>

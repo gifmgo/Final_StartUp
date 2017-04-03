@@ -32,6 +32,7 @@ public interface FreeBoardDAO {
 	
 	//총게시글수
 	public int boardCount(String field, String query, String category);
+	public int lifeBoardCount(String field, String query);
 
 	
 	//댓글 쓰기

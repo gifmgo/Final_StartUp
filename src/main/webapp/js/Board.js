@@ -159,7 +159,10 @@ function writeContent(){
          CKEDITOR.instances.ckeditor.focus();
          return false;
    }
-   
+   var content = CKEDITOR.instances.ckeditor.getData();
+   var img = $(content).find('src').text();
+   alert(img);
+   $("#img").val(img);
    $('#writeForm').submit();
    
 }

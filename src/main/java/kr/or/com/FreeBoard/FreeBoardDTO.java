@@ -8,6 +8,7 @@ public class FreeBoardDTO {
 	private String content;
 	private String writer;
 	private String id;
+	private String img;
 	private String regdate;
 	private String regdatePO; //regdate보다 1일+
 	private String filename;
@@ -96,6 +97,12 @@ public class FreeBoardDTO {
 	}
 	public void setRegdatePO(String regdatePO) {
 		this.regdatePO = regdatePO;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 }
