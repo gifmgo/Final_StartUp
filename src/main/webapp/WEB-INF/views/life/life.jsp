@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<script type="text/javascript" src="life/Board.js"></script> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!-- <link rel="stylesheet" type="text/css" href="css/sub04_0124.css"> -->
 <link rel="stylesheet" type="text/css" href="life/life.css">
 <script type="text/javascript" src="life/life.js"></script>
@@ -9,25 +8,7 @@
 <div class="container" style="margin-top:20px;">
 	<div class="row">
 		<div class="col-sm-6 col-md-3 boardBox">
-			<span class="top">영상</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="col-sm-6 col-md-3 boardBox">
-			<span class="top">고민</span>
+			<span class="top">일상</span>
 			<hr/>
 			<ul>
 				<c:forEach var="list" items="${life}" varStatus="status">
@@ -48,7 +29,25 @@
 			<span class="top">연예</span>
 			<hr/>
 			<ul>
-				<c:forEach var="list" items="${life}" varStatus="status">
+				<c:forEach var="list" items="${star}" varStatus="status">
+				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+					<span class="rank">${status.count }</span>
+					<span class="title">${list.title }</span>
+					<%-- <c:if test="${list.regdatePO > now }">
+						<span class="num">(1)</span>
+					</c:if> --%>
+					<c:if test="${list.regdatePO > now }">
+						<span class="new">N</span>
+					</c:if>
+				</li>
+				</c:forEach>
+			</ul>
+		</div>
+		<div class="col-sm-6 col-md-3 boardBox">
+			<span class="top">고민</span>
+			<hr/>
+			<ul>
+				<c:forEach var="list" items="${wor}" varStatus="status">
 				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 					<span class="rank">${status.count }</span>
 					<span class="title">${list.title }</span>
@@ -66,7 +65,7 @@
 			<span class="top">영상</span>
 			<hr/>
 			<ul>
-				<c:forEach var="list" items="${life}" varStatus="status">
+				<c:forEach var="list" items="${fun}" varStatus="status">
 				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 					<span class="rank">${status.count }</span>
 					<span class="title">${list.title }</span>
@@ -89,7 +88,7 @@
 	
 	<div class="row">
 		<ul class="breadcrumb">
-		    <li><a href="life.do?category=alllife">전체</a></li>
+		    <li><a href="life.do">전체</a></li>
 		    <li><a href="life.do?category=life">일상</a></li>
 		    <li><a href="life.do?category=star">연예</a></li>
 		    <li><a href="life.do?category=wor">고민</a></li>
@@ -99,12 +98,24 @@
 		
 		<div class="col-md-12">
 			<div class="col-md-offset-1 col-md-10 content">
-				<h3>${title}</h3>
+				<div class="head">
+					<h3 class="title">${title}</h3>
+					<c:if test="${id != null}">
+			            <button class="btn btn-primary" onclick="writeContentView()">글쓰기</button>
+			       	</c:if>
+		       	</div>
 				<ul>
 					<c:forEach var="list" items="${list}">
-					<li class="list" onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">	
-						<img class="img" src="http://placehold.it/80x80">
-						<span class="title">[${list.category}]${list.title }
+					<li class="list">
+						<c:choose>
+						<c:when test="${list.img==null }">
+							<img class="img" src="http://placehold.it/80x80"  onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						</c:when>
+						<c:otherwise>
+							<img class="img" src="${list.img }"  onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						</c:otherwise>
+						</c:choose>
+						<span class="title"  onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">[${list.category}]${list.title }
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
@@ -154,17 +165,5 @@
 	       		</c:choose>					        
 	        </ul>
         </div>
-       	<c:if test="${id != null}">
-       		<c:choose>
-       		<c:when test='${title == "공지사항" }'>
-       			<c:if test='${admin == "superAdmin"}'> <!-- 운영자일때 -->
-            		<button onclick="writeContentView()">글쓰기</button>
-            	</c:if>
-            </c:when>
-            <c:otherwise>
-            	<button onclick="writeContentView()">글쓰기</button>
-            </c:otherwise>		
-            </c:choose>
-       	</c:if>
     </div>
 </div>

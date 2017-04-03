@@ -88,7 +88,11 @@ public class FreeBoardService {
         int end = cpage * pgsize;
         FreeBoardDAO freeboarddao = sqlSession.getMapper(FreeBoardDAO.class);
         List<FreeBoardDTO> list = null;
-        list = freeboarddao.selectAllFreeBoard(field, query, category, start, end);
+        if(category.equals("전체")){
+        	list = freeboarddao.bestLife(start, end);      	
+        }else{
+        	list = freeboarddao.selectAllFreeBoard(field, query, category, start, end);        	
+        }
         
         return list;
 	}
@@ -96,7 +100,11 @@ public class FreeBoardService {
 	public int boardCount(String field, String query, String category) {
 		FreeBoardDAO freeboarddao = sqlSession.getMapper(FreeBoardDAO.class);
 		int result = 0;
-		result = freeboarddao.boardCount(field, query, category);
+		if(category.equals("전체")){
+			result = freeboarddao.lifeBoardCount(field, query);					
+		}else{
+			result = freeboarddao.boardCount(field, query, category);					
+		}
 		return result;	
 	}
 

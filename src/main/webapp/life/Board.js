@@ -143,9 +143,9 @@ $(document).ready(function(e) {
 
 //자유게시판 글쓰기 버튼 클릭시
 function writeContentView(){
-	var category = $("#category").text().trim();
+	var category = $("#category").val();
 	var cpage = $("#cpage").val();
-	location.href="boardWriteView.do?category="+category+"&currentpage="+cpage;
+	location.href="lifeboardWriteView.do?category="+category+"&currentpage="+cpage;
 }
 
 
@@ -193,7 +193,7 @@ function contentModView(){
 	var currentpage = $('#currentpage').val();
 	var no = $("#contentNo").val();
 	
-	location.href="boardModifyView.do?currentpage="+currentpage+"&no="+no;
+	location.href="lifeModifyView.do?currentpage="+currentpage+"&no="+no;
 	
 }
 
