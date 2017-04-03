@@ -49,11 +49,15 @@
 
 <div class="container">
 	<div class="panel panel-default">
-	  <div class="panel-heading">Best 게시글 <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></div>
+	  <div class="panel-heading">Best 게시글</div>
 	   <div class="panel-body">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 boardBox">
+<<<<<<< HEAD
 					<span class="top">일상</span><a href="lifeBoard.do?category=life" class="top more"><span class="glyphicon glyphicon-plus"></span></a>
+=======
+					<span class="top">일상  <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+>>>>>>> 84b4e2be115bfac884d3dc4714451d1f80cdbb7d
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${life}" varStatus="status">
@@ -71,7 +75,11 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
+<<<<<<< HEAD
 					<span class="top">연예</span><a href="lifeBoard.do?category=star" class="top more"><span class="glyphicon glyphicon-plus"></span></a>
+=======
+					<span class="top">연예  <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+>>>>>>> 84b4e2be115bfac884d3dc4714451d1f80cdbb7d
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${star}" varStatus="status">
@@ -89,7 +97,11 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
+<<<<<<< HEAD
 					<span class="top">고민</span><a href="lifeBoard.do?category=wor" class="top more"><span class="glyphicon glyphicon-plus"></span></a>
+=======
+					<span class="top">고민  <span class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+>>>>>>> 84b4e2be115bfac884d3dc4714451d1f80cdbb7d
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${wor}" varStatus="status">
