@@ -53,11 +53,11 @@
 	   <div class="panel-body">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">일상</span>
+					<span class="top">일상</span><a href="lifeBoard.do?category=life" class="top more"><span class="glyphicon glyphicon-plus"></span></a>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${life}" varStatus="status">
-						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<span class="rank">${status.count }</span>
 							<span class="title">${list.title }</span>
 							<%-- <c:if test="${list.regdatePO > now }">
@@ -71,11 +71,11 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">연예</span>
+					<span class="top">연예</span><a href="lifeBoard.do?category=star" class="top more"><span class="glyphicon glyphicon-plus"></span></a>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${star}" varStatus="status">
-						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<span class="rank">${status.count }</span>
 							<span class="title">${list.title }</span>
 							<%-- <c:if test="${list.regdatePO > now }">
@@ -89,11 +89,11 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">고민</span>
+					<span class="top">고민</span><a href="lifeBoard.do?category=wor" class="top more"><span class="glyphicon glyphicon-plus"></span></a>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${wor}" varStatus="status">
-						<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+						<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<span class="rank">${status.count }</span>
 							<span class="title">${list.title }</span>
 							<%-- <c:if test="${list.regdatePO > now }">

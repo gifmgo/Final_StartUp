@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <script type="text/javascript" src="life/Board.js"></script> 
 <!-- <link rel="stylesheet" type="text/css" href="css/sub04_0124.css"> -->
-<link rel="stylesheet" type="text/css" href="life/life.css">
+<link rel="stylesheet" type="text/css" href="life/life0403.css">
 <script type="text/javascript" src="life/life.js"></script>
 
 <div class="container" style="margin-top:20px;">
@@ -13,7 +13,7 @@
 			<hr/>
 			<ul>
 				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 					<span class="rank">${status.count }</span>
 					<span class="title">${list.title }</span>
 					<%-- <c:if test="${list.regdatePO > now }">
@@ -31,7 +31,7 @@
 			<hr/>
 			<ul>
 				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 					<span class="rank">${status.count }</span>
 					<span class="title">${list.title }</span>
 					<%-- <c:if test="${list.regdatePO > now }">
@@ -49,7 +49,7 @@
 			<hr/>
 			<ul>
 				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 					<span class="rank">${status.count }</span>
 					<span class="title">${list.title }</span>
 					<%-- <c:if test="${list.regdatePO > now }">
@@ -67,7 +67,7 @@
 			<hr/>
 			<ul>
 				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
+				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 					<span class="rank">${status.count }</span>
 					<span class="title">${list.title }</span>
 					<%-- <c:if test="${list.regdatePO > now }">
@@ -101,7 +101,7 @@
 			<div class="col-md-offset-1 col-md-10 content">
 				<ul>
 					<c:forEach var="list" items="${list}">
-					<li class="list" onclick="location.href='boardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">	
+					<li class="list" onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">	
 						<img class="img" src="http://placehold.it/80x80">
 						<span class="title">[${list.category}]${list.title }
 							<c:if test="${list.regdatePO > now }">
