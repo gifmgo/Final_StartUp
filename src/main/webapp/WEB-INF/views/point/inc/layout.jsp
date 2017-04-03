@@ -18,7 +18,6 @@
 <link rel="stylesheet" type="text/css" href="css/icon.css">
 <link rel="stylesheet" type="text/css" href="point/Point_03020.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <script src="point/Point03012_02.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>

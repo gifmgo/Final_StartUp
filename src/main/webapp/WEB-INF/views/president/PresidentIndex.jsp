@@ -16,7 +16,7 @@
   			<div class="btn-group btn-group-justified">
 				  <a href="PresidentMember.do" class="btn btn-default" style="border: none;">대선후보</a>
 				  <a href="PresidentPolls.do" class="btn btn-default" style="border: none;">지지율</a>
-				  <a href="PresidentVote.do" class="btn btn-default" style="border: none;">투표해보기</a>
+				  <a href="PresidentVote.do" class="btn btn-default" style="border: none;">대통령 선거 안내</a>
 				  <a href="PresidentTalk.do" class="btn btn-default" style="border: none;">대선 한마디</a>
 			</div>
 			<hr/>

@@ -63,14 +63,6 @@ public class BoardController {
 			System.out.println("키워드 확인좀 할께요 보드 컨트롤러 입니다. "+keyWord);
 			
 			debate_dto = debate_Service.list(keyWord);
-			
-			if(debate_dto != null){
-				for(int i = 0; i < debate_dto.size(); i++){
-					Date transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(debate_dto.get(i).getWriteDate());
-					String newstring = new SimpleDateFormat("yyyy-MM-dd").format(transFormat);
-					debate_dto.get(i).setWriteDate(newstring);
-				}
-			}
 
 		}catch(Exception e){
 			e.printStackTrace();

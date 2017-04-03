@@ -33,24 +33,6 @@
 									    <span style="font-size: 12px;">${clist.name}</span>
 								    </div>
 							    </div>
-							    <div class="col-sm-3 col-xs-6">
-									<div class="well whiteWell text-center">
-										<span>
-										 	<img src="${clist.img}" class="img-circle" style="width:40px; height: 60px;">
-										</span><br/><br/>
-										<span style="font-size: 12px;">${clist.orignm}</span><br/>
-									    <span style="font-size: 12px;">${clist.name}</span>
-								    </div>
-							    </div>
-							    <div class="col-sm-3 col-xs-6">
-									<div class="well whiteWell text-center">
-										<span>
-										 	<img src="${clist.img}" class="img-circle" style="width:40px; height: 60px;">
-										</span><br/><br/>
-										<span style="font-size: 12px;">${clist.orignm}</span><br/>
-									    <span style="font-size: 12px;">${clist.name}</span>
-								    </div>
-							    </div>
 					    	</c:if>
 						</c:forEach>
 					</c:when>
@@ -121,7 +103,7 @@
       <div class="row">
       	 <div class="col-sm-12">
       	 	<div class="panel panel-warning">
-			      <div class="panel-heading"><p>의안 현황<span>(법안)</span></p></div>
+			      <div class="panel-heading"><span id="moreStatueBtn">의안 현황  <i class="fa fa-plus-circle" style="font-size:20px"></i></span></div>
 			      <div class="panel-body">
 			      	<ul class="nav nav-tabs" id="tabMenu">
 					  <li class="active"><a id="oneTab">최근 통과안</a></li>
@@ -143,8 +125,6 @@
 						      			
 						      		</tbody>
 						      	</table>
-						      	<hr/>
-						      	<label class="pull-right"><input type="button" class="btn btn-success" value="더보기" id="moreStatueBtn"></label>
 				      	 	</div>
 			      	 	</div>
 		      	 	</div>

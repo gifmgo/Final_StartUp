@@ -69,7 +69,7 @@
          searchDiv += '<input type="hidden" id='+obj.empnm+'>';
          searchDiv += '<input type="hidden" id='+obj.deptCd+'>';
          searchDiv += '<input type="hidden" id='+obj.num+'>';
-         searchDiv += '<span><img style="width:100px; height:100px;" src='+obj.img+'></span><br/><br/>';
+         searchDiv += '<span><img style="width:100px; height:100px;" src='+obj.img+' class="img-circle"></span><br/><br/>';
          searchDiv += '<span>이름 : '+obj.empnm+'</span><br/>';
          searchDiv += '<span>정당 : '+obj.jungDang+'</span><br/>';
          if(obj.orignm != '비례대표'){
@@ -476,7 +476,7 @@
                   PaliamentDiv += '<input type="hidden" id='+obj.empNm+'>';
                   PaliamentDiv += '<input type="hidden" id='+obj.deptCd+'>';
                   PaliamentDiv += '<input type="hidden" id='+obj.num2+'>';
-                  PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+'></span><br/><br/>';
+                  PaliamentDiv += '<span><img style="width:100px; height:100px;" src='+obj.jpgLink+' class="img-circle"></span><br/><br/>';
                   PaliamentDiv += '<span>이름 : '+obj.empNm+'</span><br/>';
                   PaliamentDiv += '<span>정당 : '+obj.polyNm+'</span><br/>';
                   if(obj.origNm != '비례대표'){

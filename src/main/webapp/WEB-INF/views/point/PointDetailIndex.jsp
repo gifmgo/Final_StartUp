@@ -170,7 +170,7 @@
 			<div class="row text-center">
 				<div class="col-md-12">
 					<div class="well customWell">
-						<label class="myPointLabel">그래프 보기</label><hr/>
+						<label class="myPointLabel">내가 구매한 현황 보기</label><hr/>
 						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#1abc9c">국민의당</i></span>
 						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#2980b9">더불어 민주당</i></span>
 						<span class="iconSpan"><i class="fa fa-circle" style="font-size:15px;color:#3498db">바른정당</i></span>
