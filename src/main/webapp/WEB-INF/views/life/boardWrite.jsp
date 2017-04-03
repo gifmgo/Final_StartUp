@@ -23,12 +23,13 @@
            	<input type="file" name="uploadfile" id="uploadfile">
         </div>
         <div id="img">
-        	<input type="hidden" name="img" value="">
+        	<input type="hidden" name="img">
         </div>
 	    <div id="content">
 	      	<textarea id="ckeditor" name="ckeditor" required></textarea>
 	    </div>
 	    <div id="btArray">
+	    	<!-- <button type="button" onclick="successImg()">확인</button> -->
 	    	<button type="button" onclick="writeContent()">작성완료</button>
 	    	<button onclick="location.href='life.do?category=${category}&currentpage=${currentpage}'">취소</button>
 	    </div>

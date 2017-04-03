@@ -10,7 +10,7 @@
    	
    	<form action="writeBoard.do" method="POST" id="writeForm" enctype="multipart/form-data" onkeydown="return captureReturnKey(event)">
 	   	<input type="hidden" id="category" name="category" value="${category }">
-	   	
+	   	<input type="hidden" id="img" name="img">
 	   	<div id="title">
 	        <input type="text" name="title" placeholder="제목을 입력하세요">
 	    </div>
