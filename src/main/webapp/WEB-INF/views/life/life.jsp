@@ -53,8 +53,8 @@
 	   <div class="panel-body">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 boardBox">
-				<span class="top">일상  <span onclick="lifeBoard.do?category=life" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
-
+				<span class="top">일상</span>
+				<span onclick="location.href='lifeBoard.do?category=life'" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${life}" varStatus="status">
@@ -72,7 +72,7 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-				<span class="top">연예  <span onclick="lifeBoard.do?category=star" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+				<span class="top">연예  <span onclick="location.href='lifeBoard.do?category=star'" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
 
 					<hr/>
 					<ul>
@@ -91,7 +91,7 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">고민  <span onclick="lifeBoard.do?category=wor" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+					<span class="top">고민  <span onclick="location.href='lifeBoard.do?category=wor'" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
 
 					<hr/>
 					<ul>
