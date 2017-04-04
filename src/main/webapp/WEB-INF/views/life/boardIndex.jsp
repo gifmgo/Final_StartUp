@@ -5,83 +5,38 @@
 <link rel="stylesheet" type="text/css" href="life/life0403.css">
 <script type="text/javascript" src="life/life.js"></script>
 
-<div class="container" style="margin-top:20px;">
-<div class="panel panel-default">
-	  <div class="panel-heading">Best 게시글</div>
-	   <div class="panel-body">
-	<div class="row">
-		<div class="col-sm-4 boardBox">
-			<span class="top">일상</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${life}" varStatus="status">
-				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="col-sm-4 boardBox">
-			<span class="top">연예</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${star}" varStatus="status">
-				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="col-sm-4 boardBox">
-			<span class="top">고민</span>
-			<hr/>
-			<ul>
-				<c:forEach var="list" items="${wor}" varStatus="status">
-				<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
-					<span class="rank">${status.count }</span>
-					<span class="title">${list.title }</span>
-					<%-- <c:if test="${list.regdatePO > now }">
-						<span class="num">(1)</span>
-					</c:if> --%>
-					<c:if test="${list.regdatePO > now }">
-						<span class="new">N</span>
-					</c:if>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		</div>
-		</div>
-	</div>	
-</div>	
+
 <div class="container" style="margin-top: 20px; margin-bottom:20px">
 
 	<input type="hidden" id="category" value="${title }">
 	<input type="hidden" id="cpage" value="${cpage }">
 	
 	<div class="row">
+		<div class="col-sm-12">
+			<ul class="nav nav-tabs">
+			  <li class="active"><a href="lifeBoard.do?category=life">일상</a></li>
+			  <li><a href="lifeBoard.do?category=star">연예</a></li>
+			  <li><a href="lifeBoard.do?category=wor">고민</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- <div class="row">
 		<ul class="breadcrumb">
 		    <li><a href="lifeBoard.do">전체</a></li>
 		    <li><a href="lifeBoard.do?category=life">일상</a></li>
 		    <li><a href="lifeBoard.do?category=star">연예</a></li>
 		    <li><a href="lifeBoard.do?category=wor">고민</a></li>
-		    <!-- <li><a href="#">기타</a></li> -->
+		    <li><a href="#">기타</a></li>
 		</ul>
-		
+	</div> -->
+</div>
+
+<div class="container" style="margin-top:20px;">
+
+<div class="panel panel-default">
+	  <div class="panel-heading">Best 게시글</div>
+	   <div class="panel-body">
 		<div class="col-md-12">
 			<div class="col-md-offset-1 col-md-10 content">
 				<div class="head">
@@ -119,9 +74,11 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-</div>
-<div class="container">
+		
+		</div>
+	</div>	
+</div>	
+<%-- <div class="container">
 	<div class="row">
 		<div style="text-align: center;">
 			<ul class="pagination">
@@ -152,4 +109,76 @@
 	        </ul>
         </div>
     </div>
+</div>
+ --%>
+<div class="container">
+	<div class="form-group">
+			<p class="text-center">전체 게시글</p>
+	</div>	
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="well customWell">
+			<div class="form-group">
+				<div class="col-sm-offset-10 col-sm-2">
+					<select class="form-control">
+						<option>선택</option>
+						<option>10개</option>
+						<option>50개</option>
+						<option>100개</option>
+					</select>
+				</div>
+			</div>
+			
+			<table class="table" style="margin-top: 50px;">
+				<thead>
+					<tr class="success">
+						<th class="text-center">No.</th>
+						<th class="text-center">제목</th>
+						<th class="text-center">글쓴이</th>
+						<th class="text-center">조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr><tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr><tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr><tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr><tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr><tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr>
+					<tr class="text-center">
+						<td>1</td>
+						<td>안녕요</td>
+						<td>헬로우</td>
+						<td>10</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
 </div>
