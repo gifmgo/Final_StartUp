@@ -2,10 +2,36 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link rel="stylesheet" type="text/css" href="css/sub02_0125.css"> 
-
-<div id="wrap">
-   	<h1 id="category">${dto.category }</h1>
-    
+<br/><br/>
+<div class="container">
+  <div id="wrap">	
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-10">
+					<ul class="nav nav-tabs">
+					  <c:if test="${dto.category == '일상'}">
+					  	<li class="active" style="font-size:20px;"><a href="#">일상</a></li>
+					    <li style="font-size:20px;"><a href="#">연예</a></li>
+					    <li style="font-size:20px;"><a href="#">고민</a></li>	
+					  </c:if>
+					  
+					  <c:if test="${dto.category == '연예'}">
+					  	<li style="font-size:20px;"><a href="#">일상</a></li>
+					    <li class="active" style="font-size:20px;"><a href="#">연예</a></li>
+					    <li style="font-size:20px;"><a href="#">고민</a></li>	
+					  </c:if>
+					  
+					  <c:if test="${dto.category == '고민'}">
+					  	<li style="font-size:20px;"><a href="#">일상</a></li>
+					    <li style="font-size:20px;"><a href="#">연예</a></li>
+					    <li class="active" style="font-size:20px;"><a href="#">고민</a></li>	
+					  </c:if>
+					</ul>
+				</div>
+			</div>
+		</div>
+			
+    	<input type="hidden" id="category" value="${dto.category}">
     	<input type="hidden" value="${dto.no}" id="contentNo">
     	<input type="hidden" value="${currentpage}" id="currentpage">
     <div id="title">
@@ -77,7 +103,6 @@
         </c:if>
         <button onclick="location.href='board.do?currentpage=${currentpage}&category=${category}'">목록</button>
     </div>
-    
+  </div>
 </div>
-
     
