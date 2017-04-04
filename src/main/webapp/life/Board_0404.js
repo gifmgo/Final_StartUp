@@ -100,7 +100,7 @@ $(document).ready(function(e) {
 				$(data).each(function(index,item){
 					with(item){
 						if(result==1){
-							location.href='boardDetail.do?category='+category+'&no='+no;
+							location.href='lifeBoardDetail.do?category='+category+'&no='+no;
 						}else{
 							alert("로그인 해줘");
 						}
@@ -204,7 +204,6 @@ function contentDel(){
 function contentModView(){
 	var currentpage = $('#currentpage').val();
 	var no = $("#contentNo").val();
-	
 	location.href="lifeModifyView.do?currentpage="+currentpage+"&no="+no;
 	
 }
@@ -220,6 +219,5 @@ function contentMod(){
 		CKEDITOR.instances.ckeditor.focus();
 		return false;
 	}
-
 	$('#writeForm').submit();
 }
