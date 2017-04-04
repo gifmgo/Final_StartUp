@@ -1,9 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!-- <link rel="stylesheet" type="text/css" href="css/sub04_0124.css"> -->
 <link rel="stylesheet" type="text/css" href="life/life0403.css">
 <script type="text/javascript" src="life/life.js"></script>
+
 <div class="container" style="margin-top:20px;">
 	<div class="row">
 		<div class="col-sm-12 text-center" id="lifeJdiv">
@@ -51,7 +53,8 @@
 	   <div class="panel-body">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 boardBox">
-				<span class="top">일상  <span onclick="lifeBoard.do?category=life" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+				<span class="top">일상</span>
+				<span onclick="location.href='lifeBoard.do?category=life'" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span>
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${life}" varStatus="status">
@@ -69,16 +72,17 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-				<span class="top">연예  <span onclick="lifeBoard.do?category=star" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+				<span class="top">연예  <span onclick="location.href='lifeBoard.do?category=star'" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+
 					<hr/>
 					<ul>
 						<c:forEach var="list" items="${star}" varStatus="status">
 						<li onclick="location.href='lifeBoardDetail.do?no=${list.no}&category=${list.category }&currentpage=1'">
 							<span class="rank">${status.count }</span>
 							<span class="title">${list.title }</span>
-							<%--<c:if test="${list.regdatePO > now }">
+							<%-- <c:if test="${list.regdatePO > now }">
 								<span class="num">(1)</span>
-							</c:if>--%>
+							</c:if> --%>
 							<c:if test="${list.regdatePO > now }">
 								<span class="new">N</span>
 							</c:if>
@@ -87,7 +91,7 @@
 					</ul>
 				</div>
 				<div class="col-sm-6 col-md-4 boardBox">
-					<span class="top">고민  <span onclick="lifeBoard.do?category=wor" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
+					<span class="top">고민  <span onclick="location.href='lifeBoard.do?category=wor'" class="pull-right"><i class="fa fa-plus" style="font-size:22px"></i></span></span>
 
 					<hr/>
 					<ul>
