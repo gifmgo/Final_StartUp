@@ -17,7 +17,7 @@ public class Converter {
 			result = "life";
 		}else if(kor.equals("영상")){
 			result = "fun";
-		}else if(kor.equals("걱정")){
+		}else if(kor.equals("고민")){
 			result = "wor";
 		}else if(kor.equals("연예")){
 			result = "star";
@@ -41,7 +41,7 @@ public class Converter {
 		}else if(eng.equals("fun")){
 			result = "영상";
 		}else if(eng.equals("wor")){
-			result = "걱정";
+			result = "고민";
 		}else if(eng.equals("star")){
 			result = "연예";
 		}

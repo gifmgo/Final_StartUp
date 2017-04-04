@@ -159,16 +159,25 @@ function writeContent(){
          CKEDITOR.instances.ckeditor.focus();
          return false;
    }
-   $("#img").val(img);
-   $('#writeForm').submit();
+   var img = CKEDITOR.instances.ckeditor.getData();
+	img = $(img).html().split('"');
+	for(var i in img ) {
+		if(img[i].search('upload')>=0){
+			$("#img").val(img[i]);
+		}
+	}
+	getImg();
+    $('#writeForm').submit();
 }
 
-function successImg(a){
+function getImg(){
 	var img = CKEDITOR.instances.ckeditor.getData();
-	alert($(img).html("src").text());
-	img = $(img).attr("src");
-	/*img =  $("#img").val();*/
-	alert(img);
+	img = $(img).html().split('"');
+	for(var i in img ) {
+		if(img[i].search('upload')>=0){
+			$("#img").val(img[i]);
+		}
+	}
 }
 
 //글 삭제

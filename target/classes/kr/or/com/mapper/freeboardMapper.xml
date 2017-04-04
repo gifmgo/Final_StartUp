@@ -54,8 +54,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 글쓰기 -->
 	 <insert id="FreeBoardWrite" parameterType="kr.or.com.FreeBoard.FreeBoardDTO">
-		insert into tbl_board(no, category, title, content, writer, id, regdate, filename, filepath, good, viewcnt) 
-		values(board_seq.nextval, #{category} ,#{title}, #{content}, #{writer}, #{id}, sysdate, #{filename}, #{filepath}, 0, 0)
+		insert into tbl_board(no, category, title, content, writer, id, regdate, filename, filepath, good, viewcnt, img) 
+		values(board_seq.nextval, #{category} ,#{title}, #{content}, #{writer}, #{id}, sysdate, #{filename}, #{filepath}, 0, 0 ,#{img})
 	 </insert>
 
 	<!--상세보기-->
