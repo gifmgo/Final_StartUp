@@ -166,16 +166,16 @@ function writeContent(){
 			$("#img").val(img[i]);
 		}
 	}
-	getImg();
+	successImg();
     $('#writeForm').submit();
 }
 
-function getImg(){
+function successImg(){
 	var img = CKEDITOR.instances.ckeditor.getData();
-	img = $(img).html().split('"');
+	img = img.split('"');
 	for(var i in img ) {
-		if(img[i].search('upload')>=0){
-			$("#img").val(img[i]);
+		if(img[i].search('upload')==0){
+			$("#img").attr('src', img[i]);
 		}
 	}
 }
