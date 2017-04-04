@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <link rel="stylesheet" type="text/css" href="css/sub05.css">
-
 <script src="//cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 <script type="text/javascript" src="js/writeView.js"></script>
 
@@ -29,7 +28,7 @@
 	      	<textarea id="ckeditor" name="ckeditor" required></textarea>
 	    </div>
 	    <div id="btArray">
-	    	<!-- <button type="button" onclick="successImg()">확인</button> -->
+	    	<button type="button" onclick="successImg()">확인</button>
 	    	<button type="button" onclick="writeContent()">작성완료</button>
 	    	<button onclick="location.href='life.do?category=${category}&currentpage=${currentpage}'">취소</button>
 	    </div>

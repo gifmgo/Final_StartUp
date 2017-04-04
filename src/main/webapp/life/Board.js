@@ -162,18 +162,15 @@ function writeContent(){
    $("#img").val(img);
    $('#writeForm').submit();
 }
-/*
-$(document).ready(function(){
-	$(document).on("click", "cke_dialog_ui_hbox_first" ,function(){
-		alert("성공");
-	});
-});
 
-function successImg(){
-	var img =  $("#img").val();
+function successImg(a){
+	var img = CKEDITOR.instances.ckeditor.getData();
+	alert($(img).html("src").text());
+	img = $(img).attr("src");
+	/*img =  $("#img").val();*/
 	alert(img);
 }
-*/
+
 //글 삭제
 function contentDel(){
 	if(confirm('삭제하시겠습니까?')){
